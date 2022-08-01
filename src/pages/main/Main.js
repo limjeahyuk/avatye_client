@@ -1,7 +1,8 @@
 import React from "react";
+import Sliders from "../../components/main/Sliders";
 
 const Main = () => {
-    return <></>
+    return <><Sliders/></>
 }
 
 export default Main;
