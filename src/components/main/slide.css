@@ -1,0 +1,60 @@
+body {
+  font-size: 14px;
+  color: #000;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.swiper {
+  width: 766px;
+  height: 280px;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 30px;
+  right: 30px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  top: 84%;
+  height: 32px;
+  width: 32px;
+  background: #0000005e;
+  border-radius: 50%;
+  z-index: 11;
+}
+
+.swiper-button-next {
+  right: 30px;
+  left: auto;
+}
+
+.swiper-button-prev {
+  left: auto;
+  right: 80px;
+}
+
+:root {
+  --swiper-navigation-size: 16px;
+}
+:root {
+  --swiper-theme-color: #fff;
+}
+
+.swiper-pagination {
+  color: #fff;
+}
