@@ -1,0 +1,200 @@
+
+.png{
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 50%;
+        height: 100%;
+        background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_login_kakao.jpg);
+        background-size: cover;
+        background-position: center center;
+}
+
+.logo{
+    width: 1080px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88px;
+    cursor: pointer;
+}
+
+
+.login{
+    display: flex;
+    min-height: calc(100% - 80px);
+    padding: 80px 16px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1080px;
+    height: 100%;
+    margin: 50px auto;
+}
+
+.login>div{
+    flex: 1 1;
+}
+
+.login .cont{
+    text-align: left;
+    margin-bottom: 50px;
+}
+.login .cont p{
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+
+.login .cont p:first-child{
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(13, 13, 13);
+    line-height: 1.7em;
+}
+
+.login .cont p:last-child{
+    line-height: 36px;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(13, 13, 13);
+
+}
+
+.login>div>button{
+    position: relative;
+    background-color: rgb(254, 229, 0);
+    outline: none;
+    border-radius: 1px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    border: none;
+    height: 62px;
+}
+
+.login>div>button svg{
+    position: absolute;
+    left: 18px;
+    font-size: 24px;
+    margin-right: auto;
+}
+
+.login>div>button p{
+    font-size: 16px;
+    color: rgb(25, 25, 25);
+    font-weight: 400;
+}
+
+.wrapper{
+    width: 420px;
+    margin-top: 70px;
+    text-align: left;
+}
+
+.wrapper>div{
+    padding: 10px 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.wrapper>div>span{
+    position: relative;
+    padding: 16px;
+    color: rgb(158,158,158);
+    font-size: 12px;
+}
+
+.wrapper>div>span::before, .wrapper>div>span::after{
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    top: 50%;
+    width: 5000px;
+}
+
+.wrapper>div>span::before{
+    right: 100%;
+}
+
+.wrapper>div>span::after{
+    left: 100%;
+}
+
+.circle{
+        display: flex;
+        align-items: center;
+}
+
+.circle>button{
+    border: none;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+}
+
+.circle .naver{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(60, 199, 90);
+}
+
+.circle .face{
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+}
+
+.circle .face svg{
+    color: rgb(46, 119, 242);
+    font-size: 53px;
+    position: absolute;
+    top: -5px;
+    right: -4px;
+}
+
+.circle .apple{
+    background-color: black;
+}
+
+.circle .apple svg{
+    color: white;
+    font-size: 26px;
+}
+
+.circle .mail{
+    background-color: rgb(208, 208, 208);
+}
+
+.circle .mail svg{
+    color: white;
+    font-size: 26px;
+}
+
+.idno{
+    display: flex;
+    margin-top: 50px;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    color: rgb(158, 158, 158);
+}
+
+.idno a{
+    margin-left: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    color: rgb(39, 163, 255);
+    text-decoration: underline;
+}
