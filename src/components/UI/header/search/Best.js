@@ -10,13 +10,13 @@ const Best = () => {
         search: 90
     }, {
         name: '고양이 에세이',
-        search: 800
+        search: 20
     }, {
         name: 'bl',
-        search: 700
+        search: 10
     }, {
         name: '웹툰',
-        search: 600
+        search: 300
     }, {
         name: '가방',
         search: 500
