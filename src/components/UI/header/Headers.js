@@ -2,7 +2,6 @@ import React from "react";
 import classes from './Header.module.css'
 import Top from "./Top";
 import Menu from './Menu';
-import Category from "./Category";
 
 const Headers = () => {
 
