@@ -15,7 +15,7 @@ const NotableProjectCard = ({projects, size}) => {
     // `${size === s && classes.small} ${props == m $$ classes.middle}`
     return (
         <div>
-            <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large} `}>
+            <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large}`}>
                 <div className={classes.imgWrapper}>
                     <img className={classes.img} src={projects.imgurl} alt="subimg" />
                     <div className={classes.heartbox}><div className={!isClick ? classes.heart : classes.checkheart} onClick={Chagne}>{!isClick ? <FavoriteBorderIcon/> : <FavoriteIcon/>}</div></div>
