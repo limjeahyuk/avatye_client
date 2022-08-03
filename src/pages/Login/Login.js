@@ -19,11 +19,12 @@ const Login = () => {
                     <p>간편하게 로그인하고</p>
                     <p>세상에 하나뿐인 <br /> 특별한 프로젝트를 발견해보세요.  </p>
                 </div>
+                <a href="http://localhost:3000/user/kakao">
                 <button className={classes.loginbtn}>
                         < ChatBubbleIcon />
-                        <p>카카오로 로그인</p>
-                        
-                </button>
+                        <p>카카오로 로그인</p> 
+                    </button>
+                    </a>
                 <div className={classes.wrapper}>
                     <div>
                         <span>다른방법으로 로그인</span>
