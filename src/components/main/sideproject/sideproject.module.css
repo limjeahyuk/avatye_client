@@ -38,8 +38,15 @@
 }
 
 .card .subdes {
+    width: 158px;
     font-size: 11px;
     color: #6d6d6d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: normal;
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+    line-height: 16px;
 }
 
 .card .subdes .middleline {
@@ -50,6 +57,7 @@
 }
 
 .card .title {
+    width: 158px;
     display: -webkit-box;
     font-size: 15px;
     line-height: 20px;
