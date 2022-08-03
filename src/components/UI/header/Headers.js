@@ -13,7 +13,8 @@ const Headers = () => {
 
     return (
         <>
-       {location.pathname !== '/login' && <div className={classes.box}>
+            {location.pathname !== '/login' && location.pathname !== '/join'
+                && <div className={classes.box}>
         <div className={classes.head}>
             <Top />
             <Menu />
