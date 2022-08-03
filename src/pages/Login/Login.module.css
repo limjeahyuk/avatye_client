@@ -73,7 +73,11 @@
 
 }
 
-.login>div>button{
+.login>div>a{
+    text-decoration: none;
+}
+
+.login>div>a>button{
     position: relative;
     background-color: rgb(254, 229, 0);
     outline: none;
@@ -87,14 +91,14 @@
     height: 62px;
 }
 
-.login>div>.loginbtn svg{
+.login>div>a>.loginbtn svg{
     position: absolute;
     left: 18px;
     font-size: 24px;
     margin-right: auto;
 }
 
-.login>div>.loginbtn p{
+.login>div>a>.loginbtn p{
     font-size: 16px;
     color: rgb(25, 25, 25);
     font-weight: 400;

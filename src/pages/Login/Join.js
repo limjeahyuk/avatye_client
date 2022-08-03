@@ -18,16 +18,18 @@ const Join = () => {
                 <div className={`${classes.cont} ${classes.join}`}>
                     <p>회원가입</p>
                 </div>
+                <a href="http://localhost:3000/user/kakao">
                 <button className={classes.joinbtn}>
-                    <div className={classes.btn}>
+                        <div className={classes.btn}>
                         < ChatBubbleIcon />
                         <p>카카오로 가입하기</p>
-                    </div>
+                    </div> 
                     <div className={classes.word}>
                     <div><BoltIcon /></div>
                     <span>3초만에 빠른 회원가입</span>
                 </div>
-                </button>
+                    </button>
+                    </a>
                 
                 <div className={classes.wrapper}>
                     <div>
