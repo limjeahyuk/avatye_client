@@ -1,8 +1,8 @@
 import React from "react";
 import Sliders from "../../components/main/slide/Sliders";
 import ProjectList from "../../components/main/sideproject/ProjectList"
-import NotableProject from "../../components/main/notableproject/NotableProject";
-import Project from "../../components/main/notableproject/Project";
+import NotableProject from "../../components/main/notableprojects/NotableProject";
+import Project from "../../components/main/notableprojects/Project";
 
 import classes from "./main.module.css"
 
