@@ -8,6 +8,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
+    // 카카오 로그인 관련 계정
+const kakao = {
+  clientID: '630231afd01507218d07fba06f16720d',
+  clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
+  redirectUri: 'http://192.168.0.28:8080/kakao/callback'
+}
+
     const navigator = useNavigate();
 
     return <div>
@@ -19,10 +26,12 @@ const Login = () => {
                     <p>간편하게 로그인하고</p>
                     <p>세상에 하나뿐인 <br /> 특별한 프로젝트를 발견해보세요.  </p>
                 </div>
-                <button>
-                    < ChatBubbleIcon />
-                    <p>카카오로 로그인</p>
-                </button>
+                <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
+                <button className={classes.loginbtn}>
+                        < ChatBubbleIcon />
+                        <p>카카오로 로그인</p> 
+                    </button>
+                    </a>
                 <div className={classes.wrapper}>
                     <div>
                         <span>다른방법으로 로그인</span>
