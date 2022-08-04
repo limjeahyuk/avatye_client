@@ -1,10 +1,10 @@
 import React from "react";
-import NotableProjectCard from "./NotableProjectCard";
+import ProjectCards from "../../UI/project/ProjectCards";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
-import classes from "./notableproject.module.css"
+import classes from "./projectlist.module.css"
 
 const NotableProject = () => {
     const projects = [
@@ -80,7 +80,7 @@ const NotableProject = () => {
             <Grid container columns={{xs: 8}}>
                 {projects.map((projects) => (
                     <Grid item xs={2} key={projects.id} >
-                        <NotableProjectCard projects={projects} key={projects.id}/>
+                        <ProjectCards projects={projects} key={projects.id}/>
                     </Grid>
                 ))}
             </Grid>
