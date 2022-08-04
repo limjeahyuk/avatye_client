@@ -133,3 +133,14 @@
     font-weight: bold;
     margin: 0px 0px 20px;
 }
+
+.bothbox .bothmore {
+    color: rgb(109, 109, 109);
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 972px;
+}
+
+.swipersize {
+    width: auto;
+}

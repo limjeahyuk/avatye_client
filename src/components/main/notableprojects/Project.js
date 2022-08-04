@@ -4,6 +4,9 @@ import NotableProjectCard from "./NotableProjectCard";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
+
 import classes from "./notableproject.module.css"
 
 const Project = () => {
@@ -93,14 +96,23 @@ const Project = () => {
     return (
         <>
             <Box className={classes.bothbox}>
-                <div className={classes.bothtitle}>신규 프로젝트</div>
-                <Grid container xs={15}>
-                    {projects.map((prom) => (
-                        <Grid xs={2.4}>
-                            <NotableProjectCard projects={prom} key={prom.id} size={'m'} />
-                        </Grid>
-                    ))}
-                </Grid>
+                <div className={classes.bothtitle}>최근 본 프로젝트 <span className={classes.bothmore}>전체보기</span></div>
+                <Swiper
+                    className={classes.swipersize}
+                    slidesPerView={5}
+                    slidesPerGroup={5}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}>
+                    <Grid container>
+                        {projects.map((prom) => (
+                            <SwiperSlide key={prom.id}>
+                                <Grid item xs={2.4}>  
+                                    <NotableProjectCard projects={prom} key={prom.id} size={'m'} />
+                                </Grid>
+                            </SwiperSlide>
+                        ))}
+                    </Grid>
+                </Swiper>
             </Box>
         </>
     )
