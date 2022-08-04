@@ -79,7 +79,7 @@ const NotableProject = () => {
             <div className={classes.boxTitle}>주목할 만한 프로젝트</div>
             <Grid container columns={{xs: 8}}>
                 {projects.map((projects) => (
-                    <Grid xs={2}>
+                    <Grid item xs={2} key={projects.id} >
                         <NotableProjectCard projects={projects} key={projects.id}/>
                     </Grid>
                 ))}
