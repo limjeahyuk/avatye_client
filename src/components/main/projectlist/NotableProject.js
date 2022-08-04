@@ -1,15 +1,12 @@
 import React from "react";
-import NotableProjectCard from "./NotableProjectCard";
+import ProjectCards from "../../UI/project/ProjectCards";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
+import classes from "./projectlist.module.css"
 
-import classes from "./notableproject.module.css"
-
-const Project = () => {
+const NotableProject = () => {
     const projects = [
         {
             id: "1",
@@ -74,48 +71,21 @@ const Project = () => {
             username : "데칵_decak",
             title : "나의 애착 가방이 되어줘! decak의 마이백",
             percent : "3691"
-        },
-        {
-            id: "9",
-            imgurl : "https://tumblbug-pci.imgix.net/73934c23439fa4622eede4a25f7d849142e7612d/325c706eda6ab72a620641f40d3a52572b75247c/5f363138e87eb6dbdca58433006d7547ac56b2fc/1513b0d7-05a9-453b-a7a6-2ee3be239234.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=45a2a230592c13d78bfbe86f7ce14923",
-            category : "잡화",
-            username : "데칵_decak",
-            title : "나의 애착 가방이 되어줘! decak의 마이백",
-            percent : "3691"
-        },
-        {
-            id: "10",
-            imgurl : "https://tumblbug-pci.imgix.net/73934c23439fa4622eede4a25f7d849142e7612d/325c706eda6ab72a620641f40d3a52572b75247c/5f363138e87eb6dbdca58433006d7547ac56b2fc/1513b0d7-05a9-453b-a7a6-2ee3be239234.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=45a2a230592c13d78bfbe86f7ce14923",
-            category : "잡화",
-            username : "데칵_decak",
-            title : "나의 애착 가방이 되어줘! decak의 마이백",
-            percent : "3691"
-        }  
+        }   
     ]
 
     return (
-        <>
-            <Box className={classes.bothbox}>
-                <div className={classes.bothtitle}>최근 본 프로젝트 <span className={classes.bothmore}>전체보기</span></div>
-                <Swiper
-                    className={classes.swipersize}
-                    slidesPerView={5}
-                    slidesPerGroup={5}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}>
-                    <Grid container>
-                        {projects.map((prom) => (
-                            <SwiperSlide key={prom.id}>
-                                <Grid item xs={2.4}>  
-                                    <NotableProjectCard projects={prom} key={prom.id} size={'m'} />
-                                </Grid>
-                            </SwiperSlide>
-                        ))}
+        <Box className={classes.boxSize}>
+            <div className={classes.boxTitle}>주목할 만한 프로젝트</div>
+            <Grid container columns={{xs: 8}}>
+                {projects.map((projects) => (
+                    <Grid item xs={2} key={projects.id} >
+                        <ProjectCards projects={projects} key={projects.id}/>
                     </Grid>
-                </Swiper>
-            </Box>
-        </>
+                ))}
+            </Grid>
+        </Box>
     )
 }
 
-export default Project
+export default NotableProject
