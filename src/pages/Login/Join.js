@@ -8,7 +8,15 @@ import { Link, useNavigate } from "react-router-dom";
 import BoltIcon from '@mui/icons-material/Bolt';
 
 const Join = () => {
-     const navigator = useNavigate();
+    const navigator = useNavigate();
+    
+        // 카카오 로그인 관련 계정
+const kakao = {
+  clientID: '630231afd01507218d07fba06f16720d',
+  clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
+  redirectUri: 'http://192.168.0.28:8080/kakao/callback'
+}
+
 
     return <div>
         <div className={classes.logo}><img alt="logo" src="/logo.png" onClick={() => navigator('/')} /></div>
@@ -18,7 +26,7 @@ const Join = () => {
                 <div className={`${classes.cont} ${classes.join}`}>
                     <p>회원가입</p>
                 </div>
-                <a href="http://localhost:3000/user/kakao">
+                <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
                 <button className={classes.joinbtn}>
                         <div className={classes.btn}>
                         < ChatBubbleIcon />
@@ -40,7 +48,7 @@ const Join = () => {
                     <button className={classes.naver}>N</button>
                     <button className={classes.face}>< FacebookTwoToneIcon /></button>
                     <button className={classes.apple}><AppleIcon /> </button>
-                    <button className={classes.mail}><MailIcon/> </button>
+                    <button className={classes.mail} onClick={() => navigator('/join/email')}><MailIcon/> </button>
                 </div>
                 <div className={classes.idno}>
                     이미 계정이 있으신가요?

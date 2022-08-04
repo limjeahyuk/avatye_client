@@ -41,7 +41,7 @@ const kakao = {
                     <button className={classes.naver}>N</button>
                     <button className={classes.face}>< FacebookTwoToneIcon /></button>
                     <button className={classes.apple}><AppleIcon /> </button>
-                    <button className={classes.mail}><MailIcon/> </button>
+                    <button className={classes.mail} onClick={() => navigator('/login/email')}><MailIcon/> </button>
                 </div>
                 <div className={classes.idno}>
                     아직 텀블벅 계정이 없으신가요?

@@ -3,7 +3,7 @@
 }
 
 .head{
-    max-width: 1080px;
+    max-width: 1160px;
     margin: 10px auto 1px;
 }
 
@@ -145,7 +145,7 @@
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    width: 1080px;
+    width: 1160px;
     margin: 0 auto;
     padding: 40px 0px 30px;
     -webkit-box-pack: justify;

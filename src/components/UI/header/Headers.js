@@ -16,10 +16,11 @@ const Headers = () => {
     const [userState, setUserState] = useState(false);
 
     useEffect(() => {
-        const path = location.pathname
+        const loginpath = location.pathname.slice(0, 6);
+        const joinpath = location.pathname.slice(0, 5);
         const post = location.pathname.slice(0, 15);
 
-        if (path === '/login' || path === '/join' || post === '/project-editor') {
+        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor') {
             setIsHeadBox(false);
         } else {
             setIsHeadBox(true);
