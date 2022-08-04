@@ -11,7 +11,7 @@ const Top = ({loginstate}) => {
     return <div className={classes.top}>
         <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
                     <div className={classes.user}>
-                        <div className={classes.post}>
+                        <div className={classes.post} onClick={() => navigater('/start')}>
                             프로젝트 올리기
                         </div>
             {!loginstate ?

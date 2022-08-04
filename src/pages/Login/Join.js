@@ -5,36 +5,35 @@ import AppleIcon from '@mui/icons-material/Apple';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import MailIcon from '@mui/icons-material/Mail';
 import { Link, useNavigate } from "react-router-dom";
+import BoltIcon from '@mui/icons-material/Bolt';
 
-const Login = () => {
-
-    // 카카오 로그인 관련 계정
-const kakao = {
-  clientID: '630231afd01507218d07fba06f16720d',
-  clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
-  redirectUri: 'http://192.168.0.28:8080/kakao/callback'
-}
-
-    const navigator = useNavigate();
+const Join = () => {
+     const navigator = useNavigate();
 
     return <div>
         <div className={classes.logo}><img alt="logo" src="/logo.png" onClick={() => navigator('/')} /></div>
-        <div className={classes.png}></div>
+        <div className={`${classes.png} ${classes.join}`}></div>
         <div className={classes.login}>
             <div>
-                <div className={classes.cont}>
-                    <p>간편하게 로그인하고</p>
-                    <p>세상에 하나뿐인 <br /> 특별한 프로젝트를 발견해보세요.  </p>
+                <div className={`${classes.cont} ${classes.join}`}>
+                    <p>회원가입</p>
                 </div>
-                <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
-                <button className={classes.loginbtn}>
+                <a href="http://localhost:3000/user/kakao">
+                <button className={classes.joinbtn}>
+                        <div className={classes.btn}>
                         < ChatBubbleIcon />
-                        <p>카카오로 로그인</p> 
+                        <p>카카오로 가입하기</p>
+                    </div> 
+                    <div className={classes.word}>
+                    <div><BoltIcon /></div>
+                    <span>3초만에 빠른 회원가입</span>
+                </div>
                     </button>
                     </a>
+                
                 <div className={classes.wrapper}>
                     <div>
-                        <span>다른방법으로 로그인</span>
+                        <span>다른방법으로 회원가입</span>
                     </div>
                 </div>
                 <div className={classes.circle}>
@@ -44,12 +43,12 @@ const kakao = {
                     <button className={classes.mail}><MailIcon/> </button>
                 </div>
                 <div className={classes.idno}>
-                    아직 텀블벅 계정이 없으신가요?
-                    <Link to='/join'>회원가입</Link>
+                    이미 계정이 있으신가요?
+                    <Link to='/login'>로그인</Link>
                 </div>
             </div>
         </div>
     </div>
 }
 
-export default Login;
+export default Join;

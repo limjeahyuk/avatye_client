@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from './Header.module.css'
 import Top from "./Top";
 import Menu from './Menu';
@@ -33,9 +33,13 @@ const Headers = () => {
         
     }, [location])
 
+    const hoverHandler = (bool) => {
+        setIsHover(bool);
+    }
+
     return (
         <>
-       {location.pathname !== '/login' && <div className={classes.box}>
+            {isHeadBox === true && <div className={classes.box}>
         <div className={classes.head}>
                     <Top loginstate={userState} />
                     <Menu hoverHandler={hoverHandler} />

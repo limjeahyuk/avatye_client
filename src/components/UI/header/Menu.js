@@ -3,12 +3,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import classes from './Header.module.css'
 import { Link } from "react-router-dom";
 import DehazeIcon from '@mui/icons-material/Dehaze';
-import Category from "./Category";
-import Collapse from "@mui/material/Collapse";
 import Search from "./search/Search";
 
-const Menu = () => {
-    const [isHover, setIsHover] = useState(false);
+const Menu = ({hoverHandler}) => {
     const [isSearch, setIsSearch] = useState(false);
 
     const SearchHandler = () => {
@@ -16,12 +13,12 @@ const Menu = () => {
     }
 
     return(
-        <>
+        <div>
             {isSearch && <Search handler={SearchHandler} />}
             <div className={classes.cont}>
                 <div className={classes.menu}>
                     <div
-                        onMouseOver={() => setIsHover(true)}
+                        onMouseOver={() => hoverHandler(true)}
                         className={classes.categorymenu}
                     >
                 <div className={classes.ham}><DehazeIcon /></div>
@@ -36,17 +33,9 @@ const Menu = () => {
             <div className={classes.search}>
                 <input type="text" defaultValue="검색어를 입력해주세요."  onClick={() => setIsSearch(true)} />
                 <SearchIcon />
+                </div>
             </div>
-            </div>
-            <Collapse in={isHover}
-                onMouseOver={() => setIsHover(true)}
-                    onMouseOut={()=>setIsHover(false)}
-            >
-                <Category
-                    
-                />
-            </Collapse>
-        </>
+        </div>
         )
 }
 
