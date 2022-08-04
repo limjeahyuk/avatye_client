@@ -142,15 +142,15 @@
     z-index: 100;
     background-color: white;
     height: 260px;
-        position: relative;
-            display: flex;
-            flex-flow: row wrap;
-            width: 1080px;
-            margin: 0 auto;
-            padding: 40px 0px 30px;
-            -webkit-box-pack: justify;
-            justify-content: space-between;
-            transition: 3s;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 1080px;
+    margin: 0 auto;
+    padding: 40px 0px 30px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    transition: 3s;
 }
 
 
@@ -162,30 +162,30 @@
 
 .item{
     display: flex;
-        flex-direction: row;
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        -webkit-box-align: center;
-        align-items: center;
-        flex-shrink: 0;
-        height: 32px;
-        margin-bottom: 20px;
-        padding: 0px 3px;
-        cursor: pointer;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 32px;
+    margin-bottom: 20px;
+    padding: 0px 3px;
+    cursor: pointer;
 }
 
 .icon{
     overflow: hidden;
-        display: inline-flex;
-        flex-direction: column;
-        flex: 0 0 auto;
-        width: 40px;
-        height: 40px;
-        margin-right: 4px;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    margin-right: 4px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
 }
 
 .icon svg{
@@ -195,16 +195,16 @@
 
 .cate{
     margin-top: 4px;
-        display: inline-flex;
-        width: 100%;
-        line-height: 18px;
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        align-items: flex-start;
-        color: rgb(61, 61, 61);
-        font-size: 13px;
-        word-break: keep-all;
-        text-align: left;
+    display: inline-flex;
+    width: 100%;
+    line-height: 18px;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: rgb(61, 61, 61);
+    font-size: 13px;
+    word-break: keep-all;
+    text-align: left;
 }
 
 /* searchpage */
@@ -240,13 +240,13 @@
 }
 
 .searchInput{
-        -webkit-box-flex: 2;
-            flex-grow: 2;
-            height: 100%;
-            display: flex;
-            -webkit-box-align: center;
-            align-items: center;
-            transition: all 0.2s ease 0s;
+    -webkit-box-flex: 2;
+    flex-grow: 2;
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: all 0.2s ease 0s;
 }
 
 .searchInput input{
@@ -380,11 +380,11 @@
 
 .sug{
     width: 1000px;
-        margin: 10px auto 14px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        padding: 0px 16px;
+    margin: 10px auto 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 16px;
 }
 
 .sug>div:first-child{
