@@ -1,0 +1,15 @@
+.mainbox {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.maindetail {
+    display: flex;
+    padding-bottom: 44px;
+    border-bottom: 1px solid #f0f0f0;
+
+}
+
+.mainleft {
+    padding-right: 78px;
+}
