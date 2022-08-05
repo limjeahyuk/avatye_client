@@ -1,6 +1,11 @@
 import { collapseClasses } from "@mui/material";
 import React from "react";
 import classes from "./footer.module.css";
+//SNS button
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 
 const Footer = () => {
     return (
@@ -8,36 +13,36 @@ const Footer = () => {
         <div className={classes.footerItem}>
             <div className={classes.footerItem1}>
                 <div className={classes.item1Guide}>
-                    <div>
+                    <div className={classes.guideColumn}>
                         <div className={classes.itemTitle}>텀블벅</div>
                         <p>공지사항</p>
                         <p>서비스 소개</p>
                         <p>채용</p>
                         <p>2021 연말결산</p>
                     </div>
-                    <div>
+                    <div className={classes.guideColumn}>
                         <div className={classes.itemTitle}>이용안내</div>
                         <p>헬프 센터</p>
                         <p>첫 후원 가이드</p>
-                        <p>창작자 가이드</p>
+                        <p className={classes.creatorGuide}>창작자 가이드</p>
                         <p>제휴·협력</p>
                     </div>
-                    <div>
+                    <div className={classes.guideColumn}>
                         <div className={classes.itemTitle}>정책</div>
                         <p>이용약관</p>
                         <p>개인정보 처리방침</p>
                         <p>프로젝트 심사 기준</p>
                     </div>
-                    <div>
+                    <div className={classes.guideColumn}>
                         <div className={classes.itemTitle}>App</div>
-                        <p>안드로이드</p>
-                        <p>IOS</p>
+                        <p><button className={classes.tumblebugAPP}><img src="/images/android.png" width="14px" alt="android" /> 안드로이드</button></p>
+                        <p><button className={classes.tumblebugAPP}> iOS</button></p>
                     </div>
                 </div>
 
                 <div>
                     <div className={classes.customerSupport}>고객지원</div>
-                    <div>평일 9:00 ~ 17:00(12:00 ~ 14:00 제외)</div>
+                    <div className={classes.questionTime}>평일 9:00 ~ 17:00(12:00 ~ 14:00 제외)</div>
                     <button className={classes.questionbtn}>텀블벅에 문의</button>
                 </div>
             </div>
@@ -49,12 +54,17 @@ const Footer = () => {
                     <div><strong>대표</strong> 임재혁</div> 
                     <div><strong>사업자등록번호</strong> 105-87-52823</div> 
                     <div><strong>통신판매업 신고번호</strong> 2019-3010165-30-2-02129</div> 
-                    <div><strong>대표번호</strong> 02-6080-0760</div><br/>
-                    <div>© 2022 Tumblbug Inc.</div>
+                    <div><strong>대표번호</strong> 02-6080-0760</div>
+                    <div className={classes.copyright}>© 2022 Tumblbug Inc.</div>
                 </div>
 
-                <div>
-                    버튼 넣어야 됨
+                <div className={classes.btnWrapper}>
+                    <div className={classes.tumblebugSNS}><img className={classes.kakaoIMG}src="/images/kakao.png" alt="android" /></div>
+                    <div className={classes.tumblebugSNS}><FacebookIcon /></div>
+                    <div className={classes.tumblebugSNS}><TwitterIcon /></div>
+                    <div className={classes.tumblebugSNS}><InstagramIcon /></div>
+                    <div className={classes.tumblebugSNS}><img className={classes.kakaoIMG}src="/images/naver.png" alt="naver" /></div>
+                    <div className={classes.tumblebugSNS}><ArrowDropDownCircleIcon /></div>
                 </div>
             </div>
         </div>
