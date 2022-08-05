@@ -18,5 +18,10 @@ xxx.module.css<br>
 
 ## 화면 구성 틀
 
-기본css > max-width : 1080px  
+기본css > max-width : 1160px  
  margin : 0 auto
+
+## git
+
+git fetch 새로고침
+git pull 다른 점이 있을 때 가져오는 명령어

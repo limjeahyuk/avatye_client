@@ -1,0 +1,5 @@
+.famelistbox {
+    width: 1180px;
+    display: flex;
+    flex-wrap: wrap;
+}
