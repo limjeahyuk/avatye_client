@@ -73,9 +73,6 @@ const passwordReducer = (state, action) => {
 }
 
 
-
-
-
 const EmailJoin = () => {
     const kakao = {
         clientID: process.env.REACT_APP_CLIENTID,
@@ -100,8 +97,7 @@ const EmailJoin = () => {
         isValid: null
     })
     
-    
-
+   
     return <div className={classes.emailjoin}>
         <div className={classes.logo}>
             <img src="/logo.png" alt="logo" />

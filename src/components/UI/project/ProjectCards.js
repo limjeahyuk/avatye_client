@@ -18,6 +18,8 @@ const ProjectCards = ({projects, size}) => {
         setShowModal(false);
     }
 
+ 
+
     const Chagne = (e) => {
         e.preventDefault();
 
