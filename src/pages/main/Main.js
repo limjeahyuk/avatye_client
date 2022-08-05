@@ -5,18 +5,17 @@ import NotableProject from "../../components/main/projectlist/NotableProject";
 import RecentProject from "../../components/main/projectlist/RecentProject";
 
 import classes from "./main.module.css"
-import Fame from "../../components/fame/Fame";
 
 
 const Main = () => {
     return (
+        
         <div className={classes.mainbox}>
             <div className={classes.maindetail}>
                 <div className={classes.mainleft}><Sliders/><NotableProject/></div>
                 <div><PopularProject /></div>
             </div>
             <div><RecentProject/></div>
-            <div><Fame/></div>
         </div> 
     )
 }

@@ -1,10 +1,9 @@
-import { display } from "@mui/system";
 import React from "react";
 import ProjectCards from "../ui/project/ProjectCards";
 
-import classes from './fame.module.css'
+import classes from './fameproject.module.css'
 
-const Fame = () => {
+const FameProject = () => {
 
     const projects = [
         {
@@ -16,7 +15,7 @@ const Fame = () => {
             percent : "264",
             des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
             proGoal: "100000",
-            proNowAmount : "22284200",
+            proNowAmount : "22,284,200",
             date : "3"
         },
         {
@@ -70,7 +69,8 @@ const Fame = () => {
             category : "보드게임 · TRPG",
             username : "언더독 게임즈",
             title : "저런 공에는 이런 수가 딱이야! 망상 대폭발 커플링 게임",
-            percent : "100"
+            percent : "100",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "8",
@@ -78,7 +78,8 @@ const Fame = () => {
             category : "잡화",
             username : "데칵_decak",
             title : "나의 애착 가방이 되어줘! decak의 마이백",
-            percent : "3691"
+            percent : "0",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "9",
@@ -86,7 +87,8 @@ const Fame = () => {
             category : "잡화",
             username : "데칵_decak",
             title : "나의 애착 가방이 되어줘! decak의 마이백",
-            percent : "3691"
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
+            percent : "34"
         },
         {
             id: "10",
@@ -94,21 +96,26 @@ const Fame = () => {
             category : "잡화",
             username : "데칵_decak",
             title : "나의 애착 가방이 되어줘! decak의 마이백",
-            percent : "3691"
+            percent : "88",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         }  
     ]
 
     return (
-        <div className={classes.famelistbox}>
-            {projects.map((prol) => (
-                <div>
-                    <ProjectCards projects={prol} key={prol.id} size={'l'} />
-                </div>
-            ))}
+        <div>
+            <div className={classes.famebadge}><span>달성률</span></div>
+            <div className={classes.fametitle}><span className={classes.famecount}>{projects.length}</span>개의 프로젝트가 있습니다.</div>
+            <div className={classes.famelistbox}>
+                {projects.map((prol) => (
+                    <div key={prol.id}>
+                        <ProjectCards projects={prol} size={'l'} />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
 
 
 
-export default Fame
+export default FameProject
