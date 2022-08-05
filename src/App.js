@@ -1,6 +1,7 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
+import Fame from './pages/fame/Fram';
 import Headers from './components/UI/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
 import EmailJoin from './pages/Login/EmailJoin';
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/project-editor/management' element={<Management />} />
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
         <Route path='/mypage' element={<Mypage/>} />
+        <Route path='/fame' element={<Fame/>} />
       </Routes>
     </div>
   );
