@@ -35,7 +35,7 @@ const Footer = () => {
                     </div>
                     <div className={classes.guideColumn}>
                         <div className={classes.itemTitle}>App</div>
-                        <p><button className={classes.tumblebugAPP}><img src="/images/android.png" width="14px" alt="android" /> 안드로이드</button></p>
+                        <p><button className={classes.tumblebugAPP}><img className={classes.androids}src="/images/android.png" width="14px" alt="android" /> 안드로이드</button></p>
                         <p><button className={classes.tumblebugAPP}> iOS</button></p>
                     </div>
                 </div>

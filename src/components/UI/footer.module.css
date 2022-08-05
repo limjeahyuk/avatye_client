@@ -112,6 +112,11 @@
     filter: invert(41%) sepia(11%) saturate(9%) hue-rotate(15deg) brightness(99%) contrast(90%);
     padding-top : 3px;
 }
+
+.androids {
+    filter: invert(41%) sepia(11%) saturate(9%) hue-rotate(15deg) brightness(99%) contrast(90%);
+}
+
 .tumblebugSNS {
     border: 1px solid rgb(228, 228, 228);
     padding : 6px;
