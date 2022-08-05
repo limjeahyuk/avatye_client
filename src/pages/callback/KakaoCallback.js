@@ -19,8 +19,7 @@ const KakaoCallback = () => {
   clientID: process.env.REACT_APP_CLIENTID,
   clientSecret: process.env.REACT_APP_CLIENTSECRET,
   redirectUri: process.env.REACT_APP_REDIRECTURI
-}
-
+   }
 
     async function fetchData() {
         try {
