@@ -36,7 +36,6 @@ const ProjectCards = ({projects, size}) => {
         }
     }
 
-    // `${size === s && classes.small} ${props == m $$ classes.middle}`
     return (
         <div>
             <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large}`}>
@@ -47,7 +46,9 @@ const ProjectCards = ({projects, size}) => {
                 <div className={classes.subInfoBox}>
                     <div className={classes.subInfo}><span>{projects.category}</span><span className={classes.submiddleline}>|</span><span>{projects.username}</span></div>
                     <div className={classes.subtitle}>{projects.title}</div>
-                    <div className={classes.subpercent}>{projects.percent}% 달성</div>
+                    {projects.des && <div className={classes.subdes}>{projects.des}</div>}
+                    <div className={classes.subpercent}>{projects.percent}% 달성 {projects.proNowAmount && <span className={classes.datebox}><span className={classes.subprice}>{projects.proNowAmount}원</span><span className={classes.subdate}>{projects.date}일 남음</span></span>}</div>
+                    {projects.des && <div className={classes.progressbarbox}><div className={classes.progressbar} style={{ width: projects.percent > 100 ? '100%' : `${projects.percent}%`}}></div></div> }
                 </div>
             </div>
             <HeartModal showModal={showModal} closeModal={closeModal} content={content} />
