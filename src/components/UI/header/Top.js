@@ -4,9 +4,19 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import classes from './Header.module.css'
 import { useNavigate } from "react-router-dom";
+import { Cookies } from "react-cookie";
 
 const Top = ({loginstate}) => {
     const navigater = useNavigate();
+
+    const cookies = new Cookies();
+
+    const logoutHandler = () => {
+         cookies.set('user_token', "", {
+                        path: '/',
+                        expires: 0
+                    })
+    }
 
     return <div className={classes.top}>
         <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
@@ -20,7 +30,7 @@ const Top = ({loginstate}) => {
                 : <div className={classes.my} >
                     <FavoriteBorderIcon />
                     <NotificationsNoneIcon />
-                    <div className={classes.login}><AccountCircleIcon />혁쨩</div>
+                    <div className={classes.login} onClick={logoutHandler}><AccountCircleIcon />혁쨩</div>
                 </div>}       
             </div>
         </div>

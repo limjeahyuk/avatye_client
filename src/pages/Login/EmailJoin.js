@@ -16,52 +16,49 @@ const nameReducer = (state, action) => {
 const emailReducer = (state, action) => {
     if (action.type === 'EMAIL_INPUT') {
         if (!action.val.includes('@')) {
-            return {emailValue: action.val,
-                emailChackValid: state.emailChackValue,
-                emailValid: '이메일 형식을 맞춰주세요.',
-                emailChackValid: state.emailChackValid
-            }
+            return { ...state, emailValue: action.val, emailValid: '이메일 형식을 맞춰주세요.'}
         } else {
-            if (action.val === state.emailChackValue || state.emailChackValue === null) {
-                return {
-                    emailValue: action.val,
-                    emailChackValue: state.emailChackValue,
-                    emailValid: "good",
-                    emailChackValid: state.emailChackValid
-                }
+            if (action.val === state.emailChackValue || state.emailChackValue === "") {
+                return {...state, emailValue: action.val, emailValid: "good"}
             } else {
-                return {
-                    emailValue: action.val,
-                    emailChackValue: state.emailChackValue,
-                    emailValid: '주소가 일치하지 않습니다.',
-                    emailChackValid: state.emailChackValid
-                }
+                return {...state, emailValue: action.val, emailValid: '주소가 일치하지 않습니다.'}
+            }
+        }
+    }
+    if (action.type === 'EMAIL_BLUR') {
+        if (!state.emailValue.includes('@')) {
+            return { ...state, emailValue: state.emailValue, emailValid: '이메일 형식을 맞춰주세요.'}
+        } else {
+            if (state.emailValue === state.emailChackValue || state.emailChackValue === "") {
+                return {...state, emailValue: state.emailValue, emailValid: "good"}
+            } else {
+                return {...state, emailValue: state.emailValue, emailValid: '주소가 일치하지 않습니다.'}
             }
         }
     }
 
     if (action.type === 'EMAILCHACK_INPUT') {
         if (!action.val.includes('@')) {
-            return {emailValue: state.emailValue,
-                emailChackValid: action.val,
-                emailValid: state.emailValid,
-                emailChackValid: "이메일 형식이 다릅니다."
-            }
+            return { ...state, emailChackValue: action.val, emailChackValid: "이메일 형식이 다릅니다." }
         } else {
             if (action.val === state.emailValue) {
-                return {
-                    emailValue: state.emailValue,
-                    emailChackValue: action.val,
-                    emailValid: state.emailValid,
-                    emailChackValid: "good"
-                }
+                console.log("222")
+                return {emailChackValue: action.val, emailChackValid: "good", emailValid :"good", emailValue: state.emailValue }
             } else {
-                return {
-                    emailValue: state.emailValue,
-                    emailChackValue: action.val,
-                    emailValid: state.emailValid,
-                    emailChackValid: '주소가 일치하지 않습니다.'
-                }
+                return { ...state, emailChackValue: action.val, emailChackValid: '주소가 일치하지 않습니다.', emailValid: '주소가 일치하지 않습니다.' }
+            }
+        }
+    }
+    
+    if (action.type === "EMAILCHACK_BLUR") {
+        if (!state.emailChackValue.includes('@')) {
+            return { ...state, emailChackValue: state.emailChackValue, emailChackValid: "이메일 형식이 다릅니다." }
+        } else {
+            if (state.emailChackValue === state.emailValue) {
+                console.log("222")
+                return { ...state, emailChackValue: state.emailChackValue, emailChackValid: "good" }
+            } else {
+                return { ...state, emailChackValue: state.emailChackValue, emailChackValid: '주소가 일치하지 않습니다.' }
             }
         }
     }
@@ -96,6 +93,14 @@ const EmailJoin = () => {
         value: '',
         isValid: null
     })
+
+    const emailChangeHandler = (e) => {
+        dispatchEmail({type: 'EMAIL_INPUT', val: e.target.value})
+    }
+
+    const emailChackHandler = (e) => {
+        dispatchEmail({type:'EMAILCHACK_INPUT', val: e.target.value})
+    }
     
    
     return <div className={classes.emailjoin}>
@@ -118,9 +123,21 @@ const EmailJoin = () => {
                 </div>
                 <div className={classes.email}>
                     <label>이메일</label>
-                    <input type="email" placeholder="이메일 주소를 입력해주세요." value={emailState.emailValue} onChange={(e) => dispatchEmail({type: 'EMAIL_INPUT', val: e.target.value})}/>
+                    <input
+                        type="email"
+                        placeholder="이메일 주소를 입력해주세요."
+                        value={emailState.emailValue}
+                        onChange={emailChangeHandler}
+                        onBlur={() => dispatchEmail({type: 'EMAIL_BLUR'})}
+                    />
                     {emailState.emailValid !== "good" && <div>{emailState.emailValid}</div>}
-                    <input type="email" placeholder="이메일 주소를 확인합니다." value={emailState.emailChackValue} onChange={(e) => dispatchEmail({type: 'EMAILCHACK_INPUT', val: e.target.value})} />
+                    <input
+                        type="email"
+                        placeholder="이메일 주소를 확인합니다."
+                        value={emailState.emailChackValue}
+                        onChange={emailChackHandler}
+                        onBlur={() => dispatchEmail({type: 'EMAILCHACK_BLUR'})}
+                    />
                     {emailState.emailChackValid !== "good" && <div>{ emailState.emailChackValid}</div>}
                 </div>
                 <div className={classes.pwd}>

@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectCards from "../../UI/project/ProjectCards";
+import ProjectCards from "../../ui/project/ProjectCards";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";

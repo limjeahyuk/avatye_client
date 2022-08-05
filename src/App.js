@@ -4,10 +4,10 @@ import './App.css'
 import Fame from './pages/fame/Fram';
 import Headers from './components/UI/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
-import EmailJoin from './pages/Login/EmailJoin';
-import EmailLogin from './pages/Login/EmailLogin';
-import Join from './pages/Login/Join';
-import Login from './pages/Login/Login';
+import EmailJoin from './pages/login/EmailJoin';
+import EmailLogin from './pages/login/EmailLogin';
+import Join from './pages/login/Join';
+import Login from './pages/login/Login';
 import Main from './pages/main/Main';
 import Management from './pages/post/project-editor/Management';
 import ProjectEditor from './pages/post/project-editor/ProjectEditor';
