@@ -1,0 +1,19 @@
+.famelistbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.famebadge {
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+.fametitle {
+    max-width: 1160px;
+    padding: 26px 20px 34px 10px;
+    color: #3d3d3d;
+}
+
+.fametitle .famecount {
+    color: #ff5757;
+}
