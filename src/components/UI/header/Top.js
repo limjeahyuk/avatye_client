@@ -5,11 +5,8 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import classes from './Header.module.css'
 import { useNavigate } from "react-router-dom";
 
-const Top = () => {
+const Top = ({loginstate}) => {
     const navigater = useNavigate();
-
-    const loginState = true;
-
 
     return <div className={classes.top}>
         <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
@@ -17,7 +14,7 @@ const Top = () => {
                         <div className={classes.post} onClick={() => navigater('/start')}>
                             프로젝트 올리기
                         </div>
-            {loginState ?
+            {!loginstate ?
                 <div className={classes.login} onClick={() => navigater('/login')}>
                     <AccountCircleIcon />로그인/회원가입</div>
                 : <div className={classes.my} >
