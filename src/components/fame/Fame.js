@@ -1,6 +1,6 @@
 import { display } from "@mui/system";
 import React from "react";
-import ProjectCards from "../UI/project/ProjectCards";
+import ProjectCards from "../ui/project/ProjectCards";
 
 import classes from './fame.module.css'
 
