@@ -5,7 +5,6 @@ import NotableProject from "../../components/main/projectlist/NotableProject";
 import RecentProject from "../../components/main/projectlist/RecentProject";
 
 import classes from "./main.module.css"
-import Fame from "../../components/fame/Fame";
 
 
 const Main = () => {
@@ -17,7 +16,6 @@ const Main = () => {
                 <div><PopularProject /></div>
             </div>
             <div><RecentProject/></div>
-            <div><Fame/></div>
         </div> 
     )
 }

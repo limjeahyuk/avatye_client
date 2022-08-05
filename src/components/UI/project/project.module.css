@@ -20,7 +20,7 @@
 }
 
 .cardbox .imgWrapper .heartbox .checkheart {
-    color: red; 
+    color: #ff5757; 
     cursor: pointer;
 }
 
@@ -107,6 +107,7 @@
 .cardbox.large {
     width: 275px;
     padding: 0 10px;
+    padding-bottom: 72px;
 }
 
 .cardbox.large .imgWrapper .img{
@@ -144,20 +145,20 @@
 }
 
 .cardbox.large .subInfoBox .datebox .subdate {
-    width: 50px;
     color: #6d6d6d;
     font-weight: bold;
-    padding-left: 89px;
+    float: right;
 }
 
 .cardbox.large .subInfoBox .progressbarbox {
-   margin-bottom: 40px;
+   clear: both;
+   background-color: #d0d0d0;
 }
 
 .cardbox.large .subInfoBox .progressbarbox .progressbar {
-    color: red;
-    background-color: red;
-    height: 6px;
+    color: #ff5757;
+    background-color: #ff5757;
+    height: 3px;
 }
 
 
