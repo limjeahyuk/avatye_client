@@ -1,6 +1,5 @@
 import React from "react";
 import classes from './Login.module.css'
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import AppleIcon from '@mui/icons-material/Apple';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import MailIcon from '@mui/icons-material/Mail';
@@ -10,9 +9,9 @@ const Login = () => {
 
     // 카카오 로그인 관련 계정
 const kakao = {
-  clientID: '630231afd01507218d07fba06f16720d',
-  clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
-  redirectUri: 'http://192.168.0.28:8080/kakao/callback'
+  clientID: process.env.REACT_APP_CLIENTID,
+  clientSecret: process.env.REACT_APP_CLIENTSECRET,
+  redirectUri: process.env.REACT_APP_REDIRECTURI
 }
 
     const navigator = useNavigate();
@@ -27,10 +26,7 @@ const kakao = {
                     <p>세상에 하나뿐인 <br /> 특별한 프로젝트를 발견해보세요.  </p>
                 </div>
                 <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
-                <button className={classes.loginbtn}>
-                        < ChatBubbleIcon />
-                        <p>카카오로 로그인</p> 
-                    </button>
+                    <img src="/kakaologin.png" alt="kakaologin" className={classes.kakaologin} />
                     </a>
                 <div className={classes.wrapper}>
                     <div>

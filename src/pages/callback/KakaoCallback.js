@@ -15,11 +15,12 @@ const KakaoCallback = () => {
     let token;
     let login;
 
-    const kakao = {
-    clientID: '630231afd01507218d07fba06f16720d',
-    clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
-    redirectUri: 'http://192.168.0.28:8080/kakao/callback'
-    }
+   const kakao = {
+  clientID: process.env.REACT_APP_CLIENTID,
+  clientSecret: process.env.REACT_APP_CLIENTSECRET,
+  redirectUri: process.env.REACT_APP_REDIRECTURI
+}
+
 
     async function fetchData() {
         try {
