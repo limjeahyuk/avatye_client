@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import Fame from './pages/fame/Fram';
-import Headers from './components/UI/header/Headers';
+import Headers from './components/ui/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
 import EmailJoin from './pages/login/EmailJoin';
 import EmailLogin from './pages/login/EmailLogin';
