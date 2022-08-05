@@ -1,24 +1,24 @@
 import React from "react";
 import Sliders from "../../components/main/slide/Sliders";
-import ProjectList from "../../components/main/sideproject/ProjectList"
-import NotableProject from "../../components/main/notableprojects/NotableProject";
-import Project from "../../components/main/notableprojects/Project";
-import Footer from "../../components/UI/Footer";
+import PopularProject from "../../components/main/sideproject/PopularProject"
+import NotableProject from "../../components/main/projectlist/NotableProject";
+import RecentProject from "../../components/main/projectlist/RecentProject";
 
 import classes from "./main.module.css"
+import Fame from "../../components/fame/Fame";
+
 
 const Main = () => {
     return (
-        <>
+        
         <div className={classes.mainbox}>
             <div className={classes.maindetail}>
                 <div className={classes.mainleft}><Sliders/><NotableProject/></div>
-                <div><ProjectList/></div>
+                <div><PopularProject /></div>
             </div>
-            <div><Project/></div>
-        </div>
-        <div><Footer /></div>
-        </>
+            <div><RecentProject/></div>
+            <div><Fame/></div>
+        </div> 
     )
 }
 

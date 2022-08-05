@@ -1,12 +1,11 @@
+import { display } from "@mui/system";
 import React from "react";
-import NotableProjectCard from "./NotableProjectCard";
+import ProjectCards from "../UI/project/ProjectCards";
 
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import classes from './fame.module.css'
 
-import classes from "./notableproject.module.css"
+const Fame = () => {
 
-const NotableProject = () => {
     const projects = [
         {
             id: "1",
@@ -14,7 +13,11 @@ const NotableProject = () => {
             category : "디지털 게임",
             username : "에이케이커뮤니케이션즈",
             title : "꽃수를 연기해라, 판타지 BL <함부로 소설 쓰지 맙시다>",
-            percent : "264"
+            percent : "264",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
+            proGoal: "100000",
+            proNowAmount : "22284200",
+            date : "3"
         },
         {
             id: "2",
@@ -22,7 +25,8 @@ const NotableProject = () => {
             category : "출판",
             username : "삶의 카운슬러 한울",
             title : "미래를 예언하는 레노먼드카드",
-            percent : "2497"
+            percent : "40",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대"
         },
         {
             id: "3",
@@ -30,7 +34,8 @@ const NotableProject = () => {
             category : "캐릭터 · 굿즈",
             username : "Elinini",
             title : "바둑이들의 뮤즈 <뮤둑이 인형>",
-            percent : "1393"
+            percent : "80",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "4",
@@ -38,7 +43,8 @@ const NotableProject = () => {
             category : "의류",
             username : "소언",
             title : "아름다운 길조, 봉황문 울 가디건",
-            percent : "5397"
+            percent : "90",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "5",
@@ -46,7 +52,8 @@ const NotableProject = () => {
             category : "디자인",
             username : "HCL",
             title : "[HCL 효과음 폰트] 보이는 소리/들리는 글자",
-            percent : "3490"
+            percent : "25",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "6",
@@ -54,7 +61,8 @@ const NotableProject = () => {
             category : "푸드",
             username : "메이프트 그로서리",
             title : "월간커피, 한여름의 초콜릿 아이스크림 같은 콜드브루 커피",
-            percent : "2200"
+            percent : "50",
+            des : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
         },
         {
             id: "7",
@@ -71,21 +79,36 @@ const NotableProject = () => {
             username : "데칵_decak",
             title : "나의 애착 가방이 되어줘! decak의 마이백",
             percent : "3691"
-        }   
+        },
+        {
+            id: "9",
+            imgurl : "https://tumblbug-pci.imgix.net/73934c23439fa4622eede4a25f7d849142e7612d/325c706eda6ab72a620641f40d3a52572b75247c/5f363138e87eb6dbdca58433006d7547ac56b2fc/1513b0d7-05a9-453b-a7a6-2ee3be239234.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=45a2a230592c13d78bfbe86f7ce14923",
+            category : "잡화",
+            username : "데칵_decak",
+            title : "나의 애착 가방이 되어줘! decak의 마이백",
+            percent : "3691"
+        },
+        {
+            id: "10",
+            imgurl : "https://tumblbug-pci.imgix.net/73934c23439fa4622eede4a25f7d849142e7612d/325c706eda6ab72a620641f40d3a52572b75247c/5f363138e87eb6dbdca58433006d7547ac56b2fc/1513b0d7-05a9-453b-a7a6-2ee3be239234.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=45a2a230592c13d78bfbe86f7ce14923",
+            category : "잡화",
+            username : "데칵_decak",
+            title : "나의 애착 가방이 되어줘! decak의 마이백",
+            percent : "3691"
+        }  
     ]
 
     return (
-        <Box className={classes.boxSize}>
-            <div className={classes.boxTitle}>주목할 만한 프로젝트</div>
-            <Grid container columns={{xs: 8}}>
-                {projects.map((projects) => (
-                    <Grid item xs={2} key={projects.id} >
-                        <NotableProjectCard projects={projects} key={projects.id}/>
-                    </Grid>
-                ))}
-            </Grid>
-        </Box>
+        <div className={classes.famelistbox}>
+            {projects.map((prol) => (
+                <div>
+                    <ProjectCards projects={prol} key={prol.id} size={'l'} />
+                </div>
+            ))}
+        </div>
     )
 }
 
-export default NotableProject
+
+
+export default Fame

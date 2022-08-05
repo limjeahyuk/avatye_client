@@ -1,5 +1,5 @@
 import React from "react";
-import NotableProjectCard from "./NotableProjectCard";
+import ProjectCards from "../../UI/project/ProjectCards";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -7,9 +7,10 @@ import Grid from "@mui/material/Grid";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 
-import classes from "./notableproject.module.css"
+import classes from "./projectlist.module.css"
 
-const Project = () => {
+const RecentProject = () => {
+
     const projects = [
         {
             id: "1",
@@ -107,7 +108,7 @@ const Project = () => {
                         {projects.map((prom) => (
                             <SwiperSlide key={prom.id}>
                                 <Grid item xs={2.4}>  
-                                    <NotableProjectCard projects={prom} key={prom.id} size={'m'} />
+                                    <ProjectCards projects={prom} key={prom.id} size={'m'} />
                                 </Grid>
                             </SwiperSlide>
                         ))}
@@ -118,4 +119,4 @@ const Project = () => {
     )
 }
 
-export default Project
+export default RecentProject
