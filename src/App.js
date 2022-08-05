@@ -11,6 +11,7 @@ import Main from './pages/main/Main';
 import Management from './pages/post/project-editor/Management';
 import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
+import Mypage from './pages/user/Mypage'
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/project-editor/start' element={<ProjectEditor />} />
         <Route path='/project-editor/management' element={<Management />} />
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
+        <Route path='/mypage' element={<Mypage/>} />
       </Routes>
     </div>
   );

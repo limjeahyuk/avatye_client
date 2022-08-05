@@ -1,7 +1,11 @@
 import React from "react";
 
 const Profile = () => {
-    return <></>
+
+    return (
+        <>
+        </>
+    )
 }
 
 export default Profile;
