@@ -79,7 +79,7 @@
 
 .login>div>a>button{
     position: relative;
-    background-color: rgb(254, 229, 0);
+    background-color: transparent;
     outline: none;
     border-radius: 1px;
     font-size: 16px;
@@ -416,4 +416,24 @@
 
 .emailjoin .form .kakaologin{
     width: 100%;
+}
+
+.login a .kakaologin{
+    width: 414px;
+}
+
+.joinbtn .btn img{
+    width: 414px;
+}
+
+.emailjoin .form form div>div{
+    font-size: 13px;
+    color: rgb(255, 87, 87);
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+}
+
+.emailjoin .form form .name input{
+    margin-bottom: 12px;
 }

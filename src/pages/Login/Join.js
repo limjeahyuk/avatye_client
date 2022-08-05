@@ -1,6 +1,5 @@
 import React from "react";
 import classes from './Login.module.css'
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import AppleIcon from '@mui/icons-material/Apple';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import MailIcon from '@mui/icons-material/Mail';
@@ -12,10 +11,11 @@ const Join = () => {
     
         // 카카오 로그인 관련 계정
 const kakao = {
-  clientID: '630231afd01507218d07fba06f16720d',
-  clientSecret: 'LRpqtId10A8c7UkqYfEuh51fKLyWSiQv',
-  redirectUri: 'http://192.168.0.28:8080/kakao/callback'
+  clientID: process.env.REACT_APP_CLIENTID,
+  clientSecret: process.env.REACT_APP_CLIENTSECRET,
+  redirectUri: process.env.REACT_APP_REDIRECTURI
 }
+    console.log(kakao);
 
 
     return <div>
@@ -29,8 +29,7 @@ const kakao = {
                 <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
                 <button className={classes.joinbtn}>
                         <div className={classes.btn}>
-                        < ChatBubbleIcon />
-                        <p>카카오로 가입하기</p>
+                        <img src="/kakaostart.png" alt="kakaojoin" />
                     </div> 
                     <div className={classes.word}>
                     <div><BoltIcon /></div>
