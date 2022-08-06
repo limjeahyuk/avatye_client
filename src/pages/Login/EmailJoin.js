@@ -1,73 +1,7 @@
-import { SatelliteAlt } from "@mui/icons-material";
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
+import { emailReducer, nameReducer, passwordReducer } from "./EmailJoinReducer";
 import classes from './Login.module.css';
-
-const nameReducer = (state, action) => {
-        if (action.type === 'USER_INPUT') {
-            return { value: action.val, isValid: action.val.trim().length>2 };
-        }
-        if (action.type === 'INPUT_BLUR') {
-            return { value: state.value, isValid: state.value.trim().length>2 };
-        }
-        return { value: '', isValid: false };
-}
-    
-const emailReducer = (state, action) => {
-    if (action.type === 'EMAIL_INPUT') {
-        if (!action.val.includes('@')) {
-            return { ...state, emailValue: action.val, emailValid: '이메일 형식을 맞춰주세요.'}
-        } else {
-            if (action.val === state.emailChackValue || state.emailChackValue === "") {
-                return {...state, emailValue: action.val, emailValid: "good"}
-            } else {
-                return {...state, emailValue: action.val, emailValid: '주소가 일치하지 않습니다.'}
-            }
-        }
-    }
-    if (action.type === 'EMAIL_BLUR') {
-        if (!state.emailValue.includes('@')) {
-            return { ...state, emailValue: state.emailValue, emailValid: '이메일 형식을 맞춰주세요.'}
-        } else {
-            if (state.emailValue === state.emailChackValue || state.emailChackValue === "") {
-                return {...state, emailValue: state.emailValue, emailValid: "good"}
-            } else {
-                return {...state, emailValue: state.emailValue, emailValid: '주소가 일치하지 않습니다.'}
-            }
-        }
-    }
-
-    if (action.type === 'EMAILCHACK_INPUT') {
-        if (!action.val.includes('@')) {
-            return { ...state, emailChackValue: action.val, emailChackValid: "이메일 형식이 다릅니다." }
-        } else {
-            if (action.val === state.emailValue) {
-                console.log("222")
-                return {emailChackValue: action.val, emailChackValid: "good", emailValid :"good", emailValue: state.emailValue }
-            } else {
-                return { ...state, emailChackValue: action.val, emailChackValid: '주소가 일치하지 않습니다.', emailValid: '주소가 일치하지 않습니다.' }
-            }
-        }
-    }
-    
-    if (action.type === "EMAILCHACK_BLUR") {
-        if (!state.emailChackValue.includes('@')) {
-            return { ...state, emailChackValue: state.emailChackValue, emailChackValid: "이메일 형식이 다릅니다." }
-        } else {
-            if (state.emailChackValue === state.emailValue) {
-                console.log("222")
-                return { ...state, emailChackValue: state.emailChackValue, emailChackValid: "good" }
-            } else {
-                return { ...state, emailChackValue: state.emailChackValue, emailChackValid: '주소가 일치하지 않습니다.' }
-            }
-        }
-    }
-    return {emailValue: '', emailChackValue: '', emailValid: false, emailChackValid: false}
-}
-
-const passwordReducer = (state, action) => {
-    
-}
 
 
 const EmailJoin = () => {
@@ -90,18 +24,73 @@ const EmailJoin = () => {
     })
 
     const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
-        value: '',
-        isValid: null
+        passwordValue: '',
+        passwordChackValue: '',
+        passwordValid: null,
+        passwordChackValid: null
     })
 
-    const emailChangeHandler = (e) => {
-        dispatchEmail({type: 'EMAIL_INPUT', val: e.target.value})
+    const [formValid, setFormValid] = useState(false);
+
+    const emailHandler = (e) => {
+        if (e.target.value.includes('@')) {
+            dispatchEmail({type: 'EMAIL_INCLUDE', val: e.target.value})           
+        } else {
+            dispatchEmail({type: 'EMAIL_ERROR', val: e.target.value})
+        }
+
     }
 
     const emailChackHandler = (e) => {
-        dispatchEmail({type:'EMAILCHACK_INPUT', val: e.target.value})
+        if (e.target.value.includes('@')) {
+            dispatchEmail({type: 'EMAILCHACK_INCLUDE', val: e.target.value})
+        } else {
+            dispatchEmail({type: 'EMAILCHACK_ERROR', val: e.target.value})   
+        }
     }
-    
+
+    const passwordHandler = (e) => {
+        if (e.target.value.length < 6) {
+            dispatchPassword({type: 'PASSWORD_ERROR', val: String(e.target.value).replace(/ /g,"")})
+        } else {
+            dispatchPassword({type: 'PASSWORD_INPUT', val: String(e.target.value).replace(/ /g,"")})
+        }
+    }
+
+    const passwordChackHandler = (e) => {
+        if (e.target.value.length < 6) {
+            dispatchPassword({type: 'PASSWORDCHACK_ERROR', val: String(e.target.value).replace(/ /g,"")})
+        } else {
+            dispatchPassword({type: 'PASSWORDCHACK_INPUT', val: String(e.target.value).replace(/ /g,"")})
+        }
+    }
+
+    const { isValid: nameIsValid } = nameState;
+    const { emailValid: isEmailValid, emailChackValid: isEmailChackValid } = emailState;
+    const { passwordValid: isPasswordValid, passwordChackValid: isPasswordChackValid } = passwordState;
+
+    useEffect(() => {
+        const identifier = setTimeout(() => {
+      console.log('Checking form validity!');   
+        setFormValid(nameIsValid && isEmailValid === 'good' && isEmailChackValid === 'good' && isPasswordValid === 'good' && isPasswordChackValid === 'good');
+        
+    }, 500);
+
+    return () => {
+      console.log('CLEANUP');
+      clearTimeout(identifier);
+    };
+
+    }, [nameIsValid, isEmailValid, isEmailChackValid, isPasswordValid, isPasswordChackValid])
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if (formValid) {
+            console.log('true');
+        } else {
+            console.log('false');
+        }
+    }
    
     return <div className={classes.emailjoin}>
         <div className={classes.logo}>
@@ -109,7 +98,7 @@ const EmailJoin = () => {
         </div>
         <div className={classes.form}>
             <h2>이메일로 가입하기</h2>
-            <form>
+            <form onSubmit={submitHandler}>
                 <div className={classes.name}>
                     <label>이름</label>
                     <input
@@ -117,9 +106,10 @@ const EmailJoin = () => {
                         placeholder="사용하실 이름을 입력해주세요."
                         value={nameState.value}
                         onChange={(e) => dispatchName({type: 'USER_INPUT', val: e.target.value})}
-                        onBlur={() => dispatchName({type: 'INPUT_BLUR'})}
+                        onBlur={() => dispatchName({ type: 'INPUT_BLUR' })}
+                        maxLength='20'
                     />
-                    {!nameState.isValid && <div>이름을 입력해주세요.</div>}
+                    {nameState.isValid === false && <div>이름은 2자 이상, 20자 이하로 입력하세요.</div>}
                 </div>
                 <div className={classes.email}>
                     <label>이메일</label>
@@ -127,7 +117,7 @@ const EmailJoin = () => {
                         type="email"
                         placeholder="이메일 주소를 입력해주세요."
                         value={emailState.emailValue}
-                        onChange={emailChangeHandler}
+                        onChange={emailHandler}
                         onBlur={() => dispatchEmail({type: 'EMAIL_BLUR'})}
                     />
                     {emailState.emailValid !== "good" && <div>{emailState.emailValid}</div>}
@@ -142,10 +132,24 @@ const EmailJoin = () => {
                 </div>
                 <div className={classes.pwd}>
                     <label>비밀번호</label>
-                    <input type="password" placeholder="비밀번호를 입력해주세요." />
-                    <div>비밀번호를 입력해주세요.</div>
-                    <input type="password" placeholder="비밀번호를 확인합니다." />
-                    <div>비밀번호를 한번 더 입력해주세요.</div>
+                    <input
+                        type="password"
+                        placeholder="비밀번호를 입력해주세요."
+                        value={passwordState.passwordValue}
+                        onChange={passwordHandler}
+                        onBlur={() => dispatchPassword({ type: 'PASSWORD_BLUR' })}
+                        maxLength='20'
+                    />
+                    {passwordState.passwordValid !== 'good' && <div>{passwordState.passwordValid}</div>}
+                    <input
+                        type="password"
+                        placeholder="비밀번호를 확인합니다."
+                        value={passwordState.passwordChackValue}
+                        onChange={passwordChackHandler}
+                        onBlur={() => dispatchPassword({ type: 'PASSWORDCHACK_BLUR' })}
+                        maxLength='20'
+                    />
+                    {passwordState.passwordChackValid !== 'good' && <div>{passwordState.passwordChackValid}</div>}
                 </div>
                 <button className={classes.btn}>가입하기</button>
             </form>
