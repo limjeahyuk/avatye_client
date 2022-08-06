@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import Fame from './pages/fame/Fram';
-import Headers from './components/UI/header/Headers';
+import Headers from './components/ui/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
 import EmailJoin from './pages/login/EmailJoin';
 import EmailLogin from './pages/login/EmailLogin';
@@ -13,6 +13,7 @@ import Management from './pages/post/project-editor/Management';
 import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
 import Mypage from './pages/user/Mypage'
+import Footer from './components/ui/Footer';
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/mypage' element={<Mypage/>} />
         <Route path='/fame' element={<Fame/>} />
       </Routes>
+      <Footer />
     </div>
   );
 }

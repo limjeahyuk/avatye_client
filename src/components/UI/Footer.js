@@ -1,15 +1,32 @@
 import { collapseClasses } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./footer.module.css";
 //SNS button
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-    return (
-    <div className={classes.footerWrapper}>
+
+    const location = useLocation();
+    const [isFooter, setIsFooter] = useState(true);
+
+    useEffect(() => {
+        const loginpath = location.pathname.slice(0, 6);
+        const joinpath = location.pathname.slice(0, 5);
+        const post = location.pathname.slice(0, 15);
+
+        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor') {
+            setIsFooter(false);
+        } else {
+            setIsFooter(true);
+        }
+    },[location])
+
+    return (<>
+        {isFooter === true && <div className={classes.footerWrapper}>
         <div className={classes.footerItem}>
             <div className={classes.footerItem1}>
                 <div className={classes.item1Guide}>
@@ -75,7 +92,10 @@ const Footer = () => {
             </div>
         </div>
         
-    </div>
+    </div >}
+        </>
+
+        
     );
 }
 
