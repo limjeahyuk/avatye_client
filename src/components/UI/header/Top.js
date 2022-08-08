@@ -22,7 +22,7 @@ const Top = () => {
                 : <div className={classes.my} >
                     <FavoriteBorderIcon />
                     <NotificationsNoneIcon />
-                    <div className={classes.login} onClick={ctx.onLogout}><AccountCircleIcon />혁쨩</div>
+                    <div className={classes.login} onClick={ctx.onLogout}><AccountCircleIcon />{ctx.userNick}</div>
                 </div>}       
             </div>
         </div>
