@@ -14,6 +14,8 @@ import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
 import Mypage from './pages/user/Mypage'
 import Footer from './components/ui/Footer';
+//프로젝트 기본 정보 만들기
+import CreateProject from './pages/post/project-editor/CreateProject';
 
 const App = () => {
 
@@ -32,6 +34,7 @@ const App = () => {
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
         <Route path='/mypage' element={<Mypage/>} />
         <Route path='/fame' element={<Fame/>} />
+        <Route path='/project-editor/create' element={<CreateProject />} />
       </Routes>
       <Footer />
     </div>
