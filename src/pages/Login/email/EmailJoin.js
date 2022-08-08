@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { emailReducer, nameReducer, passwordReducer } from "./EmailJoinReducer";
 import classes from './Email.module.css';
+import axios from "axios";
 
 const EmailJoin = () => {
     const navigater = useNavigate();
@@ -83,10 +84,50 @@ const EmailJoin = () => {
 
     }, [nameIsValid, isEmailValid, isEmailChackValid, isPasswordValid, isPasswordChackValid])
 
+    // 회원가입 눌렀을 때.
     const submitHandler = (e) => {
         e.preventDefault();
         if (formValid) {
-            console.log('true');
+            const userData = {
+                userNickName: nameState.value,
+                userEmail: emailState.emailValue,
+                userPassword: passwordState.passwordValue
+            }
+
+            axios({
+                url: "http://192.168.0.74:3000/user/join",
+                method: 'post',
+                data: userData
+            }).then(function a(response) {
+                console.log(response.data);
+                switch (response.data) {
+                    case "article":
+                        dispatchEmail({ type: 'EMAIL_ARTICLE' });
+                        break;
+                    case "OK":
+                        alert("회원가입 완료되었습니다.");
+                        navigater('/login/email');
+                        break;
+                    default:
+                        console.log("wow");
+                        break;
+                }
+            }).catch(function (error) {
+                switch (error.response.data.errors[0].param) {
+                    case "userEmail":
+                        dispatchEmail({ type: 'EMAIL_FAILED' });
+                        break;
+                    case "userNickName":
+                        dispatchName({ type: 'NAME_FAILED' });
+                        break;
+                    case "userPassword":
+                        dispatchPassword({ type: 'PASSWORD_FAILED' });
+                        break;
+                    default:
+                        console.log("omg");
+                        break;
+                }
+            });
         } else {
             console.log('false');
         }
@@ -108,8 +149,10 @@ const EmailJoin = () => {
                         onChange={(e) => dispatchName({type: 'USER_INPUT', val: e.target.value})}
                         onBlur={() => dispatchName({ type: 'INPUT_BLUR' })}
                         maxLength='20'
+                        className={`${nameIsValid === false && classes.redborder}`}
+                        
                     />
-                    {nameState.isValid === false && <div>이름은 2자 이상, 20자 이하로 입력하세요.</div>}
+                    {nameIsValid === false && <div>이름은 3자 이상, 20자 이하로 입력하세요.</div>}
                 </div>
                 <div className={classes.email}>
                     <label>이메일</label>
@@ -119,16 +162,18 @@ const EmailJoin = () => {
                         value={emailState.emailValue}
                         onChange={emailHandler}
                         onBlur={() => dispatchEmail({type: 'EMAIL_BLUR'})}
+                        className={`${!(isEmailValid === 'good' || isEmailValid === null) && classes.redborder}`}
                     />
-                    {emailState.emailValid !== "good" && <div>{emailState.emailValid}</div>}
+                    {isEmailValid !== "good" && <div>{isEmailValid}</div>}
                     <input
                         type="email"
                         placeholder="이메일 주소를 확인합니다."
                         value={emailState.emailChackValue}
                         onChange={emailChackHandler}
                         onBlur={() => dispatchEmail({type: 'EMAILCHACK_BLUR'})}
+                        className={`${!(isEmailChackValid === 'good' || isEmailChackValid === null) && classes.redborder}`}
                     />
-                    {emailState.emailChackValid !== "good" && <div>{ emailState.emailChackValid}</div>}
+                    {isEmailChackValid !== "good" && <div>{isEmailChackValid}</div>}
                 </div>
                 <div className={classes.pwd}>
                     <label>비밀번호</label>
@@ -139,8 +184,9 @@ const EmailJoin = () => {
                         onChange={passwordHandler}
                         onBlur={() => dispatchPassword({ type: 'PASSWORD_BLUR' })}
                         maxLength='20'
+                        className={`${!(isPasswordValid === 'good' || isPasswordValid === null) && classes.redborder}`}
                     />
-                    {passwordState.passwordValid !== 'good' && <div>{passwordState.passwordValid}</div>}
+                    {isPasswordValid !== 'good' && <div>{isPasswordValid}</div>}
                     <input
                         type="password"
                         placeholder="비밀번호를 확인합니다."
@@ -148,8 +194,9 @@ const EmailJoin = () => {
                         onChange={passwordChackHandler}
                         onBlur={() => dispatchPassword({ type: 'PASSWORDCHACK_BLUR' })}
                         maxLength='20'
+                        className={`${!(isPasswordChackValid === 'good' || isPasswordValid === null) && classes.redborder}`}
                     />
-                    {passwordState.passwordChackValid !== 'good' && <div>{passwordState.passwordChackValid}</div>}
+                    {isPasswordChackValid !== 'good' && <div>{isPasswordChackValid}</div>}
                 </div>
                 <button className={classes.btn}>가입하기</button>
             </form>
