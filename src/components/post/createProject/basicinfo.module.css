@@ -17,7 +17,7 @@
 }
 
 .project {
-    width : 350px;
+    width : 300px;
 }
 
 .projectInfo {
@@ -109,8 +109,23 @@ select {
     padding : 0px 18px;
     border: 1px solid rgb(244, 69, 68);
     width: 93%;
-    height: 30px;
+    height: 150px;
     resize : none;
+    line-height: 30px;
+}
+
+.projectInfoNotice {
+    background: rgb(253, 244, 243);
+    border-radius: 8px;
+    padding: 20px;
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    font-size: 12px !important;
+    line-height: 20px !important;
+}
+
+.noticeIcon {
+    font-size : 1em !important;
 }
 
 .projectIMG {
@@ -122,4 +137,5 @@ select {
     box-sizing: border-box;
     border-radius: 4px;
     position: relative;
+    text-align : center;
 }
