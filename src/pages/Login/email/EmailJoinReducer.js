@@ -2,13 +2,16 @@
 
 // 이름 리듀서 함수.
 export const nameReducer = (state, action) => {
-        if (action.type === 'USER_INPUT') {
-            return { value: action.val, isValid: action.val.trim().length>2 };
-        }
-        if (action.type === 'INPUT_BLUR') {
-            return { value: state.value.trim(), isValid: state.value.trim().length>2 };
-        }
-        return { value: '', isValid: false };
+    if (action.type === 'USER_INPUT') {
+        return { value: action.val, isValid: action.val.trim().length>2 };
+    }
+    if (action.type === 'INPUT_BLUR') {
+        return { value: state.value.trim(), isValid: state.value.trim().length>2 };
+    }
+    if (action.type === 'NAME_FAILED') {
+        return { value: state.value.trim(), isValid: false };
+    }
+    return { value: '', isValid: false };
 }
 
 export const emailReducer = (state, action) => {
@@ -64,6 +67,15 @@ export const emailReducer = (state, action) => {
             }
         }
     }
+
+    if (action.type === 'EMAIL_FAILED') {
+        return{...state, emailValid: '이메일 형식을 맞춰주세요. (.com)'}
+    }
+
+    if (action.type === 'EMAIL_ARTICLE') {
+        return{...state, emailValid: '이메일 중복입니다.'}
+    }
+
     return {emailValue: '', emailChackValue: '', emailValid: false, emailChackValid: false}
 }
 
@@ -120,6 +132,35 @@ export const passwordReducer = (state, action) => {
         }
     }
 
+    if (action.type === 'PASSWORD_FAILED') {
+        return { ...state, passwordValid: '비밀번호는 6자 이상, 20자 이하로 입력해주세요.', passwordChackValid: '비밀번호는 6자 이상, 20자 이하로 입력해주세요.' };
+    }
 
     return { passwordValue: '', passwordChackValue: '', passwordValid: null, passwordChackValid: null }
+}
+
+export const loginReducer = (state, action) => {
+    if (action.type === 'EMAIL_INPUT') {
+        return {...state, emailValue: action.val, emailValid: null}
+    }
+    if (action.type === 'EMAIL_ERROR') {
+        return {...state, emailValue: action.val, emailValid: '이메일 형식을 맞춰주세요.'}
+    }
+    if (action.type === 'EMAIL_FAILED') {
+        return {...state, emailValue: '', passwordValue: '', emailValid: '이메일 형식을 맞춰주세요. (.com)'}
+    }
+    if (action.type === 'PASSWORD_INPUT') {
+        return{...state, passwordValue: action.val, passwordValid: null}
+    }
+    if (action.type === 'PASSWORD_ERROR') {
+        return {...state, passwordValue: action.val, passwordValid: '비밀번호는 6자 이상, 20자 이하로 입력해주세요.'}
+    }
+    if (action.type === 'PASSWORD_FAILED') {
+        return{...state, passwordValid: '비밀번호는 6자 이상, 20자 이하로 입력해주세요.', emailValue: '', passwordValue: ''}
+    }
+    if (action.type === 'LOGIN_FAILED') {
+        return{...state, emailValue: '', passwordValue: '', emailValid: '이메일 혹은 비밀번호가 틀렸습니다.'}
+    }
+
+    return {emailValue: '', emailValid: '이메일 작성해주세요.', passwordValue: '', passwordValid: '비밀번호를 입력해주세요.'}
 }
