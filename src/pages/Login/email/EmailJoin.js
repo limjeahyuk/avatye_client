@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { emailReducer, nameReducer, passwordReducer } from "./EmailJoinReducer";
-import classes from './Login.module.css';
-
+import classes from './Email.module.css';
 
 const EmailJoin = () => {
+    const navigater = useNavigate();
+
     const kakao = {
         clientID: process.env.REACT_APP_CLIENTID,
         clientSecret: process.env.REACT_APP_CLIENTSECRET,
@@ -70,14 +71,13 @@ const EmailJoin = () => {
     const { passwordValid: isPasswordValid, passwordChackValid: isPasswordChackValid } = passwordState;
 
     useEffect(() => {
-        const identifier = setTimeout(() => {
-      console.log('Checking form validity!');   
+        const identifier = setTimeout(() => { 
+        console.log('useEffect')
         setFormValid(nameIsValid && isEmailValid === 'good' && isEmailChackValid === 'good' && isPasswordValid === 'good' && isPasswordChackValid === 'good');
-        
     }, 500);
 
-    return () => {
-      console.log('CLEANUP');
+        return () => {
+        console.log('clean')
       clearTimeout(identifier);
     };
 
@@ -94,7 +94,7 @@ const EmailJoin = () => {
    
     return <div className={classes.emailjoin}>
         <div className={classes.logo}>
-            <img src="/logo.png" alt="logo" />
+            <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
         </div>
         <div className={classes.form}>
             <h2>이메일로 가입하기</h2>

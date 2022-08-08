@@ -4,8 +4,8 @@ import './App.css'
 import Fame from './pages/fame/Fram';
 import Headers from './components/ui/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
-import EmailJoin from './pages/login/EmailJoin';
-import EmailLogin from './pages/login/EmailLogin';
+import EmailJoin from './pages/login/email/EmailJoin';
+import EmailLogin from './pages/login/email/EmailLogin';
 import Join from './pages/login/Join';
 import Login from './pages/login/Login';
 import Main from './pages/main/Main';
