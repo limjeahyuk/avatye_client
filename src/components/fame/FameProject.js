@@ -113,7 +113,7 @@ const FameProject = () => {
             nickName : "데칵_decak",
             LongTitle : "나의 애착 가방이 되어줘! decak의 마이백",
             goalprice: "1000000",
-            nowAmount : "22284200",
+            nowAmount : "2228420",
             summary : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
             endDate : "2022-06-04T15:00:00.000Z" 
         }  
