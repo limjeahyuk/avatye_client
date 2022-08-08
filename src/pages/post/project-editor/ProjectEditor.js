@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CategoryButton from "../../../components/post/CategoryButton";
 import PostHeader from "../../../components/post/PostHeader";
 import classes from './ProjectEditor.module.css'
 
 const ProjectEditor = () => {
-    const [isCategory, setIsCategory] = useState('')
+    const navigator = useNavigate();
+    const [isCategory, setIsCategory] = useState('');
     const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
     '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
 
@@ -40,7 +42,7 @@ const ProjectEditor = () => {
                             <span>0 / 50</span>
                         </div>
                         <div className={classes.btn}>
-                            <button>다음</button>
+                            <button onClick={() => navigator('/project-editor/create')}>다음</button>
                         </div>
                     </div>
                 </div>}

@@ -1,0 +1,50 @@
+.tabsbox .tabscontent {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.tabsbox .tabitem {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+/* uploadProject */
+
+.upprojectbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* profile */
+
+.profilebox {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 40px 0 24px;
+}
+
+.profilebox img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profilebox .profileInfo {
+    margin-left: 24px;
+}
+
+.profilebox .profileInfo div:first-child {
+    color: #1c1c1c;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profilebox .profileInfo div:nth-child(2) {
+    color: #6d6d6d;
+    font-size: 13px;
+}
+
+
