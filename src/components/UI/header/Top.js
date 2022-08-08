@@ -30,7 +30,7 @@ const Top = ({loginstate}) => {
                 : <div className={classes.my} >
                     <FavoriteBorderIcon />
                     <NotificationsNoneIcon />
-                    <div className={classes.login} onClick={logoutHandler}><AccountCircleIcon />혁쨩</div>
+                    <div className={classes.login}><AccountCircleIcon />혁쨩</div>
                 </div>}       
             </div>
         </div>
