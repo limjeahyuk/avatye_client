@@ -1,4 +1,3 @@
-import { collapseClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import classes from "./footer.module.css";
 //SNS button
