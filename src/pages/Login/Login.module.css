@@ -217,7 +217,7 @@
     align-items: center;
 }
 
-.circle>button{
+.circle button{
     border: none;
     border-radius: 20px;
     margin-right: 20px;
@@ -226,6 +226,7 @@
     height: 42px;
     text-align: center;
 }
+
 
 .circle .naver{
     font-size: 25px;

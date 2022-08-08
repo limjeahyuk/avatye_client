@@ -1,14 +1,15 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import classes from './Email.module.css'
 import AppleIcon from '@mui/icons-material/Apple';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
-import MailIcon from '@mui/icons-material/Mail';
 import { Link, useNavigate } from "react-router-dom";
 import { loginReducer } from "./EmailJoinReducer";
 import axios from "axios";
+import AuthContext from "../../../store/auth-context";
 
 const EmailLogin = () => {
     const navigater = useNavigate();
+    const ctx = useContext(AuthContext);
 
     const [formChange, setFormChange] = useState(false);
     const [formValid, setFormValid] = useState(false);
@@ -76,7 +77,8 @@ const EmailLogin = () => {
                 }
             }).then(function a(response) {
                 if (response.data.login) {
-                    console.log('good');
+                    ctx.onLogin(response.data.token);
+                    navigater('/');
                 } else {
                     setFormChange(true);
                     dispatchLogin({ type: 'LOGIN_FAILED' });
@@ -143,7 +145,9 @@ const EmailLogin = () => {
                     <button className={classes.naver}>N</button>
                     <button className={classes.face}>< FacebookTwoToneIcon /></button>
                     <button className={classes.apple}><AppleIcon /> </button>
-                    <button className={classes.mail} onClick={() => navigator('/login/email')}><MailIcon /> </button>
+                    <a href={`https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email,birthday,`}>
+                        <img src="/kakao.png" alt="kakao" />
+                    </a>
                 </div>
                 <div className={classes.idno}>
                     <div>
@@ -152,7 +156,7 @@ const EmailLogin = () => {
                     </div>
                     <div>
                         혹시 비밀번호를 잊으셨나요?
-                        <Link to='/join'>비밀번호재설정</Link>
+                        <Link to='/join'>비밀번호 재설정</Link>
                     </div>
                 </div>
             </div>

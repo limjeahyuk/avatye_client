@@ -287,7 +287,8 @@
     align-items: center;
 }
 
-.circle>button {
+.circle button {
+    cursor: pointer;
     border: none;
     border-radius: 20px;
     margin-right: 20px;
@@ -327,13 +328,10 @@
     font-size: 26px;
 }
 
-.circle .mail {
-    background-color: rgb(208, 208, 208);
-}
-
-.circle .mail svg {
-    color: white;
-    font-size: 26px;
+.circle a img{
+    width: 42px;
+    height: 42px;
+    margin: 5px 20px 0 0;
 }
 
 .idno {

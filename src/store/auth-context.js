@@ -31,11 +31,13 @@ export const AuthContextProvider = (props) => {
 
     useEffect(() => {
         if (cookies.get('user_token')) {
+            console.log("auth context true")
             setIsLogin(true)
         } else {
+            console.log("auth context false")
             setIsLogin(false)
         }
-    },[isLogin])
+    },[])
 
     return <AuthContext.Provider value={{
         isLogin: isLogin,
