@@ -77,7 +77,7 @@ const EmailLogin = () => {
                 }
             }).then(function a(response) {
                 if (response.data.login) {
-                    ctx.onLogin(response.data.token);
+                    ctx.onLogin(response.data.token, response.data.nickName);
                     navigater('/');
                 } else {
                     setFormChange(true);

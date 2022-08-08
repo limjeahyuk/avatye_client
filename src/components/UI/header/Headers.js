@@ -26,14 +26,6 @@ const Headers = () => {
         } else {
             setIsHeadBox(true);
         }
-
-        if (cookies.get('user_token')) {
-            ctx.onLogin(cookies.get('user_token'));
-            console.log("header true")
-        } else {
-            ctx.onLogout();
-            console.log("header false")
-        }
         
     }, [location])
 
