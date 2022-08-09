@@ -7,7 +7,9 @@ import Box from '@mui/material/Box';
 
 import ProfileTab from './Tab/ProfileTab';
 import SupportProject from './Tab/SupportProject';
-import UploadProject from './Tab/UploagProject';
+import UploadProject from './Tab/UploadProject';
+
+import classes from './mytabs.module.css'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -51,21 +53,21 @@ const MyTabs = () => {
 
     return (
         <>
-            <Box sx={{ width: '100%' }}>
+            <Box className={classes.tabsbox} sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tabs className={classes.tabitem} value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab label="프로필" {...a11yProps(0)} />
                         <Tab label="올린 프로젝트" {...a11yProps(1)} />
                         <Tab label="후원한 프로젝트" {...a11yProps(2)} />
                     </Tabs>
                 </Box>
-                <TabPanel value={value} index={0}>
+                <TabPanel className={classes.tabscontent} value={value} index={0}>
                     <ProfileTab />
                 </TabPanel>
-                <TabPanel value={value} index={1}>
+                <TabPanel className={classes.tabscontent} value={value} index={1}>
                     <UploadProject/>   
                 </TabPanel>
-                <TabPanel value={value} index={2}>
+                <TabPanel className={classes.tabscontent} value={value} index={2}>
                     <SupportProject/>
                 </TabPanel>
             </Box>

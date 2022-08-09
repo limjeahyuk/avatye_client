@@ -9,7 +9,6 @@ import EmailLogin from './pages/login/email/EmailLogin';
 import Join from './pages/login/Join';
 import Login from './pages/login/Login';
 import Main from './pages/main/Main';
-import Management from './pages/post/project-editor/Management';
 import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
 import Mypage from './pages/user/Mypage'
@@ -30,7 +29,6 @@ const App = () => {
         <Route path='/join/email' element={<EmailJoin />} />
         <Route path='/start' element={<Start />} />
         <Route path='/project-editor/start' element={<ProjectEditor />} />
-        <Route path='/project-editor/management' element={<Management />} />
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
         <Route path='/mypage' element={<Mypage/>} />
         <Route path='/fame' element={<Fame/>} />

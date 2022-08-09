@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import Funding from "../../../components/post/createProject/\bFunding";
 import BasicInfo from "../../../components/post/createProject/BasicInfo";
+import ManageHeader from "../../../components/post/management/ManageHeader";
 
 const CreateProject = () => {
+    const [projectTab, setProjectTab] = useState(1);
+
+    const tabHandler = (num) => {
+        setProjectTab(num);
+    }
+
     return <>
-    <BasicInfo />
+        <ManageHeader tabHandler={tabHandler} />
+        {projectTab === 1 && <BasicInfo />}
+        {projectTab === 2 && <Funding />}
+    
     </>
 }
 
