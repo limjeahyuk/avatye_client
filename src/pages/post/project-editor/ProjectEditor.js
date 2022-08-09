@@ -7,12 +7,16 @@ import classes from './ProjectEditor.module.css'
 const ProjectEditor = () => {
     const navigator = useNavigate();
     const [isCategory, setIsCategory] = useState('');
+    const [isSummary, setIsSummary] = useState('');
     const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
     '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
 
     const categoryHandler = (cate) => {
         setIsCategory(cate);
-        console.log(cate);
+    }
+
+    const summaryHandler = (summ) => {
+        setIsSummary(summ);
     }
 
     return <>
@@ -36,13 +40,13 @@ const ProjectEditor = () => {
                     <h2>프로젝트를 간단하게 소개해주세요.</h2>
                     <p>나중에 수정 가능하니 편하게 적어주세요.</p>
                     <div className={classes.cont}>
-                        <textarea placeholder="프로젝트 요약을 입력해주세요."></textarea>
+                        <textarea placeholder="프로젝트 요약을 입력해주세요." handler={summaryHandler}></textarea>
                         <div className={classes.guide}>
                             <span>최소 10자이상 입력해주세요.</span>
                             <span>0 / 50</span>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={() => navigator('/project-editor/create')}>다음</button>
+                            <button onClick={() => navigator('/project-editor/create', {state : {isCategory, isSummary}})}>다음</button>
                         </div>
                     </div>
                 </div>}
