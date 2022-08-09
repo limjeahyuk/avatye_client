@@ -13,7 +13,10 @@ const ProjectEditor = () => {
 
     const categoryHandler = (cate) => {
         setIsCategory(cate);
-        console.log(cate);
+    }
+
+    const summaryHandler = (summ) => {
+        setIsSummary(summ);
     }
 
     return <>
@@ -37,13 +40,13 @@ const ProjectEditor = () => {
                     <h2>프로젝트를 간단하게 소개해주세요.</h2>
                     <p>나중에 수정 가능하니 편하게 적어주세요.</p>
                     <div className={classes.cont}>
-                        <textarea placeholder="프로젝트 요약을 입력해주세요."></textarea>
+                        <textarea placeholder="프로젝트 요약을 입력해주세요." handler={summaryHandler}></textarea>
                         <div className={classes.guide}>
                             <span>최소 10자이상 입력해주세요.</span>
                             <span>0 / 50</span>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={() => navigator('/project-editor/create')}>다음</button>
+                            <button onClick={() => navigator('/project-editor/create', {state : {isCategory, isSummary}})}>다음</button>
                         </div>
                     </div>
                 </div>}
