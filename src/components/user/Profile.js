@@ -1,5 +1,6 @@
 import axios from "axios";
 import moment from "moment";
+import 'moment/locale/ko';
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 
@@ -37,7 +38,7 @@ const Profile = () => {
                     <img src={data.profileImage} alt="profileimg"/>
                     <div className={classes.profileInfo}>
                         <div>{data.nickName}<span>설정</span></div>
-                        <div>{time}</div>
+                        <div>{time} 가입</div>
                     </div>
                 </div>
             } 
