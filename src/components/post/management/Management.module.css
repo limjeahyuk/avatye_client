@@ -89,6 +89,8 @@
 }
 
 .frame .bot>div>div{
+    cursor: pointer;
+    height: 100%;
     margin: 0 16px;
     display: flex;
     color: rgb(13, 13, 13);
@@ -96,6 +98,11 @@
     font-size: 14px;
     line-height: 22px;
     font-weight: 700;
+    border-bottom: 2px solid transparent;
+}
+
+.frame .bot>div .tab{
+    border-bottom: 2px solid red;
 }
 
 .frame .bot>div>div:first-child{
