@@ -28,10 +28,10 @@ const SupportProject = () => {
         <>
             {project &&
                 <div>
-                    <div><span>{project.length}</span>개의 프로젝트가 있습니다.</div>
+                    <div className={classes.upprolength}><span>{project.length}</span>개의 프로젝트가 있습니다.</div>
                     <div className={classes.upprojectbox}>
-                        {project.map((prol) => (
-                            <div key={prol.projectIndex}>
+                        {project.map((prol, key) => (
+                            <div key={key}>
                                 <ProjectCards project={prol} size={'xl'} />
                             </div>
                         ))}
