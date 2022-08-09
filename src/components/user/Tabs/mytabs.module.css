@@ -1,16 +1,42 @@
+.tabsbox {
+    padding: 0px !important;
+}
+
 .tabsbox .tabscontent {
     max-width: 1160px;
     margin: 0 auto;
 }
 
 .tabsbox .tabitem {
-    max-width: 1160px;
+    max-width: 1164px;
     margin: 0 auto;
+}
+
+.tabsbox .tabitem .tabitemTitle:first-child {
+    margin: 0 -12px;
+}
+
+.tabsbox .tabitem .tabitemTitle {
+    font-size: 18px;
+}
+
+.MuiTabs-indicator {
+    margin: 0 -12px !important;
 }
 
 /* uploadProject */
 
+.upprolength {
+    padding-left: 12px;
+    padding: 14px 12px 24px;
+    margin: 0px -12px
+}
+.upprolength span {
+    color: #ff5757;
+}
+
 .upprojectbox {
+    margin: 0px -12px;
     display: flex;
     flex-wrap: wrap;
 }
