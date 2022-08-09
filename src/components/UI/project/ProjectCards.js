@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
 import classes from "./project.module.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeartModal from "./heartmodal/HeartModal";
+import moment from "moment";
 
 const ProjectCards = ({project, size}) => {
     const [isClick, setClick] = useState(false)
@@ -36,6 +36,14 @@ const ProjectCards = ({project, size}) => {
         }
     }
 
+    
+
+    let date1 = moment();
+    let date2 = moment(project.endDate);
+
+    date1.format()
+    date2.format()
+
     return (
         <div>
             {project &&
@@ -48,8 +56,17 @@ const ProjectCards = ({project, size}) => {
                         <div className={classes.subInfo}><span>{project.name}</span><span className={classes.submiddleline}>|</span><span>{project.nickName}</span></div>
                         <div className={classes.subtitle}>{project.LongTitle}</div>
                         {project.summary && <div className={classes.subdes}>{project.summary}</div>}
-                        <div className={classes.subpercent}>{parseInt(project.nowAmount / project.goalprice * 100)}% 달성 {project.summary && <span className={classes.datebox}><span className={classes.subprice}>{project.nowAmount}원</span><span className={classes.subdate}>{parseInt(project.endDate.slice(8,10))}일 남음</span></span>}</div>
-                        {project.summary && <div className={classes.progressbarbox}><div className={classes.progressbar} style={{ width: `${project.nowAmount / project.goalprice * 100}` > 100 ? '100%' : `${project.nowAmount / project.goalprice * 100}%`}}></div></div> }
+                            <div className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}>{parseInt(project.nowAmount / project.goalprice * 100)}% 달성 
+                            {project.summary && <span className={classes.datebox}><span className={classes.subprice}>{project.nowAmount}원</span>
+                            <span className={classes.subdate}>{date2.diff(date1, "days") < 0 ? (project.nowAmount / project.goalprice * 100 < 100 ? "펀딩 무산" : "펀딩 성공") : (date2.diff(date1, "days") === 0 ?  "오늘 마감" : `${date2.diff(date1, "days")}일 남음`)}</span></span>}
+                        </div>
+                        {/* {test = moment(now).subtract(project.endDate)}
+                        {console.log(test)} */}
+                        {project.summary && 
+                            <div className={classes.progressbarbox}> 
+                                <div className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} style={{ width: `${project.nowAmount / project.goalprice * 100}` > 100 ? '100%' : `${project.nowAmount / project.goalprice * 100}%`}}></div>
+                            </div>
+                        }
                     </div>
                 </div>
             }

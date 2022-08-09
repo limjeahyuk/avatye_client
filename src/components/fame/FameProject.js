@@ -14,8 +14,8 @@ const FameProject = () => {
             LongTitle : "꽃수를 연기해라, 판타지 BL <함부로 소설 쓰지 맙시다>",
             summary : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
             goalprice: "100000",
-            nowAmount : "22284200",
-            endDate : "2022-06-04T15:00:00.000Z"
+            nowAmount : "2200",
+            endDate : "2022-08-07T15:00:00.000Z"
         },
         {
             id: "2",
@@ -23,29 +23,28 @@ const FameProject = () => {
             name : "출판",
             nickName : "삶의 카운슬러 한울",
             LongTitle : "미래를 예언하는 레노먼드카드",
-            percent : "40",
             summary : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
-            goalprice: "100000",
-            nowAmount : "22,284,200",
-            endDate : "2022-06-04T15:00:00.000Z"
+            goalprice: "3000000",
+            nowAmount : "300000",
+            endDate : "2022-10-04T15:00:00.000Z"
         },
         {
             id: "3",
             profileIMG : "https://tumblbug-pci.imgix.net/dc273b830b2750203ac90513d6ca792469a40afc/f2bdbbd07b3485e95f04791dbb7dfe0a0ac8b22b/9203f313a5a829961345331e5cc5a9230b08888c/b5b54861-d757-453d-8eb8-83bb2d57500d.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=3c6573130f6d3c70b9de16c82deb126c",
             name : "캐릭터 · 굿즈",
             nickName : "Elinini",
-            longTitle : "바둑이들의 뮤즈 <뮤둑이 인형>",
+            LongTitle : "바둑이들의 뮤즈 <뮤둑이 인형>",
             goalprice: "100000",
             nowAmount : "22284200",
             summary : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
-            endDate : "2022-06-04T15:00:00.000Z"
+            endDate : "2022-08-09T15:00:00.000Z"
         },
         {
             id: "4",
             profileIMG : "https://tumblbug-pci.imgix.net/dc273b830b2750203ac90513d6ca792469a40afc/abcd6669390c74bdc8b38a59bb064fcd541188b9/c813d07b04d612b9f4cba2bbd03fec7de9c23e66/29fbf149-8d70-4141-b5b3-48bb43c507ed.jpeg?ixlib=rb-1.1.0&w=1240&h=930&auto=format%2Ccompress&lossless=true&fit=crop&s=5b9403b0680806cd6952a42b775f2b56",
             name : "의류",
             nickName : "소언",
-            longTitle : "아름다운 길조, 봉황문 울 가디건",
+            LongTitle : "아름다운 길조, 봉황문 울 가디건",
             goalprice: "100000",
             nowAmount : "22284200",
             summary : "자기관리,아프기 전부터 해야죠! 안 아파도 착용하고 통증은 제대로 잡는 슬로와 손목 보호대",
@@ -123,6 +122,7 @@ const FameProject = () => {
         <div>
             <div className={classes.famebadge}><span>달성률</span></div>
             <div className={classes.fametitle}><span className={classes.famecount}>{project.length}</span>개의 프로젝트가 있습니다.</div>
+            <div>{project.endDate}</div>
             <div className={classes.famelistbox}>
                 {project.map((prol) => (
                     <div key={prol.id}>

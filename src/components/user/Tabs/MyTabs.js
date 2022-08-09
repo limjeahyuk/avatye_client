@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -10,6 +10,8 @@ import SupportProject from './Tab/SupportProject';
 import UploadProject from './Tab/UploadProject';
 
 import classes from './mytabs.module.css'
+import axios from 'axios';
+import { Cookies } from 'react-cookie';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -23,7 +25,7 @@ function TabPanel(props) {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box>
             <div>{children}</div>
           </Box>
         )}
@@ -46,6 +48,41 @@ function a11yProps(index) {
 
 const MyTabs = () => {
     const [value, setValue] = useState(0);
+    const [count, setCount] = useState({});
+    const [sucount, setsuCount] = useState({});
+
+    const cookies = new Cookies()
+    const token = cookies.get('user_token')
+
+
+    const findUp = () => {
+        axios.get("http://192.168.0.74:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
+        .then(response => {
+            setCount(response.data)
+            console.log(response.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
+
+    const findSupport = () => {
+        axios.get("http://192.168.0.74:3000/mypage/buycount" ,{headers : {'user_token': token}})
+        .then(response => {
+            setsuCount(response.data)
+            console.log(response.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
+
+    useEffect(() => {
+        findUp();
+        findSupport();
+    }, [])
+
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -53,12 +90,12 @@ const MyTabs = () => {
 
     return (
         <>
-            <Box className={classes.tabsbox} sx={{ width: '100%' }}>
+            <div className={classes.tabsbox}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs className={classes.tabitem} value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="프로필" {...a11yProps(0)} />
-                        <Tab label="올린 프로젝트" {...a11yProps(1)} />
-                        <Tab label="후원한 프로젝트" {...a11yProps(2)} />
+                        <Tab className={classes.tabitemTitle} label='프로필' {...a11yProps(0)} />
+                        <Tab className={classes.tabitemTitle} label={`올린 프로젝트 ${count.count}`} {...a11yProps(1)} />
+                        <Tab className={classes.tabitemTitle} label={`후원한 프로젝트 ${sucount.count}`} {...a11yProps(2)} />
                     </Tabs>
                 </Box>
                 <TabPanel className={classes.tabscontent} value={value} index={0}>
@@ -70,7 +107,7 @@ const MyTabs = () => {
                 <TabPanel className={classes.tabscontent} value={value} index={2}>
                     <SupportProject/>
                 </TabPanel>
-            </Box>
+            </div>
         </>
     )
 
