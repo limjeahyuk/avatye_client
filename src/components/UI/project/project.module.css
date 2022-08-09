@@ -157,6 +157,10 @@
     float: right;
 }
 
+.cardbox.large .subInfoBox .datebox .subprice {
+    padding-left: 4px;
+}
+
 .cardbox.large .subInfoBox .progressbarbox {
    clear: both;
    background-color: #d0d0d0;
@@ -224,17 +228,42 @@
     float: right;
 }
 
+.cardbox.xlarge .subInfoBox .datebox .subprice {
+    padding-left: 4px;
+}
+
 .cardbox.xlarge .subInfoBox .progressbarbox {
    clear: both;
    background-color: #d0d0d0;
 }
 
 .cardbox.xlarge .subInfoBox .progressbarbox .progressbar {
-    color: #ff5757;
     background-color: #ff5757;
     height: 3px;
 }
 
+/* finprogressbar */
+
+.subInfoBox .finsubpercent {
+    font-weight: bold;
+    padding-top: 2px;
+    font-size: 13px;
+    letter-spacing: -0.015em;
+    line-height: 28px;
+    color: #3d3d3d;
+    font-size: 15px;
+}
+
+.cardbox.xlarge .subInfoBox .finsubpercent,
+.cardbox.large .subInfoBox .finsubpercent{
+    font-size: 15px;
+}
+
+
+.subInfoBox .progressbarbox .finprogressbar {
+    background-color: #3d3d3d;
+    height: 3px;
+}
 
 
 
