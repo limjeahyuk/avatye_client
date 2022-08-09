@@ -33,7 +33,7 @@ const Top = () => {
                     <NotificationsNoneIcon />
                     <div className={classes.login} onClick={dropDownHandler}><AccountCircleIcon />{ctx.userNick}</div>
                     {dropDown && <div className={classes.dropdown}>
-                        <div>프로필</div>
+                        <div onClick={() => navigater('/mypage')}>프로필</div>
                         <div onClick={ctx.onLogout}>로그아웃</div>
                     </div>}
                 </div>}       
