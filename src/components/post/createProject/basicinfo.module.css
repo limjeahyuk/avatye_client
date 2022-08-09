@@ -3,6 +3,7 @@
 .infoWrapper {
     padding : 84px 0px 0px;
     background-color:#f8f8f8;
+    margin-top: 124px;
 }
 
 .infoItem {
@@ -73,12 +74,13 @@
 
 .selectCategory {
     width: 100%;
+    margin : 0px 8px;
 }
 
 select {
     padding : 0px 18px;
     border: 1px solid rgb(240, 240, 240);
-    width : 98%;
+    width : 100%;
     height : 40px;
     color : rgb(13, 13, 13);
     font-size: 14px;
@@ -96,6 +98,17 @@ select {
     line-height: 24px;
 }
 
+.inputDIV2 {
+    padding : 0px 18px;
+    margin-right : 20px;
+    border: 1px solid rgb(244, 69, 68);
+    width : 73%;
+    height : 40px;
+    color : rgb(13, 13, 13);
+    font-size: 14px;
+    line-height: 24px;
+}
+
 .checkLetters {
     display: flex;
     font-size: 12px;
@@ -104,12 +117,29 @@ select {
     margin-right : 8px;
 }
 
+.checkLetters2 {
+    font-size: 12px;
+    color : rgb(244, 69, 68);
+    margin-left : 335px;
+}
+
+.checkLetters3 {
+    font-size: 12px;
+    color : rgb(244, 69, 68);
+    margin-left : 370px;
+}
+
+.projectIMGspan {
+    color :rgb(13, 13, 13);
+    font-size : 12px;
+}
+
 .summary {
     margin-top : 20px;
     padding : 0px 18px;
     border: 1px solid rgb(244, 69, 68);
     width: 93%;
-    height: 150px;
+    height: 100px;
     resize : none;
     line-height: 30px;
 }
@@ -122,6 +152,11 @@ select {
     color: rgb(109, 109, 109);
     font-size: 12px !important;
     line-height: 20px !important;
+}
+
+.noticeSpan {
+    color :rgb(244, 69, 68);
+    font-weight: 600;
 }
 
 .noticeIcon {
@@ -138,4 +173,43 @@ select {
     border-radius: 4px;
     position: relative;
     text-align : center;
+    color: rgb(158, 158, 158);
+    font-weight: 400;
+}
+
+
+.helpicon,
+.uploadIcon {
+    color : rgb(244, 69, 68) !important; 
+    font-size : 15px !important;
+}
+
+.videoUploadDIV {
+    font-size: 12px;
+    width: 130px;
+    height: 36px;
+    border: 1px solid rgb(242, 242, 242);
+    border-radius: 4px;
+    margin: 0px auto 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color :rgb(13, 13, 13);
+}
+
+.checkDuplication {
+    width: 104px;
+    background-color: white;
+    border: 1px solid rgb(242, 242, 242);
+    height: 45px;
+}
+
+.checkValidate {
+    color: rgb(158, 158, 158);
+    line-height: 1.7em;
+    font-size : 12px;
+}
+
+.fileUpload {
+    width : 0px;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Funding from "../../../components/post/createProject/\bFunding";
 import BasicInfo from "../../../components/post/createProject/BasicInfo";
 import ManageHeader from "../../../components/post/management/ManageHeader";
 
