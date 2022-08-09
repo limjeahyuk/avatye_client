@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./basicinfo.module.css";
+import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
@@ -9,11 +9,10 @@ const BasicInfo = ({dataHandler}) => {
     const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
     '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
 
-    const a = useLocation();
-    console.log(a)
+    const {state} = useLocation();
 
     const [data, setData] = useState({
-        category : "",
+        category : state,
         detailcategory : "",
         longTitle : "",
         shortTitle : "",
@@ -28,7 +27,6 @@ const BasicInfo = ({dataHandler}) => {
 
     const onChange = e => {
         const {name, value} = e.target
-        console.log(e.target.name)
         setData({
             ...data,
             [name] : value
@@ -49,15 +47,16 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm}>
                     <div className={classes.selectCategory}>
                         <p>카테고리</p>
-                        <select name="category">
-                            {DUMMY_CATEGORY.map((item) => {
-                                return <option value={item}>{item}</option>
+                        <select name="category" onChange={onChange} name="category" value={category}>
+                            {DUMMY_CATEGORY.map((item, index) => {
+                                return <option value={item} key={index}>{item}</option>
                             })}
                         </select>
                     </div>
+
                     <div className={classes.selectCategory}>
                         <p>세부 카테고리</p>
-                        <select name="detailcategory">
+                        <select name="detailcategory" onChange={onChange} name="detailcategory" value={detailcategory}>
                             <option value="digitalGame">디지털 게임 </option>
                             <option value="webtoonResource">웹툰 리소스</option>
                             <option value="design">디자인 문구</option>
@@ -122,7 +121,7 @@ const BasicInfo = ({dataHandler}) => {
                 <HelpOutlineIcon className={classes.helpicon}/>
                 <input className={classes.fileUpload} id="imgUpload" type="file" accept=".jpg, .jpeg, .png" multiple />
                     <div className={classes.projectIMG}>
-                        <label for="imgUpload">
+                        <label htmlFor="imgUpload">
                             <span className={classes.projectIMGspan}><FileUploadIcon className={classes.uploadIcon}/> 이미지 업로드(0/5)</span>
                             <p>
                                 최소 1개, 최대 5개까지 업로드 가능 <br/>
@@ -145,7 +144,7 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm2}>
                 <input className={classes.fileUpload} id="videoUpload" type="file" accept=".jpg, .jpeg, .png"/>
                     <div className={classes.projectIMG}>
-                        <label for="videoUpload">
+                        <label htmlFor="videoUpload">
                         <p>
                             <div className={classes.videoUploadDIV}><FileUploadIcon className={classes.uploadIcon}/> 영상 업로드</div>
                             파일 형식은 mov, mp4, wmv, avi로 <br/>
