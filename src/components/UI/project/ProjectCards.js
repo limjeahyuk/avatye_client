@@ -4,6 +4,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HeartModal from "./heartmodal/HeartModal";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const ProjectCards = ({project, size}) => {
     const [isClick, setClick] = useState(false)
@@ -53,7 +54,7 @@ const ProjectCards = ({project, size}) => {
                         <div className={classes.heartbox} onClick={openModal}><div className={!isClick ? classes.heart : classes.checkheart} onClick={Chagne}>{!isClick ? <FavoriteBorderIcon/> : <FavoriteIcon/>}</div></div>
                     </div>
                     <div className={classes.subInfoBox}>
-                        <div className={classes.subInfo}><span>{project.name}</span><span className={classes.submiddleline}>|</span><span>{project.nickName}</span></div>
+                        <div className={classes.subInfo}><span>{project.name}</span><span className={classes.submiddleline}>|</span><Link to ={`/u/${project.userID}`}><span>{project.nickName}</span></Link></div>
                         <div className={classes.subtitle}>{project.LongTitle}</div>
                         {project.summary && <div className={classes.subdes}>{project.summary}</div>}
                             <div className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}>{parseInt(project.nowPrice / project.goalPrice * 100)}% 달성 
