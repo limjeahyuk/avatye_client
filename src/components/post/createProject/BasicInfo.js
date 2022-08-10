@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
-const BasicInfo = ({dataHandler}) => {
-    const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
-    '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
+const BasicInfo = () => {
+    const [categoryData, setCategoryData] = useState([{}]);
+    const [selectCategory, setSelectCategory] = useState([]);
 
     const { state } = useLocation();
-    console.log(state);
 
     const [data, setData] = useState({
         category : state.categoryState,
@@ -34,6 +34,34 @@ const BasicInfo = ({dataHandler}) => {
         })
     };
 
+    const filterData = (cate) => {
+        return categoryData.filter((item) => ( item.name === cate ));
+    }
+
+    const sendRequest = async () => {
+        try {
+            const response = await axios.get('http://192.168.0.74:3000/category'); 
+            console.log(response.data);
+            setCategoryData(response.data);
+            const first = response.data.filter((item) => (item.name === state.categoryState));
+            setSelectCategory(first[0].catename.split(','));
+            console.log(first[0].catename.split(','));
+        } catch (err) {
+            console.log(err);
+        } 
+    }
+
+    useEffect(() => {
+        sendRequest();
+    }, []);
+
+    useEffect(() => {
+        if (selectCategory[0]) {
+        console.log(filterData(category)[0].catename.split(','));
+            setSelectCategory(filterData(category)[0].catename.split(','));
+        }
+    }, [category])
+
     return(
         <div className={classes.infoWrapper}>
             {/* 카테고리 선택 */}
@@ -49,18 +77,18 @@ const BasicInfo = ({dataHandler}) => {
                     <div className={classes.selectCategory}>
                         <p>카테고리</p>
                         <select name="category" onChange={onChange} value={category}>
-                            {DUMMY_CATEGORY.map((item, index) => {
-                                return <option value={item} key={index}>{item}</option>
-                            })}
+                            {categoryData.map((item, index) => (
+                                <option value={item.name} key={index}>{item.name}</option>
+                            ))}
                         </select>
                     </div>
 
                     <div className={classes.selectCategory}>
                         <p>세부 카테고리</p>
                         <select name="detailcategory" onChange={onChange} value={detailcategory}>
-                            <option value="digitalGame">디지털 게임 </option>
-                            <option value="webtoonResource">웹툰 리소스</option>
-                            <option value="design">디자인 문구</option>
+                            {selectCategory.map((item, index) => (
+                                <option value={item} key={index}>{item}</option>
+                            ))}
                         </select>
                     </div>
                 </div>

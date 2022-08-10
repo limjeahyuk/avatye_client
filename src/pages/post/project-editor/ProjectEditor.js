@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostHeader from "../../../components/post/PostHeader";
 import classes from './ProjectEditor.module.css'
@@ -7,11 +8,19 @@ const ProjectEditor = () => {
     const navigator = useNavigate();
     const [categoryState, setCategoryState] = useState('');
     const [isSummery, setIsSummery] = useState('');
-    const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
-        '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
-    
+    const [categoryData, setCategoryData] = useState([{}]);
+
+    const sendRequest = async () => {
+        const response = await axios.get("http://192.168.0.74:3000/category");
+        setCategoryData(response.data);
+    }
+
+    useEffect(() => {
+        sendRequest();
+    },[])
+
     const textareaChangeHandler = (e) => {
-        setIsSummery(String(e.target.value).replace(/  /g," "))
+        setIsSummery(String(e.target.value).replace(/ +/g," "))
     }
 
     const nextHandler = () => {
@@ -30,17 +39,17 @@ const ProjectEditor = () => {
                         <h2>멋진 아이디어가 있으시군요! <br />어떤 프로젝트를 계획 중이신가요?</h2>
                         <p>나중에 변경 가능하니 너무 걱정마세요.</p>
                     <div className={classes.categorygroup}> 
-                        {DUMMY_CATEGORY.map((item) => {
-                            return <label key={item} className={classes.categorybutton}>
+                        {categoryData.map((item, index) => {
+                            return <label key={index} className={classes.categorybutton}>
                                 <input
-                                    id={item}
+                                    id={item.name}
                                     type="radio"
-                                    value={item}
+                                    value={item.name}
                                     name="items"
-                                    checked={categoryState === `${item}`}
+                                    checked={categoryState === `${item.name}`}
                                     onChange={(e) => setCategoryState(e.target.value)}
                                 />
-                                <button onClick={() => setCategoryState(`${item}`)}>{item}</button>
+                                <button onClick={() => setCategoryState(`${item.name}`)}>{item.name}</button>
                                 </label>
                             })}
                     </div>
