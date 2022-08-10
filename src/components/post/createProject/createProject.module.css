@@ -238,7 +238,7 @@ select option {
     width: 550px;
 }
 
-.goalPriceDIV p {
+.goalPriceDIV div {
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
@@ -254,9 +254,9 @@ select option {
 }
 
 .won {
-    position: relative;
-    left : 530px;
-    bottom : 30px;
+    position : relative;
+    top : 5px;
+    font-size : 15px;
 }
 
 .estimatePrice {
@@ -281,4 +281,133 @@ select option {
     display: flex;
     justify-content: space-between;
     padding-top : 8px;
+}
+
+.goalpriceinputDIV {
+    width: 100%;
+    height : 40px;
+    border : 1px solid rgb(234, 234, 234);
+    font-size: 14px !important;
+    line-height: 24px !important
+}
+
+.goalPrice {
+    border : none;
+    text-align : right;
+    appearance: none !important;
+    outline : none;
+    width: 95%;
+    position : relative;
+    top : 5px;
+    font-size : 15px;
+}
+
+.goalPrice:focus {
+    caret-color: rgb(255, 87, 87);
+}
+
+.expectedAmount {
+    color : rgb(255, 87, 87);
+    font-size : 18px;
+    font-weight: 700;
+}
+
+.fundingDateDIV {
+    width : 600px;
+}
+
+.list {
+    padding-inline-start : 0px;
+}
+
+.list li {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: rgb(13, 13, 13);
+    display: flex;
+    font-size: 12px !important;
+    line-height: 20px !important;
+}
+
+.listLi {
+    border-left : 1px solid rgb(234, 234, 234);
+    height: 100px;
+    margin-top : -10px;
+    padding-left : 15px;
+}
+
+.dateDIV {
+    display: flex;
+    width : 100%;
+    justify-content: space-between;
+}
+
+.dateBTN {
+    width : 300px;
+    background-color: rgb(135, 65, 65);
+}
+
+.selectTime {
+    background-color : white;
+    margin-top : 10px;
+}
+
+.endPayment {
+    color : rgb(158, 158, 158);
+    font-size : 15px;
+}
+
+.calender {
+    border : 1px solid rgb(234, 234, 234);
+    background-color: white;
+    border-radius: 4px;
+    width : 300px;
+    height: 35px;
+    padding-left : 10px;
+    display: flex;
+    padding-top : 10px;
+}
+
+.selectTimeDIV {
+    border : 1px solid rgb(234, 234, 234);
+    background-color: white;
+    border-radius: 4px;
+    width : 300px;
+    height: 35px;
+    padding-left : 10px;
+    display: flex;
+    padding-top : 10px;
+    justify-content: space-between;
+    font-size : 14px;
+}
+
+.selectDate {
+    color :  rgb(61, 61, 61);
+    border : none;
+    font-size : 15px;
+    padding-left : 10px;
+    width: 90%;
+    cursor : pointer;
+}
+
+.selectDate:focus {
+    outline : none;
+}
+
+.startTime {
+    padding-left : 10px;
+    width : 100%;
+    height : 100px;
+}
+
+.timeUL {
+    padding : 10px 20px;
+    height: 300px;
+    overflow: scroll;
+}
+
+.timeUL li {
+    padding-bottom : 8px;
+    font-size : 14px !important;
+    color : rgb(118, 118, 118);
 }

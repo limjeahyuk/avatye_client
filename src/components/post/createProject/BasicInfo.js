@@ -33,6 +33,7 @@ const BasicInfo = ({dataHandler}) => {
         })
     };
 
+
     return(
         <div className={classes.infoWrapper}>
             {/* 카테고리 선택 */}
@@ -47,7 +48,7 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm}>
                     <div className={classes.selectCategory}>
                         <p>카테고리</p>
-                        <select name="category" onChange={onChange} name="category" value={category}>
+                        <select name="category" onChange={onChange} value={category}>
                             {DUMMY_CATEGORY.map((item, index) => {
                                 return <option value={item} key={index}>{item}</option>
                             })}
@@ -56,7 +57,7 @@ const BasicInfo = ({dataHandler}) => {
 
                     <div className={classes.selectCategory}>
                         <p>세부 카테고리</p>
-                        <select name="detailcategory" onChange={onChange} name="detailcategory" value={detailcategory}>
+                        <select name="detailcategory" onChange={onChange} value={detailcategory}>
                             <option value="digitalGame">디지털 게임 </option>
                             <option value="webtoonResource">웹툰 리소스</option>
                             <option value="design">디자인 문구</option>
