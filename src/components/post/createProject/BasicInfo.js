@@ -17,7 +17,7 @@ const BasicInfo = ({dataHandler}) => {
         detailcategory : "",
         longTitle : "",
         shortTitle : "",
-        summary : "",
+        summary : state.isSummery,
         profileIMG : "",
         video : "",
         webAddress : "",

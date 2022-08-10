@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostHeader from "../../../components/post/PostHeader";
 import classes from './ProjectEditor.module.css'
@@ -12,6 +12,12 @@ const ProjectEditor = () => {
     
     const textareaChangeHandler = (e) => {
         setIsSummery(String(e.target.value).replace(/  /g," "))
+    }
+
+    const nextHandler = () => {
+        if (categoryState && isSummery) {
+            navigator('/project-editor/create', { state: { categoryState, isSummery } });
+        }
     }
     
     return <>
@@ -43,13 +49,18 @@ const ProjectEditor = () => {
                     <h2>프로젝트를 간단하게 소개해주세요.</h2>
                     <p>나중에 수정 가능하니 편하게 적어주세요.</p>
                     <div className={classes.cont}>
-                        <textarea placeholder="프로젝트 요약을 입력해주세요." onChange={textareaChangeHandler} value={isSummery}></textarea>
+                        <textarea
+                            placeholder="프로젝트 요약을 입력해주세요."
+                            onChange={textareaChangeHandler}
+                            value={isSummery}
+                            className={`${isSummery.trim().length < 11 && classes.falseoption}`}
+                        ></textarea>
                         <div className={classes.guide}>
                             <span>최소 10자이상 입력해주세요.</span>
                             <span>{isSummery.trim().length} / 50</span>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={() => navigator('/project-editor/create', {state : {categoryState, isSummery}})}>다음</button>
+                            <button onClick={nextHandler}>다음</button>
                         </div>
                     </div>
                 </div>}
