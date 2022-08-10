@@ -56,15 +56,15 @@ const ProjectCards = ({project, size}) => {
                         <div className={classes.subInfo}><span>{project.name}</span><span className={classes.submiddleline}>|</span><span>{project.nickName}</span></div>
                         <div className={classes.subtitle}>{project.LongTitle}</div>
                         {project.summary && <div className={classes.subdes}>{project.summary}</div>}
-                            <div className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}>{parseInt(project.nowAmount / project.goalprice * 100)}% 달성 
-                            {project.summary && <span className={classes.datebox}><span className={classes.subprice}>{project.nowAmount}원</span>
-                            <span className={classes.subdate}>{date2.diff(date1, "days") < 0 ? (project.nowAmount / project.goalprice * 100 < 100 ? "펀딩 무산" : "펀딩 성공") : (date2.diff(date1, "days") === 0 ?  "오늘 마감" : `${date2.diff(date1, "days")}일 남음`)}</span></span>}
+                            <div className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}>{parseInt(project.nowPrice / project.goalPrice * 100)}% 달성 
+                            {project.summary && <span className={classes.datebox}><span className={classes.subprice}>{project.nowPrice}원</span>
+                            <span className={classes.subdate}>{date2.diff(date1, "days") < 0 ? (project.nowPrice / project.goalPrice * 100 < 100 ? "펀딩 무산" : "펀딩 성공") : (date2.diff(date1, "days") === 0 ?  "오늘 마감" : `${date2.diff(date1, "days")}일 남음`)}</span></span>}
                         </div>
                         {/* {test = moment(now).subtract(project.endDate)}
                         {console.log(test)} */}
                         {project.summary && 
                             <div className={classes.progressbarbox}> 
-                                <div className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} style={{ width: `${project.nowAmount / project.goalprice * 100}` > 100 ? '100%' : `${project.nowAmount / project.goalprice * 100}%`}}></div>
+                                <div className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} style={{ width: `${project.nowPrice / project.goalPrice * 100}` > 100 ? '100%' : `${project.nowPrice / project.goalPrice * 100}%`}}></div>
                             </div>
                         }
                     </div>
