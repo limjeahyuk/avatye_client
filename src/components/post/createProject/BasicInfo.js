@@ -30,7 +30,7 @@ const BasicInfo = () => {
         const {name, value} = e.target
         setData({
             ...data,
-            [name] : value
+            [name] : String(value).replace(/ +/g," ")
         })
     };
 
@@ -105,13 +105,13 @@ const BasicInfo = () => {
                 <div className={classes.projectForm2}>
                     <div>
                         <p>긴 제목 <HelpOutlineIcon className={classes.helpicon}/></p>
-                        <input className={classes.inputDIV} type="text" placeholder="긴 제목을 입력해주세요" onChange={onChange} name="longTitle" value={longTitle} autoComplete="off"/>
-                        <span className={classes.checkLetters}>0/32</span>
+                        <input className={`${classes.inputDIV} ${longTitle.trim().length > 0 && classes.ok}`} type="text" placeholder="긴 제목을 입력해주세요" onChange={onChange} name="longTitle" value={longTitle} autoComplete="off"/>
+                        <span className={classes.checkLetters}>{longTitle.trim().length}/32</span>
                     </div>
                     <div>
                         <p>짧은 제목 <HelpOutlineIcon className={classes.helpicon}/></p>
-                        <input className={classes.inputDIV} type="text" placeholder="짧은 제목을 입력해주세요" onChange={onChange} name="shortTitle" value={shortTitle} autoComplete="off"/>
-                        <span className={classes.checkLetters}>0/7</span>
+                        <input className={`${classes.inputDIV} ${shortTitle.trim().length > 0 && classes.ok}`} type="text" placeholder="짧은 제목을 입력해주세요" onChange={onChange} name="shortTitle" value={shortTitle} autoComplete="off"/>
+                        <span className={classes.checkLetters}>{shortTitle.trim().length}/7</span>
                     </div>
                 </div>
             </div>
@@ -128,8 +128,8 @@ const BasicInfo = () => {
                 <div className={classes.projectForm2}>
                     <div>
                     <HelpOutlineIcon className={classes.helpicon}/>
-                    <textarea className={classes.summary} onChange={onChange} name="summary" value={summary}></textarea>
-                    <span className={classes.checkLetters}>0/50</span>
+                    <textarea className={`${classes.summary} ${summary.trim().length > 0 && classes.ok}`} onChange={onChange} name="summary" value={summary}></textarea>
+                        <span className={classes.checkLetters}>{summary.trim().length}/50</span>
                     </div>
                 </div>
             </div>
@@ -196,10 +196,10 @@ const BasicInfo = () => {
                 <div className={classes.projectForm2}>
                     <div>
                         <p>www.tumblbug.avatye.com:8080/</p>
-                        <input className={classes.inputDIV2} type="text" placeholder="URL을 입력해주세요" onChange={onChange} name="webAddress" value={webAddress} autoComplete="off" />
+                        <input className={`${classes.inputDIV2} ${webAddress.trim().length > 0 && classes.ok}`} type="text" placeholder="URL을 입력해주세요" onChange={onChange} name="webAddress" value={webAddress} autoComplete="off" />
                         <button className={classes.checkDuplication}>중복확인</button><br/>
                         <span className={classes.checkValidate}>최소 3자 이상 입력해주세요.</span>
-                        <span className={classes.checkLetters2}>0/28</span>
+                        <span className={classes.checkLetters2}>{webAddress.trim().length}/28</span>
                     </div>
                 </div>
             </div>
@@ -218,9 +218,9 @@ const BasicInfo = () => {
 
                 <div className={classes.projectForm2}>
                     <div>
-                        <textarea placeholder="예시) 뱃지, 웹툰, 에코백, 고양이, 유기견" className={classes.summary} onChange={onChange} name="searchTag" value={searchTag}></textarea>
+                        <textarea placeholder="예시) 뱃지, 웹툰, 에코백, 고양이, 유기견" className={`${classes.summary} ${searchTag.trim().length > 0 && classes.ok}`} onChange={onChange} name="searchTag" value={searchTag}></textarea>
                         <span className={classes.checkValidate}>쉼표(,)와 문자로만 최소 2자이상 입력해주세요</span>
-                        <span className={classes.checkLetters3}>0/125</span>
+                        <span className={classes.checkLetters3}>{searchTag.trim().length}/125</span>
                     </div>
                 </div>
             </div>

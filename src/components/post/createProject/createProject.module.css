@@ -228,6 +228,10 @@ select option {
     z-index : 100;
 }
 
+.infoWrapper .ok{
+    border: 1px solid rgb(240, 240, 240);
+}
+
 /* funding */
 
 .goalPriceDIV {
