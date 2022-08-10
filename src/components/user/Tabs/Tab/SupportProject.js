@@ -26,7 +26,7 @@ const SupportProject = () => {
     
     return (
         <>
-            {project &&
+            {project ?
                 <div>
                     <div className={classes.upprolength}><span>{project.length}</span>개의 프로젝트가 있습니다.</div>
                     <div className={classes.upprojectbox}>
@@ -36,6 +36,11 @@ const SupportProject = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+            :
+                <div>
+                    <div className={classes.upprolength}><span>{project.length}</span>개의 프로젝트가 있습니다.</div>
+                    <div>올린 프로젝트가 없습니다</div>
                 </div>
             }
         </>

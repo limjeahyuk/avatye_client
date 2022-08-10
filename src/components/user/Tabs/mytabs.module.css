@@ -8,20 +8,22 @@
 }
 
 .tabsbox .tabitem {
-    max-width: 1164px;
+    max-width: 1184px;
     margin: 0 auto;
 }
 
-.tabsbox .tabitem .tabitemTitle:first-child {
+/* .tabsbox .tabitem .tabitemTitle:first-child {
     margin: 0 -12px;
-}
+} */
 
 .tabsbox .tabitem .tabitemTitle {
     font-size: 18px;
 }
 
-.MuiTabs-indicator {
-    margin: 0 -12px !important;
+/* ProfileTab */ 
+
+.intro {
+    padding: 20px 0px;
 }
 
 /* uploadProject */
