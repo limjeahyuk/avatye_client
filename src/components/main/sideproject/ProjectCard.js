@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-const ProjectList = ({datas, index}) => {
+const ProjectList = ({data, index}) => {
 
     return (
         <div>
@@ -15,20 +15,20 @@ const ProjectList = ({datas, index}) => {
                 <CardMedia
                     component="img"
                     width="108px"
-                    image={datas.imgurl}
+                    image={data.profileIMG}
                     alt="project-img"
                     className={classes.imgWide}
                 />
                 <Typography className={`${classes.rank} ${index > 2 && classes.good}`}>{index+1}</Typography>
                 <CardContent className={classes.cardContent}>  
                     <div className={classes.subbox}>
-                        <Typography className={classes.subdes}><span>{datas.category}</span><span className={classes.middleline}>|</span><span>{datas.username}</span></Typography>
+                        <Typography className={classes.subdes}><span>{data.name}</span><span className={classes.middleline}>|</span><span>{data.nickName}</span></Typography>
                         <Typography></Typography>
                         <Typography className={classes.title}>
-                            {datas.title}
+                            {data.LongTitle}
                         </Typography>
                     </div> 
-                    <Typography className={classes.percent}>{datas.percent}% 달성</Typography>
+                    <Typography className={classes.percent}>{parseInt(data.percent)}% 달성</Typography>
                 </CardContent>
             </Card>
         </div>
