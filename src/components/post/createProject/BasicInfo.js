@@ -9,10 +9,11 @@ const BasicInfo = ({dataHandler}) => {
     const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
     '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
 
-    const {state} = useLocation();
+    const { state } = useLocation();
+    console.log(state);
 
     const [data, setData] = useState({
-        category : state,
+        category : state.categoryState,
         detailcategory : "",
         longTitle : "",
         shortTitle : "",
@@ -47,7 +48,7 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm}>
                     <div className={classes.selectCategory}>
                         <p>카테고리</p>
-                        <select name="category" onChange={onChange} name="category" value={category}>
+                        <select name="category" onChange={onChange} value={category}>
                             {DUMMY_CATEGORY.map((item, index) => {
                                 return <option value={item} key={index}>{item}</option>
                             })}
@@ -56,7 +57,7 @@ const BasicInfo = ({dataHandler}) => {
 
                     <div className={classes.selectCategory}>
                         <p>세부 카테고리</p>
-                        <select name="detailcategory" onChange={onChange} name="detailcategory" value={detailcategory}>
+                        <select name="detailcategory" onChange={onChange} value={detailcategory}>
                             <option value="digitalGame">디지털 게임 </option>
                             <option value="webtoonResource">웹툰 리소스</option>
                             <option value="design">디자인 문구</option>
