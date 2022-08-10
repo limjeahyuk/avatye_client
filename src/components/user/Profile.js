@@ -3,6 +3,7 @@ import moment from "moment";
 import 'moment/locale/ko';
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import classes from "./Tabs/mytabs.module.css"
 
@@ -35,9 +36,9 @@ const Profile = () => {
         <div>
             {data &&
                 <div className={classes.profilebox}>
-                    <img src={data.profileImage} alt="profileimg"/>
+                    {data.profileImage ? <img src={data.profileImage} alt="profileimg"/> : <img src="/images/profile.jpg" alt="profileimg"/>}
                     <div className={classes.profileInfo}>
-                        <div>{data.nickName}<span>설정</span></div>
+                        <div>{data.nickName}<span><SettingsIcon /></span></div>
                         <div>{time} 가입</div>
                     </div>
                 </div>
