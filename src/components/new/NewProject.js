@@ -13,7 +13,7 @@ const NewProject = () => {
 
     const Projects = () => {
         if(token) {
-            axios.get("http://192.168.0.74:3000/project/newprojectlist", { headers : {'user_toekn' : token} })
+            axios.get("http://192.168.0.74:3000/project/newprojectlist", { headers : {'user_token' : token} })
             .then(response => {
                 console.log(response.data)
                 setProject(response.data)
