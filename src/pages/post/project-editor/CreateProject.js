@@ -12,11 +12,29 @@ const CreateProject = () => {
         setProjectTab(num);
     }
 
-  
+    const [basicdata, setBasicData] = useState({
+        category : state.categoryState,
+        detailcategory : "",
+        longTitle : "",
+        shortTitle : "",
+        summary : state.isSummery,
+        profileIMG : "",
+        video : "",
+        webAddress : "",
+        searchTag : ""
+    });
+
+    const [fundingData, setFundingData] = useState({
+        goalprice: 0,
+        startDate: new Date(),
+        endDate: new Date(),
+        startTime: "12시 00분"
+    })
+
     return <>
-        <ManageHeader tabHandler={tabHandler} />
-        {projectTab === 1 && <BasicInfo />}
-        {projectTab === 2 && <Funding />}
+        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} />
+        {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
+        {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
         {projectTab === 3 && <Gift />}
         {projectTab === 4 && <CreatorInfo />}
     

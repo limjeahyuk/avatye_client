@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import classes from './Management.module.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const ManageHeader = ({tabHandler}) => {
-    const [contSave, setContSave] = useState(false);
+const ManageHeader = ({tabHandler, basic, funding}) => {
+    const [contSave, setContSave] = useState(true);
     const [tabState, setTabState] = useState(1);
 
     const navigater = useNavigate();
@@ -12,6 +13,22 @@ const ManageHeader = ({tabHandler}) => {
     const tabNumHandler = (num) => {
         setTabState(num);
         tabHandler(num);
+    }
+    const createProjectHandler = () => {
+        const data = {
+            ...basic,
+            ...funding
+        }
+
+        axios({
+            url: 'http://localhost:3000/createProject',
+            method: 'post',
+            data: data
+        }).then(function a(response) {
+            console.log(response.data);
+        }).catch(function (err) {
+            console.log(err);
+        })
     }
 
     return <div>
@@ -22,7 +39,7 @@ const ManageHeader = ({tabHandler}) => {
                         <ArrowBackIcon onClick={() => navigater('/') } />
                         <h2>프로젝트 기획</h2>
                     </div>
-                    <button className={`${contSave && classes.save}`}><span>{contSave ? "저장" : "기획중"}</span></button>
+                    <button className={`${contSave && classes.save}`} onClick={createProjectHandler}><span>{contSave ? "저장" : "기획중"}</span></button>
                 </div>
             </div>
             <div className={classes.bot}>
