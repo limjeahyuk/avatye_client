@@ -1,0 +1,43 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background: rgba(13, 13, 13, .65);
+}
+
+.modal {
+    position: fixed;
+    top: 5vh;
+    left: 10%;
+    width: 80%;
+    z-index: 100;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.modal>div{
+    padding: 24px 32px 40px;
+    background-color: white;
+}
+
+.modal .close{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal .close svg{
+    font-size: 30px;
+    margin: 10px;
+}
+
+.modal>div .img{
+    max-height: 70vh;
+    overflow:  hidden auto;
+    max-width: 100%;
+}
+
+.modal>div .img img{width: 100%;}
+

@@ -5,31 +5,25 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import PreviewModal from "../../ui/previewModal/PreviewModal";
 
 
-const BasicInfo = () => {
+const BasicInfo = ({data, setData}) => {
     const [categoryData, setCategoryData] = useState([]);
     const [selectCategory, setSelectCategory] = useState([]);
-    const [postPreView, setPostPreView] = useState('');
-
+    const [previewImage, setPreviewImage] = useState('');
+    const [imgZoom, setImgZoom] = useState(false);
 
     const { state } = useLocation();
 
-    const [data, setData] = useState({
-        category : state.categoryState,
-        detailcategory : "",
-        longTitle : "",
-        shortTitle : "",
-        summary : state.isSummery,
-        profileIMG : "",
-        video : "",
-        webAddress : "",
-        searchTag : ""
-    });
+    const savePreviewImage = (e) => {
+        setPreviewImage(URL.createObjectURL(e.target.files[0]));
+        setData({
+            ...data,
+            profileIMG: e.target.files[0]
+        })
+    }
 
     const onChange = e => {
         const {name, value} = e.target
@@ -38,6 +32,14 @@ const BasicInfo = () => {
             [name] : String(value).replace(/ +/g," ")
         })
     };
+
+    const zoomHandler = () => {
+        if (imgZoom) {
+            setImgZoom(false)
+        } else {
+            setImgZoom(true)
+        }
+    }
 
     // const filterData = (cate) => {
     //     return categoryData.filter((item) => ( item.name === cate ));
@@ -48,7 +50,7 @@ const BasicInfo = () => {
 
         //formdata로 이미지 저장
         const formdata = new FormData();
-        formdata.append('img', e.target.files[0]);
+        formdata.append('img', data.profileIMG);
 
         const config = {
             Headers: {
@@ -59,7 +61,11 @@ const BasicInfo = () => {
         axios.post('http://localhost:3000/img', formdata, config)
             .then((res) => {
                 console.log(res.data);
-                setPostPreView(res.data);
+                // 포스팅 할때는 미리보기만. 저장한 url은 서버에서 바로 db로 저장 하면 됨.
+                // setData({
+                //     ...data,
+                //     profileIMG: res.data
+                // })
             }).catch((error) => {
                 console.log(error);
         })
@@ -91,7 +97,8 @@ const BasicInfo = () => {
         }
     }, [data.category])
 
-    return(
+    return (<>
+        {imgZoom && <PreviewModal onConfig={zoomHandler} imgsrc={previewImage} />}
         <div className={classes.infoWrapper}>
             {/* 카테고리 선택 */}
             <div className={classes.infoItem}>
@@ -170,16 +177,16 @@ const BasicInfo = () => {
                     <dt>프로젝트 대표 이미지 <span>*</span> </dt>
                     <dd>후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있도록 이미지 가이드라인을 따라 주세요.
                     </dd>
-                    <div className={classes.projectInfoNotice}>
+                    {/* <div className={classes.projectInfoNotice}>
                         <span className={classes.noticeSpan}><ErrorOutlineIcon className={classes.noticeIcon}/> 1개 이상의 이미지를 등록하면 이미지 슬라이더 형태로 제공됩니다.</span><br/>
                         푸시 메시지 등 이미지가 1개만 제공되는 상황에서 대표 이미지가 활용됩니다.
-                    </div>
+                    </div> */}
                 </dl>
 
                 <div className={classes.projectForm2}>
                 <HelpOutlineIcon className={classes.helpicon}/>
-                <input className={classes.fileUpload} id="imgUpload" type="file" accept=".jpg, .jpeg, .png" multiple onChange={imgChangeHandler} />
-                    <div className={classes.projectIMG}>
+                <input className={classes.fileUpload} id="imgUpload" type="file" accept=".jpg, .jpeg, .png" multiple onChange={savePreviewImage} />
+                    {!previewImage && <div className={classes.projectIMG}>
                         <label htmlFor="imgUpload">
                             <span className={classes.projectIMGspan}><FileUploadIcon className={classes.uploadIcon}/> 이미지 업로드(0/5)</span>
                             <p>
@@ -187,9 +194,18 @@ const BasicInfo = () => {
                                 파일 형식 : jpg 또는 png / 사이즈 : 가로 1,240px, 세로 930px 이상</p>
                             <p>이미지를 등록하면 즉시 반영됩니다.</p>
                         </label>
-                    </div>
+                    </div>}
                     <div>
-                        {postPreView && <img src={postPreView} alt="img" />}
+                        {previewImage && <div className={classes.preview}>
+                            <div>
+                                <span>대표 이미지</span>
+                                <img src={previewImage} alt="img" />
+                                <button onClick={zoomHandler}><ZoomOutMapIcon /></button>
+                            </div>
+                            <div>
+                                <label htmlFor="imgUpload">변경</label>
+                            </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -204,15 +220,15 @@ const BasicInfo = () => {
                 </dl>
 
                 <div className={classes.projectForm2}>
-                <input className={classes.fileUpload} id="videoUpload" type="file" accept=".jpg, .jpeg, .png"/>
+                <input className={classes.fileUpload} id="videoUpload" type="file" accept=".jpg, .jpeg, .png" />
                     <div className={classes.projectIMG}>
                         <label htmlFor="videoUpload">
-                        <p>
+                        <div>
                             <div className={classes.videoUploadDIV}><FileUploadIcon className={classes.uploadIcon}/> 영상 업로드</div>
                             파일 형식은 mov, mp4, wmv, avi로 <br/>
                             용량은 최대 200MB까지 가능합니다 <br/>
                             이미지를 등록하면 즉시 반영됩니다.
-                        </p>
+                        </div>
                         </label>
                     </div>
                 </div>
@@ -274,6 +290,7 @@ const BasicInfo = () => {
 
 
         </div>
+        </>
     )
 }
 
