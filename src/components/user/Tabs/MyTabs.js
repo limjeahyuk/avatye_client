@@ -12,8 +12,8 @@ import UploadProject from './Tab/UploadProject';
 import classes from './mytabs.module.css'
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
-import FollowingTab from '../../others/Tabs/Tab/FollowingTab';
-import FollowerTab from '../../others/Tabs/Tab/FollowerTab';
+import FollowingTab from './Tab/FollowingTab';
+import FollowerTab from './Tab/FollowerTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

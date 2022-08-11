@@ -26,7 +26,7 @@ const SupportProject = () => {
     
     return (
         <>
-            {project ?
+            {project.length !== 0 ?
                 <div>
                     <div className={classes.upprolength}><span>{project.length}</span>개의 프로젝트가 있습니다.</div>
                     <div className={classes.upprojectbox}>
