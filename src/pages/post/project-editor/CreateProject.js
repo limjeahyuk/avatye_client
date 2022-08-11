@@ -7,16 +7,12 @@ import CreatorInfo from "../../../components/post/createProject/CreatorInfo";
 
 const CreateProject = () => {
     const [projectTab, setProjectTab] = useState(1);
-    const [totalData, setTotalData] = useState({})
 
     const tabHandler = (num) => {
         setProjectTab(num);
     }
 
-    useEffect(() => {
-        console.log(totalData);
-    },[totalData])
-
+  
     return <>
         <ManageHeader tabHandler={tabHandler} />
         {projectTab === 1 && <BasicInfo />}

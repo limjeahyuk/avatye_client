@@ -1,40 +1,104 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import PreviewModal from "../../ui/previewModal/PreviewModal";
 
-const BasicInfo = ({dataHandler}) => {
-    const DUMMY_CATEGORY = ['보드게임/TRPG', '디지털게임', '웹툰/만화', '웹툰 리소스', '디자인 문구', '캐릭터/굿즈', '홈/리빙', '테크/가전', '반려동물',
-    '푸드', '향수/뷰티', '의류', '잡화', '주얼리', '출판', '디자인', '예술', '사진', '음악', '영화/비디오', '공연']
 
-    const {state} = useLocation();
+const BasicInfo = ({data, setData}) => {
+    const [categoryData, setCategoryData] = useState([]);
+    const [selectCategory, setSelectCategory] = useState([]);
+    const [previewImage, setPreviewImage] = useState('');
+    const [imgZoom, setImgZoom] = useState(false);
 
-    const [data, setData] = useState({
-        category : state,
-        detailcategory : "",
-        longTitle : "",
-        shortTitle : "",
-        summary : "",
-        profileIMG : "",
-        video : "",
-        webAddress : "",
-        searchTag : ""
-    });
+    const { state } = useLocation();
 
-    const {category, detailcategory, longTitle, shortTitle, summary, profileIMG, video, webAddress, searchTag} = data;
+    const savePreviewImage = (e) => {
+        setPreviewImage(URL.createObjectURL(e.target.files[0]));
+        setData({
+            ...data,
+            profileIMG: e.target.files[0]
+        })
+    }
 
     const onChange = e => {
         const {name, value} = e.target
         setData({
             ...data,
-            [name] : value
+            [name] : String(value).replace(/ +/g," ")
         })
     };
 
+ const zoomHandler = () => {
+        if (imgZoom) {
+            setImgZoom(false)
+        } else {
+            setImgZoom(true)
+        }
+    }
 
-    return(   
+    // const filterData = (cate) => {
+    //     return categoryData.filter((item) => ( item.name === cate ));
+    // }
+
+    
+    const imgChangeHandler = (e) => {
+
+        //formdata로 이미지 저장
+        const formdata = new FormData();
+        formdata.append('img', data.profileIMG);
+
+        const config = {
+            Headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+
+        axios.post('http://localhost:3000/img', formdata, config)
+            .then((res) => {
+                console.log(res.data);
+                // 포스팅 할때는 미리보기만. 저장한 url은 서버에서 바로 db로 저장 하면 됨.
+                // setData({
+                //     ...data,
+                //     profileIMG: res.data
+                // })
+            }).catch((error) => {
+                console.log(error);
+        })
+        
+    }
+
+        
+    const sendRequest = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/category'); 
+            setCategoryData(response.data);
+            setSelectCategory(response.data.filter((item) => (item.name === state.categoryState))[0].catename.split(','));
+        } catch (err) {
+            console.log(err);
+        } 
+    }
+
+    useEffect(() => {
+        // 처음 렌더링 될 때
+        if (!categoryData[0]) {
+            sendRequest();
+        }
+        
+        if (selectCategory[0]) {
+            // const filterData = categoryData.filter((item) => (item.name === data.category));
+            // console.log(filterData(category)[0].catename.split(','));
+            // setSelectCategory(filterData(category)[0].catename.split(','));
+            setSelectCategory(categoryData.filter((item) => (item.name === data.category))[0].catename.split(','));
+        }
+    }, [data.category])
+
+    return (<>
+        {imgZoom && <PreviewModal onConfig={zoomHandler} imgsrc={previewImage} />}
         <div className={classes.infoWrapper}>
             {/* 카테고리 선택 */}
             <div className={classes.infoItem}>
@@ -48,19 +112,20 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm}>
                     <div className={classes.selectCategory}>
                         <p>카테고리</p>
-                        <select name="category" onChange={onChange} value={category}>
-                            {DUMMY_CATEGORY.map((item, index) => {
-                                return <option value={item} key={index}>{item}</option>
-                            })}
+                        <select name="category" onChange={onChange} value={data.category}>
+                            {categoryData.map((item, index) => (
+                                <option value={item.name} key={index}>{item.name}</option>
+                            ))}
                         </select>
                     </div>
 
                     <div className={classes.selectCategory}>
                         <p>세부 카테고리</p>
-                        <select name="detailcategory" onChange={onChange} value={detailcategory}>
-                            <option value="digitalGame">디지털 게임 </option>
-                            <option value="webtoonResource">웹툰 리소스</option>
-                            <option value="design">디자인 문구</option>
+                        <select name="detailcategory" onChange={onChange} value={data.detailcategory}>
+                            <option value="" hidden>세부카테고리를 정해주세요.</option>
+                            {selectCategory.map((item, index) => (
+                                <option value={item} key={index}>{item}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
@@ -77,13 +142,13 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm2}>
                     <div>
                         <p>긴 제목 <HelpOutlineIcon className={classes.helpicon}/></p>
-                        <input className={classes.inputDIV} type="text" placeholder="긴 제목을 입력해주세요" onChange={onChange} name="longTitle" value={longTitle} autoComplete="off"/>
-                        <span className={classes.checkLetters}>0/32</span>
+                        <input className={`${classes.inputDIV} ${data.longTitle.trim().length > 0 && classes.ok}`} type="text" placeholder="긴 제목을 입력해주세요" onChange={onChange} name="longTitle" value={data.longTitle} autoComplete="off"/>
+                        <span className={classes.checkLetters}>{data.longTitle.trim().length}/32</span>
                     </div>
                     <div>
                         <p>짧은 제목 <HelpOutlineIcon className={classes.helpicon}/></p>
-                        <input className={classes.inputDIV} type="text" placeholder="짧은 제목을 입력해주세요" onChange={onChange} name="shortTitle" value={shortTitle} autoComplete="off"/>
-                        <span className={classes.checkLetters}>0/7</span>
+                        <input className={`${classes.inputDIV} ${data.shortTitle.trim().length > 0 && classes.ok}`} type="text" placeholder="짧은 제목을 입력해주세요" onChange={onChange} name="shortTitle" value={data.shortTitle} autoComplete="off"/>
+                        <span className={classes.checkLetters}>{data.shortTitle.trim().length}/7</span>
                     </div>
                 </div>
             </div>
@@ -100,8 +165,8 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm2}>
                     <div>
                     <HelpOutlineIcon className={classes.helpicon}/>
-                    <textarea className={classes.summary} onChange={onChange} name="summary" value={summary}></textarea>
-                    <span className={classes.checkLetters}>0/50</span>
+                    <textarea className={`${classes.summary} ${data.summary.trim().length > 0 && classes.ok}`} onChange={onChange} name="summary" value={data.summary}></textarea>
+                        <span className={classes.checkLetters}>{data.summary.trim().length}/50</span>
                     </div>
                 </div>
             </div>
@@ -112,16 +177,16 @@ const BasicInfo = ({dataHandler}) => {
                     <dt>프로젝트 대표 이미지 <span>*</span> </dt>
                     <dd>후원자들이 프로젝트의 내용을 쉽게 파악하고 좋은 인상을 받을 수 있도록 이미지 가이드라인을 따라 주세요.
                     </dd>
-                    <div className={classes.projectInfoNotice}>
+                    {/* <div className={classes.projectInfoNotice}>
                         <span className={classes.noticeSpan}><ErrorOutlineIcon className={classes.noticeIcon}/> 1개 이상의 이미지를 등록하면 이미지 슬라이더 형태로 제공됩니다.</span><br/>
                         푸시 메시지 등 이미지가 1개만 제공되는 상황에서 대표 이미지가 활용됩니다.
-                    </div>
+                    </div> */}
                 </dl>
 
                 <div className={classes.projectForm2}>
                 <HelpOutlineIcon className={classes.helpicon}/>
-                <input className={classes.fileUpload} id="imgUpload" type="file" accept=".jpg, .jpeg, .png" multiple />
-                    <div className={classes.projectIMG}>
+                <input className={classes.fileUpload} id="imgUpload" type="file" accept=".jpg, .jpeg, .png" multiple onChange={savePreviewImage} />
+                    {!previewImage && <div className={classes.projectIMG}>
                         <label htmlFor="imgUpload">
                             <span className={classes.projectIMGspan}><FileUploadIcon className={classes.uploadIcon}/> 이미지 업로드(0/5)</span>
                             <p>
@@ -129,6 +194,18 @@ const BasicInfo = ({dataHandler}) => {
                                 파일 형식 : jpg 또는 png / 사이즈 : 가로 1,240px, 세로 930px 이상</p>
                             <p>이미지를 등록하면 즉시 반영됩니다.</p>
                         </label>
+                    </div>}
+                    <div>
+                        {previewImage && <div className={classes.preview}>
+                            <div>
+                                <span>대표 이미지</span>
+                                <img src={previewImage} alt="img" />
+                                <button onClick={zoomHandler}><ZoomOutMapIcon /></button>
+                            </div>
+                            <div>
+                                <label htmlFor="imgUpload">변경</label>
+                            </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -143,15 +220,15 @@ const BasicInfo = ({dataHandler}) => {
                 </dl>
 
                 <div className={classes.projectForm2}>
-                <input className={classes.fileUpload} id="videoUpload" type="file" accept=".jpg, .jpeg, .png"/>
+                <input className={classes.fileUpload} id="videoUpload" type="file" accept=".jpg, .jpeg, .png" />
                     <div className={classes.projectIMG}>
                         <label htmlFor="videoUpload">
-                        <p>
+                        <div>
                             <div className={classes.videoUploadDIV}><FileUploadIcon className={classes.uploadIcon}/> 영상 업로드</div>
                             파일 형식은 mov, mp4, wmv, avi로 <br/>
                             용량은 최대 200MB까지 가능합니다 <br/>
                             이미지를 등록하면 즉시 반영됩니다.
-                        </p>
+                        </div>
                         </label>
                     </div>
                 </div>
@@ -168,10 +245,18 @@ const BasicInfo = ({dataHandler}) => {
                 <div className={classes.projectForm2}>
                     <div>
                         <p>www.tumblbug.avatye.com:8080/</p>
-                        <input className={classes.inputDIV2} type="text" placeholder="URL을 입력해주세요" onChange={onChange} name="webAddress" value={webAddress} autoComplete="off" />
+                        <input
+                            className={`${classes.inputDIV2} ${data.webAddress.trim().length > 0 && classes.ok}`}
+                            type="text"
+                            placeholder="URL을 입력해주세요"
+                            onChange={onChange}
+                            name="webAddress"
+                            value={data.webAddress}
+                            autoComplete="off"
+                        />
                         <button className={classes.checkDuplication}>중복확인</button><br/>
                         <span className={classes.checkValidate}>최소 3자 이상 입력해주세요.</span>
-                        <span className={classes.checkLetters2}>0/28</span>
+                        <span className={classes.checkLetters2}>{data.webAddress.trim().length}/28</span>
                     </div>
                 </div>
             </div>
@@ -190,15 +275,22 @@ const BasicInfo = ({dataHandler}) => {
 
                 <div className={classes.projectForm2}>
                     <div>
-                        <textarea placeholder="예시) 뱃지, 웹툰, 에코백, 고양이, 유기견" className={classes.summary} onChange={onChange} name="searchTag" value={searchTag}></textarea>
+                        <textarea
+                            placeholder="예시) 뱃지, 웹툰, 에코백, 고양이, 유기견"
+                            className={`${classes.summary} ${data.searchTag.trim().length > 0 && classes.ok}`}
+                            onChange={onChange}
+                            name="searchTag"
+                            value={data.searchTag}
+                        />
                         <span className={classes.checkValidate}>쉼표(,)와 문자로만 최소 2자이상 입력해주세요</span>
-                        <span className={classes.checkLetters3}>0/125</span>
+                        <span className={classes.checkLetters3}>{data.searchTag.trim().length}/125</span>
                     </div>
                 </div>
             </div>
 
 
         </div>
+        </>
     )
 }
 

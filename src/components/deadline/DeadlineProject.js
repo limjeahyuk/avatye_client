@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Cookies } from "react-cookie";
 import ProjectCards from "../ui/project/ProjectCards";
 
-import classes from './fameproject.module.css'
+import classes from './deadlineproject.module.css'
 
-const FameProject = () => {
+const Deadlineproject = () => {
 
     const [project, setProject] = useState([]);
 
@@ -14,7 +14,7 @@ const FameProject = () => {
 
     const Projects = () => {
         if(token) {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist", {headers : {'user_token' : token}})
+            axios.get("http://192.168.0.74:3000/project/deadlineprojectlist", {headers: {'user_token' : token}})
             .then(response => {
                 console.log(response.data)
                 setProject(response.data)
@@ -23,7 +23,7 @@ const FameProject = () => {
                 console.log(e)
             })
         } else {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist")
+            axios.get("http://192.168.0.74:3000/project/deadlineprojectlist")
             .then(response => {
                 console.log(response.data)
                 setProject(response.data)
@@ -32,6 +32,7 @@ const FameProject = () => {
                 console.log(e)
             })
         }
+        
     }
 
     useEffect(() => {
@@ -56,4 +57,4 @@ const FameProject = () => {
 
 
 
-export default FameProject
+export default Deadlineproject

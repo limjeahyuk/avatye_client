@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 const ProjectList = ({data, index}) => {
 
@@ -22,7 +23,7 @@ const ProjectList = ({data, index}) => {
                 <Typography className={`${classes.rank} ${index > 2 && classes.good}`}>{index+1}</Typography>
                 <CardContent className={classes.cardContent}>  
                     <div className={classes.subbox}>
-                        <Typography className={classes.subdes}><span>{data.name}</span><span className={classes.middleline}>|</span><span>{data.nickName}</span></Typography>
+                        <Typography className={classes.subdes}><span>{data.name}</span><span className={classes.middleline}>|</span><span><Link to ={`/u/${data.userID}`}>{data.nickName}</Link></span></Typography>
                         <Typography></Typography>
                         <Typography className={classes.title}>
                             {data.LongTitle}

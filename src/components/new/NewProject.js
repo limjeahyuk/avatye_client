@@ -3,18 +3,17 @@ import React, { useState, useEffect } from "react";
 import { Cookies } from "react-cookie";
 import ProjectCards from "../ui/project/ProjectCards";
 
-import classes from './fameproject.module.css'
+import classes from './newproject.module.css'
 
-const FameProject = () => {
+const NewProject = () => {
 
     const [project, setProject] = useState([]);
-
     const cookie = new Cookies()
     const token = cookie.get('user_token')
 
     const Projects = () => {
         if(token) {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist", {headers : {'user_token' : token}})
+            axios.get("http://192.168.0.74:3000/project/newprojectlist", { headers : {'user_toekn' : token} })
             .then(response => {
                 console.log(response.data)
                 setProject(response.data)
@@ -23,7 +22,7 @@ const FameProject = () => {
                 console.log(e)
             })
         } else {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist")
+            axios.get("http://192.168.0.74:3000/project/newprojectlist")
             .then(response => {
                 console.log(response.data)
                 setProject(response.data)
@@ -31,7 +30,7 @@ const FameProject = () => {
             .catch(e => {
                 console.log(e)
             })
-        }
+        }   
     }
 
     useEffect(() => {
@@ -56,4 +55,4 @@ const FameProject = () => {
 
 
 
-export default FameProject
+export default NewProject
