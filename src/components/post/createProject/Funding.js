@@ -27,14 +27,19 @@ const Funding = () => {
     }
 
     const startTimeSetting = (e) => {
-        setStartTime(e.target.value)
+        setStartTime(e.target.innerText)
         setDropDown(false)
     }
 
+    //남은 시간
     const lefttime = (endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24;
 
-    let paymentFee = goalprice * 0.03
-    let platformFee = goalprice * 0.05
+    let paymentFee = (goalprice * 0.03) + ((goalprice * 0.03) * 0.1)
+    let platformFee = (goalprice * 0.05) + ((goalprice * 0.05) * 0.1)
+    
+    const numFormat = (data) => {
+        return Math.round(data).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    }
 
     return (   
         <div className={classes.fundingWrapper}>
@@ -56,30 +61,28 @@ const Funding = () => {
                 <div className={classes.goalPriceDIV}>
                     <div>목표금액</div>
                     <div className={classes.goalpriceinputDIV}>
-                        <input className={classes.goalPrice} name="goalprice" value={goalprice} onChange={priceHandler} type="text"/>
+                        <input className={classes.goalPrice} name="goalprice" value={numFormat(goalprice)} onChange={priceHandler} type="text"/>
                         <span className={classes.won}>원</span>
                     </div>
                     <div className={classes.estimatePrice}>
                         <div className={classes.amount}>
                             <span>목표 금액 달성 시 예상 수령액</span>
-                            <span className={classes.expectedAmount}>{(goalprice-((paymentFee + (paymentFee * 0.1)) + (platformFee + (platformFee * 0.1))))
-                            .toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} 원</span>
+                            <span className={classes.expectedAmount}>
+                                {numFormat(goalprice- (paymentFee + platformFee))}원</span>
                         </div>
                         <div>
                             <div className={classes.calAmount}>
                                 <span>총 수수료</span>
-                                <span>{Math.round((paymentFee + (paymentFee * 0.1)) + (platformFee + (platformFee * 0.1)))
-                                .toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
+                                <span>{numFormat(paymentFee+platformFee)}원</span>
                             </div>
                             <div className={classes.calAmount}>
                                 <span>결제대행 수수료 (총 결제액의 3% + VAT)</span>
-                                <span>{Math.round(paymentFee + (paymentFee * 0.1))
-                                .toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
+                                <span>{numFormat(paymentFee)}원</span>
                             </div>
                             <div className={classes.calAmount}>
                                 <span>플랫폼 수수료(총 모금액의 5%+VAT)</span>
-                                <span>{Math.round(platformFee + (platformFee * 0.1))
-                                .toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
+                                <span>
+                                    {numFormat(platformFee)}원</span>
                             </div>
                         </div>
                     </div>
@@ -105,25 +108,25 @@ const Funding = () => {
                                 </div>
                                 {dropDown && <div className={classes.selectTime}>
                                     <ul className={classes.timeUL}>
-                                        <li onClick={startTimeSetting} value="09시 00분">09시 00분</li>
-                                        <li onClick={startTimeSetting} value="09시 30분">09시 30분</li>
-                                        <li onClick={startTimeSetting} value="10시 00분">10시 00분</li>
-                                        <li onClick={startTimeSetting} value="10시 30분">10시 30분</li>
-                                        <li onClick={startTimeSetting} value="11시 00분">11시 00분</li>
-                                        <li onClick={startTimeSetting} value="11시 30분">11시 30분</li>
-                                        <li onClick={startTimeSetting} value="12시 00분">12시 00분</li>
-                                        <li onClick={startTimeSetting} value="12시 30분">12시 30분</li>
-                                        <li onClick={startTimeSetting} value="13시 00분">13시 00분</li>
-                                        <li onClick={startTimeSetting} value="13시 30분">13시 30분</li>
-                                        <li onClick={startTimeSetting} value="14시 00분">14시 00분</li>
-                                        <li onClick={startTimeSetting} value="14시 30분">14시 30분</li>
-                                        <li onClick={startTimeSetting} value="15시 00분">15시 00분</li>
-                                        <li onClick={startTimeSetting} value="15시 30분">15시 30분</li>
-                                        <li onClick={startTimeSetting} value="16시 00분">16시 00분</li>
-                                        <li onClick={startTimeSetting} value="16시 30분">16시 30분</li>
-                                        <li onClick={startTimeSetting} value="17시 00분">17시 00분</li>
-                                        <li onClick={startTimeSetting} value="17시 30분">17시 30분</li>
-                                        <li onClick={startTimeSetting} value="18시 00분">18시 00분</li>
+                                        <li onClick={startTimeSetting}>09시 00분</li>
+                                        <li onClick={startTimeSetting}>09시 30분</li>
+                                        <li onClick={startTimeSetting}>10시 00분</li>
+                                        <li onClick={startTimeSetting}>10시 30분</li>
+                                        <li onClick={startTimeSetting}>11시 00분</li>
+                                        <li onClick={startTimeSetting}>11시 30분</li>
+                                        <li onClick={startTimeSetting}>12시 00분</li>
+                                        <li onClick={startTimeSetting}>12시 30분</li>
+                                        <li onClick={startTimeSetting}>13시 00분</li>
+                                        <li onClick={startTimeSetting}>13시 30분</li>
+                                        <li onClick={startTimeSetting}>14시 00분</li>
+                                        <li onClick={startTimeSetting}>14시 30분</li>
+                                        <li onClick={startTimeSetting}>15시 00분</li>
+                                        <li onClick={startTimeSetting}>15시 30분</li>
+                                        <li onClick={startTimeSetting}>16시 00분</li>
+                                        <li onClick={startTimeSetting}>16시 30분</li>
+                                        <li onClick={startTimeSetting}>17시 00분</li>
+                                        <li onClick={startTimeSetting}>17시 30분</li>
+                                        <li onClick={startTimeSetting}>18시 00분</li>
                                     </ul>
                                 </div>}
                                 </div>
