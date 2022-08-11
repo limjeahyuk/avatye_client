@@ -12,6 +12,8 @@ import UploadProject from './Tab/UploadProject';
 import classes from './mytabs.module.css'
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
+import FollowingTab from '../../others/Tabs/Tab/FollowingTab';
+import FollowerTab from '../../others/Tabs/Tab/FollowerTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -96,6 +98,8 @@ const MyTabs = () => {
                         <Tab className={classes.tabitemTitle} label='프로필' {...a11yProps(0)} />
                         <Tab className={classes.tabitemTitle} label={`올린 프로젝트 ${count.count}`} {...a11yProps(1)} />
                         <Tab className={classes.tabitemTitle} label={`후원한 프로젝트 ${sucount.count}`} {...a11yProps(2)} />
+                        <Tab className={classes.tabitemTitle} label={`팔로워`} {...a11yProps(3)} />
+                        <Tab className={classes.tabitemTitle} label={`팔로잉`} {...a11yProps(4)} />
                     </Tabs>
                 </Box>
                 <TabPanel className={classes.tabscontent} value={value} index={0}>
@@ -106,6 +110,12 @@ const MyTabs = () => {
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={2}>
                     <SupportProject/>
+                </TabPanel>
+                <TabPanel className={classes.tabscontent} value={value} index={3}>
+                    <FollowingTab/>
+                </TabPanel>
+                <TabPanel className={classes.tabscontent} value={value} index={4}>
+                    <FollowerTab/>
                 </TabPanel>
             </div>
         </>
