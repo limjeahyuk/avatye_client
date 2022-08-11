@@ -415,3 +415,210 @@ select option {
 .timeUL li:hover {
     background-color: rgb(251, 251, 251);
 }
+
+/* gift */
+.giftNum {
+    margin-left : 5px;
+    font-size : 16px !important;
+    color : rgba(0, 0, 0, 0.484) !important;
+}
+
+.giftDT {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderBy {
+    vertical-align: top;
+    font-size: 14px !important;
+    color :rgb(82, 82, 82) !important;
+    padding-right : 5px;
+}
+
+.createGiftBox {
+    background-color: white;
+    border : 1px solid rgb(240, 240, 240);
+    min-height: 80px;
+    padding: 20px 28px;
+}
+
+.giftPrice {
+    display: block;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 20px !important;
+    line-height: 50px !important;
+}
+
+.giftinfo {
+    padding-top : 30px;
+    font-size: 13px;
+    color :rgb(82, 82, 82);
+}
+
+.createGiftForm {
+    background-color: rgb(255, 255, 255);
+    width : 60%;
+    padding: 44px 48px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top : 52px;
+    font-size: 14px;
+}
+
+.createGiftTitle {
+    font-size : 17px;
+    font-weight: 700;
+    margin-bottom : 20px;
+}
+
+.createGiftTitle span {
+    font-size : 25px;
+    color : rgb(248, 100, 83);
+}
+
+.createGiftSubTitle {
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 20px !important;
+}
+
+.createInfo {
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    line-height: 25px;
+}
+
+.createSection {
+    margin : 30px 0px;
+    padding-bottom : 20px;
+    border-bottom : 1px solid rgb(250, 250, 250);
+}
+
+.createGiftInput {
+    margin-top : 10px;
+    width : 93%;
+    height: 44px;
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.createGiftInput:focus {
+    outline: 1px solid rgb(62, 62, 62);
+}
+
+.checkContentLetters {
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-end;
+    color :  rgb(149, 149, 149);
+}
+
+.limitDIV {
+    display: flex;
+    margin-top : 10px;
+}
+
+.btndiv {
+    width: 300px;
+    border : 1px solid rgb(234, 234, 234);
+    margin : 0px 5px;
+    padding : 20px;
+    display: flex;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color : rgb(60, 60, 60);
+}
+
+.qtyDiv {
+    display: flex;
+    padding-left : 60px;
+}
+
+.inputQTY {
+    width : 80px;
+    border-radius: 0%;
+    border : 1px solid rgb(234, 234, 234);
+    outline: none;
+}
+
+.gae {
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(252, 252, 252);
+    border-radius: 0%;
+    padding : 0px 4px;
+    font-size : 12px;
+}
+
+.createGiftInput2 {
+    margin-top : 10px;
+    width : 83%;
+    height: 44px;
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.priceDIV {
+    display: flex;
+    align-items: center;
+}
+
+.won {
+    background: rgb(252, 252, 252);
+    min-width: 44px;
+    height: 44px;
+    border-radius : 0%;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    border : 1px solid rgb(240, 240, 240);
+}
+
+.deliveryDateDIV {
+    padding: 10px 22px;
+    border: 1px solid rgb(229, 60, 65);
+    border-radius: 4px;
+    color: rgb(109, 109, 109);
+    border : 1px solid rgb(240, 240, 240);
+}
+
+.resetbtn {
+    width: 170px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 24px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+
+.savebtn {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    background-color: rgb(248, 100, 83);
+    color: rgb(255, 255, 255);
+}
