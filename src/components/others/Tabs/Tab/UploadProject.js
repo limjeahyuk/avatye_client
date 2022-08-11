@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { useParams } from "react-router-dom";
 import ProjectCards from "../../../ui/project/ProjectCards";
 
@@ -10,15 +11,29 @@ const UploadProject = () => {
 
     let {params} = useParams()
 
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
     const findPost = () => {
-        axios.get(`http://192.168.0.74:3000/u/${params}/upload`)
-        .then(response => {
-            console.log(response.data)
-            setProject(response.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
+        if (token) {
+            axios.get(`http://192.168.0.74:3000/u/${params}/upload`, { headers : {'user_token' : token} })
+            .then(response => {
+                console.log(response.data)
+                setProject(response.data)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        } else {
+            axios.get(`http://192.168.0.74:3000/u/${params}/upload`)
+            .then(response => {
+                console.log(response.data)
+                setProject(response.data)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        }
     }
 
     useEffect(() => {

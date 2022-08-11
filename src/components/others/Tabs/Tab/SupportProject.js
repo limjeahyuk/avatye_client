@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { useParams } from "react-router-dom";
 import ProjectCards from "../../../ui/project/ProjectCards";
 import classes from "../mytabs.module.css"
@@ -9,15 +10,29 @@ const SupportProject = () => {
 
     let {params} = useParams()
 
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
     const findBuy = () => {
-        axios.get(`http://192.168.0.74:3000/u/${params}/buy`)
-        .then(res => {
-            console.log(res.data)
-            setProject(res.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
+        if(token) {
+            axios.get(`http://192.168.0.74:3000/u/${params}/buy`, { headers : {'user_token' : token} })
+            .then(res => {
+                console.log(res.data)
+                setProject(res.data)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        } else {
+            axios.get(`http://192.168.0.74:3000/u/${params}/buy`)
+            .then(res => {
+                console.log(res.data)
+                setProject(res.data)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        }
     }
 
     useEffect(() => {
