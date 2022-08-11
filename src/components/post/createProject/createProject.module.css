@@ -89,12 +89,6 @@ select {
     line-height: 24px;
 }
 
-select option {
-    background-color : red;
-    padding : 15px;
-    display : block;
-}
-
 
 .inputDIV {
     padding : 0px 18px;
@@ -104,6 +98,81 @@ select option {
     color : rgb(13, 13, 13);
     font-size: 14px;
     line-height: 24px;
+}
+
+.preview{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 32px;
+    background-color: white;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+}
+
+.preview div:first-child{
+    width: 145px;
+    position: relative;
+}
+
+.preview div:first-child span{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 9px;
+    line-height: 11px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(254, 95, 76);
+}
+
+.preview div:first-child img{
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.preview div:first-child button{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .7);
+    border: 0px;
+}
+
+.preview div:first-child button svg{
+    color: white;
+    font-size: 17px;
+}
+
+.preview div:last-child{
+    display: flex;
+}
+
+.preview div:last-child label{
+    width: 73px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    cursor: pointer;
+    border-radius: 1px;
+    padding: 0 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inputDIV2 {
@@ -186,6 +255,13 @@ select option {
     font-weight: 400;
 }
 
+.projectIMG>label>div{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
 
 .helpicon,
 .uploadIcon {
@@ -226,6 +302,10 @@ select option {
 .optionBox {
     background-color:white;
     z-index : 100;
+}
+
+.infoWrapper .ok{
+    border: 1px solid rgb(240, 240, 240);
 }
 
 /* funding */
