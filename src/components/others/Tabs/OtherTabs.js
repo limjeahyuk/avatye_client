@@ -11,9 +11,9 @@ import UploadProject from './Tab/UploadProject';
 
 import classes from './mytabs.module.css'
 import axios from 'axios';
-import { Cookies } from 'react-cookie';
-import FollowingTab from '../../others/Tabs/Tab/FollowingTab';
-import FollowerTab from '../../others/Tabs/Tab/FollowerTab';
+import { useParams } from 'react-router-dom';
+import FollowerTab from './Tab/FollowerTab';
+import FollowingTab from './Tab/FollowingTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -53,12 +53,11 @@ const MyTabs = () => {
     const [count, setCount] = useState({});
     const [sucount, setsuCount] = useState({});
 
-    const cookies = new Cookies()
-    const token = cookies.get('user_token')
+    let { params } = useParams()
 
 
     const findUp = () => {
-        axios.get("http://192.168.0.74:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
+        axios.get(`http://192.168.0.74:3000/u/${params}/uploadcount`)
         .then(response => {
             setCount(response.data)
             console.log(response.data)
@@ -69,7 +68,7 @@ const MyTabs = () => {
     }
 
     const findSupport = () => {
-        axios.get("http://192.168.0.74:3000/mypage/buycount" ,{headers : {'user_token': token}})
+        axios.get(`http://192.168.0.74:3000/u/${params}/buycount`)
         .then(response => {
             setsuCount(response.data)
             console.log(response.data)
@@ -78,6 +77,8 @@ const MyTabs = () => {
             console.log(e)
         })
     }
+
+    // ${count.count} ${sucount.count}
 
     useEffect(() => {
         findUp();
@@ -112,10 +113,10 @@ const MyTabs = () => {
                     <SupportProject/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={3}>
-                    <FollowingTab/>
+                    <FollowerTab/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={4}>
-                    <FollowerTab/>
+                    <FollowingTab/>
                 </TabPanel>
             </div>
         </>

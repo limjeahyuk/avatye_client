@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BasicInfo from "../../../components/post/createProject/BasicInfo";
 import ManageHeader from "../../../components/post/management/ManageHeader";
-import Funding from '../../../components/post/createProject/Funding';
+import Funding from '../../../components/post/createProject/Funding';
 import { useLocation } from "react-router-dom";
 
 const CreateProject = () => {

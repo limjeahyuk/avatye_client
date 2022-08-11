@@ -2,19 +2,19 @@ import axios from "axios";
 import moment from "moment";
 import 'moment/locale/ko';
 import React, { useEffect, useState } from "react";
-import { Cookies } from "react-cookie";
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import classes from "./Tabs/mytabs.module.css"
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
     const [data, setData] = useState([])
     const [time, setTime] = useState()
-    const cookie = new Cookies()
-    const token = cookie.get("user_token")
+
+    let {params} = useParams()
 
     const findProfile = () => {
-        axios.get('http://192.168.0.74:3000/mypage/profile' ,{headers : {'user_token': token}})
+        axios.get(`http://192.168.0.74:3000/u/${params}/profile`)
         .then(response => {
             console.log(response.data)
             setData(response.data)

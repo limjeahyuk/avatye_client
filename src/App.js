@@ -2,6 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import Fame from './pages/fame/Fram';
+import New from './pages/new/New';
 import Headers from './components/ui/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
 import EmailJoin from './pages/login/email/EmailJoin';
@@ -15,6 +16,9 @@ import Mypage from './pages/user/Mypage'
 import Footer from './components/ui/Footer';
 //프로젝트 기본 정보 만들기
 import CreateProject from './pages/post/project-editor/CreateProject';
+import Otherpage from './pages/others/Otherpage';
+import Deadline from './pages/deadline/Deadline';
+import Tobe from './pages/tobe/Tobe';
 
 const App = () => {
 
@@ -31,7 +35,11 @@ const App = () => {
         <Route path='/project-editor/start' element={<ProjectEditor />} />
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
         <Route path='/mypage' element={<Mypage/>} />
+        <Route path='/u/:params' element={<Otherpage/>} />
         <Route path='/fame' element={<Fame/>} />
+        <Route path='/new' element={<New/>} />
+        <Route path='/tobe' element={<Tobe/>} />
+        <Route path='/deadline' element={<Deadline/>} />
         <Route path='/project-editor/create' element={<CreateProject />} />
       </Routes>
       <Footer />

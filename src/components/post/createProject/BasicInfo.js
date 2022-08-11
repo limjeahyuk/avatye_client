@@ -33,7 +33,7 @@ const BasicInfo = ({data, setData}) => {
         })
     };
 
-    const zoomHandler = () => {
+ const zoomHandler = () => {
         if (imgZoom) {
             setImgZoom(false)
         } else {

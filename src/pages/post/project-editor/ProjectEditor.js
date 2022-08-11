@@ -69,7 +69,7 @@ const ProjectEditor = () => {
                             <span>{isSummery.trim().length} / 50</span>
                         </div>
                         <div className={classes.btn}>
-                            <button onClick={nextHandler}>다음</button>
+<button onClick={nextHandler}>다음</button>
                         </div>
                     </div>
                 </div>}

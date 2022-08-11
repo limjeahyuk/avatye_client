@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Cookies } from "react-cookie";
+import { useParams } from "react-router-dom";
 import ProjectCards from "../../../ui/project/ProjectCards";
 import classes from "../mytabs.module.css"
 
 const SupportProject = () => {
     const [project, setProject] = useState([]);
-    const cookies = new Cookies()
-    const token = cookies.get('user_token')
+
+    let {params} = useParams()
 
     const findBuy = () => {
-        axios.get('http://192.168.0.74:3000/mypage/buy' ,{headers : {'user_token': token}})
+        axios.get(`http://192.168.0.74:3000/u/${params}/buy`)
         .then(res => {
             console.log(res.data)
             setProject(res.data)
