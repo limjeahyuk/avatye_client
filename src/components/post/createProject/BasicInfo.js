@@ -58,7 +58,7 @@ const BasicInfo = ({data, setData}) => {
             },
         };
 
-        axios.post('http://localhost:3000/img', formdata, config)
+        axios.post('http://192.168.0.74:3000/img', formdata, config)
             .then((res) => {
                 console.log(res.data);
                 // 포스팅 할때는 미리보기만. 저장한 url은 서버에서 바로 db로 저장 하면 됨.
@@ -75,7 +75,7 @@ const BasicInfo = ({data, setData}) => {
         
     const sendRequest = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/category'); 
+            const response = await axios.get('http://192.168.0.74:3000/category'); 
             setCategoryData(response.data);
             setSelectCategory(response.data.filter((item) => (item.name === state.categoryState))[0].catename.split(','));
         } catch (err) {

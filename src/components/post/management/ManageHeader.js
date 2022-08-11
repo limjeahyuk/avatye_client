@@ -19,16 +19,17 @@ const ManageHeader = ({tabHandler, basic, funding}) => {
             ...basic,
             ...funding
         }
+        console.log(data);
 
-        axios({
-            url: 'http://localhost:3000/createProject',
-            method: 'post',
-            data: data
-        }).then(function a(response) {
-            console.log(response.data);
-        }).catch(function (err) {
-            console.log(err);
-        })
+        // axios({
+        //     url: 'http://localhost:3000/createProject',
+        //     method: 'post',
+        //     data: data
+        // }).then(function a(response) {
+        //     console.log(response.data);
+        // }).catch(function (err) {
+        //     console.log(err);
+        // })
     }
 
     return <div>

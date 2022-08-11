@@ -4,9 +4,11 @@ import ManageHeader from "../../../components/post/management/ManageHeader";
 import Funding from '../../../components/post/createProject/Funding';
 import Gift from "../../../components/post/createProject/Gift";
 import CreatorInfo from "../../../components/post/createProject/CreatorInfo";
+import { useLocation } from "react-router-dom";
 
 const CreateProject = () => {
     const [projectTab, setProjectTab] = useState(1);
+    const {state} = useLocation();
 
     const tabHandler = (num) => {
         setProjectTab(num);
@@ -30,6 +32,7 @@ const CreateProject = () => {
         endDate: new Date(),
         startTime: "12시 00분"
     })
+
 
     return <>
         <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} />
