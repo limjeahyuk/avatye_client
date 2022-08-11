@@ -27,7 +27,7 @@ const ProfileTab = () => {
 
     return (
         <> 
-            {userProfile.Comment !== null ? <div>{userProfile.Comment}</div> : <div className={classes.intro}>등록된 소개가 없습니다.</div>}
+            {userProfile.Comment !== null ? <div className={classes.intro}>{userProfile.Comment}</div> : <div className={classes.intro}>등록된 소개가 없습니다.</div>}
         </>
     )
 }
