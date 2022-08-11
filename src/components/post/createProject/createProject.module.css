@@ -89,11 +89,10 @@ select {
     line-height: 24px;
 }
 
-select option {
+/* select option {
     background-color : red;
     padding : 15px;
-    display : block;
-}
+} */
 
 
 .inputDIV {
