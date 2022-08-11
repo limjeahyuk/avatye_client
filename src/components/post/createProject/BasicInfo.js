@@ -34,7 +34,7 @@ const BasicInfo = ({dataHandler}) => {
     };
 
 
-    return(
+    return(   
         <div className={classes.infoWrapper}>
             {/* 카테고리 선택 */}
             <div className={classes.infoItem}>

@@ -36,7 +36,7 @@ const Funding = () => {
     let paymentFee = goalprice * 0.03
     let platformFee = goalprice * 0.05
 
-    return (
+    return (   
         <div className={classes.fundingWrapper}>
             <div className={classes.infoItem}>
                 <dl className={classes.projectInfo}>
