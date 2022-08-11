@@ -24,10 +24,17 @@ const CreateProject = () => {
         searchTag : ""
     });
 
+    const [fundingData, setFundingData] = useState({
+        goalprice: 0,
+        startDate: new Date(),
+        endDate: new Date(),
+        startTime: "12시 00분"
+    })
+
     return <>
-        <ManageHeader tabHandler={tabHandler} />
+        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} />
         {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
-        {projectTab === 2 && <Funding />}
+        {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
     
     </>
 }
