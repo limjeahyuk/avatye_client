@@ -731,3 +731,17 @@ select {
     align-items: center;
     padding: 5px 0px;
 }
+
+.validateNum {
+    margin-top : 5px;
+    margin-left : 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color : rgb(255, 87, 87);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
