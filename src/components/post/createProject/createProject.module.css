@@ -22,23 +22,27 @@
     width : 300px;
 }
 
-.projectInfo {
+.projectInfo,
+.giftItemList {
     width : 350px;
 }
 
-.projectInfo dt {
+.projectInfo dt,
+.giftItemList dt {
     font-weight: 700;
     margin-bottom: 12px;
     font-size: 16px;
     line-height: 24px;
 }
 
-.projectInfo dt span {
+.projectInfo dt span,
+.giftItemList dt span {
     font-size : 25px;
     color : rgb(248, 100, 83);
 }
 
-.projectInfo dd {
+.projectInfo dd,
+.giftItemList dd{
     margin-left : 0px;
     font-weight: 400;
     color: rgb(109, 109, 109);
@@ -46,6 +50,8 @@
     font-size: 14px;
     line-height: 24px;
 }
+
+
 
 .projectForm {
     display: flex;
@@ -620,14 +626,14 @@ select {
 
 .qtyDiv {
     display: flex;
-    padding-left : 60px;
+    padding-left : 40px;
 }
 
 .inputQTY {
-    width : 80px;
+    width : 100px;
+    height: 20px;
     border-radius: 0%;
     border : 1px solid rgb(234, 234, 234);
-    outline: none;
 }
 
 .gae {
@@ -636,6 +642,8 @@ select {
     border-radius: 0%;
     padding : 0px 4px;
     font-size : 12px;
+    display: flex;
+    align-items: center;
 }
 
 .createGiftInput2 {
@@ -645,11 +653,16 @@ select {
     padding: 0px 18px;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
+    text-align : right;
+}
+
+.createGiftInput2:focus {
+    caret-color: rgb(255, 87, 87);
 }
 
 .priceDIV {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .won {
@@ -663,11 +676,10 @@ select {
     border: 1px solid rgb(229, 60, 65);
     border-radius: 4px;
     color: rgb(109, 109, 109);
-    border : 1px solid rgb(240, 240, 240);
 }
 
 .resetbtn {
-    width: 170px;
+    width: 200px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -691,7 +703,7 @@ select {
     height: 44px;
     white-space: nowrap;
     border-radius: 1px;
-    margin: 0px;
+    margin-left: 40px;
     border: 0px;
     outline: none;
     font-weight: normal;
@@ -700,4 +712,21 @@ select {
     background-color: rgb(248, 100, 83);
     color: rgb(255, 255, 255);
     width : 300px;
+}
+
+.deliveryDateFlex {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom : 1px solid rgb(240, 240, 240);
+}
+
+.deliveryDateFlex2 {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
 }
