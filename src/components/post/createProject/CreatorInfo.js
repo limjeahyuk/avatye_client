@@ -1,8 +1,9 @@
 import React, {useState} from "react";
+import classes from "./createProject.module.css";
 
 const CreatorInfo = () => {
-    return(
-        <div>창작자 정보 할거야</div>
+    return (
+        <div></div>
     )
 }
 

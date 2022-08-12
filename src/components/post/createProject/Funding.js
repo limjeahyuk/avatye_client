@@ -56,7 +56,16 @@ const Funding = ({data, setData}) => {
 
     let paymentFee = (data.goalprice * 0.03) + ((data.goalprice * 0.03) * 0.1)
     let platformFee = (data.goalprice * 0.05) + ((data.goalprice * 0.05) * 0.1)
-    
+
+    //후원자 결제 종료일 계산
+    let now = new Date();
+    let payDate = new Date(now.setDate(data.endDate.getDate() + 7));
+    let payEndDate = payDate.getFullYear() + "." + (payDate.getMonth() + 1) + "." + payDate.getDate();
+    let calDate = new Date(now.setDate(payDate.getDate() + 7));
+    let calEndDate = calDate.getFullYear() + "." + (calDate.getMonth() + 1) + "." + calDate.getDate();
+
+
+
     const numFormat = (data) => {
         return Math.round(data).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
     }
@@ -128,9 +137,9 @@ const Funding = ({data, setData}) => {
                                 </div>
                                 {dropDown && <div className={classes.selectTime}>
                                     <ul className={classes.timeUL}>
-                                        {finalTime.map((val) =>{
+                                        {finalTime.map((val, index) =>{
                                             return(
-                                                <li onClick={startTimeSetting}>{val}</li>
+                                                <li key={index} onClick={startTimeSetting}>{val}</li>
                                             );
                                         })}
                                     </ul>
@@ -151,11 +160,11 @@ const Funding = ({data, setData}) => {
                         </li>
                         <li className={classes.listLi}>
                             <div>후원자 결제 종료 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>{data.endDate && "종료일 다음 날부터 7일"}</span></div>
+                            <span className={classes.endPayment}>{payEndDate}</span></div>
                         </li>
                         <li className={classes.listLi}> 
                             <div>정산일 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>{data.endDate && "후원자 결제 종료 다음 날부터 7영업일"}</span></div>
+                            <span className={classes.endPayment}>{calEndDate}</span></div>
                         </li>
                     </ul>
                 </div>
