@@ -676,6 +676,7 @@ select {
     border: 1px solid rgb(229, 60, 65);
     border-radius: 4px;
     color: rgb(109, 109, 109);
+    margin-top : 10px;
 }
 
 .resetbtn {

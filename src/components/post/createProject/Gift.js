@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import classes from "./createProject.module.css";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import { CleaningServices } from "@mui/icons-material";
-
+ 
 const Gift = () => {
     const [limitState, setLimitState] = useState(false);
     const [limitNum, setLimitNum] = useState(1);
