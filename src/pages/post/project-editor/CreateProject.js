@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 
 const CreateProject = () => {
     const [projectTab, setProjectTab] = useState(1);
+
     const { state } = useLocation();
 
     const tabHandler = (num) => {
@@ -32,6 +33,7 @@ const CreateProject = () => {
         endDate: new Date(),
         startTime: "12시 00분"
     })
+
 
     return <>
         <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData}/>

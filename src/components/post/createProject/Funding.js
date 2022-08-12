@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 const Funding = ({data, setData}) => {
     const [dropDown, setDropDown] = useState(false);
 
@@ -32,6 +33,23 @@ const Funding = ({data, setData}) => {
         })
         setDropDown(false)
     }
+
+    //시작 시간
+    let testtime = []
+    for(var i=9; i <= 18; i++){
+        testtime.push(i)
+        testtime.push(i)
+    }
+    let minute = ""
+    let finalTime = testtime.map((data, index) => {
+        if (index % 2 == 0) {
+        minute = "00분"
+        } else {
+        minute = "30분"
+        }
+        return data+"시"+" " + minute 
+    })
+    finalTime.pop()
 
     //남은 시간
     const lefttime = (data.endDate.getTime() - data.startDate.getTime()) / 1000 / 60 / 60 / 24;
@@ -110,25 +128,11 @@ const Funding = ({data, setData}) => {
                                 </div>
                                 {dropDown && <div className={classes.selectTime}>
                                     <ul className={classes.timeUL}>
-                                        <li onClick={startTimeSetting}>09시 00분</li>
-                                        <li onClick={startTimeSetting}>09시 30분</li>
-                                        <li onClick={startTimeSetting}>10시 00분</li>
-                                        <li onClick={startTimeSetting}>10시 30분</li>
-                                        <li onClick={startTimeSetting}>11시 00분</li>
-                                        <li onClick={startTimeSetting}>11시 30분</li>
-                                        <li onClick={startTimeSetting}>12시 00분</li>
-                                        <li onClick={startTimeSetting}>12시 30분</li>
-                                        <li onClick={startTimeSetting}>13시 00분</li>
-                                        <li onClick={startTimeSetting}>13시 30분</li>
-                                        <li onClick={startTimeSetting}>14시 00분</li>
-                                        <li onClick={startTimeSetting}>14시 30분</li>
-                                        <li onClick={startTimeSetting}>15시 00분</li>
-                                        <li onClick={startTimeSetting}>15시 30분</li>
-                                        <li onClick={startTimeSetting}>16시 00분</li>
-                                        <li onClick={startTimeSetting}>16시 30분</li>
-                                        <li onClick={startTimeSetting}>17시 00분</li>
-                                        <li onClick={startTimeSetting}>17시 30분</li>
-                                        <li onClick={startTimeSetting}>18시 00분</li>
+                                        {finalTime.map((val) =>{
+                                            return(
+                                                <li onClick={startTimeSetting}>{val}</li>
+                                            );
+                                        })}
                                     </ul>
                                 </div>}
                                 </div>
@@ -147,11 +151,11 @@ const Funding = ({data, setData}) => {
                         </li>
                         <li className={classes.listLi}>
                             <div>후원자 결제 종료 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>종료일 다음 날부터 7일</span></div>
+                            <span className={classes.endPayment}>{data.endDate && "종료일 다음 날부터 7일"}</span></div>
                         </li>
                         <li className={classes.listLi}> 
                             <div>정산일 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>후원자 결제 종료 다음 날부터 7영업일</span></div>
+                            <span className={classes.endPayment}>{data.endDate && "후원자 결제 종료 다음 날부터 7영업일"}</span></div>
                         </li>
                     </ul>
                 </div>
