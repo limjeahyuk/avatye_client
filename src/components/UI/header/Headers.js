@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from './Header.module.css'
 import Top from "./Top";
 import Menu from './Menu';
@@ -6,6 +6,7 @@ import { useLocation} from "react-router-dom";
 import Category from "./Category";
 import Collapse from "@mui/material/Collapse";
 import { Cookies } from "react-cookie";
+import AuthContext from "../../../store/auth-context";
 
 
 const Headers = () => {
@@ -13,7 +14,7 @@ const Headers = () => {
     const location = useLocation();
     const [isHeadBox, setIsHeadBox] = useState(true);
     const [isHover, setIsHover] = useState(false);
-    const [userState, setUserState] = useState(false);
+    const ctx = useContext(AuthContext);
 
     useEffect(() => {
         const loginpath = location.pathname.slice(0, 6);
@@ -24,12 +25,6 @@ const Headers = () => {
             setIsHeadBox(false);
         } else {
             setIsHeadBox(true);
-        }
-
-        if (cookies.get('user_token')) {
-            setUserState(true);
-        } else {
-            setUserState(false);
         }
         
     }, [location])
@@ -42,7 +37,7 @@ const Headers = () => {
         <>
             {isHeadBox === true && <div className={classes.box}>
         <div className={classes.head}>
-                    <Top loginstate={userState} />
+                    <Top/>
                     <Menu hoverHandler={hoverHandler} />
             <div className={classes.ani}>
                 <Collapse

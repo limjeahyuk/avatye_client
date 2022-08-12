@@ -1,17 +1,24 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
-import Headers from './components/UI/header/Headers';
+import Fame from './pages/fame/Fram';
+import New from './pages/new/New';
+import Headers from './components/ui/header/Headers';
 import KakaoCallback from './pages/callback/KakaoCallback';
-import EmailJoin from './pages/Login/EmailJoin';
-import EmailLogin from './pages/Login/EmailLogin';
-import Join from './pages/Login/Join';
-import Login from './pages/Login/Login';
+import EmailJoin from './pages/login/email/EmailJoin';
+import EmailLogin from './pages/login/email/EmailLogin';
+import Join from './pages/login/Join';
+import Login from './pages/login/Login';
 import Main from './pages/main/Main';
-import Management from './pages/post/project-editor/Management';
 import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
 import Mypage from './pages/user/Mypage'
+import Footer from './components/ui/Footer';
+//프로젝트 기본 정보 만들기
+import CreateProject from './pages/post/project-editor/CreateProject';
+import Otherpage from './pages/others/Otherpage';
+import Deadline from './pages/deadline/Deadline';
+import Tobe from './pages/tobe/Tobe';
 
 const App = () => {
 
@@ -26,10 +33,16 @@ const App = () => {
         <Route path='/join/email' element={<EmailJoin />} />
         <Route path='/start' element={<Start />} />
         <Route path='/project-editor/start' element={<ProjectEditor />} />
-        <Route path='/project-editor/management' element={<Management />} />
         <Route path='/kakao/callback' element={<KakaoCallback /> } />
         <Route path='/mypage' element={<Mypage/>} />
+        <Route path='/u/:params' element={<Otherpage/>} />
+        <Route path='/fame' element={<Fame/>} />
+        <Route path='/new' element={<New/>} />
+        <Route path='/tobe' element={<Tobe/>} />
+        <Route path='/deadline' element={<Deadline/>} />
+        <Route path='/project-editor/create' element={<CreateProject />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
