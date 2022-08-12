@@ -12,7 +12,7 @@ const Gift = () => {
         giftItem : "",
         giftContent : "",
         limitQty : "",
-        supportPrice : ""
+        supportPrice : 1000
     })
 
     const {giftItem, giftContent, limitQty, supportPrice} = data;
@@ -82,10 +82,11 @@ const Gift = () => {
                         <div className={classes.createGiftSubTitle}>수량 제한 <HelpOutlineIcon className={classes.helpicon}/></div>
                         <div className={classes.limitDIV}>
                             <label className={classes.btndiv} htmlFor="yes"><input id="yes" type="radio" name="limit" onChange={showLimitBtn}/> 있음
-                                {limitState && <div className={classes.qtyDiv}><input className={classes.inputQTY} type="text" name="limitNum" value={limitNum} onChange={(e) => {setLimitNum(e.target.value)}}/><div className={classes.gae}>개</div></div>}
+                                {limitState && <div className={classes.qtyDiv}><input className={classes.inputQTY} type="number" name="limitNum" value={limitNum} onChange={(e) => {setLimitNum(e.target.value)}}/><div className={classes.gae}>개</div></div>}
                             </label>
                             <label className={classes.btndiv} htmlFor="no"><input id="no" type="radio" name="limit" onChange={hideLimitBtn} /> 없음</label>
                         </div>
+                        {limitNum >= 1000 ? <div className={classes.validateNum}>1000개 이하의 개수를 입력해 주세요.</div> : limitNum < 1 ? <div className={classes.validateNum}>1개 이상의 개수를 입력해 주세요.</div> : <div></div>}
                     </div>
 
                     {/* 예상 전달일 */}
@@ -99,11 +100,12 @@ const Gift = () => {
                             <div className={classes.deliveryDateFlex2}>
                                 <div>결제 종료일()로부터</div>
                                 <div className={classes.priceDIV}>
-                                    <input className={classes.createGiftInput2} type="text" onChange={onChange} name="supportPrice" value={supportPrice} autoComplete="off"/>
+                                    <input className={classes.createGiftInput2} type="text" onChange={(e) => {setDeliveryDate(e.target.value)}} name="deliveryDate" value={deliveryDate} autoComplete="off"/>
                                 <div className={classes.won2}>일 뒤</div>
                             </div>
                         </div>
                         </div>
+                        {deliveryDate >= 1825 ? <div className={classes.validateNum}>최대 1825일 이내로 설정해주세요.</div> : deliveryDate < 1 ? <div className={classes.validateNum}>최소 1일 이상으로 설정해주세요.</div> : <div></div>}
                     </div>
                     
                     {/* 배송 여부 */}
@@ -121,9 +123,10 @@ const Gift = () => {
                         <div className={classes.createGiftSubTitle}>최소 후원 금액 <HelpOutlineIcon className={classes.helpicon}/></div>
                         <div className={classes.createInfo}>배송에 필요한 선물은 배송비를 포함해주세요.</div>
                         <div className={classes.priceDIV}>
-                            <input className={classes.createGiftInput2} type="text" placeholder="1000원 이상의 금액을 입력해주세요" onChange={onChange} name="deliveryDate" value={deliveryDate} autoComplete="off"/>
+                            <input className={classes.createGiftInput2} type="text" placeholder="1000원 이상의 금액을 입력해주세요" onChange={onChange} name="supportPrice" value={supportPrice} autoComplete="off"/>
                             <div className={classes.won2}>원</div>
                         </div>
+                        {supportPrice < 1000 ? <div className={classes.validateNum}>1,000원 이상의 금액을 입력해주세요.</div> : supportPrice > 9999999999 ? <div className={classes.validateNum}>9,999,999,999원 이하의 금액을 입력해주세요.</div> : <div></div>}
                     </div>
 
                     <div>
