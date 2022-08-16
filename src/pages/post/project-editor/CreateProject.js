@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BasicInfo from "../../../components/post/createProject/BasicInfo";
 import ManageHeader from "../../../components/post/management/ManageHeader";
 import Funding from '../../../components/post/createProject/Funding';
@@ -14,6 +14,7 @@ const CreateProject = () => {
     const tabHandler = (num) => {
         setProjectTab(num);
     }
+
 
     const [basicdata, setBasicData] = useState({
         category : state.categoryState,
@@ -33,6 +34,10 @@ const CreateProject = () => {
         endDate: new Date(),
         startTime: "12시 00분"
     })
+
+    useEffect(() => {
+        console.log(basicdata);
+    },[basicdata])
 
 
     return <>

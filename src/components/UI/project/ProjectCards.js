@@ -92,10 +92,18 @@ const ProjectCards = ({project, size, setProjects}) => {
                 <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large} ${size === 'xl' && classes.xlarge}`}>
                     <div className={classes.imgWrapper}>
                         <img className={classes.img} src={project.profileIMG} alt="subimg" />
-                        {project.nowPrice && <div className={classes.heartbox} onClick={openModal}><div className={project.heartCheck !== 1 ? classes.heart : classes.checkheart} onClick={(e)=> Chagne(e, project.projectIndex)}>{project.heartCheck !== 1 ? <FavoriteBorderIcon/> : <FavoriteIcon/>}</div></div>}
+                        {project.nowPrice &&
+                            <div className={classes.heartbox} onClick={openModal}>
+                                <div className={project.heartCheck !== 1 ? classes.heart : classes.checkheart} onClick={(e) => Chagne(e, project.projectIndex)}>
+                                    {project.heartCheck !== 1 ? <FavoriteBorderIcon /> : <FavoriteIcon />}
+                                </div>
+                            </div>}
                     </div>
                     <div className={classes.subInfoBox}>
-                        <div className={classes.subInfo}><span>{project.name}</span><span className={classes.submiddleline}>|</span><Link to ={`/u/${project.userID}`}><span>{project.nickName}</span></Link></div>
+                        <div className={classes.subInfo}>
+                            <span>{project.name}</span>
+                            <span className={classes.submiddleline}>|</span>
+                            <Link to={`/u/${project.userID}`}><span>{project.nickName}</span></Link></div>
                         <div className={classes.subtitle}>{project.LongTitle}</div>
                         {project.summary && <div className={classes.subdes}>{project.summary}</div>}
                         {project.nowPrice &&
@@ -103,6 +111,7 @@ const ProjectCards = ({project, size, setProjects}) => {
                                 {project.summary && <span className={classes.datebox}><span className={classes.subprice}>{project.nowPrice}원</span>
                                 <span className={classes.subdate}>{date2.diff(date1, "days") < 0 ? (project.nowPrice / project.goalPrice * 100 < 100 ? "펀딩 무산" : "펀딩 성공") : (date2.diff(date1, "days") === 0 ?  "오늘 마감" : `${date2.diff(date1, "days")}일 남음`)}</span></span>}
                             </div>
+              
                         }
                         {project.nowPrice && 
                             <div className={classes.progressbarbox}> 
