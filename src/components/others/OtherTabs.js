@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from "moment";
+import 'moment/locale/ko';
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import SettingsIcon from '@mui/icons-material/Settings';
 
-import ProfileTab from './Tab/ProfileTab';
-import SupportProject from './Tab/SupportProject';
-import UploadProject from './Tab/UploadProject';
+import ProfileTab from './Tabs/ProfileTab';
+import SupportProject from './Tabs/SupportProject';
+import UploadProject from './Tabs/UploadProject';
+import FollowerTab from './Tabs/FollowerTab';
+import FollowingTab from './Tabs/FollowingTab';
+import classes from './otherpage.module.css'
 
-import classes from './mytabs.module.css'
-import axios from 'axios';
-import { Cookies } from 'react-cookie';
-import FollowingTab from './Tab/FollowingTab';
-import FollowerTab from './Tab/FollowerTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -53,12 +56,13 @@ const MyTabs = () => {
     const [count, setCount] = useState({});
     const [sucount, setsuCount] = useState({});
 
-    const cookies = new Cookies()
-    const token = cookies.get('user_token')
+    const [data, setData] = useState([])
+    const [time, setTime] = useState()
 
+    let { params } = useParams()
 
     const findUp = () => {
-        axios.get("http://localhost:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
+        axios.get(`http://localhost:3000/u/${params}/uploadcount`)
         .then(response => {
             setCount(response.data)
             console.log(response.data)
@@ -69,7 +73,7 @@ const MyTabs = () => {
     }
 
     const findSupport = () => {
-        axios.get("http://localhost:3000/mypage/buycount" ,{headers : {'user_token': token}})
+        axios.get(`http://localhost:3000/u/${params}/buycount`)
         .then(response => {
             setsuCount(response.data)
             console.log(response.data)
@@ -79,9 +83,25 @@ const MyTabs = () => {
         })
     }
 
+    const findProfile = () => {
+        axios.get(`http://localhost:3000/u/${params}/profile`)
+        .then(response => {
+            console.log(response.data)
+            setData(response.data)
+
+            const asd = moment(response.data.Date).format('YYYYMMDD')
+            const result = moment(asd, "YYYYMMDD").fromNow()
+            setTime(result)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
+
     useEffect(() => {
         findUp();
         findSupport();
+        findProfile()
     }, [])
 
 
@@ -92,6 +112,17 @@ const MyTabs = () => {
 
     return (
         <>
+            <div>
+                {data &&
+                    <div className={classes.profilebox}>
+                        {data.profileImage ? <img src={data.profileImage} alt="profileimg"/> : <img src="/images/profile.jpg" alt="profileimg"/>}
+                        <div className={classes.profileInfo}>
+                            <div>{data.nickName}<span><SettingsIcon /></span></div>
+                            <div>{time} 가입</div>
+                        </div>
+                    </div>
+                } 
+            </div>
             <div className={classes.tabsbox}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs className={classes.tabitem} value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -112,10 +143,10 @@ const MyTabs = () => {
                     <SupportProject/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={3}>
-                    <FollowingTab/>
+                    <FollowerTab/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={4}>
-                    <FollowerTab/>
+                    <FollowingTab/>
                 </TabPanel>
             </div>
         </>

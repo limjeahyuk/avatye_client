@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import classes from '../mytabs.module.css'
+import classes from '../otherpage.module.css'
 
 const ProfileTab = () => {
     const [userProfile, setUserProfile] = useState({})

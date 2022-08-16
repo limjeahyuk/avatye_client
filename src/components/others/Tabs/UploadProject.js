@@ -1,19 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
-import ProjectCards from "../../../ui/project/ProjectCards";
-import classes from "../mytabs.module.css"
+import { useParams } from "react-router-dom";
+import ProjectCards from "../../ui/project/ProjectCards";
 
-const SupportProject = () => {
-    const [projects, setProjects] = useState([]);
-    const cookies = new Cookies()
-    const token = cookies.get('user_token')
+import classes from "../otherpage.module.css"
 
-    const findBuy = () => {
-        axios.get('http://localhost:3000/mypage/buy' ,{headers : {'user_token': token}})
-        .then(res => {
-            console.log(res.data)
-            setProjects(res.data)
+const UploadProject = () => {
+    const [projects, setProjects] = useState([])
+
+    let {params} = useParams()
+
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
+    const findPost = () => {
+        axios.get(`http://localhost:3000/u/${params}/upload`, token ? { headers : {'user_token' : token} } : '')
+        .then(response => {
+            console.log(response.data)
+            setProjects(response.data)
         })
         .catch(e => {
             console.log(e)
@@ -21,11 +26,11 @@ const SupportProject = () => {
     }
 
     useEffect(() => {
-        findBuy()
+        findPost();
     }, [])
-    
-    return (
-        <>
+
+    return(
+        <div>
             {projects.length !== 0 ?
                 <div>
                     <div className={classes.upprolength}><span>{projects.length}</span>개의 프로젝트가 있습니다.</div>
@@ -37,14 +42,14 @@ const SupportProject = () => {
                         ))}
                     </div>
                 </div>
-            :
+                :
                 <div>
                     <div className={classes.upprolength}><span>{projects.length}</span>개의 프로젝트가 있습니다.</div>
                     <div>올린 프로젝트가 없습니다</div>
                 </div>
             }
-        </>
+        </div>
     )
 }
 
-export default SupportProject
+export default UploadProject

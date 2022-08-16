@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 
-import classes from '../mytabs.module.css'
+import classes from '../mypage.module.css'
 
 const ProfileTab = () => {
     const [userProfile, setUserProfile] = useState({})
