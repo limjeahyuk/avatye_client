@@ -59,6 +59,10 @@
     color: #d0d0d0;
 }
 
+.top .heart {
+    cursor: pointer;
+}
+
 /* menu */
 
 .cont{
