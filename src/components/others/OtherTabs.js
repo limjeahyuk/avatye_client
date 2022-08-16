@@ -55,39 +55,18 @@ const MyTabs = () => {
     const [value, setValue] = useState(0);
     const [count, setCount] = useState({});
     const [sucount, setsuCount] = useState({});
-
     const [data, setData] = useState([])
     const [time, setTime] = useState()
 
     let { params } = useParams()
 
-    const findUp = () => {
-        axios.get(`http://localhost:3000/u/${params}/uploadcount`)
-        .then(response => {
-            setCount(response.data)
-            console.log(response.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
-    }
-
-    const findSupport = () => {
-        axios.get(`http://localhost:3000/u/${params}/buycount`)
-        .then(response => {
-            setsuCount(response.data)
-            console.log(response.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
-    }
-
     const findProfile = () => {
         axios.get(`http://localhost:3000/u/${params}/profile`)
         .then(response => {
             console.log(response.data)
-            setData(response.data)
+            setData(response.data.userProfile)
+            setCount(response.data.upLoadCount)
+            setsuCount(response.data.buyCount)
 
             const asd = moment(response.data.Date).format('YYYYMMDD')
             const result = moment(asd, "YYYYMMDD").fromNow()
@@ -99,8 +78,6 @@ const MyTabs = () => {
     }
 
     useEffect(() => {
-        findUp();
-        findSupport();
         findProfile()
     }, [])
 
