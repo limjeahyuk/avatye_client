@@ -413,6 +413,12 @@ select {
     color : rgb(255, 87, 87);
     font-size : 18px;
     font-weight: 700;
+    border : none;
+    text-align: right;
+}
+
+.expectedAmount:focus {
+    outline : none;
 }
 
 .fundingDateDIV {
@@ -560,6 +566,7 @@ select {
     border-radius: 20%;
     padding-top : 2px;
     height: 23px;
+    cursor: pointer;
 }
 
 .deleteIcon {
