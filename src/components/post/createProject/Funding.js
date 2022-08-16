@@ -7,15 +7,15 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Funding = () => {
-    const [goalprice, setGoalPrice] = useState(0);
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+
+const Funding = ({data, setData}) => {
     const [dropDown, setDropDown] = useState(false);
-    const [startTime, setStartTime] = useState("12시 00분");
 
     const priceHandler =(e) => {
-        setGoalPrice(e.target.value.replace(/[^0-9]/g, ''))
+        setData({
+            ...data,
+            goalprice: (e.target.value.replace(/[^0-9]/g, ''))
+        });
     }
 
     const selectTime = () => {
@@ -27,16 +27,45 @@ const Funding = () => {
     }
 
     const startTimeSetting = (e) => {
-        setStartTime(e.target.innerText)
+        setData({
+            ...data,
+            startTime: e.target.innerText
+        })
         setDropDown(false)
     }
 
-    //남은 시간
-    const lefttime = (endDate.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24;
+    let paymentFee = (data.goalprice * 0.03) + ((data.goalprice * 0.03) * 0.1)
+    let platformFee = (data.goalprice * 0.05) + ((data.goalprice * 0.05) * 0.1)
 
-    let paymentFee = (goalprice * 0.03) + ((goalprice * 0.03) * 0.1)
-    let platformFee = (goalprice * 0.05) + ((goalprice * 0.05) * 0.1)
-    
+    //시작 시간
+    let testtime = []
+    for(var i=9; i <= 18; i++){
+        testtime.push(i)
+        testtime.push(i)
+    }
+    let minute = ""
+    let finalTime = testtime.map((data, index) => {
+        if (index % 2 == 0) {
+        minute = "00분"
+        } else {
+        minute = "30분"
+        }
+        return data+"시"+" " + minute 
+    })
+    finalTime.pop()
+
+    //남은 시간
+    const lefttime = (data.endDate.getTime() - data.startDate.getTime()) / 1000 / 60 / 60 / 24;
+
+    //날짜 계산
+    let now = new Date(data.endDate);
+    now.setDate(now.getDate()+ 7)
+    let payDate = now
+    let payEndDate = payDate.getFullYear() + "." + (payDate.getMonth() + 1) + "." + payDate.getDate();
+    data.payDate = new Date(payEndDate)
+    let calDate = new Date(now.setDate(payDate.getDate() + 7));
+    let calEndDate = calDate.getFullYear() + "." + (calDate.getMonth() + 1) + "." + calDate.getDate();
+
     const numFormat = (data) => {
         return Math.round(data).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
     }
@@ -61,14 +90,17 @@ const Funding = () => {
                 <div className={classes.goalPriceDIV}>
                     <div>목표금액</div>
                     <div className={classes.goalpriceinputDIV}>
-                        <input className={classes.goalPrice} name="goalprice" value={numFormat(goalprice)} onChange={priceHandler} type="text"/>
+                        <input className={classes.goalPrice} name="goalprice" value={numFormat(data.goalprice)} onChange={priceHandler} type="text"/>
                         <span className={classes.won}>원</span>
                     </div>
+                    {data.goalprice <= 500000 ? <div className={classes.validateGoalPrice}>50만원 이상의 금액을 입력해주세요.</div> 
+                            : data.goalprice >= 9999999999 ? <div className={classes.validateGoalPrice}>9,999,999,999원 이하인 금액을 입력해주세요.</div> : <div></div>}
+
                     <div className={classes.estimatePrice}>
                         <div className={classes.amount}>
                             <span>목표 금액 달성 시 예상 수령액</span>
                             <span className={classes.expectedAmount}>
-                                {numFormat(goalprice- (paymentFee + platformFee))}원</span>
+                                {numFormat(data.goalprice- (paymentFee + platformFee))}원</span>
                         </div>
                         <div>
                             <div className={classes.calAmount}>
@@ -101,32 +133,18 @@ const Funding = () => {
                         <li className={classes.listLi}>
                             <div className={classes.dateDIV}>
                                 <div>시작일
-                                    <div className={classes.calender}><CalendarMonthOutlinedIcon /><DatePicker className={classes.selectDate} dateFormat="yyyy/MM/dd" minDate={startDate} selected={startDate} onChange={date => setStartDate(date)} /></div>
+                                    <div className={classes.calender}><CalendarMonthOutlinedIcon /><DatePicker className={classes.selectDate} dateFormat="yyyy/MM/dd" minDate={data.startDate} selected={data.startDate} onChange={date => { setData({ ...data, startDate: date }) }} /></div>
                                 </div>
                                 <div className={classes.startTime}>시작시간
-                                    <div className={classes.selectTimeDIV} onClick={selectTime}>{startTime} <KeyboardArrowDownIcon />
+                                    <div className={classes.selectTimeDIV} onClick={selectTime}>{data.startTime} <KeyboardArrowDownIcon />
                                 </div>
                                 {dropDown && <div className={classes.selectTime}>
                                     <ul className={classes.timeUL}>
-                                        <li onClick={startTimeSetting}>09시 00분</li>
-                                        <li onClick={startTimeSetting}>09시 30분</li>
-                                        <li onClick={startTimeSetting}>10시 00분</li>
-                                        <li onClick={startTimeSetting}>10시 30분</li>
-                                        <li onClick={startTimeSetting}>11시 00분</li>
-                                        <li onClick={startTimeSetting}>11시 30분</li>
-                                        <li onClick={startTimeSetting}>12시 00분</li>
-                                        <li onClick={startTimeSetting}>12시 30분</li>
-                                        <li onClick={startTimeSetting}>13시 00분</li>
-                                        <li onClick={startTimeSetting}>13시 30분</li>
-                                        <li onClick={startTimeSetting}>14시 00분</li>
-                                        <li onClick={startTimeSetting}>14시 30분</li>
-                                        <li onClick={startTimeSetting}>15시 00분</li>
-                                        <li onClick={startTimeSetting}>15시 30분</li>
-                                        <li onClick={startTimeSetting}>16시 00분</li>
-                                        <li onClick={startTimeSetting}>16시 30분</li>
-                                        <li onClick={startTimeSetting}>17시 00분</li>
-                                        <li onClick={startTimeSetting}>17시 30분</li>
-                                        <li onClick={startTimeSetting}>18시 00분</li>
+                                        {finalTime.map((val, index) =>{
+                                            return(
+                                                <li key={index} onClick={startTimeSetting}>{val}</li>
+                                            );
+                                        })}
                                     </ul>
                                 </div>}
                                 </div>
@@ -140,16 +158,16 @@ const Funding = () => {
                         </li>
                         <li className={classes.listLi}>
                             <div>종료일 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                                <div className={classes.calender}><CalendarMonthOutlinedIcon /><DatePicker className={classes.selectDate} dateFormat="yyyy/MM/dd" minDate={startDate} selected={endDate} onChange={date => setEndDate(date)} /></div>
+                                <div className={classes.calender}><CalendarMonthOutlinedIcon /><DatePicker className={classes.selectDate} dateFormat="yyyy/MM/dd" minDate={data.startDate} selected={data.endDate} onChange={date => setData({ ...data, endDate: date})} /></div>
                             </div>
                         </li>
                         <li className={classes.listLi}>
                             <div>후원자 결제 종료 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>종료일 다음 날부터 7일</span></div>
+                            <span className={classes.endPayment}>{payEndDate}</span></div>
                         </li>
                         <li className={classes.listLi}> 
                             <div>정산일 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>후원자 결제 종료 다음 날부터 7영업일</span></div>
+                            <span className={classes.endPayment}>{calEndDate}</span></div>
                         </li>
                     </ul>
                 </div>

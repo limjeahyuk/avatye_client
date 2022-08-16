@@ -8,6 +8,7 @@ const AuthContext = React.createContext({
     onLogout: () => {}
 });
 
+
 export const AuthContextProvider = (props) => {
     const cookies = new Cookies();
     const [isLogin, setIsLogin] = useState(false);
@@ -46,7 +47,9 @@ export const AuthContextProvider = (props) => {
             console.log("auth context false")
             setIsLogin(false)
         }
-    },[])
+    }, [])
+    
+    // 아자아자 화이팅!!
 
     return <AuthContext.Provider value={{
         isLogin: isLogin,

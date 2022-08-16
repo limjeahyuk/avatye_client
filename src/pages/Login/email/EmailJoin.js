@@ -77,12 +77,13 @@ const EmailJoin = () => {
         setFormValid(nameIsValid && isEmailValid === 'good' && isEmailChackValid === 'good' && isPasswordValid === 'good' && isPasswordChackValid === 'good');
     }, 500);
 
-        return () => {
-        console.log('clean')
-      clearTimeout(identifier);
+    return () => {
+        console.log('clean');
+        clearTimeout(identifier);
     };
 
     }, [nameIsValid, isEmailValid, isEmailChackValid, isPasswordValid, isPasswordChackValid])
+
 
     // 회원가입 눌렀을 때.
     const submitHandler = (e) => {

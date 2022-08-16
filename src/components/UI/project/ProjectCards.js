@@ -138,6 +138,7 @@ const ProjectCards = ({project, size, setProjects}) => {
                                     </span>
                                 }
                             </div>
+              
                         }
                         {project.nowPrice && 
                             <div className={classes.progressbarbox}> 
