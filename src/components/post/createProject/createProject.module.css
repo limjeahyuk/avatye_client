@@ -1,3 +1,9 @@
+.cont{
+    width: 100%;
+    height: 100%;
+    background-color: #fcfcfc;
+}
+
 /* basicInfo */
 
 .infoWrapper,
@@ -803,41 +809,335 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.valiNo {
-    outline : 1px solid rgb(255, 87, 87);
+
+/* creator */
+
+.creator{
+    width: 1080px;
+    margin: 124px auto;
+}
+.creator .name{
+    padding-top: 84px;
 }
 
-/* creatorInfo */
-.creatorNameInput {
-    margin-top : 15px;
-    padding : 3px 18px;
+.creator .name, .creator .img, .creator .intro, .creator .bank{
+    padding-bottom: 84px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.contintro{
+    width: 351px;
+    margin: 0 0 14px;
+}
+
+.contintro div{
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+}
+
+
+
+.creator .name>div:last-child{
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+}
+
+.creator .name input{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    border-radius: 1px;
+    background-color: white;
     border: 1px solid rgb(240, 240, 240);
-    border-radius: 0%;
-    width : 93%;
-    height : 40px;
-    color : rgb(13, 13, 13);
+    padding: 11px 18px;
+    outline: none;
+    
+}
+
+.contintro span{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 20px;
+    color: red;
+    font-size: 35px;
+}
+
+.contintro p{
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin: 0px;
     font-size: 14px;
     line-height: 24px;
 }
 
-.creatorNameInput:focus {
-    outline: 1px solid rgb(103, 103, 103);
-}
 
-.checkLetters4 {
+.creator .name>div:last-child span{
     display: flex;
-    font-size: 12px;
-    color : rgb(174, 174, 174);
     justify-content: flex-end;
-    margin-top : 5px;
-    margin-right : 8px;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(158, 158, 158);
 }
 
-.giftboxlist {
+.creator .img>div:last-child{
     display: flex;
+    width: 630px;
+    align-items: center;
+}
+
+.creator .img img{
+    margin-right: 32px;
+    display: flex;
+    width: 112px;
+    height: 112px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.creator .img>div:last-child div{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    color: rgb(158, 158, 158);
+}
+
+.creator .img input{
+    display: none;
+}
+
+.creator .img label{
+    color: rgb(61, 61, 61);
+    width: 150px;
+    margin-bottom: 14px;
+    padding: 5px;
+    border: 1px solid rgb(240, 240, 240);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+.creator .img label svg{
+    color: rgb(248, 100, 83);
+}
+
+.creator .intro>div:last-child{
+    width: 630px;
+}
+
+.creator .intro textarea{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1px;
+    background-color: rgb(255, 255, 255);
+    padding: 11px 20px;
+    border: 1px solid rgb(240, 240, 240);
+    width: 590px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    height: 48pz;
+    resize: none;
+    outline: none;
+}
+
+.creator .intro>div:last-child span{
+    color: rgb(158, 158, 158);
+    display: flex;
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 20px;
+    justify-content: flex-end;
+}
+
+.creator .bankcont{
+    width: 580px;
+    padding: 24px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.creator .bankcont>div{
+    color: rgb(109, 109, 109);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.creator .bank .bankcont svg{
+    color: rgb(248, 100, 83);
+    margin-right: 10px;
+}
+
+.creator .bank .bankcont button{
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    cursor: pointer;
+    height: 36px;
+    border-radius: 1px;
+    outline: none;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background-color: white;
+    padding: 0 16px;
+}
+
+.creator .bank .bankname{
+    font-size: 14px;
+    color: rgb(61, 61, 61);
+    line-height: 22px;
+    font-weight: bold;
+}
+
+.creator .bankcont>div>div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.creator .bankinput{
+    width: 580px;
+    padding: 40px 24px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.bankinput label{
+    font-weight: 500;
+    color: rgb(13, 13, 13);
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.bankinput .names{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
     justify-content: space-between;
     align-items: center;
 }
+
+
+.bankinput .names div{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}
+
+.bankinput .names div select{
+    padding: 11px 18px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(201, 201, 201);
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    border-radius: 1px;
+}
+
+.bankinput .names div input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1px;
+    padding: 11px 18px;
+    border: 1px solid rgb(240, 240, 240);
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgb(61, 61, 61);
+    font-weight: 400;
+    outline: none;
+    appearance: none;
+}
+
+.bankinput .num{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.bankinput .num input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1px;
+    border: 1px solid rgb(240, 240, 240);
+    padding: 11px 18px;
+    color: rgb(13, 13, 13);
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    outline: none;
+    appearance: none;
+}
+
+.bankinput .num span{
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(158, 158, 158);
+}
+
+.bankinput .btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.bankinput .btn button{
+    width: 88px;
+    margin-left: 12px;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+    line-height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 1px;
+    background-color: white;
+    outline: none;
+
+}
+
+
 
 .giftDetail {
     color: rgb(61, 61, 61);

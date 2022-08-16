@@ -9,6 +9,11 @@ import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import PreviewModal from "../../ui/previewModal/PreviewModal";
 
 
+// 대기중일 때는 대기 처리를 해줘야함.. 무조건
+// 중복입력같은 거 막아보자
+
+// 막기
+
 const BasicInfo = ({data, setData}) => {
     const [categoryData, setCategoryData] = useState([]);
     const [selectCategory, setSelectCategory] = useState([]);
@@ -16,6 +21,7 @@ const BasicInfo = ({data, setData}) => {
     const [imgZoom, setImgZoom] = useState(false);
 
     const { state } = useLocation();
+
 
     const savePreviewImage = (e) => {
         setPreviewImage(URL.createObjectURL(e.target.files[0]));
@@ -43,11 +49,8 @@ const BasicInfo = ({data, setData}) => {
 
     // const filterData = (cate) => {
     //     return categoryData.filter((item) => ( item.name === cate ));
-    // }
+    // }  
 
-
-
-        
     const sendRequest = async () => {
         try {
             const response = await axios.get('http://192.168.0.74:3000/category'); 

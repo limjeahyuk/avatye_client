@@ -20,7 +20,7 @@ const ProjectEditor = () => {
     },[])
 
     const textareaChangeHandler = (e) => {
-        setIsSummery(String(e.target.value).replace(/ +/g," "))
+        setIsSummery(String(e.target.value).replace(/ +/g, " "));
     }
 
     const nextHandler = () => {
