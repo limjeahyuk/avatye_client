@@ -22,9 +22,14 @@
     width : 300px;
 }
 
-.projectInfo,
+.projectInfo{
+    width : 350px;
+}
+
 .giftItemList {
     width : 350px;
+    position :fixed;
+    top : 205px;
 }
 
 .projectInfo dt,
@@ -366,6 +371,13 @@ select {
     border-bottom : 1px solid rgb(234, 234, 234);
 }
 
+.validateGoalPrice {
+    margin-top : 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color : rgb(255, 87, 87);
+}
+
 .calAmount {
     color :  rgb(158, 158, 158);
     font-size : 12px;
@@ -531,6 +543,7 @@ select {
     border : 1px solid rgb(240, 240, 240);
     min-height: 80px;
     padding: 20px 28px;
+    margin-bottom : 20px;
 }
 
 .giftPrice {
@@ -541,11 +554,40 @@ select {
     line-height: 50px !important;
 }
 
+.deleteBTN {
+    background-color : white;
+    border : 1px solid rgb(206, 206, 206);
+    border-radius: 20%;
+    padding-top : 2px;
+    height: 23px;
+}
+
+.deleteIcon {
+    color : gray;
+    font-size: 16px !important;
+}
+
 .giftinfo {
     padding-top : 30px;
     font-size: 13px;
     color :rgb(82, 82, 82);
 }
+
+/* .helpinfo {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 5%) 0px 2px 8px, rgb(0 0 0 / 10%) 0px 1px 0px;
+    border-radius: 4px;
+    padding: 16px 46px 16px 26px;
+    position: relative;
+    margin: 10px 0px 0px;
+    border: 1px solid rgb(240, 240, 240);
+    transition: all 0.5s ease 0s;
+    height: auto;
+    transform: translateY(0px);
+    opacity: 1;
+    z-index: 999; 
+} */
 
 .createGiftForm {
     background-color: rgb(255, 255, 255);
@@ -556,6 +598,9 @@ select {
     box-sizing: border-box;
     margin-top : 52px;
     font-size: 14px;
+    position : relative;
+    left : 400px;
+    z-index : 1;
 }
 
 .createGiftTitle {
@@ -629,11 +674,19 @@ select {
     padding-left : 40px;
 }
 
+.qtyDiv:focus {
+    outline:black;
+}
+
 .inputQTY {
     width : 100px;
     height: 20px;
     border-radius: 0%;
     border : 1px solid rgb(234, 234, 234);
+}
+
+.inputQTY:focus {
+    outline : none;
 }
 
 .gae {
@@ -653,11 +706,15 @@ select {
     padding: 0px 18px;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
+    border-radius: 0%;
     text-align : right;
 }
 
 .createGiftInput2:focus {
     caret-color: rgb(255, 87, 87);
+    border-radius: 0%;
+    outline : none;
+    border : 1px solid rgb(62, 62, 62);
 }
 
 .priceDIV {
@@ -746,6 +803,10 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.valiNo {
+    outline : 1px solid rgb(255, 87, 87);
+}
+
 /* creatorInfo */
 .creatorNameInput {
     margin-top : 15px;
@@ -770,4 +831,45 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: flex-end;
     margin-top : 5px;
     margin-right : 8px;
+}
+
+.giftboxlist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.giftDetail {
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 10px;
+    font-size: 14px !important;
+    line-height: 24px !important;
+}
+
+.giftTitle {
+    font-size: 13px;
+    color :rgb(82, 82, 82);
+    padding-left : 20px;
+    margin-left : 0px;
+}
+
+.giftCount {
+    color: rgb(158, 158, 158);
+    font-size : 11px;
+    line-height: 18px !important;
+}
+
+.giftStock {
+    padding: 4px 8px;
+    background: rgb(253, 244, 243);
+    border: 1px solid rgb(255, 222, 219);
+    color: rgb(248, 100, 83);
+    white-space: normal;
+    font-size: 11px !important;
+    line-height: 20px !important;
+}
+
+.flexDiv {
+    display: flex;
+    justify-content: space-between;
 }

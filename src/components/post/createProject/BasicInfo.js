@@ -28,7 +28,7 @@ const BasicInfo = ({data, setData}) => {
     const onChange = e => {
         const {name, value} = e.target
         setData({
-            ...data,
+            data,
             [name] : String(value).replace(/ +/g," ")
         })
     };
