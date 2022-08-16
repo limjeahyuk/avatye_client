@@ -10,7 +10,7 @@ const SupportProject = () => {
     const token = cookies.get('user_token')
 
     const findBuy = () => {
-        axios.get('http://192.168.0.74:3000/mypage/buy' ,{headers : {'user_token': token}})
+        axios.get('http://localhost:3000/mypage/buy' ,{headers : {'user_token': token}})
         .then(res => {
             console.log(res.data)
             setProjects(res.data)

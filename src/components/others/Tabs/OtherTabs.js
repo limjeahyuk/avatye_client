@@ -57,7 +57,7 @@ const MyTabs = () => {
 
 
     const findUp = () => {
-        axios.get(`http://192.168.0.74:3000/u/${params}/uploadcount`)
+        axios.get(`http://localhost:3000/u/${params}/uploadcount`)
         .then(response => {
             setCount(response.data)
             console.log(response.data)
@@ -68,7 +68,7 @@ const MyTabs = () => {
     }
 
     const findSupport = () => {
-        axios.get(`http://192.168.0.74:3000/u/${params}/buycount`)
+        axios.get(`http://localhost:3000/u/${params}/buycount`)
         .then(response => {
             setsuCount(response.data)
             console.log(response.data)
@@ -77,8 +77,6 @@ const MyTabs = () => {
             console.log(e)
         })
     }
-
-    // ${count.count} ${sucount.count}
 
     useEffect(() => {
         findUp();

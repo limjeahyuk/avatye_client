@@ -13,25 +13,15 @@ const FameProject = () => {
     const token = cookie.get('user_token')
 
     const Projects = () => {
-        if(token) {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist", {headers : {'user_token' : token}})
-            .then(response => {
-                console.log(response.data)
-                setProjects(response.data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-        } else {
-            axios.get("http://192.168.0.74:3000/project/bestprojectlist")
-            .then(response => {
-                console.log(response.data)
-                setProjects(response.data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-        }
+        axios.get("http://localhost:3000/project/bestprojectlist", token ? {headers : {'user_token' : token}} : '')
+        .then(response => {
+            console.log(response.data)
+            setProjects(response.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+
     }
 
     useEffect(() => {

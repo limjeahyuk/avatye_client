@@ -14,7 +14,7 @@ const Profile = () => {
     const token = cookie.get("user_token")
 
     const findProfile = () => {
-        axios.get('http://192.168.0.74:3000/mypage/profile' ,{headers : {'user_token': token}})
+        axios.get('http://localhost:3000/mypage/profile' ,{headers : {'user_token': token}})
         .then(response => {
             console.log(response.data)
             setData(response.data)

@@ -11,10 +11,10 @@ const Profile = () => {
     const [data, setData] = useState([])
     const [time, setTime] = useState()
 
-    let {params} = useParams()
+    let { params } = useParams()
 
     const findProfile = () => {
-        axios.get(`http://192.168.0.74:3000/u/${params}/profile`)
+        axios.get(`http://localhost:3000/u/${params}/profile`)
         .then(response => {
             console.log(response.data)
             setData(response.data)

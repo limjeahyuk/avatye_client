@@ -11,7 +11,7 @@ const UploadProject = () => {
     const token = cookies.get('user_token')
 
     const findPost = () => {
-        axios.get("http://192.168.0.74:3000/mypage/upload" ,{headers : {'user_token': token}})
+        axios.get("http://localhost:3000/mypage/upload" ,{headers : {'user_token': token}})
         .then(response => {
             console.log(response.data)
             setProjects(response.data)

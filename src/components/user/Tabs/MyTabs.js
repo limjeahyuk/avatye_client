@@ -58,7 +58,7 @@ const MyTabs = () => {
 
 
     const findUp = () => {
-        axios.get("http://192.168.0.74:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
+        axios.get("http://localhost:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
         .then(response => {
             setCount(response.data)
             console.log(response.data)
@@ -69,7 +69,7 @@ const MyTabs = () => {
     }
 
     const findSupport = () => {
-        axios.get("http://192.168.0.74:3000/mypage/buycount" ,{headers : {'user_token': token}})
+        axios.get("http://localhost:3000/mypage/buycount" ,{headers : {'user_token': token}})
         .then(response => {
             setsuCount(response.data)
             console.log(response.data)
