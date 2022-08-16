@@ -19,6 +19,7 @@ import CreateProject from './pages/post/project-editor/CreateProject';
 import Otherpage from './pages/others/Otherpage';
 import Deadline from './pages/deadline/Deadline';
 import Tobe from './pages/tobe/Tobe';
+import Detail from './pages/detail/Detail';
 
 const App = () => {
 
@@ -41,6 +42,8 @@ const App = () => {
         <Route path='/tobe' element={<Tobe/>} />
         <Route path='/deadline' element={<Deadline/>} />
         <Route path='/project-editor/create' element={<CreateProject />} />
+        <Route path='/detail' element={<Detail/>} />
+        {/* path '/:sadasdsad' */}
       </Routes>
       <Footer />
     </div>
