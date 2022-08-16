@@ -61,34 +61,13 @@ const MyTabs = () => {
     const cookies = new Cookies()
     const token = cookies.get('user_token')
 
-
-    const findUp = () => {
-        axios.get("http://localhost:3000/mypage/uploadcount" ,{headers : {'user_token': token}})
-        .then(response => {
-            setCount(response.data)
-            console.log(response.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
-    }
-
-    const findSupport = () => {
-        axios.get("http://localhost:3000/mypage/buycount" ,{headers : {'user_token': token}})
-        .then(response => {
-            setsuCount(response.data)
-            console.log(response.data)
-        })
-        .catch(e => {
-            console.log(e)
-        })
-    }
-
     const findProfile = () => {
         axios.get('http://localhost:3000/mypage/profile' ,{headers : {'user_token': token}})
         .then(response => {
             console.log(response.data)
-            setData(response.data)
+            setData(response.data.userProfile)
+            setCount(response.data.upLoadCount)
+            setsuCount(response.data.buyCount)
 
             const asd = moment(response.data.Date).format('YYYYMMDD')
             const result = moment(asd, "YYYYMMDD").fromNow()
@@ -100,8 +79,6 @@ const MyTabs = () => {
     }
 
     useEffect(() => {
-        findUp();
-        findSupport();
         findProfile();
     }, [])
 
