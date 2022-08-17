@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -6,10 +6,13 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { render } from "@testing-library/react";
 
 
 const Funding = ({data, setData}) => {
     const [dropDown, setDropDown] = useState(false);
+    //후원자 결제 종료
+    const [payEndDate, setPayEndDate] = useState(data.endDate);
 
     const priceHandler =(e) => {
         setData({
@@ -58,11 +61,21 @@ const Funding = ({data, setData}) => {
     const lefttime = (data.endDate.getTime() - data.startDate.getTime()) / 1000 / 60 / 60 / 24;
 
     //날짜 계산
+
+    useEffect(() => {
+        payEndDate.setDate(data.endDate.getDate() + 7)
+        //console.log("화면 표시2 : ", payEndDate.getFullYear() + "." + (payEndDate.getMonth()+1)+ "." + payEndDate.getDate());
+        // setData({
+        //     ...data,
+        //     payDate : 
+        // })
+    }, [data.endDate])
+
     let now = new Date(data.endDate);
     now.setDate(now.getDate()+ 7)
     let payDate = now
-    let payEndDate = payDate.getFullYear() + "." + (payDate.getMonth() + 1) + "." + payDate.getDate();
-    data.payDate = new Date(payEndDate)
+    let payEndDate2 = payDate.getFullYear() + "." + (payDate.getMonth() + 1) + "." + payDate.getDate();
+    data.payDate = new Date(payEndDate2)
     let calDate = new Date(now.setDate(payDate.getDate() + 7));
     let calEndDate = calDate.getFullYear() + "." + (calDate.getMonth() + 1) + "." + calDate.getDate();
 
@@ -163,7 +176,7 @@ const Funding = ({data, setData}) => {
                         </li>
                         <li className={classes.listLi}>
                             <div>후원자 결제 종료 <HelpOutlineIcon className={classes.helpicon}/><br/>
-                            <span className={classes.endPayment}>{payEndDate}</span></div>
+                            <span className={classes.endPayment}>{payEndDate2}</span></div>
                         </li>
                         <li className={classes.listLi}> 
                             <div>정산일 <HelpOutlineIcon className={classes.helpicon}/><br/>

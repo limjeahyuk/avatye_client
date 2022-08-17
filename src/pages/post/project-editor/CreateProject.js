@@ -42,7 +42,7 @@ const CreateProject = () => {
         giftPrice : 1000,
         giftCount : 0,
         giftStock : 1,
-        giftDeliveryDate : new Date(),
+        giftDeliveryDate : new Date()
     }])
 
 

@@ -34,8 +34,10 @@
 
 .giftItemList {
     width : 350px;
+    height : 650px;
     position :fixed;
     top : 205px;
+    overflow: scroll;
 }
 
 .projectInfo dt,
@@ -419,6 +421,12 @@ select {
     color : rgb(255, 87, 87);
     font-size : 18px;
     font-weight: 700;
+    border : none;
+    text-align: right;
+}
+
+.expectedAmount:focus {
+    outline : none;
 }
 
 .fundingDateDIV {
@@ -566,6 +574,7 @@ select {
     border-radius: 20%;
     padding-top : 2px;
     height: 23px;
+    cursor: pointer;
 }
 
 .deleteIcon {
@@ -1127,6 +1136,7 @@ input[type="number"]::-webkit-inner-spin-button {
     cursor: pointer;
     display: flex;
     align-items: center;
+    overflow: scroll;
     justify-content: center;
     height: 40px;
     padding: 0 16px;
@@ -1134,7 +1144,6 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 1px;
     background-color: white;
     outline: none;
-
 }
 
 
