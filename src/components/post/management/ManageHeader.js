@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import classes from './Management.module.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Cookies } from "react-cookie";
 
-const ManageHeader = ({tabHandler}) => {
-    const [contSave, setContSave] = useState(false);
+const ManageHeader = ({tabHandler, basic, funding}) => {
+    const [contSave, setContSave] = useState(true);
     const [tabState, setTabState] = useState(1);
+
+
+    const cookie = new Cookies();
+    const token = cookie.get('user_token')
 
     const navigater = useNavigate();
 
@@ -13,6 +19,61 @@ const ManageHeader = ({tabHandler}) => {
         setTabState(num);
         tabHandler(num);
     }
+
+    const imgSaveHandler = async () => {
+        console.log(basic.img)
+         //formdata로 이미지 저장
+        const formdata = new FormData();
+        formdata.append('img', basic.img);
+
+        const config = {
+            Headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+
+        const f = await axios.post('http://localhost:3000/img', formdata, config)
+            .then((res) => {
+                console.log(res.data);
+                return res.data;
+            }).catch((error) => {
+                console.log(error);
+            })
+        
+        return f;
+    }
+
+    const createProjectHandler = async () => {
+        
+        try {
+            const imgurl = await imgSaveHandler();
+            const data = {
+                ...basic,
+                imgUrl: imgurl
+            };
+
+            console.log(imgurl);
+            console.log(data);
+
+            await axios({
+                url: 'http://localhost:3000/project/createProject',
+                method: 'post',
+                data: data,
+                headers: {
+                 'user_token' : token
+                }
+            }).then(function a(response) {
+                console.log(response.data);
+            }).catch(function (err) {
+                console.log(err);
+            })
+        }
+        catch {
+            console.log("error");
+        }
+    }
+    
+    
 
     return <div>
         <div className={classes.frame}>
@@ -22,7 +83,7 @@ const ManageHeader = ({tabHandler}) => {
                         <ArrowBackIcon onClick={() => navigater('/') } />
                         <h2>프로젝트 기획</h2>
                     </div>
-                    <button className={`${contSave && classes.save}`}><span>{contSave ? "저장" : "기획중"}</span></button>
+                    <button className={`${contSave && classes.save}`} onClick={createProjectHandler}><span>{contSave ? "저장" : "기획중"}</span></button>
                 </div>
             </div>
             <div className={classes.bot}>
