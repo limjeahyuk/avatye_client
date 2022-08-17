@@ -28,8 +28,10 @@
 
 .giftItemList {
     width : 350px;
+    height : 650px;
     position :fixed;
     top : 205px;
+    overflow: scroll;
 }
 
 .projectInfo dt,
@@ -844,6 +846,7 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: scroll;
 }
 
 .giftDetail {

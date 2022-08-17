@@ -9,7 +9,7 @@ const Gift = ({data, setData, date}) => {
     const [limitState, setLimitState] = useState(false);
     const [plusDate, setplusDate] = useState(0);
     //calDate : 계산할 때 쓰는 date, deliveryDate : 화면에 뿌려줄때 쓰는 date
-    const [calDate, setCalDate] = useState(new Date());
+    const [calDate, setCalDate] = useState(new Date(date));
     const [deliveryDate, setDeliveryDate] = useState("");
     const [item, setItem] = useState({
         giftTitle : "",
@@ -41,7 +41,8 @@ const Gift = ({data, setData, date}) => {
             giftDeliveryDate : new Date()
         });
         setplusDate(0);
-        
+        setDeliveryDate("");
+        setCalDate(new Date(date));
     };
 
     const showLimitBtn = () => {
@@ -58,17 +59,16 @@ const Gift = ({data, setData, date}) => {
     }
 
     //날짜 계산
-    let deliDate = new Date(date);
     const day = ['일', '월', '화', '수', '목', '금', '토']
     let payEndDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
     useEffect(() => {
-        setCalDate(new Date(deliDate.setDate(date.getDate() + Number(plusDate))));
-        setDeliveryDate(calDate.getFullYear() + "-" + (calDate.getMonth() + 1) + "-" + calDate.getDate() + "(" + day[calDate.getDay()] + ")")
         setItem({
             ...item,
             giftDeliveryDate : calDate
         });
+        setCalDate(new Date(calDate.setDate(date.getDate() + Number(plusDate))));
+        setDeliveryDate(calDate.getFullYear() + "-" + (calDate.getMonth() + 1) + "-" + calDate.getDate() + "(" + day[calDate.getDay()] + ")")
 
     }, [plusDate]);
 
@@ -97,7 +97,8 @@ const Gift = ({data, setData, date}) => {
                                     <div>
                                         <div className={classes.giftboxlist}>
                                             <span className={classes.giftPrice}>{val.giftPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원+</span>
-                                            <button className={classes.deleteBTN}><DeleteForeverOutlinedIcon className={classes.deleteIcon}/></button>
+                                            <button onClick={() => {setData(data.filter(item => val.giftDetail !== item.giftDetail))}} className={classes.deleteBTN}><DeleteForeverOutlinedIcon className={classes.deleteIcon}/></button>
+                                            
                                         </div>
                                         <div className={classes.giftDetail}>{val.giftDetail}</div>
                                         <div>
@@ -105,7 +106,7 @@ const Gift = ({data, setData, date}) => {
                                                 <li>{val.giftTitle}</li>
                                             </ul>
                                         </div>
-                                        <div className={classes.giftDetail}>예상 전달일 : {calDate.getFullYear() + "년 " + (calDate.getMonth()+1) + "월 " + calDate.getDate() + "일"}</div>
+                                        <div className={classes.giftDetail}>예상 전달일 : {val.giftDeliveryDate.toLocaleDateString()}</div>
                                         <div className={classes.flexDiv}>
                                             <div className={classes.giftCount}>✓ {val.giftCount} 명이 선택</div>
                                             <div className={classes.giftStock}>{val.giftStock}개 남음</div>
