@@ -8,11 +8,13 @@ import { useLocation } from "react-router-dom";
 
 const CreateProject = () => {
     const [projectTab, setProjectTab] = useState(1);
-    const {state} = useLocation();
+
+    const { state } = useLocation();
 
     const tabHandler = (num) => {
         setProjectTab(num);
     }
+
 
     const [basicdata, setBasicData] = useState({
         category : state.categoryState,
@@ -20,7 +22,7 @@ const CreateProject = () => {
         longTitle : "",
         shortTitle : "",
         summary : state.isSummery,
-        profileIMG : "",
+        img : "",
         video : "",
         webAddress : "",
         searchTag : ""
@@ -43,8 +45,9 @@ const CreateProject = () => {
         giftDeliveryDate : new Date()
     }])
 
+
     return <>
-        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} />
+        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData}/>
         {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
         {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
         {projectTab === 3 && <Gift data={giftData} setData={setGiftData} date={fundingData.payDate}/>}

@@ -1,0 +1,21 @@
+.heartbox .hearttab,
+.heartbox .hearttitle,
+.heartbox .subtitle{
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.heartbox .hearttitle {
+    padding: 48px 0 24px;
+    font-size: 32px;
+    color: #1c1c1c;
+    font-weight: 900;
+}
+
+.heartbox .border {
+    border-bottom: 1px solid #eee;
+}
+
+.test2 {
+    width: 100px;
+}
