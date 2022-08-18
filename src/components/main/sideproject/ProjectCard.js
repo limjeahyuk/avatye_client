@@ -32,7 +32,7 @@ const ProjectList = ({data, index}) => {
                         </Typography>
                         <Typography></Typography>
                         <Typography className={classes.title}>
-                            {data.LongTitle}
+                            {data.longTitle}
                         </Typography>
                     </div> 
                     <Typography className={classes.percent}>{parseInt(data.percent)}% 달성</Typography>
