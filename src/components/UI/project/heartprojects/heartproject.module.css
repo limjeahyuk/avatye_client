@@ -16,7 +16,18 @@
     border-bottom: 1px solid #eee;
 }
 
-.test2 {
+.heartbox .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.stack {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.item {
     width: 100px;
 }
 

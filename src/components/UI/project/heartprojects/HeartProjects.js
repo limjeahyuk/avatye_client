@@ -83,16 +83,16 @@ const HeartProjects = () => {
     return (
         <div className={classes.heartbox}>
             <div className={classes.hearttitle}>관심 프로젝트</div>
-            <div className={classes.subtitle}>좋아한{fil.length}</div>
+            <div className={classes.subtitle}>좋아한 {fil.length}</div>
             <div className={classes.border}></div>
             <div className={classes.hearttab}>
-                <Stack>
-                    <Chip className={classes.test2} label={select} open={open} variant="outlined" onDelete={handleDelete} onClick={handleClick} />
+                <Stack className={classes.stack}>
+                    <Chip className={classes.item} label={select} open={open} variant="outlined" onDelete={handleDelete} onClick={handleClick} />
                 </Stack>
                 <div onClick={handleDelete}>
                     {open &&
                         <Select
-                            className={classes.test2}
+                            className={classes.item}
                             value={select}
                             onChange={handleChange}
                             onClick={e => e.stopPropagation()}
