@@ -94,7 +94,7 @@ const MyTabs = () => {
                     <div className={classes.profilebox}>
                         {data.profileImage ? <img src={data.profileImage} alt="profileimg"/> : <img src="/images/profile.jpg" alt="profileimg"/>}
                         <div className={classes.profileInfo}>
-                            <div>{data.nickName}<span><SettingsIcon /></span></div>
+                            <div>{data.nickName}</div>
                             <div>{time} 가입</div>
                         </div>
                     </div>
