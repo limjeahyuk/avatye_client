@@ -274,10 +274,15 @@ const BasicInfo = ({data, setData}) => {
             
             {/* 에디터 */}
             <div className={classes.ckeditor}>
-                <Editor editorChangeHandler={ onEditerChange}/>
+                <div className={classes.contintro}>
+                    <div>프로젝트 계획<span>*</span></div>
+                    <p>프로젝트의 관하여 에디터에 작성해주세요.</p>
+                </div>
+                <div className={classes.editor}>
+                    <Editor editorChangeHandler={ onEditerChange}/>
+                </div>
+                
             </div>
-
-
         </div>
         
         </>

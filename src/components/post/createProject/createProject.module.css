@@ -1089,6 +1089,17 @@ input[type="number"]::-webkit-inner-spin-button {
 
 }
 
+.ckeditor{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ckeditor .editor{
+    width: 630px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 
 
