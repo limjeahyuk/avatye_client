@@ -11,7 +11,7 @@ const ProjectEditor = () => {
     const [categoryData, setCategoryData] = useState([{}]);
 
     const sendRequest = async () => {
-        const response = await axios.get("http://192.168.0.74:3000/category");
+        const response = await axios.get("http://localhost:3000/category");
         setCategoryData(response.data);
     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import PreviewModal from "../../ui/previewModal/PreviewModal";
-
+import Editor from "../../ui/editor/Editor";
 
 // 대기중일 때는 대기 처리를 해줘야함.. 무조건
 // 중복입력같은 거 막아보자
@@ -39,6 +39,13 @@ const BasicInfo = ({data, setData}) => {
         })
     };
 
+    const onEditerChange = (item) => {
+        setData({
+            ...data,
+            contents: item
+        })
+    }
+
  const zoomHandler = () => {
         if (imgZoom) {
             setImgZoom(false)
@@ -53,7 +60,7 @@ const BasicInfo = ({data, setData}) => {
 
     const sendRequest = async () => {
         try {
-            const response = await axios.get('http://192.168.0.74:3000/category'); 
+            const response = await axios.get('http://localhost:3000/category'); 
             setCategoryData(response.data);
             setSelectCategory(response.data.filter((item) => (item.name === state.categoryState))[0].catename.split(','));
         } catch (err) {
@@ -69,7 +76,6 @@ const BasicInfo = ({data, setData}) => {
         
         if (selectCategory[0]) {
             // const filterData = categoryData.filter((item) => (item.name === data.category));
-            // console.log(filterData(category)[0].catename.split(','));
             // setSelectCategory(filterData(category)[0].catename.split(','));
             setSelectCategory(categoryData.filter((item) => (item.name === data.category))[0].catename.split(','));
         }
@@ -265,9 +271,15 @@ const BasicInfo = ({data, setData}) => {
                     </div>
                 </div>
             </div>
+            
+            {/* 에디터 */}
+            <div className={classes.ckeditor}>
+                <Editor editorChangeHandler={ onEditerChange}/>
+            </div>
 
 
         </div>
+        
         </>
     )
 }

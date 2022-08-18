@@ -25,7 +25,8 @@ const CreateProject = () => {
         img : "",
         video : "",
         webAddress : "",
-        searchTag : ""
+        searchTag: "",
+        contents: ''
     });
 
     const [fundingData, setFundingData] = useState({

@@ -320,6 +320,17 @@ select {
     border: 1px solid rgb(240, 240, 240);
 }
 
+.ckeditor{
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 480px;
+}
+
+.ckeditor .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: var(--ck-color-base-border);
+    min-height: 400px;
+}
+
 /* funding */
 
 .goalPriceDIV {
