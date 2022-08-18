@@ -48,7 +48,7 @@ const CreateProject = () => {
 
 
     return <>
-        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData}/>
+        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} gift={giftData} />
         {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
         {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
         {projectTab === 3 && <Gift data={giftData} setData={setGiftData} date={fundingData.payDate}/>}

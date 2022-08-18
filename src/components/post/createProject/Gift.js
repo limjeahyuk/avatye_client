@@ -32,7 +32,6 @@ const Gift = ({data, setData, date}) => {
 
     const reset = () => {
         setItem({
-            ...item, 
             giftTitle : "",
             giftDetail : "",
             giftPrice : 1000,
@@ -54,7 +53,11 @@ const Gift = ({data, setData, date}) => {
     }
 
     const saveItem = () => {
-        setData([...data, item])
+        if (data[0].giftTitle === '') {
+            setData([item])
+        }else{
+            setData([...data, item]);
+        }
         reset();
     }
 

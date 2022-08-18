@@ -4,7 +4,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './Editor.css'
 import UploadAdapter from './UploadAdapter';
 
-const Editor = ({editorChangeHandler}) => {
+const Editor = ({editorChangeHandler, editorData}) => {
    
 
     function MyCustomUploadAdapterPlugin(editor) {
@@ -19,10 +19,11 @@ const Editor = ({editorChangeHandler}) => {
             extraPlugins: [MyCustomUploadAdapterPlugin]
         }}
             editor={ ClassicEditor }
-            data="<p>프로젝트 소개</p>"
+            data={editorData}
             onReady={ editor => {
                 // You can store the "editor" and use when it is needed.
-                console.log( 'Editor is ready to use!', editor );
+                console.log('Editor is ready to use!', editor);
+                console.log(editor.getData())
             } }
             onChange={ ( event, editor ) => {
                 const data = editor.getData();
