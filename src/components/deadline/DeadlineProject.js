@@ -13,26 +13,14 @@ const Deadlineproject = () => {
     const token = cookie.get('user_token')
 
     const Projects = () => {
-        if(token) {
-            axios.get("http://192.168.0.74:3000/project/deadlineprojectlist", {headers: {'user_token' : token}})
-            .then(response => {
-                console.log(response.data)
-                setProjects(response.data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-        } else {
-            axios.get("http://192.168.0.74:3000/project/deadlineprojectlist")
-            .then(response => {
-                console.log(response.data)
-                setProjects(response.data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-        }
-        
+        axios.get('http://localhost:3000/project/deadlineprojectlist', token ? {headers: {'user_token' : token}} : '')
+        .then(response => {
+            console.log(response.data);
+            setProjects(response.data);
+        })
+        .catch(e => {
+            console.log(e)
+        })
     }
 
     useEffect(() => {
@@ -41,8 +29,15 @@ const Deadlineproject = () => {
 
     return (
         <div>
-            <div className={classes.famebadge}><span>달성률</span></div>
-            <div className={classes.fametitle}><span className={classes.famecount}>{projects.length}</span>개의 프로젝트가 있습니다.</div>
+            <div className={classes.famebadge}>
+                <span>달성률</span>
+            </div>
+            <div className={classes.fametitle}>
+                <span className={classes.famecount}>
+                    {projects.length}
+                </span>
+                개의 프로젝트가 있습니다.
+            </div>
             <div>{projects.endDate}</div>
             <div className={classes.famelistbox}>
                 {projects.map((prol, key) => (

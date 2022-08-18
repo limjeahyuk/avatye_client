@@ -1,9 +1,8 @@
 import React from "react";
-import OtherProfile from '../../components/others/OtherProfile'
-import OtherTabs from '../../components/others/Tabs/OtherTabs'
+import OtherTabs from '../../components/others/OtherTabs'
 
 const Otherpage = () => {
-    return(<><OtherProfile/><OtherTabs/></>)
+    return(<><OtherTabs/></>)
 }
 
 export default Otherpage

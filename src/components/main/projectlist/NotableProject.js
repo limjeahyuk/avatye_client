@@ -16,21 +16,14 @@ const NotableProject = () => {
     // 192.168.0.74
 
     const pointproject = () => {
-        if (token) {
-            axios.get("http://localhost:3000/main/pointproject", {headers : {'user_token': token}})
-            .then(response => {
-                setProjects(response.data)
-                console.log(response.data);
-            })
-
-        } else {
-            axios.get("http://localhost:3000/main/pointproject")
-            .then(response => {
-                setProjects(response.data)
-                console.log(response.data);
-            })
-            
-        }
+        axios.get("http://localhost:3000/main/pointproject", token ? {headers : {'user_token': token}} : '')
+        .then(response => {
+            setProjects(response.data)
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e)
+        })
     }
 
     useEffect(() => {

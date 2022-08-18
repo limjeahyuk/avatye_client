@@ -1,10 +1,8 @@
-import MyTabs from "../../components/user/Tabs/MyTabs";
+import MyTabs from "../../components/user/MyTabs";
 import React from "react";
 
-import Profile from '../../components/user/Profile'
-
 const Mypage = () => {
-    return <><Profile/><MyTabs/></>
+    return <><MyTabs/></>
 }
 
 export default Mypage;

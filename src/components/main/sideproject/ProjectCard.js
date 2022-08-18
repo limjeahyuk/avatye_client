@@ -23,10 +23,16 @@ const ProjectList = ({data, index}) => {
                 <Typography className={`${classes.rank} ${index > 2 && classes.good}`}>{index+1}</Typography>
                 <CardContent className={classes.cardContent}>  
                     <div className={classes.subbox}>
-                        <Typography className={classes.subdes}><span>{data.name}</span><span className={classes.middleline}>|</span><span><Link to ={`/u/${data.userID}`}>{data.nickName}</Link></span></Typography>
+                        <Typography className={classes.subdes}>
+                            <span>{data.name}</span>
+                            <span className={classes.middleline}>|</span>
+                            <span>
+                                <Link to ={`/u/${data.userID}`}>{data.nickName}</Link>
+                            </span>
+                        </Typography>
                         <Typography></Typography>
                         <Typography className={classes.title}>
-                            {data.LongTitle}
+                            {data.longTitle}
                         </Typography>
                     </div> 
                     <Typography className={classes.percent}>{parseInt(data.percent)}% 달성</Typography>
