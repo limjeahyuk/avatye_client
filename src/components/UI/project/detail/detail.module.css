@@ -16,48 +16,211 @@
     display: flex;
     justify-content: center;
     width: 1032px;
+    padding: 0 0 42px;
 }
 
-.topbox .toptextbox {
+.topbox .topcontent .toptextbox {
     margin-left: 86px;
 }
 
-.topbox .toptextbox .toptext {
-    margin-top: 8px;
+.topbox .topcontent .toptextbox .toptext {
+    margin-bottom: 8px;
 }
 
-.topbox .toptextbox .pricebox,
-.topbox .toptextbox .finishdatebox,
-.topbox .toptextbox .sponserbox {
+.topbox .topcontent .toptextbox .pricebox,
+.topbox .topcontent .toptextbox .finishdatebox,
+.topbox .topcontent .toptextbox .sponserbox {
     margin-bottom: 24.5px;
 }
 
-.topbox .toptextbox .pricebox .pricename,
-.topbox .toptextbox .finishdatebox .datename,
-.topbox .toptextbox .sponserbox .sponsername {
+.topbox .topcontent .toptextbox .pricebox .pricename,
+.topbox .topcontent .toptextbox .finishdatebox .datename,
+.topbox .topcontent .toptextbox .sponserbox .sponsername {
     margin-bottom: 14px;
     font-size: 14px;
 }
 
-.topbox .toptextbox .pricebox .price,
-.topbox .toptextbox .finishdatebox .date,
-.topbox .toptextbox .sponserbox .sponser {
+.topbox .topcontent .toptextbox .pricebox .price,
+.topbox .topcontent .toptextbox .finishdatebox .date,
+.topbox .topcontent .toptextbox .sponserbox .sponser {
     font-size: 2.38rem;
 }
 
-.topbox .toptextbox .pricebox .price .priceback,
-.topbox .toptextbox .finishdatebox .date .dateback,
-.topbox .toptextbox .sponserbox .sponser .sponserback {
+.topbox .topcontent .toptextbox .pricebox .price .priceback,
+.topbox .topcontent .toptextbox .finishdatebox .date .dateback,
+.topbox .topcontent .toptextbox .sponserbox .sponser .sponserback {
     font-size: 14px;
     margin-left: 3.5px;
 }
 
-.topbox .toptextbox .pricebox .price .pricepercent {
+.topbox .topcontent .toptextbox .pricebox .price .pricepercent {
     font-size: 18.2px;
     margin-left: 10px;
     font-weight: bold;
 }
 
+.topbox .topcontent .subbox {
+    border-top: 1px solid rgb(244, 244, 244);
+    padding: 20px 0 10px;
+    margin-bottom: 1rem;
+}
+
+.topbox .topcontent .subbox .subtextbox .boxmargin {
+    margin-top: 8px;
+}
+
+.topbox .topcontent .subbox .subtextbox .goal,
+.topbox .topcontent .subbox .subtextbox .period,
+.topbox .topcontent .subbox .subtextbox .cash {
+    width: 56px;
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.topbox .topcontent .subbox .subtextbox .goalback, 
+.topbox .topcontent .subbox .subtextbox .periodback,
+.topbox .topcontent .subbox .subtextbox .cashback {
+    margin: 0px;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.topbox .topcontent .subbox .subtextbox .periodback .periodbadge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0px 6px;
+    background-color: rgb(253, 244, 243);
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 10px;
+    color: rgb(255, 87, 87);
+}
+
+.btnbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .heart
+
+.share
+
+.support */
+
+.heart,
+.share {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    justify-content: center;
+}
+
+.share {
+    margin-left: 5px;
+}
+
+.heart .heartbtn,
+.share .sharebtn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.heart .heartbtn .hearticon,
+.share .sharebtn .shareicon {
+    font-size: 17px;
+    fill: rgb(109, 109, 109)
+}
+
+.heart .heartbtn .heartcount,
+.share .sharebtn .sharecount {
+    font-size: 9px;
+    line-height: 9px;
+    color: rgb(61, 61, 61);
+    margin-top: 5px;
+}
+
+.supportbtn {
+    min-width: 226px;
+    height: 52px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgb(0 0 0 / 10%) 0px 0em 0px 0px inset;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 0.285714rem;
+    font-weight: bold;
+    line-height: 1em;
+    text-align: center;
+    background-color: rgb(250, 100, 98);
+    color: #fff;
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 15.4px;
+}
+
+/* tab */
+
+.tabsbox {
+    padding: 0px 1rem;
+    box-sizing: border-box;
+    border-top : 1px solid rgb(228, 228, 228);
+    box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px;
+}
+
+.tabsbox.test {
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    border-top: none;
+}
+
+.tabs {
+    width: 1120px;
+    margin: 0 auto;
+}
+
+.tabs .tabsname {
+    font-weight: bold;
+    height: 56px;
+}
+
+.tabscontent {
+    margin: 0 auto;
+    width: 1160px;
+}
+
+.contentsize{
+    width: 1080px;
+    margin: 0 20px;
+}
+
+/* plan */
+
+.planbox {
+    width: 620px;
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.planbox .plancontent {
+    padding: 24px 0 32px;
+}
 
 
 

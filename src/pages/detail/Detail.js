@@ -1,8 +1,8 @@
 import React from "react";
-import DetailTop from "../../components/ui/project/detail/DetailTop";
+import DetailTabs from "../../components/ui/project/detail/DetailTabs";
 
 const Detail = () => {
-    return<><DetailTop/></>
+    return<><DetailTabs/></>
 }
 
 export default Detail
