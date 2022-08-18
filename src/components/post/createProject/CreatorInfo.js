@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import classes from './createProject.module.css';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
@@ -131,6 +132,7 @@ const CreatorInfo = () => {
             </div>
         </div>
     </div>
+
     )
 }
 

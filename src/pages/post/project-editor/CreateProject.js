@@ -33,19 +33,25 @@ const CreateProject = () => {
         goalprice: 0,
         startDate: new Date(),
         endDate: new Date(),
-        startTime: "12시 00분"
+        startTime: "12시 00분",
+        payDate: new Date()
     })
 
-    useEffect(() => {
-        console.log(basicdata);
-    },[basicdata])
+    const [giftData, setGiftData] = useState([{
+        giftTitle : "",
+        giftDetail : "",
+        giftPrice : 1000,
+        giftCount : 0,
+        giftStock : 1,
+        giftDeliveryDate : new Date(),
+    }])
 
 
     return <>
         <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData}/>
         {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
         {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
-        {projectTab === 3 && <Gift />}
+        {projectTab === 3 && <Gift data={giftData} setData={setGiftData} date={fundingData.payDate}/>}
         {projectTab === 4 && <CreatorInfo />}
     
     </>
