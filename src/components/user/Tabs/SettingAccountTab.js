@@ -1,10 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 
-
 const SettingAccountTab = () => {
     const navigater = useNavigate();
+    const [changePW, setChangePW] = useState(false);
+    const [changePhone, setChangePhone] = useState(false);
+    
+    const pwChange = () => {
+        if (changePW) {
+            setChangePW(false)
+        } else {
+            setChangePW(true)
+        }
+    }
+
+    const phoneChange = () => {
+        if (changePhone) {
+            setChangePhone(false)
+        } else {
+            setChangePhone(true)
+        }
+    }
+
 
     return( 
         <div className={classes.settingBox}>
@@ -13,25 +31,47 @@ const SettingAccountTab = () => {
                     {/* 이메일 */}
                     <div className={classes.ItemTitle}>
                         <span>이메일</span>
-                        <button className={classes.changeBTN}>변경</button>
                     </div>
-                    <div>~~userEmail~~</div>
+                    <div>axios email</div>
                 </div>
+
                 <div className={classes.settingItem}>
                     {/* 비밀번호 */}
                     <div className={classes.ItemTitle}>
                         <span>비밀번호</span>
-                        <button className={classes.changeBTN}>변경</button>
+                        {changePW? <button onClick={pwChange} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={pwChange} className={classes.changeBTN}>변경</button>}
                     </div>
+                    {changePW ? <div>
+                                    <div className={classes.currPW}>
+                                        <div>현재 비밀번호</div>
+                                        <div><input className={classes.nameInput} type="text" placeholder="현재 비밀번호"/></div>
+                                    </div>
+
+                                    <div>변경할 비밀번호</div>
+                                    <div><input className={classes.nameInput} type="text" placeholder="변경할 비밀번호"/></div>
+                                    <div><input className={classes.nameInput} type="text" placeholder="변경할 비밀번호 확인"/></div>
+                                    <button className={classes.saveImg}>저장</button>
+                                </div>
+                                 :  
+                                <div></div>}
                 </div>
+
                 <div className={classes.settingItem}>
                     {/* 연락처 */}
                     <div className={classes.ItemTitle}>
                         <span>연락처</span>
-                        <button className={classes.changeBTN}>변경</button>
+                        {changePhone? <button onClick={phoneChange} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={phoneChange} className={classes.changeBTN}>변경</button>}
                     </div>
-                    <div>01048302092</div>
+                    {changePhone ? <div>
+                                    <input className={classes.nameInput} type="text" />
+                                    <div><button className={classes.saveImg}>저장</button></div>
+                                </div>
+                                 :  
+                                <div>axios 연락처</div>}
                 </div>
+
                 <div className={classes.settingItem}>
                     {/* 카카오톡 계정 연동 */}
                     <div className={classes.ItemTitle}>
@@ -40,6 +80,7 @@ const SettingAccountTab = () => {
                     </div>
                     <div>✓ 연동중입니다</div>
                 </div>
+
                 <div className={classes.settingItem}>
                     {/* 회원탈퇴 */}
                     <div className={classes.ItemTitle}>

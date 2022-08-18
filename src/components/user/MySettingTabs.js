@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-// import axios from 'axios';
-// import { Cookies } from 'react-cookie';
+import React, { useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -49,10 +47,6 @@ function a11yProps(index) {
 
 const MySettingTabs = () => {
     const [value, setValue] = useState(0);
-    // const [count, setCount] = useState({});
-    // const [sucount, setsuCount] = useState({});
-    // const [data, setData] = useState([])
-    // const [time, setTime] = useState()
 
     // const cookies = new Cookies()
     // const token = cookies.get('user_token')

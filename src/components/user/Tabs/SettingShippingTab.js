@@ -1,27 +1,52 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import MySettingModal from "../MySettingModal";
 
 const SettingShippingTab = () => {
     const navigater = useNavigate();
+    const [shippingList, setShippingList] = useState(0);
+    const [openModal, setOpenModal] = useState(false);
 
-    return( 
+    const modalHandler = () => {
+
+        console.log(openModal);
+        if(openModal){
+            setOpenModal(false)
+        }else{
+            setOpenModal(true)
+        }
+    }
+
+    return(
+        <div>
+            {openModal && <MySettingModal handler ={modalHandler} /> }
+        
+            
         <div className={classes.settingBox}>
             <div className={classes.settingItemList}>
                 <div className={classes.settingItem}>
                     {/* 등록된 결제수단 */}
-                    <div className={classes.ItemTitle}>
-                        <span>프로필 사진</span>
-                        <button className={classes.changeBTN}>+ 추가</button>
-                    </div>
-                    <div className={classes.payMethod}>
-                        <div className={classes.noValueBox}>
-                            <div><ErrorOutlineIcon className={classes.iconWidth}/></div>
-                            <div>등록된 배송지가 없습니다.</div>
-                            <div>배송지를 추가해주세요. </div>
+                    {shippingList === 0 ? <div>
+                        <div className={classes.ItemTitle}>
+                           <span>등록된 배송지</span>
+                            <button className={classes.changeBTN} onClick={modalHandler}>+ 추가</button>
                         </div>
-                    </div>
+                        <div className={classes.payMethod}>
+                            <div className={classes.noValueBox}>
+                                <div><ErrorOutlineIcon className={classes.iconWidth}/></div>
+                                <div>등록된 배송지가 없습니다.</div>
+                                <div>배송지를 추가해주세요. </div>
+                            </div>
+                        </div>
+                        </div> :
+                        <div>
+                            <div><span>기본</span></div> 
+                            <div>받는 사람 장소</div>
+                            <div>받는 사람 전화번호</div>
+                        </div> }
+
                 </div>
             </div>
 
@@ -33,6 +58,9 @@ const SettingShippingTab = () => {
                     <span className={classes.settingInfoLink}onClick={()=> {navigater('/mypage')}}> 내 후원현황 바로가기</span>
                 </div>
             </div>
+        </div>
+
+        
         </div>
         );
 }

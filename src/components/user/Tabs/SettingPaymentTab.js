@@ -1,27 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 const SettingPaymentTab = () => {
     const navigater = useNavigate();
+    const [paymentList, setPaymentList] = useState(0);
 
     return( 
         <div className={classes.settingBox}>
             <div className={classes.settingItemList}>
                 <div className={classes.settingItem}>
-                    {/* 등록된 결제수단 */}
-                    <div className={classes.ItemTitle}>
-                        <span>프로필 사진</span>
-                        <button className={classes.changeBTN}>+ 추가</button>
-                    </div>
-                    <div className={classes.payMethod}>
-                        <div className={classes.noValueBox}>
-                            <div><ErrorOutlineIcon className={classes.iconWidth}/></div>
-                            <div>등록된 결제수단이 없습니다.</div>
-                            <div>결제수단을 추가해주세요. </div>
-                        </div>
-                    </div>
+                     {/* 등록된 결제수단 */}
+                    {paymentList === 0 ? 
+                        <div>
+                            <div className={classes.ItemTitle}>
+                                <span>등록된 결제수단</span>
+                                <button className={classes.changeBTN}>+ 추가</button>
+                            </div>
+                            <div className={classes.payMethod}>
+                                <div className={classes.noValueBox}>
+                                    <div><ErrorOutlineIcon className={classes.iconWidth}/></div>
+                                    <div>등록된 결제수단이 없습니다.</div>
+                                    <div>결제수단을 추가해주세요. </div>
+                                </div>
+                            </div>
+                        </div> :
+                        <div>
+                            <div>받는 사람 이름 <span>기본</span></div> 
+                            <div>받는 사람 장소</div>
+                            <div>받는 사람 전화번호</div>
+                        </div> }
                 </div>
             </div>
 
