@@ -34,7 +34,7 @@ const BasicInfo = ({data, setData}) => {
     const onChange = e => {
         const {name, value} = e.target
         setData({
-            data,
+            ...data,
             [name] : String(value).replace(/ +/g," ")
         })
     };
@@ -279,7 +279,7 @@ const BasicInfo = ({data, setData}) => {
                     <p>프로젝트의 관하여 에디터에 작성해주세요.</p>
                 </div>
                 <div className={classes.editor}>
-                    <Editor editorChangeHandler={ onEditerChange}/>
+                    <Editor editorChangeHandler={onEditerChange} editorData={data.contents} />
                 </div>
                 
             </div>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-const ManageHeader = ({tabHandler, basic, funding}) => {
+const ManageHeader = ({tabHandler, basic, funding, gift}) => {
     const [contSave, setContSave] = useState(true);
     const [tabState, setTabState] = useState(1);
 
@@ -51,7 +51,9 @@ const ManageHeader = ({tabHandler, basic, funding}) => {
             const imgurl = await imgSaveHandler();
             const data = {
                 ...basic,
-                imgUrl: imgurl
+                imgUrl: imgurl,
+                ...funding,
+                giftData: gift
             };
 
             console.log(imgurl);
