@@ -58,7 +58,7 @@ const KakaoCallback = () => {
         try {
             login = await axios({
                 method: 'POST',
-                url: 'http://192.168.0.74:3000/user/kakao',
+                url: 'http://localhost:3000/user/kakao',
                 data: {
                     loginID: user.data.id,
                     nickName: user.data.properties.nickname,

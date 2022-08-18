@@ -44,6 +44,8 @@ const ManageHeader = ({tabHandler, basic, funding}) => {
     }
 
     const createProjectHandler = async () => {
+
+        console.log("dd");
         
         try {
             const imgurl = await imgSaveHandler();
