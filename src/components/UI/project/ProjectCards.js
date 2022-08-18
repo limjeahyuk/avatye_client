@@ -100,16 +100,16 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                         <img className={classes.img} src={project.profileIMG} alt="subimg" />
                         {project.nowPrice && 
                             <div className={classes.heartbox} 
-                                onClick={() => {onRemove && 
+                                onClick={() => {onRemove &&
                                     onRemove(project.projectIndex)
                                     openModal()
                                 }}
                             >
                                 <div 
-                                    className={project.heartCheck === 0 ? classes.heart : classes.checkheart} 
+                                    className={project.heartCheck !== 1 ? classes.heart : classes.checkheart} 
                                     onClick={(e)=> Chagne(e, project.projectIndex)}
                                     >
-                                    {project.heartCheck === 0 ? 
+                                    {project.heartCheck !== 1 ? 
                                         <FavoriteBorderIcon/> : <FavoriteIcon/>
                                     }
                                 </div>
