@@ -3,6 +3,7 @@ import moment from "moment";
 import 'moment/locale/ko';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -58,8 +59,9 @@ const MyTabs = () => {
     const [data, setData] = useState([])
     const [time, setTime] = useState()
 
-    const cookies = new Cookies()
-    const token = cookies.get('user_token')
+    const cookies = new Cookies();
+    const token = cookies.get('user_token');
+    const navigater = useNavigate();
 
     const findProfile = () => {
         axios.get('http://localhost:3000/mypage/profile' ,{headers : {'user_token': token}})
@@ -94,7 +96,7 @@ const MyTabs = () => {
                     <div className={classes.profilebox}>
                         {data.profileImage ? <img src={data.profileImage} alt="profileimg"/> : <img src="/images/profile.jpg" alt="profileimg"/>}
                         <div className={classes.profileInfo}>
-                            <div>{data.nickName}<span><SettingsIcon /></span></div>
+                            <div>{data.nickName}<span><SettingsIcon onClick={() => {navigater('/userSetting')}}/></span></div>
                             <div>{time} 가입</div>
                         </div>
                     </div>
