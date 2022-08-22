@@ -8,6 +8,7 @@ const SettingProfileTab = ({data, setData}) => {
     const navigater = useNavigate();
     const cookies = new Cookies();
     const token = cookies.get('user_token');
+    console.log(token)
 
     //button 
     const [changeBtn, setChangeBtn] = useState({
@@ -19,20 +20,6 @@ const SettingProfileTab = ({data, setData}) => {
     }); 
 
     const {changeImg, changeName, changeComment, changeWebsite, changePrivacy} = changeBtn;
-
-    //받아온 데이터
-    const {profileImg, name, comment, website, privacy} = data;
-    // const [imgData, setImgData] = useState('');
-    const [imgUrl, setImgUrl] = useState('/images/profile.jpg');
-
-    //데이터 값 변경
-    const valueChange = (e) => {
-        const {name, value} = e.target
-        setData({
-            ...data,
-            [name] : value
-        })
-    }
 
     //버튼 변경
     const btnChange = (e) => {
@@ -51,10 +38,49 @@ const SettingProfileTab = ({data, setData}) => {
         }
     }
 
+    //받아온 데이터
+    const {profileImg, name, comment, website, privacy} = data;
+
+    // const [imgData, setImgData] = useState('');
+    const [imgUrl, setImgUrl] = useState(profileImg || '/images/profile.jpg');
+
+    //데이터 값 변경
+    const valueChange = (e) => {
+        const {name, value} = e.target
+        setData({
+            ...data,
+            [name] : value
+        })
+    }
+
     const imageHandler = (e) => {
         setImgUrl(URL.createObjectURL(e.target.files[0]));
     }
 
+    const isChecked = (e) => {
+        if (e.target.checked) {
+            setData({
+                ...data,
+                privacy : 1
+            })
+        } else {
+            setData({
+                ...data,
+                privacy : 0
+            })
+        }
+    }
+
+    const updateUserInfo = () => {
+        axios.put('http://localhost:3000/user/update', {comment : comment}, {headers: {userID : token}})
+        .then(response => {
+            console.log("성공적으로 바꿨습니다");
+            setChangeBtn({
+                ...changeBtn,
+                changeComment : false
+            })
+        })
+    }
 
     return( 
         <div className={classes.settingBox}>
@@ -92,7 +118,7 @@ const SettingProfileTab = ({data, setData}) => {
                     {changeName ? <div>
                                     <input className={`${classes.nameInput} ${name < 1 && classes.nameInputVali}`} name="name" value={name} onChange={valueChange} type="text" />
                                     {!name && <div className={classes.valiNo}>이름을 비워두시면 안됩니다.</div>}
-                                    <div><button className={classes.saveImg}>저장</button></div>
+                                    <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  
                                 <div>{name}</div>}
@@ -109,7 +135,7 @@ const SettingProfileTab = ({data, setData}) => {
                     {changeComment ? 
                             <div>
                                 <textarea className={classes.commentBox} onChange={valueChange} value={comment} name="comment" placeholder="자기소개를 입력해주세요"/>
-                                <div><button className={classes.saveImg}>저장</button></div>
+                                <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                             </div>
                             :  !comment ?
                                 <div>등록된 소개가 없습니다.</div> : <div>{comment}</div>
@@ -143,7 +169,7 @@ const SettingProfileTab = ({data, setData}) => {
                             <button onClick={btnChange} name="changePrivacy" value={changePrivacy} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changePrivacy ? <div>
-                                    <label><input type="checkbox" name="supportList" value="yes" /> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked}/> 후원한 프로젝트 목록을 공개합니다.</label>
                                     <div><button className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  !privacy ?

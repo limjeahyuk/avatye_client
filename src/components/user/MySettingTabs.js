@@ -59,7 +59,7 @@ const MySettingTabs = () => {
         name : "",
         comment : "",
         website : "",
-        private : 0,
+        privacy : 0,
     });
 
     const [accountData, setAccountData] = useState({
@@ -98,7 +98,7 @@ const MySettingTabs = () => {
                 name : response.data[0].nickName,
                 comment : response.data[0].comment,
                 website : response.data[0].website,
-                private : response.data[0].private
+                privacy : response.data[0].private
             })
             setAccountData({...accountData, 
                 email : response.data[0].email,
