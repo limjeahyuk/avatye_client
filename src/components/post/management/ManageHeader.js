@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-const ManageHeader = ({tabHandler, basic, funding, gift}) => {
+const ManageHeader = ({tabHandler, basic, funding, gift, basicVal}) => {
     const [contSave, setContSave] = useState(true);
     const [tabState, setTabState] = useState(1);
 
@@ -94,7 +94,7 @@ const ManageHeader = ({tabHandler, basic, funding, gift}) => {
                 <div>
                     <div onClick={() => tabNumHandler(1)} className={`${tabState === 1 && classes.tab}`}>
                         기본정보
-                        <span>5</span>
+                        <span>{ basicVal}</span>
                     </div>
                     <div onClick={() => tabNumHandler(2)} className={`${tabState === 2 && classes.tab}`}>
                         펀딩계획
@@ -106,7 +106,7 @@ const ManageHeader = ({tabHandler, basic, funding, gift}) => {
                     </div>
                     <div onClick={() => tabNumHandler(4)} className={`${tabState === 4 && classes.tab}`}>
                         창작자정보
-                        <span>5</span>
+                        <span>0</span>
                     </div>
                 </div>
             </div>

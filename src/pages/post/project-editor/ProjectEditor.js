@@ -9,6 +9,7 @@ const ProjectEditor = () => {
     const [categoryState, setCategoryState] = useState('');
     const [isSummery, setIsSummery] = useState('');
     const [categoryData, setCategoryData] = useState([{}]);
+    const [projectVal, setProjectVal] = useState(false);
 
     const sendRequest = async () => {
         const response = await axios.get("http://localhost:3000/category");
@@ -21,10 +22,15 @@ const ProjectEditor = () => {
 
     const textareaChangeHandler = (e) => {
         setIsSummery(String(e.target.value).replace(/ +/g, " "));
+        if (isSummery.trim().length > 8) {
+            setProjectVal(true);
+        } else {
+            setProjectVal(false);
+        }
     }
 
     const nextHandler = () => {
-        if (categoryState && isSummery) {
+        if (categoryState && projectVal) {
             navigator('/project-editor/create', { state: { categoryState, isSummery } });
         }
     }
@@ -62,14 +68,14 @@ const ProjectEditor = () => {
                             placeholder="프로젝트 요약을 입력해주세요."
                             onChange={textareaChangeHandler}
                             value={isSummery}
-                            className={`${isSummery.trim().length < 11 && classes.falseoption}`}
+                            className={`${!projectVal && classes.falseoption}`}
                         ></textarea>
                         <div className={classes.guide}>
                             <span>최소 10자이상 입력해주세요.</span>
                             <span>{isSummery.trim().length} / 50</span>
                         </div>
                         <div className={classes.btn}>
-<button onClick={nextHandler}>다음</button>
+                            <button onClick={nextHandler} disabled={!projectVal} className={`${!projectVal && classes.not}`} >다음</button>
                         </div>
                     </div>
                 </div>}

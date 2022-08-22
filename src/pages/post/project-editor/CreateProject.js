@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 
 const CreateProject = () => {
     const [projectTab, setProjectTab] = useState(1);
+    const [basicVal, setBasicVal] = useState(6);
 
     const { state } = useLocation();
 
@@ -48,8 +49,8 @@ const CreateProject = () => {
 
 
     return <>
-        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} gift={giftData} />
-        {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} />}
+        <ManageHeader tabHandler={tabHandler} basic={basicdata} funding={fundingData} gift={giftData} basicVal={basicVal} />
+        {projectTab === 1 && <BasicInfo data={basicdata} setData={setBasicData} setVal={ setBasicVal} />}
         {projectTab === 2 && <Funding data={fundingData} setData={setFundingData} />}
         {projectTab === 3 && <Gift data={giftData} setData={setGiftData} date={fundingData.payDate}/>}
         {projectTab === 4 && <CreatorInfo />}

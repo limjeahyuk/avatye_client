@@ -14,7 +14,7 @@ import Editor from "../../ui/editor/Editor";
 
 // 막기
 
-const BasicInfo = ({data, setData}) => {
+const BasicInfo = ({data, setData, setVal}) => {
     const [categoryData, setCategoryData] = useState([]);
     const [selectCategory, setSelectCategory] = useState([]);
     const [previewImage, setPreviewImage] = useState('');
@@ -197,7 +197,7 @@ const BasicInfo = ({data, setData}) => {
             {/* 프로젝트 대표 영상 */}
             <div className={classes.infoItem}>
                 <dl className={classes.projectInfo}>
-                    <dt>프로젝트 대표 영상 <span>*</span> </dt>
+                    <dt>프로젝트 대표 영상 <span></span> </dt>
                     <dd>
                     2~3분 이내의 짧은 영상으로 프로젝트를 효과적으로 소개해보세요. 대표 영상을 등록하시면 프로젝트 상세에서 이미지와 함께 제공됩니다.
                     </dd>
@@ -221,7 +221,7 @@ const BasicInfo = ({data, setData}) => {
             {/* 프로젝트 페이지 주소 */}
             <div className={classes.infoItem}>
                 <dl className={classes.projectInfo}>
-                    <dt>프로젝트 페이지 주소<span>*</span> </dt>
+                    <dt>프로젝트 페이지 주소<span></span> </dt>
                     <dd>프로젝트 페이지로 접속하기 위한 웹페이지 주소(URL)를 설정 해주세요.
                     </dd>
                 </dl>

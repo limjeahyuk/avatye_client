@@ -4,7 +4,7 @@
     display: flex;
     background-color: white;
     flex-grow: 1;
-    height: 110vh;
+    height: 140vh;
 }
 
 .editor .left{
@@ -116,6 +116,11 @@
     padding: 0 16px;
     background-color: rgb(255, 87, 87);
     color: white;
+}
+
+.project .cont .btn .not{
+    background-color: rgb(229, 229, 229);
+    cursor: auto;
 }
 
 /* categoryButton */

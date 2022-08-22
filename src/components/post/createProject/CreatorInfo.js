@@ -47,7 +47,7 @@ const CreatorInfo = () => {
         <div className={classes.creator}>
             <div className={classes.name}>
                 <div className={classes.contintro}>
-                    <div>창작자 이름<span>*</span></div>   
+                    <div>창작자 이름<span></span></div>   
                     <p>창작자 개인이나 팀을 대표할 수 있는 이름을 써주세요.</p>
                 </div>
                 <div>
@@ -57,7 +57,7 @@ const CreatorInfo = () => {
             </div>
             <div className={classes.img}>
                 <div className={classes.contintro}>
-                    <div>프로필 이미지<span>*</span></div>
+                    <div>프로필 이미지<span></span></div>
                     <p>창작자 개인이나 팀의 사진을 올려주세요.</p>
                 </div>
                 <div>
@@ -72,7 +72,7 @@ const CreatorInfo = () => {
             </div>
             <div className={classes.intro}>
                 <div className={classes.contintro}>
-                    <div>창작자 소개 <span>*</span></div>
+                    <div>창작자 소개 <span></span></div>
                     <p>2~3문장으로 창작자님의 이력과 간단한 소개를 써주세요.</p>
                 </div>
                 <div>
@@ -82,7 +82,7 @@ const CreatorInfo = () => {
             </div>
             <div className={classes.bank}>
                 <div className={classes.contintro}>
-                    <div>입금 계좌<span>*</span></div>
+                    <div>입금 계좌<span></span></div>
                     <p>후원금을 전달받을 계좌를 등록해주세요. 법인사업자는 법인계좌로만 정산받을 수 있습니다.</p>
                 </div>
                 {!bankState && <div className={classes.bankcont}>
