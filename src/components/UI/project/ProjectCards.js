@@ -44,7 +44,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
 
                 setClick(0)
 
-                axios.get(`http://localhost:3000/heart/add/${projectIndex}`, {headers : {'user_token': token}})
+                axios.post(`http://localhost:3000/heart/${projectIndex}`, {} , {headers : {'user_token': token}})
                 .then(response => {
                     console.log(response.data.result)
                 })
@@ -64,7 +64,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
 
                 setClick(1)
 
-                axios.get(`http://localhost:3000/heart/add/${projectIndex}`, {headers : {'user_token': token}})
+                axios.post(`http://localhost:3000/heart/${projectIndex}`, {} , {headers : {'user_token': token}})
                 .then(response => {
                     console.log(response.data.result)
                 })
@@ -97,7 +97,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
             {project &&
                 <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large} ${size === 'xl' && classes.xlarge}`}>
                     <div className={classes.imgWrapper}>
-                        <img className={classes.img} src={project.profileIMG} alt="subimg" />
+                        <Link to={'/detail'}><img className={classes.img} src={project.profileIMG} alt="subimg" /></Link>
                         {project.nowPrice && 
                             <div className={classes.heartbox} 
                                 onClick={() => {onRemove &&
@@ -118,7 +118,9 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                     </div>
                     <div className={classes.subInfoBox}>
                         <div className={classes.subInfo}>
-                            <span>{project.name}</span>
+                            <Link to ={`/category/${project.name}`}>
+                                <span>{project.name}</span>
+                            </Link>
                             <span className={classes.submiddleline}>|</span>
                             <Link to ={`/u/${project.userID}`}>
                                 <span>{project.nickName}</span>
