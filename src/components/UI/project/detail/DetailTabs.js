@@ -9,6 +9,7 @@ import DetailTop from './DetailTop'
 import PlanTab from "./tabs/PlanTab";
 
 import classes from './detail.module.css'
+import DetailSupport from "./DetailSupport";
 
 
 function TabPanel(props) {
@@ -58,7 +59,6 @@ const DetailTabs = () => {
     const scrollFixed = () => {
         if (scrollY > 800) {
             setScrollY(window.pageYOffset);
-            console.log(scrollY)
             setScrollActive(true);
         } else {
             setScrollY(window.pageYOffset);
@@ -87,26 +87,23 @@ const DetailTabs = () => {
                     <Tab className={classes.tabsname} label='추천' {...a11yProps(3)} />
                 </Tabs>
             </Box>
-            <TabPanel className={classes.tabscontent} value={value} index={0}>
-                <div className={classes.contentsize}>
-                    <PlanTab/>
+            <div className={classes.box}>
+                <div className={classes.boxcontent}>
+                    <TabPanel className={classes.tabscontent} value={value} index={0}>
+                        <PlanTab/>
+                    </TabPanel>
+                    <TabPanel className={classes.tabscontent} value={value} index={1}>
+                        귀찮다
+                    </TabPanel>
+                    <TabPanel className={classes.tabscontent} value={value} index={2}>
+                        언제 다 만들지..
+                    </TabPanel>
+                    <TabPanel className={classes.tabscontent} value={value} index={3}>
+                        여기는 일단 패스요~
+                    </TabPanel>
+                    <DetailSupport/>
                 </div>
-            </TabPanel>
-            <TabPanel className={classes.tabscontent} value={value} index={1}>
-                <div className={classes.contentsize}>
-                    귀찮다
-                </div>
-            </TabPanel>
-            <TabPanel className={classes.tabscontent} value={value} index={2}>
-                <div className={classes.contentsize}>
-                    언제 다 만들지..
-                </div>
-            </TabPanel>
-            <TabPanel className={classes.tabscontent} value={value} index={3}>
-                <div className={classes.contentsize}>
-                    여기는 일단 패스요~
-                </div>
-            </TabPanel>
+            </div>
         </div>
     )
 }
