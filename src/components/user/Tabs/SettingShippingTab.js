@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import MySettingModal from "../MySettingModal";
+import MyShippingSettingModal from "../Modals/MyShippingSettingModal";
 
 const SettingShippingTab = () => {
     const navigater = useNavigate();
@@ -10,8 +10,6 @@ const SettingShippingTab = () => {
     const [openModal, setOpenModal] = useState(false);
 
     const modalHandler = () => {
-
-        console.log(openModal);
         if(openModal){
             setOpenModal(false)
         }else{
@@ -21,7 +19,7 @@ const SettingShippingTab = () => {
 
     return(
         <div>
-            {openModal && <MySettingModal handler ={modalHandler} /> }
+            {openModal && <MyShippingSettingModal handler ={modalHandler} /> }
         
             
         <div className={classes.settingBox}>
