@@ -249,6 +249,11 @@
     border : 1px solid rgb(119, 119, 119);
 }
 
+.nameInputVali, .nameInputVali:focus {
+    outline : none;
+    border : 1px solid rgb(244, 69, 68);
+}
+
 .commentBox {
     resize: none;
     width : 100%;
@@ -259,6 +264,10 @@
 .commentBox:focus {
     outline : none;
     border : 1px solid rgb(119, 119, 119);
+}
+
+.valiNo {
+    color : rgb(244, 69, 68);
 }
 
 /* SettingPaymentTab */
@@ -291,10 +300,4 @@
 /* SettingAccountTab */
 .currPW {
     margin-bottom : 20px;
-}
-
-/* MySettingModal */
-.modalContent {
-    width : 500px;
-    border : 1px solid orange;
 }

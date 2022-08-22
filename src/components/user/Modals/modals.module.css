@@ -1,0 +1,172 @@
+
+/* MyShippingSettingModal */
+.modalTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom : -20px;
+}
+
+.modalContent {
+    width : 550px;
+    border-radius: 10px;
+    padding : 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right : 0;
+    margin : 70px auto;
+    background-color: white;
+    box-shadow : rgba(0, 0, 0, 0.586) 0 0 0 9999px;
+    z-index : 100;
+}
+
+.modalTitle {
+    min-height: 36px;
+    font-size: 24px;
+    line-height: 36px;
+    margin: 0px 0px 24px;
+    font-weight: bold;
+}
+
+.closeButton {
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    border : none;
+}
+
+.modalItem {
+    font-size : 14px;
+    margin : 30px 0px;
+}
+
+.modalItem div {
+    color : rgb(72, 72, 72)
+}
+
+.modalNameInput {
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    height: 40px;
+    width: 230px;
+    line-height: 24px;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+
+.modalAddInput, .modalPhoneInput, .modalNumberInput {
+    border: 1px solid rgb(230, 230, 230);
+    margin-top : 10px;
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    height: 40px;
+    width: 95%;
+    line-height: 24px;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+
+.modalNameInput:focus, .modalAddInput:focus, .modalPhoneInput:focus,
+.modalNumberInput:focus {
+    outline : none;
+    border : 1px solid rgb(119, 119, 119);
+}
+.saveShippingBtn {
+    font-size: 16px;
+    line-height: 27px;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    border-radius: 1px;
+    border: 0px;
+    outline: none;
+    font-weight: bold;
+    padding: 0px 24px;
+    margin-top : 10px;
+    background-color: rgb(255, 87, 87);
+    color: rgb(255, 255, 255);
+}
+
+
+/*MyPaymentSettingModal*/
+.modalContent2 {
+    width : 350px;
+    border-radius: 10px;
+    padding : 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right : 0;
+    margin : 100px auto;
+    background-color: white;
+    box-shadow : rgba(0, 0, 0, 0.586) 0 0 0 9999px;
+    z-index : 100;
+}
+
+.paymentBtn {
+    color: rgb(109, 109, 109);
+    font-size : 15px;
+    width: 100%;
+    height: 52px;
+    cursor: pointer;
+    display: flex;
+    margin-bottom : 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1px;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    border: 1px solid rgb(230, 230, 230);
+    background-color: rgb(255, 255, 255);
+}
+
+.paymentBtn:hover {
+    background-color: #6d6d6d27;
+}
+
+/* MyPaymentCardModal */
+
+.selectBox, .itemBox {
+    display: flex;
+}
+
+.selectBox select{
+    width : 200px;
+    margin-right : 20px;
+    margin-top : 10px;
+}
+
+.modalNumberInput2 {
+    border: 1px solid rgb(230, 230, 230);
+    margin-top : 10px;
+    margin-right : 40px;
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    height: 40px;
+    width: 230px;
+    line-height: 24px;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+
+.basicAdd {
+    color :rgb(72, 72, 72);
+    font-size : 14px;
+}
+
+/* MyPaymentAccountModal */
+.selectBank {
+    width : 100% !important;
+}
+
+.selectBank:focus {
+    outline: none;
+    border : 1px solid rgb(119, 119, 119);
+}

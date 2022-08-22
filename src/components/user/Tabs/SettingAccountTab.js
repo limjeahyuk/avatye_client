@@ -2,27 +2,44 @@ import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 
-const SettingAccountTab = () => {
+const SettingAccountTab = ({data, setData}) => {
     const navigater = useNavigate();
-    const [changePW, setChangePW] = useState(false);
-    const [changePhone, setChangePhone] = useState(false);
+    //button 
+    const [changeBtn, setChangeBtn] = useState({
+        changePw : false,
+        changePhone: false
+    }); 
+
+    const {changePw, changePhone} = changeBtn;
+
+    const btnChange = (e) => {
+        const {name, value} = e.target;
+        
+        if (value === "false") {
+            setChangeBtn({
+                ...changeBtn,
+                [name] : true
+            })
+        } else {
+            setChangeBtn({
+                ...changeBtn,
+                [name] : false
+            })
+        }
+    }
+
+    //받아온 데이터
+    const {email, phone} = data;
+
+    const valueChange = (e) => {
+        const {name, value} = e.target
+        setData({
+            ...data,
+            [name] : value
+        })
+    }
     
-    const pwChange = () => {
-        if (changePW) {
-            setChangePW(false)
-        } else {
-            setChangePW(true)
-        }
-    }
-
-    const phoneChange = () => {
-        if (changePhone) {
-            setChangePhone(false)
-        } else {
-            setChangePhone(true)
-        }
-    }
-
+    console.log(data)
 
     return( 
         <div className={classes.settingBox}>
@@ -32,17 +49,17 @@ const SettingAccountTab = () => {
                     <div className={classes.ItemTitle}>
                         <span>이메일</span>
                     </div>
-                    <div>axios email</div>
+                    <div>{email}</div>
                 </div>
 
                 <div className={classes.settingItem}>
                     {/* 비밀번호 */}
                     <div className={classes.ItemTitle}>
                         <span>비밀번호</span>
-                        {changePW? <button onClick={pwChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={pwChange} className={classes.changeBTN}>변경</button>}
+                        {changePw? <button onClick={btnChange} name="changePw" value={changePw} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changePw" value={changePw} className={classes.changeBTN}>변경</button>}
                     </div>
-                    {changePW ? <div>
+                    {changePw ? <div>
                                     <div className={classes.currPW}>
                                         <div>현재 비밀번호</div>
                                         <div><input className={classes.nameInput} type="text" placeholder="현재 비밀번호"/></div>
@@ -61,15 +78,15 @@ const SettingAccountTab = () => {
                     {/* 연락처 */}
                     <div className={classes.ItemTitle}>
                         <span>연락처</span>
-                        {changePhone? <button onClick={phoneChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={phoneChange} className={classes.changeBTN}>변경</button>}
+                        {changePhone? <button onClick={btnChange} name="changePhone" value={changePhone} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changePhone" value={changePhone} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changePhone ? <div>
-                                    <input className={classes.nameInput} type="text" />
+                                    <input className={classes.nameInput} onChange={valueChange} value={phone} name="phone" type="text" />
                                     <div><button className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  
-                                <div>axios 연락처</div>}
+                                <div>{phone}</div>}
                 </div>
 
                 <div className={classes.settingItem}>

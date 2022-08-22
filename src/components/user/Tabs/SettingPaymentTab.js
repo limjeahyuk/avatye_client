@@ -2,12 +2,25 @@ import React, {useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import MyPaymentSettingModal from "../Modals/MyPaymentSettingModal";
 
 const SettingPaymentTab = () => {
     const navigater = useNavigate();
     const [paymentList, setPaymentList] = useState(0);
+    const [openModal, setOpenModal] = useState(false);
+
+    const modalHandler = () => {
+        if(openModal){
+            setOpenModal(false)
+        }else{
+            setOpenModal(true)
+        }
+    }
 
     return( 
+        <div>
+            {openModal && <MyPaymentSettingModal handler={modalHandler} /> }
+        
         <div className={classes.settingBox}>
             <div className={classes.settingItemList}>
                 <div className={classes.settingItem}>
@@ -16,7 +29,7 @@ const SettingPaymentTab = () => {
                         <div>
                             <div className={classes.ItemTitle}>
                                 <span>등록된 결제수단</span>
-                                <button className={classes.changeBTN}>+ 추가</button>
+                                <button className={classes.changeBTN} onClick={modalHandler}>+ 추가</button>
                             </div>
                             <div className={classes.payMethod}>
                                 <div className={classes.noValueBox}>
@@ -43,6 +56,7 @@ const SettingPaymentTab = () => {
                     <span className={classes.settingInfoLink}onClick={()=> {navigater('/mypage')}}> 후원현황 바로가기</span>
                 </div>
             </div>
+        </div>
         </div>
         );
 }

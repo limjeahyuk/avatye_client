@@ -4,55 +4,28 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from 'react-cookie';
 
-const SettingProfileTab = () => {
+const SettingProfileTab = ({data, setData}) => {
     const navigater = useNavigate();
-    const [changeImg, setChangeImg] = useState(false);
-    const [changeName, setChangeName] = useState(false);
-    const [changeComment, setChangeComment] = useState(false);
-    const [changeWebsite, setChangeWebsite] = useState(false);
-    const [changePrivacy, setChangePrivacy] = useState(false);
-    const [data, setData] = useState({
-        profileImg : "",
-        name : "",
-        comment : "",
-        website : "",
-        privacy : 0,
-        email : "",
-        password : "",
-        phoneNumber : ""
-    });
-
-    const {name, comment, website, privacy, email, password, phoneNumber} = data;
-
     const cookies = new Cookies();
     const token = cookies.get('user_token');
 
-    const [imgData, setImgData] = useState('');
+    //button 
+    const [changeBtn, setChangeBtn] = useState({
+        changeImg : false,
+        changeName : false,
+        changeComment : false,
+        changeWebsite : false,
+        changePrivacy : false,
+    }); 
+
+    const {changeImg, changeName, changeComment, changeWebsite, changePrivacy} = changeBtn;
+
+    //받아온 데이터
+    const {profileImg, name, comment, website, privacy} = data;
+    // const [imgData, setImgData] = useState('');
     const [imgUrl, setImgUrl] = useState('/images/profile.jpg');
 
-    const readUserInfo = () => {                    
-        axios.get('http://localhost:3000/mypage/userInfor', {headers : {'user_token': token}})
-        .then(response => {
-            console.log(response.data)
-            setData({...data, 
-                profileImg : response.data[0].profileImage,
-                name : response.data[0].nickName,
-                comment : response.data[0].comment,
-                website : response.data[0].website,
-                privacy : response.data[0].private,
-                email : response.data[0].email,
-                phoneNumber : response.data[0].phone
-            })
-            setImgUrl(response.data[0].profileImage)
-        }).catch(e => {
-            console.log(e)
-        })
-    }
-
-    useEffect(() => {
-        readUserInfo();
-    }, [])
-
+    //데이터 값 변경
     const valueChange = (e) => {
         const {name, value} = e.target
         setData({
@@ -61,43 +34,20 @@ const SettingProfileTab = () => {
         })
     }
 
-    const changeBtn = () => {
-        if (changeImg) {
-            setChangeImg(false)
+    //버튼 변경
+    const btnChange = (e) => {
+        const {name, value} = e.target;
+        
+        if (value === "false") {
+            setChangeBtn({
+                ...changeBtn,
+                [name] : true
+            })
         } else {
-            setChangeImg(true)
-        }
-    }
-
-    const nameChange = () => {
-        if (changeName) {
-            setChangeName(false)
-        } else {
-            setChangeName(true)
-        }
-    }
-
-    const commentChange = () => {
-        if (changeComment) {
-            setChangeComment(false)
-        } else {
-            setChangeComment(true)
-        }
-    }
-
-    const websiteChange = () => {
-        if (changeWebsite) {
-            setChangeWebsite(false)
-        } else {
-            setChangeWebsite(true)
-        }
-    }
-
-    const privacyChange = () => {
-        if (changePrivacy) {
-            setChangePrivacy(false)
-        } else {
-            setChangePrivacy(true)
+            setChangeBtn({
+                ...changeBtn,
+                [name] : false
+            })
         }
     }
 
@@ -113,8 +63,8 @@ const SettingProfileTab = () => {
                     {/* 프로필 사진 */}
                     <div className={classes.ItemTitle}>
                         <span>프로필 사진</span>
-                        {changeImg? <button onClick={changeBtn} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={changeBtn} className={classes.changeBTN}>변경</button>}
+                        {changeImg? <button onClick={btnChange} name="changeImg" value={changeImg} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changeImg" value={changeImg} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changeImg ? <div><div className={classes.itemFlex}>
                                 <img src={imgUrl} alt="userImage" />
@@ -136,11 +86,12 @@ const SettingProfileTab = () => {
                     {/* 이름 */}
                     <div className={classes.ItemTitle}>
                         <span>이름</span>
-                        {changeName? <button onClick={nameChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={nameChange} className={classes.changeBTN}>변경</button>}
+                        {changeName? <button onClick={btnChange} name="changeName" value={changeName} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changeName" value={changeName} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changeName ? <div>
-                                    <input className={classes.nameInput} name="name" value={name} onChange={valueChange} type="text" />
+                                    <input className={`${classes.nameInput} ${name < 1 && classes.nameInputVali}`} name="name" value={name} onChange={valueChange} type="text" />
+                                    {!name && <div className={classes.valiNo}>이름을 비워두시면 안됩니다.</div>}
                                     <div><button className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  
@@ -152,8 +103,8 @@ const SettingProfileTab = () => {
                     {/* 소개 */}
                     <div className={classes.ItemTitle}>
                         <span>소개</span>
-                        {changeComment? <button onClick={commentChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={commentChange} className={classes.changeBTN}>변경</button>}
+                        {changeComment? <button onClick={btnChange} name="changeComment" value={changeComment} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changeComment" value={changeComment} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changeComment ? 
                             <div>
@@ -170,8 +121,8 @@ const SettingProfileTab = () => {
                     {/* 웹사이트 */}
                     <div className={classes.ItemTitle}>
                         <span>웹사이트</span>
-                        {changeWebsite? <button onClick={websiteChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={websiteChange} className={classes.changeBTN}>변경</button>}
+                        {changeWebsite? <button onClick={btnChange} name="changeWebsite" value={changeWebsite} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changeWebsite" value={changeWebsite}  className={classes.changeBTN}>변경</button>}
                     </div>
                     {changeWebsite ? <div>
                                     <div>
@@ -188,8 +139,8 @@ const SettingProfileTab = () => {
                     {/* 프라이버시 */}
                     <div className={classes.ItemTitle}>
                         <span>프라이버시</span>
-                        {changePrivacy? <button onClick={privacyChange} className={classes.cancelBTN}>취소</button> : 
-                            <button onClick={privacyChange} className={classes.changeBTN}>변경</button>}
+                        {changePrivacy? <button onClick={btnChange} name="changePrivacy" value={changePrivacy} className={classes.cancelBTN}>취소</button> : 
+                            <button onClick={btnChange} name="changePrivacy" value={changePrivacy} className={classes.changeBTN}>변경</button>}
                     </div>
                     {changePrivacy ? <div>
                                     <label><input type="checkbox" name="supportList" value="yes" /> 후원한 프로젝트 목록을 공개합니다.</label>
