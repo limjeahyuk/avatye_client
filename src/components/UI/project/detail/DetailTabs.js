@@ -10,6 +10,8 @@ import PlanTab from "./tabs/PlanTab";
 
 import classes from './detail.module.css'
 import DetailSupport from "./DetailSupport";
+import UpdateTab from "./tabs/UpdateTab";
+import ReviewTab from "./tabs/ReviewTab";
 
 
 function TabPanel(props) {
@@ -45,7 +47,7 @@ function a11yProps(index) {
     };
 }
 
-const DetailTabs = () => {
+const DetailTabs = (props) => {
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -54,6 +56,7 @@ const DetailTabs = () => {
 
     const [scrollY, setScrollY] = useState(0);
     const [scrollActive, setScrollActive] = useState(false);
+    const [view, setView] = useState(true);
     
 
     const scrollFixed = () => {
@@ -79,29 +82,29 @@ const DetailTabs = () => {
     return (
         <div>
             <DetailTop/>
-            <Box className={`${classes.tabsbox} ${scrollActive ? classes.test : classes.tabsbox}`} sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box className={`${classes.tabsbox} ${scrollActive ? classes.fixed : classes.tabsbox}`} sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} className={classes.tabs} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab className={classes.tabsname} label='프로젝트 계획' {...a11yProps(0)} />
-                    <Tab className={classes.tabsname} label='업데이트' {...a11yProps(1)} />
-                    <Tab className={classes.tabsname} label='커뮤니티' {...a11yProps(2)} />
-                    <Tab className={classes.tabsname} label='추천' {...a11yProps(3)} />
+                    <Tab onClick={() => setView(true)} className={classes.tabsname} label='프로젝트 계획' {...a11yProps(0)} />
+                    <Tab onClick={() => setView(true)} className={classes.tabsname} label='업데이트' {...a11yProps(1)} />
+                    <Tab onClick={() => setView(true)} className={classes.tabsname} label='커뮤니티' {...a11yProps(2)} />
+                    <Tab onClick={() => setView(true)} className={classes.tabsname} label='추천' {...a11yProps(3)} />
                 </Tabs>
             </Box>
-            <div className={classes.box}>
-                <div className={classes.boxcontent}>
-                    <TabPanel className={classes.tabscontent} value={value} index={0}>
+            <div className={classes.panelbox}>
+                <div className={classes.panelboxcontent}>
+                    <TabPanel value={value} index={0}>
                         <PlanTab/>
                     </TabPanel>
-                    <TabPanel className={classes.tabscontent} value={value} index={1}>
-                        귀찮다
+                    <TabPanel value={value} index={1}>
+                        <UpdateTab/>
                     </TabPanel>
-                    <TabPanel className={classes.tabscontent} value={value} index={2}>
-                        언제 다 만들지..
+                    <TabPanel value={value} index={2}>
+                        <ReviewTab setView={setView} />
                     </TabPanel>
-                    <TabPanel className={classes.tabscontent} value={value} index={3}>
+                    <TabPanel value={value} index={3}>
                         여기는 일단 패스요~
                     </TabPanel>
-                    <DetailSupport/>
+                    {view && <DetailSupport/>}
                 </div>
             </div>
         </div>
