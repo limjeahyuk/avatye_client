@@ -20,6 +20,7 @@ import Deadline from './pages/deadline/Deadline';
 import Tobe from './pages/tobe/Tobe';
 import HeartList from './pages/heartlist/HeartList';
 import MypageSetting from './pages/user/MypageSetting';
+import Discover from './pages/search/Discover';
 
 const App = () => {
 
@@ -43,7 +44,8 @@ const App = () => {
         <Route path='/deadline' element={<Deadline/>} />
         <Route path='/project-editor/create' element={<CreateProject />} />
         <Route path='/heartprojects' element={<HeartList/>} />
-        <Route path='/userSetting' element={<MypageSetting/>} />
+        <Route path='/userSetting' element={<MypageSetting />} />
+        <Route path='/discover/:cont' element={<Discover />} />
         {/* path '/:sadasdsad' */}
       </Routes>
       <Footer />
