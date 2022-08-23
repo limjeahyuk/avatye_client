@@ -1,7 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import SupportCard from "./cards/SupportCard";
 import classes from './detail.module.css'
 
 const DetailSupport = () => {
+
+    const Data = [
+        {
+            giftPrice : '10,000',
+            giftCount : '100',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '200'
+        },
+        {
+            giftPrice : '40,000',
+            giftCount : '100',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '10'
+        },
+        {
+            giftPrice : '24,000',
+            giftCount : '0',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '300'
+        },
+        {
+            giftPrice : '65,000',
+            giftCount : '100',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '100'
+        },
+        {
+            giftPrice : '70,000',
+            giftCount : '100',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '300'
+        },
+        {
+            giftPrice : '500,000',
+            giftCount : '0',
+            giftDetail: '어답미 아크릴 그립톡 SET',
+            giftTitle : '아크릴 그립톡 ( x 1 )',
+            giftStock: '300'
+        },
+    ]
 
     return(
         <div>
@@ -22,89 +68,25 @@ const DetailSupport = () => {
                     </div>
                 </div>
             </div>
-            <div className={classes.stickly}>
+            <div className={classes.supportbox}>
                 <div></div>
                 <div className={classes.supportcard}>
                     <div className={classes.cardtitle}>선물 선택</div>
                     <div className={classes.rewardcards}>
                         <div className={classes.rewardcard}>
                             <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>1000원 +</div>
-                                <div>선물없이 후원하기</div>
+                                <div className={classes.rewardbox}>
+                                    <div className={classes.rewardprice}>1000원 +</div>
+                                    <div className={classes.rewardgift}>선물없이 후원하기</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>30000원 +</div>
-                                <div>상품 1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>99000원 +</div>
-                                <div>상품 1</div>
-                                <div>상품 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>1000원 +</div>
-                                <div>선물없이 후원하기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>30000원 +</div>
-                                <div>상품 1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>99000원 +</div>
-                                <div>상품 1</div>
-                                <div>상품 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>1000원 +</div>
-                                <div>선물없이 후원하기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>30000원 +</div>
-                                <div>상품 1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.rewardcards}>
-                        <div className={classes.rewardcard}>
-                            <div className={classes.rewardcontent}>
-                                <div className={classes.rewardprice}>99000원 +</div>
-                                <div>상품 1</div>
-                                <div>상품 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {Data.map((data, key) => (
+                        <SupportCard Data={data} key={key} />
+                    ))}
                 </div>
             </div>
-            <div className={classes.test5}>asdas</div>
         </div>
     )
 }
