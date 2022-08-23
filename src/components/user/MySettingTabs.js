@@ -1,4 +1,6 @@
 import React, { useState, useEffect} from 'react';
+import axios from 'axios';
+import { Cookies } from 'react-cookie';
 
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -48,8 +50,89 @@ function a11yProps(index) {
 const MySettingTabs = () => {
     const [value, setValue] = useState(0);
 
-    // const cookies = new Cookies()
-    // const token = cookies.get('user_token')
+    const cookies = new Cookies()
+    const token = cookies.get('user_token')
+
+    //각각의 탭에서 사용될 데이터 설정
+    const [profileData, setProfileData] = useState({
+        profileImg : "",
+        name : "",
+        comment : "",
+        website : "",
+        privacy : 0,
+    });
+
+    const [accountData, setAccountData] = useState({
+        email : "",
+        phone : "",
+        currpassword : "",
+        password1 : "",
+        password2 : "",
+    });
+
+    const [paymentData, setPaymentData] = useState({
+        paymentIndex : "",
+        div : "",
+        cardNumber : "",
+        cardEndDate : "",
+        cardPassword : "",
+        userBirth : "",
+        bank : "",
+        accountNumber : "",
+        userName : "",
+    });
+
+    const [shippingData, setShippingData] = useState({
+        shipIndex : "",
+        shippingCheck : 0,
+        userID : "",
+        userName : "",
+        address : "",
+        shipphone : ""
+    });
+
+    //axios로 유저 정보 불러오기
+    const readUserInfo = () => {                    
+        axios.get('http://localhost:3000/mypage/userInfor', {headers : {'user_token': token}})
+        .then(response => {
+            console.log(response.data)
+            setProfileData({...profileData,
+                profileImg : response.data[0].profileImage,
+                name : response.data[0].nickName,
+                comment : response.data[0].comment,
+                website : response.data[0].website,
+                privacy : response.data[0].private
+            })
+            setAccountData({...accountData, 
+                email : response.data[0].email,
+                phone : response.data[0].phone
+            })
+            setPaymentData({...paymentData,
+                div : response.data[0].DIV,
+                cardNumber : response.data[0].cardNumber,
+                cardEndDate : response.data[0].cardEndDate,
+                cardPassword : response.data[0].cardPassword,
+                userBirth : response.data[0].userBirth,
+                bank : response.data[0].bank,
+                accountNumber : response.data[0].accountNumber,
+                userName : response.data[0].userName
+            })
+            setShippingData({...shippingData,
+                shipIndex : response.data[0].shipIndex,
+                shippingCheck : response.data[0].shippingCheck,
+                userID : response.data[0].userID,
+                userName : response.data[0].userName,
+                address : response.data[0].address,
+                shipphone : response.data[0].phone
+            })
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
+    useEffect(() => {
+        readUserInfo();
+    }, [])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -70,16 +153,16 @@ const MySettingTabs = () => {
                     </Tabs>
                 </Box>
                 <TabPanel className={classes.tabscontent} value={value} index={0}>
-                    <SettingProfileTab />
+                    <SettingProfileTab data={profileData} setData={setProfileData}/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={1}>
-                    <SettingAccountTab/>   
+                    <SettingAccountTab data={accountData} setData={setAccountData}/>   
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={2}>
-                    <SettingPaymentTab/>
+                    <SettingPaymentTab data={paymentData} setData={setPaymentData}/>
                 </TabPanel>
                 <TabPanel className={classes.tabscontent} value={value} index={3}>
-                    <SettingShippingTab/>
+                    <SettingShippingTab data={shippingData} setData={setShippingData}/>
                 </TabPanel>
             </div>
         </>

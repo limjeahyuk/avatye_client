@@ -44,7 +44,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
 
                 setClick(0)
 
-                axios.get(`http://localhost:3000/heart/add/${projectIndex}`, {headers : {'user_token': token}})
+                axios.post(`http://localhost:3000/heart/${projectIndex}`, {} , {headers : {'user_token': token}})
                 .then(response => {
                     console.log(response.data.result)
                 })
@@ -64,7 +64,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
 
                 setClick(1)
 
-                axios.get(`http://localhost:3000/heart/add/${projectIndex}`, {headers : {'user_token': token}})
+                axios.post(`http://localhost:3000/heart/${projectIndex}`, {} , {headers : {'user_token': token}})
                 .then(response => {
                     console.log(response.data.result)
                 })
@@ -97,8 +97,8 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
             {project &&
                 <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large} ${size === 'xl' && classes.xlarge}`}>
                     <div className={classes.imgWrapper}>
-                        <img className={classes.img} src={project.profileIMG} alt="subimg" />
-                        {project.nowPrice && 
+                        <Link to={'/detail'}><img className={classes.img} src={project.profileIMG} alt="subimg" /></Link>
+                        {project.nowPrice >= 0 && 
                             <div className={classes.heartbox} 
                                 onClick={() => {onRemove &&
                                     onRemove(project.projectIndex)
@@ -118,7 +118,9 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                     </div>
                     <div className={classes.subInfoBox}>
                         <div className={classes.subInfo}>
-                            <span>{project.name}</span>
+                            <Link to ={`/category/${project.name}`}>
+                                <span>{project.name}</span>
+                            </Link>
                             <span className={classes.submiddleline}>|</span>
                             <Link to ={`/u/${project.userID}`}>
                                 <span>{project.nickName}</span>
@@ -128,7 +130,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                         {project.summary && 
                             <div className={classes.subdes}>{project.summary}</div>
                         }
-                        {project.nowPrice &&
+                        {project.nowPrice >= 0 &&
                             <div 
                                 className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}
                             >
@@ -145,7 +147,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                             </div>
               
                         }
-                        {project.nowPrice && 
+                        {project.nowPrice >= 0 && 
                             <div className={classes.progressbarbox}> 
                                 <div 
                                     className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} 
