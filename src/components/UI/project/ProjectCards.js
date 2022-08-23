@@ -98,7 +98,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                 <div className={`${classes.cardbox} ${size === 'm' && classes.middle} ${size === 'l' && classes.large} ${size === 'xl' && classes.xlarge}`}>
                     <div className={classes.imgWrapper}>
                         <Link to={'/detail'}><img className={classes.img} src={project.profileIMG} alt="subimg" /></Link>
-                        {project.nowPrice && 
+                        {project.nowPrice >= 0 && 
                             <div className={classes.heartbox} 
                                 onClick={() => {onRemove &&
                                     onRemove(project.projectIndex)
@@ -130,7 +130,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                         {project.summary && 
                             <div className={classes.subdes}>{project.summary}</div>
                         }
-                        {project.nowPrice &&
+                        {project.nowPrice >= 0 &&
                             <div 
                                 className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}
                             >
@@ -147,7 +147,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                             </div>
               
                         }
-                        {project.nowPrice && 
+                        {project.nowPrice >= 0 && 
                             <div className={classes.progressbarbox}> 
                                 <div 
                                     className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} 
