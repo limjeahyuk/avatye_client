@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,7 +8,6 @@ const SettingProfileTab = ({data, setData}) => {
     const navigater = useNavigate();
     const cookies = new Cookies();
     const token = cookies.get('user_token');
-    console.log(token)
 
     //button 
     const [changeBtn, setChangeBtn] = useState({
@@ -53,10 +52,35 @@ const SettingProfileTab = ({data, setData}) => {
         })
     }
 
+    //이미지 변경
     const imageHandler = (e) => {
         setImgUrl(URL.createObjectURL(e.target.files[0]));
+        console.log(e.target.files[0]);
     }
 
+    // const imgSaveHandler = async () => {
+    //      //formdata로 이미지 저장
+    //     const formdata = new FormData();
+    //     formdata.append('img', basic.img);
+
+    //     const config = {
+    //         Headers: {
+    //             'content-type': 'multipart/form-data',
+    //         },
+    //     };
+
+    //     const f = await axios.post('http://localhost:3000/img', formdata, config)
+    //         .then((res) => {
+    //             console.log(res.data);
+    //             return res.data;
+    //         }).catch((error) => {
+    //             console.log(error);
+    //         })
+        
+    //     return f;
+    // }
+    
+    
     const isChecked = (e) => {
         if (e.target.checked) {
             setData({
@@ -69,15 +93,27 @@ const SettingProfileTab = ({data, setData}) => {
                 privacy : 0
             })
         }
-    }
+    }  
 
+    //정보 변경
     const updateUserInfo = () => {
-        axios.put('http://localhost:3000/user/update', {comment : comment}, {headers: {userID : token}})
+        const data = {
+            profileImage : imgUrl,
+            nickName : name,
+            comment : comment,
+            webAdress : website,
+            private : privacy,
+        }
+        axios.put('http://localhost:3000/user/update', data, {headers: {user_token : token}})
         .then(response => {
             console.log("성공적으로 바꿨습니다");
             setChangeBtn({
                 ...changeBtn,
-                changeComment : false
+                changeImg : false,
+                changeName : false,
+                changeComment : false,
+                changeWebsite : false,
+                changePrivacy : false,
             })
         })
     }
@@ -100,7 +136,7 @@ const SettingProfileTab = ({data, setData}) => {
                                         <label htmlFor="ChangeImg" className={classes.fileUpload}>파일 업로드</label></div>
                                     <div className={classes.uploadInfo}>250 x 250 픽셀에 최적화되어 있으며, 10Mb 이하의 JPG, GIF, PNG 파일을 지원합니다.</div>
                                 </div></div>
-                                <button className={classes.saveImg}>저장</button>
+                                <button onClick={updateUserInfo} className={classes.saveImg}>저장</button>
                                 </div>
                                  :  
                                 <div><img src={imgUrl} alt="userImage" />
@@ -152,9 +188,9 @@ const SettingProfileTab = ({data, setData}) => {
                     </div>
                     {changeWebsite ? <div>
                                     <div>
-                                        <input className={classes.nameInput} type="text" name="webstie" value={website} onChange={valueChange}/>
+                                        <input className={classes.nameInput} type="text" name="website" value={website} onChange={valueChange}/>
                                     </div>
-                                    <div><button className={classes.saveImg}>저장</button></div>
+                                    <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  !website ?
                                 <div>등록된 웹사이트가 없습니다.</div> : <div>{website}</div>}
@@ -168,9 +204,14 @@ const SettingProfileTab = ({data, setData}) => {
                         {changePrivacy? <button onClick={btnChange} name="changePrivacy" value={changePrivacy} className={classes.cancelBTN}>취소</button> : 
                             <button onClick={btnChange} name="changePrivacy" value={changePrivacy} className={classes.changeBTN}>변경</button>}
                     </div>
-                    {changePrivacy ? <div>
-                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked}/> 후원한 프로젝트 목록을 공개합니다.</label>
-                                    <div><button className={classes.saveImg}>저장</button></div>
+                    {changePrivacy ? privacy === 1 ? 
+                                <div>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} checked/> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
+                                </div> :
+                                <div>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} /> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div>
                                  :  !privacy ?
                                 <div>후원한 프로젝트 목록을 공개하지 않습니다.</div> : <div>✓ 후원한 프로젝트 목록을 공개합니다.</div>}
