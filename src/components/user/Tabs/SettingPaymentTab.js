@@ -1,11 +1,16 @@
 import React, {useState} from "react";
+import axios from "axios";
+import { Cookies } from 'react-cookie';
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import MyPaymentSettingModal from "../Modals/MyPaymentSettingModal";
 
-const SettingPaymentTab = () => {
+const SettingPaymentTab = ({data, setData}) => {
     const navigater = useNavigate();
+    const cookies = new Cookies();
+    const token = cookies.get('user_token');
+    
     const [paymentList, setPaymentList] = useState(0);
     const [openModal, setOpenModal] = useState(false);
 
@@ -16,6 +21,8 @@ const SettingPaymentTab = () => {
             setOpenModal(true)
         }
     }
+
+    console.log(data)
 
     return( 
         <div>

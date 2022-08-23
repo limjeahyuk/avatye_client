@@ -1,8 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+import { Cookies } from 'react-cookie';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import classes from "../Modals/modals.module.css";
 
 const MyPaymentCardModal = ({handler}) => {
+    const cookies = new Cookies();
+    const token = cookies.get('user_token');
+    const [cardData, setCardData] = useState({
+        div : "CARD",
+        cardNumber : "",
+        cardEndDate : "",
+        cardPassword : "",
+        userBirth : ""
+    })
+
+    const {div, cardNumber, cardEndDate, cardPassword, userBirth} = cardData;
+
+    const valueChange = (e) => {
+        const {name, value} = e.target
+        setCardData({
+            ...cardData,
+            [name] : value
+        })
+    }
+
     let month = [];
     for(var i=1; i <= 12; i++) {
         month.push(i)
@@ -56,7 +78,7 @@ const MyPaymentCardModal = ({handler}) => {
             </div>
 
             <div>
-                <label className={classes.basicAdd}><input type="checkbox" name="basicPayment" value="yes" checked/> 기본 결제수단으로 등록</label>
+                <label className={classes.basicAdd}><input type="checkbox" name="basicPayment" value="yes" defaultChecked /> 기본 결제수단으로 등록</label>
             </div>
 
             <div><button className={classes.saveShippingBtn}>등록 완료</button></div>

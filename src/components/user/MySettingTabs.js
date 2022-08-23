@@ -59,13 +59,15 @@ const MySettingTabs = () => {
         name : "",
         comment : "",
         website : "",
-        private : 0,
+        privacy : 0,
     });
 
     const [accountData, setAccountData] = useState({
         email : "",
         phone : "",
-        password : ""
+        currpassword : "",
+        password1 : "",
+        password2 : "",
     });
 
     const [paymentData, setPaymentData] = useState({
@@ -82,10 +84,11 @@ const MySettingTabs = () => {
 
     const [shippingData, setShippingData] = useState({
         shipIndex : "",
+        shippingCheck : 0,
         userID : "",
         userName : "",
         address : "",
-        phone : ""
+        shipphone : ""
     });
 
     //axios로 유저 정보 불러오기
@@ -98,7 +101,7 @@ const MySettingTabs = () => {
                 name : response.data[0].nickName,
                 comment : response.data[0].comment,
                 website : response.data[0].website,
-                private : response.data[0].private
+                privacy : response.data[0].private
             })
             setAccountData({...accountData, 
                 email : response.data[0].email,
@@ -115,10 +118,12 @@ const MySettingTabs = () => {
                 userName : response.data[0].userName
             })
             setShippingData({...shippingData,
+                shipIndex : response.data[0].shipIndex,
+                shippingCheck : response.data[0].shippingCheck,
                 userID : response.data[0].userID,
                 userName : response.data[0].userName,
                 address : response.data[0].address,
-                phone : response.data[0].phone
+                shipphone : response.data[0].phone
             })
         }).catch(e => {
             console.log(e)
