@@ -38,7 +38,7 @@
     position: absolute;
     display: none;
     background-color: white;
-    width: auto;
+    width: 250px;
     border-radius: 3px;
     font-size: 14px;
     line-height: 24px;
@@ -62,4 +62,73 @@
 
 .open {
     display: block;
+}
+
+.box form{
+    padding: 9px 12px 8px;
+    border-top: 6px solid rgb(242, 242, 242);
+    background-color: white;
+}
+
+.box form>div:first-child{
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+}
+
+.box form .input{
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.box form .number{
+    margin: 0 7px;
+    flex: 1 1 0%;
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(61, 61, 61);
+    padding: 1px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.box form .number input{
+    width: 100%;
+    border: 0px;
+    padding: 5px 0;
+    height: 100%;
+    outline: none;
+    margin-right: 8px;
+    background-color: transparent;
+}
+
+.box form button{
+    outline: none;
+    height: 35px;
+    line-height: 35px;
+    margin: 5px 0 0 ;
+    width: 100%;
+    border-radius: 3px;
+    background-color: rgb(230, 230, 230);
+    cursor: default;
+    color: rgb(109, 109, 109);
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.box form .warning{
+    margin-bottom: 4px;
+    font-size: 0.78rem;
+    color: red;
+}
+
+.box form .good{
+    background-color: red;
+    cursor: pointer;
+    color: white;
 }

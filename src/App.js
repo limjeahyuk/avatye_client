@@ -22,6 +22,7 @@ import HeartList from './pages/heartlist/HeartList';
 import MypageSetting from './pages/user/MypageSetting';
 
 import Discover from './pages/search/Discover';
+import AllDiscover from './pages/search/AllDiscover';
 
 import Category from './components/ui/category/Category';
 import Detail from './pages/detail/Detail';
@@ -50,10 +51,10 @@ const App = () => {
         <Route path='/project-editor/create' element={<CreateProject />} />
         <Route path='/heartprojects' element={<HeartList/>} />
         <Route path='/usersetting' element={<MypageSetting/>} />
-        <Route path='/category/:id' element={<Category />} />
-        <Route path='/detail/:id' element={<Detail/>} />
         <Route path='/discover/:cont' element={<Discover />} />
-
+        <Route path='/category/:id' element={<Category />} />
+        <Route path='/discover' element={<AllDiscover />} />
+        <Route path='/detail/:id' element={<Detail/>} />
       </Routes>
       <Footer />
     </div>
