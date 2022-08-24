@@ -19,7 +19,7 @@ const Search = ({ handler }) => {
     const searchSubmitHandler = (e) => {
         e.preventDefault();
         console.log("ok");
-        navigator(`/discover/${isInput.trim()}`);
+        navigator(`/discover/${encodeURIComponent(isInput.trim())}`);
         setIsInput('');
         handler();
     }

@@ -21,6 +21,7 @@ import Tobe from './pages/tobe/Tobe';
 import HeartList from './pages/heartlist/HeartList';
 import MypageSetting from './pages/user/MypageSetting';
 import Discover from './pages/search/Discover';
+import AllDiscover from './pages/search/AllDiscover';
 
 const App = () => {
 
@@ -46,6 +47,7 @@ const App = () => {
         <Route path='/heartprojects' element={<HeartList/>} />
         <Route path='/userSetting' element={<MypageSetting />} />
         <Route path='/discover/:cont' element={<Discover />} />
+        <Route path='/discover' element={<AllDiscover />} />
         {/* path '/:sadasdsad' */}
       </Routes>
       <Footer />
