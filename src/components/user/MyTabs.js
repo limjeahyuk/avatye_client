@@ -71,7 +71,7 @@ const MyTabs = () => {
             setCount(response.data.upLoadCount)
             setsuCount(response.data.buyCount)
 
-            const asd = moment(response.data.Date).format('YYYYMMDD')
+            const asd = moment(response.data.userProfile.Date).format('YYYYMMDD')
             const result = moment(asd, "YYYYMMDD").fromNow()
             setTime(result)
         })
