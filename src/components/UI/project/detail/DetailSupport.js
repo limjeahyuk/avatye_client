@@ -1,8 +1,10 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SupportCard from "./cards/SupportCard";
 import classes from './detail.module.css'
 
-const DetailSupport = () => {
+const DetailSupport = ({data}) => {
 
     const Data = [
         {
@@ -49,19 +51,38 @@ const DetailSupport = () => {
         },
     ]
 
+    const [gift, setGift] = useState([])
+
+    let { id } = useParams()
+
+    const findgift = () => {
+        axios.get(`http://localhost:3000/detail/gift/${id}`)
+        .then(response => {
+            setGift(response.data)
+            console.log(response.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
+
+    useEffect(() => {
+        findgift()
+    }, [id])
+
     return(
         <div>
             <div className={classes.sellerbox}>
                 <div className={classes.sellerintro}>창작자 소개</div>
                 <div className={classes.sellerinfobox}>
                     <div className={classes.sellerinfo}>
-                        <div className={classes.sellerprofile}><img src="/images/profile.jpg" alt="profile" /></div>
+                        <div className={classes.sellerprofile}><img src={`${data.userProfile}`} alt="profile" /></div>
                         <div>
-                            <span className={classes.sellername}>닉네임</span>
+                            <span className={classes.sellername}>{data.nickName}</span>
                             <span className={classes.sellerlogin}>마지막...로그인??</span>
                         </div>
                     </div>
-                    <div className={classes.sellerdes}>소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다소개부분입니다</div>
+                    <div className={classes.sellerdes}>{data.Comment}</div>
                     <div className={classes.sellerbtn}>
                         <div className={classes.follow}>팔로우</div>
                         <div className={classes.inquiry}>창작자에게 문의</div>
@@ -82,7 +103,7 @@ const DetailSupport = () => {
                             </div>
                         </div>
                     </div>
-                    {Data.map((data, key) => (
+                    {gift.map((data, key) => (
                         <SupportCard Data={data} key={key} />
                     ))}
                 </div>

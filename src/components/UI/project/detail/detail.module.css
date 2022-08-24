@@ -181,6 +181,10 @@
     font-size: 15.4px;
 }
 
+.supportbtn:hover {
+    background-color: rgb(255, 69, 67);
+}
+
 /* DetailTabs */
 
 .tabsbox {
@@ -311,7 +315,7 @@
 
 .supportbox .supportcard {
     width: 354px;
-    height: 800px;
+    height: 900px;
     padding: 24px 0px 0px;
     position: sticky;
     top: 50px;
@@ -335,6 +339,13 @@
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px, rgb(0 0 0 / 4%) 0px 2px 4px;
     border: 1px solid rgb(239, 239, 239);
+    transition: all 0.4s ease-out 0s;
+    cursor: pointer;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard:hover {
+    border: 1px solid rgb(61, 61, 61);
+    transition: all 0.4s ease-out 0s;
 }
 
 .supportbox .supportcard .rewardcards .rewardcard .rewardcontent {
@@ -347,6 +358,10 @@
     letter-spacing: -0.015em;
     margin-bottom: 10px;
     color: rgb(109, 109, 109);
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardicon {
+    font-size: 12px !important;
 }
 
 .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardcount {
@@ -646,14 +661,6 @@
     vertical-align: bottom;
 }
 
-.notice {
-    margin-top: 26px;
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    gap: 38px;
-}
-
 .editheader .editcontainer .editsend {
     background-color: rgb(228, 228, 228);
     width: 160px;
@@ -665,7 +672,38 @@
     opacity: .5;
 }
 
-.editwrite {
+.notice {
+    margin-top: 26px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 38px;
+}
+
+.notice .editcontentbox {
+    width: 650px;
+}
+
+.notice .editcontentbox .editcount {
+    color: rgb(158, 158, 158);
+    margin-bottom: 30px;
+    float: right;
+    font-size: 12px;
+}
+
+.notice .editcontentbox .editcontent {
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    margin-left: 18px;
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.notice .editcontentbox .editcontent:focus {
+    outline: #000;
+}
+
+.notice .editcontentbox .editcontent .editwrite {
     height: 500px;
     min-height: auto;
     border: 0px;
@@ -675,7 +713,7 @@
     line-height: 24px;
 }
 
-.editwrite textarea {
+.notice .editcontentbox .editcontent .editwrite textarea {
     background: transparent;
     width: 612px;
     height: 100%;
@@ -683,13 +721,101 @@
     padding: 0px;
     resize: none;
     overflow: auto;
+    outline: none;
 }
 
-.editcontent {
-    border-radius: 1px;
-    background: rgb(255, 255, 255);
-    padding: 0px 18px;
+.notice .guide {
+    width: 352px;
+}
+
+.notice .guide .guidetitle {
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+}
+
+.notice .guide .guideselect {
+    margin-right: 12px;
+    padding: 4px 16px;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: 12px;
+    line-height: 24px;
+    min-width: 55px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 23px;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    user-select: none;
+    background: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+}
+
+.notice .guide .guideunselect {
+    margin-right: 12px;
+    padding: 4px 16px;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    line-height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    min-width: 55px;
+    cursor: pointer;
+    background: transparent;
     border: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    border-radius: 23px;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.notice .guide .guideanswer {
+    font-size: 14px;
+    color: rgb(61, 61, 61);
+    margin-top: 24px;
+}
+
+.notice .guide .noticetextbox {
+    padding: 16px;
+    background-color: rgba(240, 240, 240, 0.5);
+    margin-top: 24px;
+}
+
+.notice .guide .noticetextbox .texttitle {
+    display: inline-flex;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+}
+
+.notice .guide .noticetextbox .texttitle .texticon {
+    font-size: 16px !important;
+    display: inline-flex !important;
+    align-self: center !important;
+}
+
+.notice .guide .noticetextbox .textlist {
+    margin-top: 6px;
+    margin-bottom: 0px;
+    padding-left: 16px;
+    letter-spacing: 0.04em;
+}
+
+.notice .guide .noticetextbox .textlist li {
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+    line-height: 1.7;
 }
 
 /* image swiper */
