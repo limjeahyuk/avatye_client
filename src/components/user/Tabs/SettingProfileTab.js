@@ -39,7 +39,7 @@ const SettingProfileTab = ({data, setData}) => {
 
     //받아온 데이터
     const {profileImg, name, comment, website, privacy} = data;
-    const [imgUrl, setImgUrl] = useState(profileImg || '/images/profile.jpg');
+    const [imgUrl, setImgUrl] = useState(profileImg);
 
     //데이터 값 변경
     const valueChange = (e) => {
@@ -206,7 +206,7 @@ const SettingProfileTab = ({data, setData}) => {
                     </div>
                     {changePrivacy ? privacy === 1 ? 
                                 <div>
-                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} checked/> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} defaultChecked/> 후원한 프로젝트 목록을 공개합니다.</label>
                                     <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div> :
                                 <div>

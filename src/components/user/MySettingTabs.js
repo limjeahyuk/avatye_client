@@ -102,12 +102,12 @@ const MySettingTabs = () => {
                 comment : response.data[0].comment,
                 website : response.data[0].website,
                 privacy : response.data[0].private
-            })
+            });
             setAccountData({...accountData, 
                 email : response.data[0].email,
                 phone : response.data[0].phone
-            })
-            //payment도 여러개 해야됨.
+            });
+            // paymentData 여러개해야됨.
             setPaymentData({...paymentData, 
                 div : response.data[0].DIV,
                 cardNumber : response.data[0].cardNumber,

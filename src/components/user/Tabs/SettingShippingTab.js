@@ -82,7 +82,7 @@ const SettingShippingTab = ({data, setData}) => {
                                     <button className={classes.changeBTN} onClick={insertModalHandler}>+ 추가</button>
                                 </div>
 
-                                {data.filter(item => item.shippingCheck === 1).map((val, index) => { 
+                                {data && data.filter(item => item.shippingCheck === 1).map((val, index) => { 
                                     return (
                                         <div key={index}>
                                         <div className={classes.shippingList}>
