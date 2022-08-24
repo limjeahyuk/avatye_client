@@ -39,8 +39,6 @@ const SettingProfileTab = ({data, setData}) => {
 
     //받아온 데이터
     const {profileImg, name, comment, website, privacy} = data;
-
-    // const [imgData, setImgData] = useState('');
     const [imgUrl, setImgUrl] = useState(profileImg || '/images/profile.jpg');
 
     //데이터 값 변경
@@ -55,32 +53,34 @@ const SettingProfileTab = ({data, setData}) => {
     //이미지 변경
     const imageHandler = (e) => {
         setImgUrl(URL.createObjectURL(e.target.files[0]));
-        console.log(e.target.files[0]);
     }
 
-    // const imgSaveHandler = async () => {
-    //      //formdata로 이미지 저장
-    //     const formdata = new FormData();
-    //     formdata.append('img', basic.img);
+    const imgSaveHandler = async (e) => {
+        //imageHandler 실행
+        imageHandler(e);
 
-    //     const config = {
-    //         Headers: {
-    //             'content-type': 'multipart/form-data',
-    //         },
-    //     };
+         //formdata로 이미지 저장
+        const formdata = new FormData();
+        formdata.append('img', e.target.files[0]);
 
-    //     const f = await axios.post('http://localhost:3000/img', formdata, config)
-    //         .then((res) => {
-    //             console.log(res.data);
-    //             return res.data;
-    //         }).catch((error) => {
-    //             console.log(error);
-    //         })
+        const config = {
+            Headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+
+        const f = await axios.post('http://localhost:3000/img', formdata, config)
+            .then((res) => {
+                console.log(res.data);
+                setImgUrl(res.data);
+            }).catch((error) => {
+                console.log(error);
+            })
         
-    //     return f;
-    // }
+        return f;
+    }
     
-    
+    //프라이버시 변경
     const isChecked = (e) => {
         if (e.target.checked) {
             setData({
@@ -132,7 +132,7 @@ const SettingProfileTab = ({data, setData}) => {
                                 <img src={imgUrl} alt="userImage" />
                                 <div>
                                     <div>
-                                        <input className={classes.uploadInput} id="ChangeImg" type="file" accept=".jpg, .jpeg, .png" onChange={imageHandler}/>
+                                        <input className={classes.uploadInput} id="ChangeImg" type="file" accept=".jpg, .jpeg, .png" onChange={imgSaveHandler}/>
                                         <label htmlFor="ChangeImg" className={classes.fileUpload}>파일 업로드</label></div>
                                     <div className={classes.uploadInfo}>250 x 250 픽셀에 최적화되어 있으며, 10Mb 이하의 JPG, GIF, PNG 파일을 지원합니다.</div>
                                 </div></div>

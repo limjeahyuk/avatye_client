@@ -82,14 +82,14 @@ const MySettingTabs = () => {
         userName : "",
     });
 
-    const [shippingData, setShippingData] = useState({
+    const [shippingData, setShippingData] = useState([{
         shipIndex : "",
         shippingCheck : 0,
         userID : "",
         userName : "",
         address : "",
         shipphone : ""
-    });
+    }]);
 
     //axios로 유저 정보 불러오기
     const readUserInfo = () => {                    
@@ -107,7 +107,8 @@ const MySettingTabs = () => {
                 email : response.data[0].email,
                 phone : response.data[0].phone
             })
-            setPaymentData({...paymentData,
+            //payment도 여러개 해야됨.
+            setPaymentData({...paymentData, 
                 div : response.data[0].DIV,
                 cardNumber : response.data[0].cardNumber,
                 cardEndDate : response.data[0].cardEndDate,
@@ -116,15 +117,18 @@ const MySettingTabs = () => {
                 bank : response.data[0].bank,
                 accountNumber : response.data[0].accountNumber,
                 userName : response.data[0].userName
-            })
-            setShippingData({...shippingData,
-                shipIndex : response.data[0].shipIndex,
-                shippingCheck : response.data[0].shippingCheck,
-                userID : response.data[0].userID,
-                userName : response.data[0].userName,
-                address : response.data[0].address,
-                shipphone : response.data[0].phone
-            })
+            });
+            //shippingData 여러개    
+            (response.data).map((val, index) => (
+                setShippingData(shippingData => [...shippingData, {
+                    shipIndex : response.data[index].shipIndex,
+                    shippingCheck : response.data[index].shippingCheck,
+                    userID : response.data[index].userID,
+                    userName : response.data[index].userName,
+                    address : response.data[index].address,
+                    shipphone : response.data[index].shipPhone
+                }])
+            ));
         }).catch(e => {
             console.log(e)
         })
