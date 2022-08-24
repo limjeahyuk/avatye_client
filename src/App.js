@@ -49,11 +49,10 @@ const App = () => {
         <Route path='/deadline' element={<Deadline/>} />
         <Route path='/project-editor/create' element={<CreateProject />} />
         <Route path='/heartprojects' element={<HeartList/>} />
-
         <Route path='/usersetting' element={<MypageSetting/>} />
         <Route path='/category/:id' element={<Category />} />
-        <Route path='/detail' element={<Detail/>} />
-                <Route path='/discover/:cont' element={<Discover />} />
+        <Route path='/detail/:id' element={<Detail/>} />
+        <Route path='/discover/:cont' element={<Discover />} />
 
       </Routes>
       <Footer />
