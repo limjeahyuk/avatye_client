@@ -4,16 +4,17 @@ import { Cookies } from 'react-cookie';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import classes from "../Modals/modals.module.css";
 
-const MyShippingSettingModal = ({handler}) => {
+const MyShippingUpdateModal = ({handler, data}) => {
     const cookies = new Cookies();
     const token = cookies.get('user_token');
     const [shippingData, setShippingData] = useState({
-        userName : "",
-        address : "",
-        phone : ""
+        shipIndex : data.shipIndex,
+        userName : data.userName,
+        address : data.address,
+        phone : data.shipphone,
     })
 
-    const {userName, address, phone} = shippingData;
+    const {shipIndex, userName, address, phone} = shippingData;
 
     const valueChange = (e) => {
         const {name, value} = e.target
@@ -23,17 +24,18 @@ const MyShippingSettingModal = ({handler}) => {
         })
     }
 
-    //배송지 추가
-    const insertShipping = () => {
+    //배송지 수정
+    const updateShipping = () => {
         const data = {
+            shippingIndex : shipIndex,
             userName : userName,
             address : address,
             phone : phone
-        }
-        axios.post('http://localhost:3000/user/shipping', data, {headers: {user_token : token}}).
+        };
+        axios.put('http://localhost:3000/user/shipping', data, {headers: {user_token : token}}).
         then(()=> {
-            console.log("shipping 목록에 성공적으로 추가되었습니다.");
-            alert("배송지가 추가되었습니다.");
+            console.log('배송지가 수정되었습니다.');
+            alert("배송지가 수정되었습니다.");
             handler();
         })
     }
@@ -41,7 +43,7 @@ const MyShippingSettingModal = ({handler}) => {
     return(
         <div className={classes.modalContent}>
             <div className={classes.modalTop}>
-                <span className={classes.modalTitle}>배송지 추가</span>
+                <span className={classes.modalTitle}>배송지 수정</span>
                 <button className={classes.closeButton}><CloseRoundedIcon onClick={handler} /></button>
             </div>
 
@@ -61,10 +63,10 @@ const MyShippingSettingModal = ({handler}) => {
                 <label><input type="checkbox" name="basicAddress" value="yes" /> 기본 배송지로 등록</label>
             </div>
 
-            <div><button onClick={insertShipping} className={classes.saveShippingBtn}>등록 완료</button></div>
+            <div><button onClick={()=> updateShipping()} className={classes.saveShippingBtn}>등록 완료</button></div>
 
         </div>
     );
 }
 
-export default MyShippingSettingModal;
+export default MyShippingUpdateModal;
