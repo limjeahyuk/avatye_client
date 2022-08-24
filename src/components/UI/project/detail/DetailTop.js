@@ -16,8 +16,10 @@ const DetailTop = () => {
 
     return (
         <div className={classes.topbox}>
-            <div className={classes.topcategory}>카테고리</div>
-            <h1 className={classes.toptitle}>롱 타이틀</h1>
+            <div className={classes.catebox}>
+                <span className={classes.topcategory}>카테고리</span>
+                <h1 className={classes.toptitle}>롱 타이틀</h1>
+            </div>
             <div className={classes.topcontent}>
                 <Swiper
                     pagination={false}

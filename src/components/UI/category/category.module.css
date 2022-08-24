@@ -1,0 +1,29 @@
+
+.textbox {
+    width: 1180px;
+    margin: 0 auto;
+    padding-left: 16px;
+}
+
+.title {
+    padding: 20px 0;
+    font-size: 18px;
+    color: #0d0d0d;
+    font-weight: bold;
+}
+
+.count {
+    padding: 16px 20px 32px 0;
+    font-size: 16px;
+}
+
+.count span {
+    color: #ff5757;
+}
+
+.catebox {
+    display: flex;
+    width: 1180px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}

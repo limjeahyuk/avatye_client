@@ -228,6 +228,7 @@
     color : white;
     padding : 10px 40px;
     font-size: large;
+    cursor: pointer;
 }
 
 .nameInput {
@@ -249,6 +250,11 @@
     border : 1px solid rgb(119, 119, 119);
 }
 
+.nameInputVali, .nameInputVali:focus {
+    outline : none;
+    border : 1px solid rgb(244, 69, 68);
+}
+
 .commentBox {
     resize: none;
     width : 100%;
@@ -259,6 +265,10 @@
 .commentBox:focus {
     outline : none;
     border : 1px solid rgb(119, 119, 119);
+}
+
+.valiNo {
+    color : rgb(244, 69, 68);
 }
 
 /* SettingPaymentTab */
@@ -293,8 +303,61 @@
     margin-bottom : 20px;
 }
 
-/* MySettingModal */
-.modalContent {
-    width : 500px;
-    border : 1px solid orange;
+/* SettingShippingTab */
+.shippingList {
+    padding: 20px 16px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius : 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shippingUserName {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+    font-weight: 700;
+}
+
+.shippingbtn {
+    color : rgb(156, 156, 156);
+    border : 1px solid rgb(197, 197, 197);
+    padding-left : 2px;
+    border-radius: 50%;
+    width : 30px;
+    height: 30px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.shippingbtn:hover,
+.optionButton:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.optionDiv {
+    border: 1px solid rgb(230, 230, 230);
+    z-index : 100;
+    position: absolute;
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
+    background: rgb(255, 255, 255);
+    padding: 4px 0px;
+    z-index: 1;
+    left: 640px;
+    bottom : 165px;
+}
+
+.optionButton {
+    display: block;
+    background: rgb(255, 255, 255);
+    border: none;
+    width: 150px;
+    padding: 0px 12px;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
 }
