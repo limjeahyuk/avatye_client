@@ -16,7 +16,7 @@ const ReviewCard = ({data}) => {
                             <span className={classes.buyername}>{data.nickName}</span>
                             <div className={classes.buyerlogin}>
                                 <span className={classes.buyer}>응원글</span>
-                                <span className={classes.writetime}><span className={classes.dot}>・</span><span>글 작성시간</span></span>
+                                <span className={classes.writetime}><span className={classes.dot}>・</span><span>{data.uploadDate.slice(0,10).replace(/-/g,'.')}</span></span>
                             </div>
                         </div>
                     </div>
