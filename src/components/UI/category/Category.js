@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { useParams } from "react-router-dom";
 import ProjectCards from "../project/ProjectCards";
+import CategoryIcon from "./CategoryIcon";
 
 import classes from './category.module.css'
 
@@ -37,6 +38,7 @@ const Category = () => {
 
     return (
         <div>
+            <CategoryIcon />
             <div className={classes.textbox}>
                 <div className={classes.title}>{id === 'all' ? '전체' : id}</div>
                 <div className={classes.count}><span>{projects.length}</span>개의 프로젝트가 있습니다.</div>
