@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
@@ -13,6 +14,8 @@ import classes from './detail.module.css'
 import moment from "moment";
 
 const DetailTop = ({data}) => {
+
+    const navigater = useNavigate();
 
     let date1 = moment();
     let date2 = moment(data.endDate);
@@ -96,7 +99,7 @@ const DetailTop = ({data}) => {
                                         <div className={classes.sharecount}>{data.share}</div>
                                     </div>
                                 </div>
-                                <div className={classes.support}><button className={classes.supportbtn}>이 프로젝트 후원하기</button></div>
+                                <div className={classes.support}><button onClick={() => {navigater('/support')}} className={classes.supportbtn}>이 프로젝트 후원하기</button></div>
                             </div>
                         </div>
                     </div>
