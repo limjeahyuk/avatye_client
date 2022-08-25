@@ -1,65 +1,822 @@
+/* DetailTop */
+
 .topbox {
     max-width: 1160px;
     margin: 0 auto;
 }
 
-.topbox .topcategory {
+.topbox .catebox {
     text-align: center;
-    margin-top: 50px;
+    margin: 40px 0 auto;
+    padding: 1rem;
+}
+
+.topbox .topcategory {
+    font-size: 12.6px;
+    font-weight: bold;
+    padding: 0.6rem;
+    color: rgb(117, 117, 117);
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 2px;
 }
 
 .topbox .toptitle {
-    text-align: center;
+    margin-top: 25px;
 }
 
 .topbox .topcontent {
     display: flex;
     justify-content: center;
     width: 1032px;
+    padding: 0 0 42px;
+    margin: 0 64px;
 }
 
-.topbox .toptextbox {
+.topbox .topcontent .toptextbox {
     margin-left: 86px;
 }
 
-.topbox .toptextbox .toptext {
-    margin-top: 8px;
+.topbox .topcontent .toptextbox .toptext {
+    margin-bottom: 8px;
 }
 
-.topbox .toptextbox .pricebox,
-.topbox .toptextbox .finishdatebox,
-.topbox .toptextbox .sponserbox {
+.topbox .topcontent .toptextbox .pricebox,
+.topbox .topcontent .toptextbox .finishdatebox,
+.topbox .topcontent .toptextbox .sponserbox {
     margin-bottom: 24.5px;
 }
 
-.topbox .toptextbox .pricebox .pricename,
-.topbox .toptextbox .finishdatebox .datename,
-.topbox .toptextbox .sponserbox .sponsername {
+.topbox .topcontent .toptextbox .pricebox .pricename,
+.topbox .topcontent .toptextbox .finishdatebox .datename,
+.topbox .topcontent .toptextbox .sponserbox .sponsername {
     margin-bottom: 14px;
     font-size: 14px;
 }
 
-.topbox .toptextbox .pricebox .price,
-.topbox .toptextbox .finishdatebox .date,
-.topbox .toptextbox .sponserbox .sponser {
+.topbox .topcontent .toptextbox .pricebox .price,
+.topbox .topcontent .toptextbox .finishdatebox .date,
+.topbox .topcontent .toptextbox .sponserbox .sponser {
     font-size: 2.38rem;
 }
 
-.topbox .toptextbox .pricebox .price .priceback,
-.topbox .toptextbox .finishdatebox .date .dateback,
-.topbox .toptextbox .sponserbox .sponser .sponserback {
+.topbox .topcontent .toptextbox .pricebox .price .priceback,
+.topbox .topcontent .toptextbox .finishdatebox .date .dateback,
+.topbox .topcontent .toptextbox .sponserbox .sponser .sponserback {
     font-size: 14px;
     margin-left: 3.5px;
 }
 
-.topbox .toptextbox .pricebox .price .pricepercent {
+.topbox .topcontent .toptextbox .pricebox .price .pricepercent {
     font-size: 18.2px;
     margin-left: 10px;
     font-weight: bold;
 }
 
+.topbox .topcontent .subbox {
+    border-top: 1px solid rgb(244, 244, 244);
+    padding: 20px 0 10px;
+    margin-bottom: 1rem;
+}
+
+.topbox .topcontent .subbox .subtextbox .boxmargin {
+    margin-top: 8px;
+}
+
+.topbox .topcontent .subbox .subtextbox .goal,
+.topbox .topcontent .subbox .subtextbox .period,
+.topbox .topcontent .subbox .subtextbox .cash {
+    width: 56px;
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.topbox .topcontent .subbox .subtextbox .goalback, 
+.topbox .topcontent .subbox .subtextbox .periodback,
+.topbox .topcontent .subbox .subtextbox .cashback {
+    margin: 0px;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.topbox .topcontent .subbox .subtextbox .periodback .periodbadge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0px 6px;
+    background-color: rgb(253, 244, 243);
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 10px;
+    color: rgb(255, 87, 87);
+}
+
+.btnbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.heart,
+.share {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    justify-content: center;
+}
+
+.share {
+    margin-left: 5px;
+}
+
+.heart .heartbtn,
+.share .sharebtn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.heart .heartbtn .hearticon,
+.share .sharebtn .shareicon {
+    font-size: 17px;
+    fill: rgb(109, 109, 109)
+}
+
+.heart .heartbtn .heartcount,
+.share .sharebtn .sharecount {
+    font-size: 9px;
+    line-height: 9px;
+    color: rgb(61, 61, 61);
+    margin-top: 5px;
+}
+
+.supportbtn {
+    min-width: 226px;
+    height: 52px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgb(0 0 0 / 10%) 0px 0em 0px 0px inset;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 0.285714rem;
+    font-weight: bold;
+    line-height: 1em;
+    text-align: center;
+    background-color: rgb(250, 100, 98);
+    color: #fff;
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 15.4px;
+}
+
+.supportbtn:hover {
+    background-color: rgb(255, 69, 67);
+}
+
+/* DetailTabs */
+
+.tabsbox {
+    padding: 0px 1rem;
+    box-sizing: border-box;
+    border-top : 1px solid rgb(228, 228, 228);
+    box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px;
+}
+
+.tabsbox.fixed {
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    border-top: none;
+    z-index: 1;
+}
+
+.tabs {
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.tabs .tabsname {
+    font-weight: bold;
+    height: 56px;
+}
+
+.panelbox {
+    margin: 0 auto;
+    width: 1160px;
+}
+
+.panelbox .panelboxcontent {
+    display: flex;
+    width: 1040px;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 38px;
+}
+
+/* DetailSupport */
+
+.sellerbox {
+    margin-top: 25px;
+    padding: 20px 16px;
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px, rgb(0 0 0 / 4%) 0px 2px 4px;
+    transition: box-shadow 0.2s ease-in-out 0s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sellerbox .sellerintro {
+    padding: 5px 0px 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.sellerbox .sellerinfobox .sellerinfo,
+.updatebox .sellerinfo {
+    display: flex;
+    align-items: center;
+}
+
+.sellerbox .sellerinfobox .sellerinfo .sellerprofile img,
+.updatebox .sellerinfo .sellerprofile img {
+    width: 40px;
+    height: 40px;
+    margin: 5px 14px 0 0;
+    border-radius: 50%;
+}
+
+.sellerbox .sellerinfobox .sellerinfo .sellername,
+.updatebox .sellerinfo .sellername {
+    display: block;
+    color: rgb(61, 61, 61);
+    font-weight: bold;
+    font-size: 14px;
+    height: 24px;
+}
+
+.sellerbox .sellerinfobox .sellerinfo .sellerlogin
+.updatebox .sellerinfo .sellerlogin {
+    font-size: 11px;
+    color: #6d6d6d;
+}
+
+.sellerbox .sellerinfobox .sellerdes {
+    width: 318px;
+    padding: 18px 0;
+    font-size: 13px;
+    color: #6d6d6d;
+}
+
+.sellerbox .sellerinfobox .sellerbtn {
+    display: flex;
+}
+
+.sellerbox .sellerinfobox .sellerbtn .follow {
+    padding: 0 16px 0 12px;
+    background-color: #f0f0f0;
+    margin-right: 8px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 12px;
+    width: 126px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.sellerbox .sellerinfobox .sellerbtn .inquiry {
+    height: 40px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 1px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out 0s;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 40px;
+    width: 152px;
+}
+
+.supportbox {
+    height: 100%;
+}
+
+.supportbox .supportcard {
+    width: 354px;
+    height: 900px;
+    padding: 24px 0px 0px;
+    position: sticky;
+    top: 50px;
+    overflow: hidden auto;
+}
+
+.supportbox .supportcard .cardtitle {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgb(61, 61, 61);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.supportbox .supportcard .rewardcards {
+    margin: 10px 0px 14px;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard {
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px, rgb(0 0 0 / 4%) 0px 2px 4px;
+    border: 1px solid rgb(239, 239, 239);
+    transition: all 0.4s ease-out 0s;
+    cursor: pointer;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard:hover {
+    border: 1px solid rgb(61, 61, 61);
+    transition: all 0.4s ease-out 0s;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent {
+    padding: 20px;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+    color: rgb(109, 109, 109);
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardicon {
+    font-size: 12px !important;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardcount {
+    text-align: right;
+    float: right;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardcount span {
+    color: rgb(255, 87, 87);
+    background-color: rgb(255, 238, 238);
+    border-radius: 2px;
+    border: 1px solid rgb(255, 188, 188);
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    padding: 5px 8px;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox {
+    margin: 0px 0px 8px;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox .rewardprice {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox .rewardgift {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist .rewarditem {
+    position: relative;
+    padding-left: 10px;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    margin: 0px 0px 4px;
+    color: rgb(109, 109, 109);
+}
+
+.supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist .rewarditem::before{
+    content: "·";
+    position: absolute;
+    font-weight: bold;
+    left: 0px;
+    top: -1px;
+}
 
 
+/* planTab */
+
+.planbox {
+    width: 620px;
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.planbox .plancontent {
+    padding: 25px 0 32px;
+}
+
+.planbox .plancontent img {
+    width: 620px;
+}
+
+/* UpdateTab */
+
+.updatebox {
+    width: 620px;
+    padding: 0 15px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.updatebox .updatecontent {
+    padding: 32px 0px 24px;
+}
+
+.updatebox .updatecontent .sellerinfo .sellerlogin .seller {
+    font-size: 12px;
+    color: #f86453;
+}
+
+.updatebox .updatecontent .sellerinfo .sellerlogin .seller .sellerjob {
+    margin-left: 2px;
+}
+
+.updatebox .updatecontent .sellerinfo .sellerlogin .writetime {
+    color: #9e9e9e;
+    font-size: 13px;
+}
+
+.updatebox .updatecontent .sellerinfo .sellerlogin .writetime .dot {
+    padding: 3px;
+}
+
+.updatebox .updatecontent .contentbox {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.updatebox .updatecontent .contentbox .content {
+    max-height: 500px;
+    min-height: 30px;
+    overflow: hidden;
+    padding: 16px 0 21px
+}
+
+
+.updatebox .updatecontent .contentbox .view {
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 78px;
+    z-index: 200;
+    background: linear-gradient(360deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+}
+
+.updatebox .updatecontent .chat {
+    color: rgb(158, 158, 158);
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+.updatebox .updatecontent .chaticon {
+    width: 15px !important;
+    vertical-align: middle;
+}
+
+/* ReviewTab */
+
+.commentwrap {
+    width: 620px;
+    padding: 0 15px;
+}
+
+.commentwrap .commentbox {
+    margin: 16px 0px 0px;
+    width: 610px;
+    height: 60px;
+    padding: 0px 20px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: rgb(0 0 0 / 4%) 0px 4px 12px, rgb(0 0 0 / 3%) 0px 0.8px 0px;
+    font-size: 14px;
+    background-color: rgb(248, 248, 248);
+    color: rgb(208, 208, 208);
+}
+
+.commentwrap .commentbox span {
+    width: 100%;
+    outline: none;
+    border: none;
+    line-height: 4;
+    background: transparent;
+}
+
+.commentwrap .commentlist {
+    width: 620px;
+    padding-right: 15px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.commentwrap .commentlist .reviewcontent {
+    padding: 32px 0px 24px;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo {
+    display: flex;
+    align-items: center;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyerprofile img {
+    width: 40px;
+    height: 40px;
+    margin: 5px 14px 0 0;
+    border-radius: 50%;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyername {
+    display: block;
+    color: rgb(61, 61, 61);
+    font-weight: bold;
+    font-size: 14px;
+    height: 24px;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyerlogin {
+    font-size: 11px;
+    color: #6d6d6d;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyerlogin .buyer {
+    padding: 0px 6px;
+    background-color: rgb(248, 248, 248);
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    font-weight: 500;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyerlogin .writetime {
+    color: #9e9e9e;
+    font-size: 13px;
+}
+
+.commentwrap .commentlist .reviewcontent .buyerinfo .buyerlogin .writetime .dot {
+    padding: 3px;
+}
+
+.commentwrap .commentlist .reviewcontent .reviewbox {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.commentwrap .commentlist .reviewcontent .reviewbox .view {
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 78px;
+    z-index: 200;
+    background: linear-gradient(360deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+}
+
+.commentwrap .commentlist .reviewcontent .reviewbox .review {
+    max-height: 500px;
+    min-height: 30px;
+    overflow: hidden;
+}
+
+
+.commentwrap .commentlist .reviewcontent .reviewbox .review .reviewcomment {
+    padding: 1.5em 0;
+}
+
+.commentwrap .commentlist .reviewcontent .chat {
+    color: rgb(158, 158, 158);
+    display: flex;
+    font-size: 14px;
+}
+
+.commentwrap .commentlist .reviewcontent .chaticon {
+    width: 15px !important;
+    vertical-align: middle;
+}
+
+/* edit */
+
+.editheader {
+    margin-top: 16px;
+}
+
+.editheader .editcontainer {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editheader .editcontainer .editback {
+    cursor: pointer;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(61, 61, 61);
+    font-size: 16px
+}
+
+.editheader .editcontainer .editback .editicon {
+    vertical-align: bottom;
+}
+
+.editheader .editcontainer .editsend {
+    background-color: rgb(228, 228, 228);
+    width: 160px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 12px;
+    border: 0px;
+    outline: none;
+    opacity: .5;
+}
+
+.notice {
+    margin-top: 26px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 38px;
+}
+
+.notice .editcontentbox {
+    width: 650px;
+}
+
+.notice .editcontentbox .editcount {
+    color: rgb(158, 158, 158);
+    margin-bottom: 30px;
+    float: right;
+    font-size: 12px;
+}
+
+.notice .editcontentbox .editcontent {
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    margin-left: 18px;
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.notice .editcontentbox .editcontent:focus {
+    outline: #000;
+}
+
+.notice .editcontentbox .editcontent .editwrite {
+    height: 500px;
+    min-height: auto;
+    border: 0px;
+    padding: 11px 0px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.notice .editcontentbox .editcontent .editwrite textarea {
+    background: transparent;
+    width: 612px;
+    height: 100%;
+    border: 0px;
+    padding: 0px;
+    resize: none;
+    overflow: auto;
+    outline: none;
+}
+
+.notice .guide {
+    width: 352px;
+}
+
+.notice .guide .guidetitle {
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+}
+
+.notice .guide .guideselect {
+    margin-right: 12px;
+    padding: 4px 16px;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: 12px;
+    line-height: 24px;
+    min-width: 55px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 23px;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    user-select: none;
+    background: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+}
+
+.notice .guide .guideunselect {
+    margin-right: 12px;
+    padding: 4px 16px;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    line-height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    min-width: 55px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    border-radius: 23px;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.notice .guide .guideanswer {
+    font-size: 14px;
+    color: rgb(61, 61, 61);
+    margin-top: 24px;
+}
+
+.notice .guide .noticetextbox {
+    padding: 16px;
+    background-color: rgba(240, 240, 240, 0.5);
+    margin-top: 24px;
+}
+
+.notice .guide .noticetextbox .texttitle {
+    display: inline-flex;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+}
+
+.notice .guide .noticetextbox .texttitle .texticon {
+    font-size: 16px !important;
+    display: inline-flex !important;
+    align-self: center !important;
+}
+
+.notice .guide .noticetextbox .textlist {
+    margin-top: 6px;
+    margin-bottom: 0px;
+    padding-left: 16px;
+    letter-spacing: 0.04em;
+}
+
+.notice .guide .noticetextbox .textlist li {
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+    line-height: 1.7;
+}
 
 /* image swiper */
 

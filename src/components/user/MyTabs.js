@@ -71,7 +71,7 @@ const MyTabs = () => {
             setCount(response.data.upLoadCount)
             setsuCount(response.data.buyCount)
 
-            const asd = moment(response.data.Date).format('YYYYMMDD')
+            const asd = moment(response.data.userProfile.Date).format('YYYYMMDD')
             const result = moment(asd, "YYYYMMDD").fromNow()
             setTime(result)
         })
@@ -96,7 +96,7 @@ const MyTabs = () => {
                     <div className={classes.profilebox}>
                         {data.profileImage ? <img src={data.profileImage} alt="profileimg"/> : <img src="/images/profile.jpg" alt="profileimg"/>}
                         <div className={classes.profileInfo}>
-                            <div>{data.nickName}<span><SettingsIcon onClick={() => {navigater('/userSetting')}}/></span></div>
+                            <div>{data.nickName}<span><SettingsIcon onClick={() => {navigater('/usersetting')}}/></span></div>
                             <div>{time} 가입</div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import classes from "./createProject.module.css";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import PreviewModal from "../../ui/previewModal/PreviewModal";
-
+import Editor from "../../ui/editor/Editor";
 
 // 대기중일 때는 대기 처리를 해줘야함.. 무조건
 // 중복입력같은 거 막아보자
@@ -34,10 +34,17 @@ const BasicInfo = ({data, setData}) => {
     const onChange = e => {
         const {name, value} = e.target
         setData({
-            data,
+            ...data,
             [name] : String(value).replace(/ +/g," ")
         })
     };
+
+    const onEditerChange = (item) => {
+        setData({
+            ...data,
+            contents: item
+        })
+    }
 
  const zoomHandler = () => {
         if (imgZoom) {
@@ -53,7 +60,7 @@ const BasicInfo = ({data, setData}) => {
 
     const sendRequest = async () => {
         try {
-            const response = await axios.get('http://192.168.0.74:3000/category'); 
+            const response = await axios.get('http://localhost:3000/category'); 
             setCategoryData(response.data);
             setSelectCategory(response.data.filter((item) => (item.name === state.categoryState))[0].catename.split(','));
         } catch (err) {
@@ -69,7 +76,6 @@ const BasicInfo = ({data, setData}) => {
         
         if (selectCategory[0]) {
             // const filterData = categoryData.filter((item) => (item.name === data.category));
-            // console.log(filterData(category)[0].catename.split(','));
             // setSelectCategory(filterData(category)[0].catename.split(','));
             setSelectCategory(categoryData.filter((item) => (item.name === data.category))[0].catename.split(','));
         }
@@ -265,9 +271,20 @@ const BasicInfo = ({data, setData}) => {
                     </div>
                 </div>
             </div>
-
-
+            
+            {/* 에디터 */}
+            <div className={classes.ckeditor}>
+                <div className={classes.contintro}>
+                    <div>프로젝트 계획<span>*</span></div>
+                    <p>프로젝트의 관하여 에디터에 작성해주세요.</p>
+                </div>
+                <div className={classes.editor}>
+                    <Editor editorChangeHandler={onEditerChange} editorData={data.contents} />
+                </div>
+                
+            </div>
         </div>
+        
         </>
     )
 }
