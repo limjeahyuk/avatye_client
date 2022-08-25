@@ -93,7 +93,7 @@ const DetailSupport = ({data}) => {
                 <div></div>
                 <div className={classes.supportcard}>
                     <div className={classes.cardtitle}>선물 선택</div>
-                    <div className={classes.rewardcards}>
+                    <div className={classes.rewardcards} id= "1">
                         <div className={classes.rewardcard}>
                             <div className={classes.rewardcontent}>
                                 <div className={classes.rewardbox}>

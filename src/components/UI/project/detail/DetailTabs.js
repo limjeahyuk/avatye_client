@@ -14,6 +14,7 @@ import UpdateTab from "./tabs/UpdateTab";
 import ReviewTab from "./tabs/ReviewTab";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Cookies } from "react-cookie";
 
 
 function TabPanel(props) {
@@ -56,6 +57,9 @@ const DetailTabs = (props) => {
         setValue(newValue);
     };
 
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
     const [scrollY, setScrollY] = useState(0);
     const [scrollActive, setScrollActive] = useState(false);
     const [view, setView] = useState(true);
@@ -64,7 +68,7 @@ const DetailTabs = (props) => {
     let { id } = useParams();
 
     const findproejct = () => {
-        axios.get(`http://localhost:3000/detail/${id}`)
+        axios.get(`http://localhost:3000/detail/${id}`, token ? {headers: {'user_token' : token}} : '' )
         .then(response => {
             setData(response.data[0])
             console.log(response.data)
@@ -73,11 +77,6 @@ const DetailTabs = (props) => {
             console.log(e)
         })
     }
-
-    useEffect(() => {
-        findproejct()
-    }, [id])
-
 
     const scrollFixed = () => {
         if (scrollY > 800) {
@@ -88,6 +87,10 @@ const DetailTabs = (props) => {
             setScrollActive(false);
         }
     };
+
+    useEffect(() => {
+        findproejct()
+    }, [id])
 
     useEffect(() => {
         const scrollListener = () => {
@@ -114,7 +117,7 @@ const DetailTabs = (props) => {
             <div className={classes.panelbox}>
                 <div className={classes.panelboxcontent}>
                     <TabPanel value={value} index={0}>
-                        <PlanTab data={data}/>
+                        <PlanTab data={data} />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         <UpdateTab/>
