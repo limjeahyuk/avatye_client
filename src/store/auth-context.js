@@ -7,7 +7,7 @@ const AuthContext = React.createContext({
     onLogin: (token, nickName, userProfile) => { },
     onLogout: () => { },
     userProfile: '',
-    
+    updateUserData: (nick, profile) => { }
 });
 
 
@@ -43,13 +43,17 @@ export const AuthContextProvider = (props) => {
         })
     }
 
+    const onUpdateUserData = (nick, profile) => {
+        setUserNick(nick);
+        setUserProfile(profile);
+    }
+
     useEffect(() => {
+        console.log(userNick, userProfile)
         if (cookies.get('user_token')) {
-            console.log("auth context true")
             setIsLogin(true);
             setUserNick(cookies.get('user_nickName'));
         } else {
-            console.log("auth context false")
             setIsLogin(false)
         }
     }, [])
@@ -61,7 +65,8 @@ export const AuthContextProvider = (props) => {
         userNick: userNick,
         userProfile: userProfile,
         onLogin: isLoginHandler,
-        onLogout: isLogoutHandler
+        onLogout: isLogoutHandler,
+        updateUserData: onUpdateUserData,
     }}
     >{props.children}</AuthContext.Provider>
 }
