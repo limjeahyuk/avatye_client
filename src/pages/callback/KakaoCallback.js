@@ -69,7 +69,8 @@ const KakaoCallback = () => {
                 
             if (login.data.login) {
                 console.log(login.data);
-                ctx.onLogin(login.data.token, login.data.nickName);
+                console.log(user.data.properties.profile_image);
+                ctx.onLogin(login.data.token, login.data.nickName, user.data.properties.profile_image);
                 navigater('/');
             } else {
                 alert('error')

@@ -65,19 +65,21 @@ const EmailLogin = () => {
     }, [isEmailValid, isPasswordValid]);
 
     const loginSubmitHandler = (e) => {
+        console.log('dd');
         e.preventDefault();
 
         if (formValid) {
             axios({
-                url: "http://192.168.0.74:3000/user/login",
+                url: "http://localhost:3000/user/login",
                 method: 'post',
                 data: {
                     userEmail: loginState.emailValue,
                     userPassword: loginState.passwordValue
                 }
             }).then(function a(response) {
+                console.log(response.data);
                 if (response.data.login) {
-                    ctx.onLogin(response.data.token, response.data.nickName);
+                    ctx.onLogin(response.data.token, response.data.nickName, null);
                     navigater('/');
                 } else {
                     setFormChange(true);
