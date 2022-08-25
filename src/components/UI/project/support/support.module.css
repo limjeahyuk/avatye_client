@@ -1,0 +1,235 @@
+.supportHeader {
+    padding : 10px 0px;
+    border-bottom :1px solid rgb(236, 236, 236);
+    box-shadow: rgb(10 10 10 / 10%) 0px 1px 2px 0px;
+    margin-bottom : 25px;
+}
+
+.supportHeader div {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.supportHeader img{
+    width : 120px;
+}
+
+.supportTitle { 
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 0px 10px;
+}
+
+.supportContainer {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.supportProject {
+    display: flex;
+    align-items: center;
+}
+
+.supportPrjectInfo {
+    margin-left : 20px;
+    line-height : 30px;
+}
+
+.supportPrjectInfo  div:nth-child(1){
+    font-size : 13px;
+    color : rgb(180, 180, 180);
+    font-weight: 700;
+}
+
+.supportPrjectInfo  div:nth-child(2) {
+    font-size : 23px;
+    color : rgb(59, 59, 59);
+    font-weight: 700;
+}
+
+.supportPrjectInfo  div:nth-child(3) span:nth-child(1){
+    font-size : 15px;
+    color : rgb(60, 60, 60);
+    font-weight: 600;
+    padding-right : 10px;
+}
+
+.supportPrjectInfo  div:nth-child(3) span:nth-child(2){
+    font-size : 13px;
+    color :  #ff5757;
+    font-weight: 600;
+    padding-right : 10px;
+}
+
+.supportPrjectInfo  div:nth-child(3) span:nth-child(3){
+    font-size : 13px;
+    color : rgb(120, 120, 120);
+    font-weight: 400;
+    padding-right : 10px;
+}
+
+.supportProject img{
+    width : 150px;
+}
+
+.supportInfoListWrapper {
+    margin-top : 20px;
+    display: flex;
+}
+
+.supportInfoList {
+    width : 640px;
+}
+
+.supportInfo {
+    width : 450px;
+    margin-top : 20px;
+    margin-left : 45px;
+}
+
+.infoTitle {
+    color : rgb(56, 56, 56);
+    font-weight: 700;
+}
+
+.supportItemBox {
+    width : 95%;
+    padding: 20px 16px;
+    margin-top : 15px;
+    margin-bottom : 30px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item {
+    display: flex;
+    margin-bottom : 7px;
+}
+
+.giftul {
+    margin-left : 10px;
+    padding-left : 10px;
+}
+
+.changebtn {
+    min-width: 50px;
+    max-width: 50px;
+    padding: 6px 10px;
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.changebtn:hover {
+    background-color :rgba(227, 227, 227, 0.577);
+}
+
+.item div:nth-child(1) {
+    color : rgb(56, 56, 56);
+    font-weight: 800;
+    width : 100px;
+}
+
+.tinyinfo {
+    color :rgb(120, 120, 120);
+    line-height: 15px;
+    font-size: 13px;
+}
+
+.shippingName {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 700;
+    
+}
+
+.shippinginfo {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.015em;
+}
+
+.radiolabel {
+    padding-right : 10px;
+    font-size: 16px;
+    color :rgb(74, 74, 74);
+    font-weight: 400;
+}
+
+.cardOpen {
+    padding: 20px 18px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    margin-top : -30px;
+    border-top : none;
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.supportPrice {
+    width : 430px;
+    padding: 20px 16px;
+    margin-top : 15px;
+    margin-bottom : 5px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.supportPrice div:nth-child(1) {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 87, 87);
+    line-height: 27px;
+}
+.supportPrice div:nth-child(2) {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    line-height: 27px;
+}
+
+.paymentInfo {
+    padding: 0px 8px;
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    line-height: 19px;
+}
+
+.supportBtn {
+    color: rgb(255, 255, 255);
+    font-size: large;
+    font-weight: 600;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width : 465px;
+    height: 50px;
+    border-radius: 1px;
+    margin: 20px 0px;
+    border: none;
+    padding: 0px 16px;
+    background-color: rgb(255, 87, 87);
+}
+
+.supportBtn:hover {
+    color :rgb(230, 230, 230);
+}
