@@ -66,8 +66,21 @@ const DetailTabs = (props) => {
     const findproejct = () => {
         axios.get(`http://localhost:3000/detail/${id}`)
         .then(response => {
-            setData(response.data[0])
-            console.log(response.data)
+            setData(response.data[0]);
+            console.log(response.data[0]);
+            const recently = {
+                goalPrice: response.data[0].goalPrice,
+                heartCheck: null,
+                longTitle: response.data[0].longTitle,
+                name: response.data[0].cateName,
+                nickName: response.data[0].nickName,
+                nowPrice: response.data[0].nowPrice,
+                percent: response.data[0].percent,
+                profileIMG: response.data[0].titleProfile,
+                projectIndex: response.data[0].projectIndex,
+                userID: response.data[0].userID
+            }
+            localUpload(recently);
         })
         .catch(e => {
             console.log(e)
@@ -88,6 +101,23 @@ const DetailTabs = (props) => {
             setScrollActive(false);
         }
     };
+
+    const localUpload = (item) => {
+        let get_local = localStorage.getItem("data");
+
+        if (get_local === null) {
+            get_local = [];
+        } else {
+            get_local = JSON.parse(get_local);
+        }
+
+        get_local = get_local.filter(item => item.projectIndex !== Number(id));
+
+        get_local.push(item);
+        get_local = [...get_local];
+        localStorage.setItem('data', JSON.stringify(get_local));
+        console.log(JSON.parse(localStorage.getItem('data')))
+    }
 
     useEffect(() => {
         const scrollListener = () => {
