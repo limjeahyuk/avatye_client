@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -39,9 +39,17 @@ const SettingProfileTab = ({data, setData}) => {
 
     //받아온 데이터
     const {profileImg, name, comment, website, privacy} = data;
+    const [imgUrl, setImgUrl] = useState(profileImg || "/images/profile.jpg");
 
-    // const [imgData, setImgData] = useState('');
-    const [imgUrl, setImgUrl] = useState(profileImg || '/images/profile.jpg');
+    useEffect(() => {
+        setImgUrl(profileImg);
+    }, [profileImg]);
+
+    useEffect(() => {
+        setImgUrl(profileImg);
+    }, [profileImg]);
+
+    console.log(imgUrl);
 
     //데이터 값 변경
     const valueChange = (e) => {
@@ -55,32 +63,34 @@ const SettingProfileTab = ({data, setData}) => {
     //이미지 변경
     const imageHandler = (e) => {
         setImgUrl(URL.createObjectURL(e.target.files[0]));
-        console.log(e.target.files[0]);
     }
 
-    // const imgSaveHandler = async () => {
-    //      //formdata로 이미지 저장
-    //     const formdata = new FormData();
-    //     formdata.append('img', basic.img);
+    const imgSaveHandler = async (e) => {
+        //imageHandler 실행
+        imageHandler(e);
 
-    //     const config = {
-    //         Headers: {
-    //             'content-type': 'multipart/form-data',
-    //         },
-    //     };
+         //formdata로 이미지 저장
+        const formdata = new FormData();
+        formdata.append('img', e.target.files[0]);
 
-    //     const f = await axios.post('http://localhost:3000/img', formdata, config)
-    //         .then((res) => {
-    //             console.log(res.data);
-    //             return res.data;
-    //         }).catch((error) => {
-    //             console.log(error);
-    //         })
+        const config = {
+            Headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+
+        const f = await axios.post('http://localhost:3000/img', formdata, config)
+            .then((res) => {
+                console.log(res.data);
+                setImgUrl(res.data);
+            }).catch((error) => {
+                console.log(error);
+            })
         
-    //     return f;
-    // }
+        return f;
+    }
     
-    
+    //프라이버시 변경
     const isChecked = (e) => {
         if (e.target.checked) {
             setData({
@@ -132,7 +142,7 @@ const SettingProfileTab = ({data, setData}) => {
                                 <img src={imgUrl} alt="userImage" />
                                 <div>
                                     <div>
-                                        <input className={classes.uploadInput} id="ChangeImg" type="file" accept=".jpg, .jpeg, .png" onChange={imageHandler}/>
+                                        <input className={classes.uploadInput} id="ChangeImg" type="file" accept=".jpg, .jpeg, .png" onChange={imgSaveHandler}/>
                                         <label htmlFor="ChangeImg" className={classes.fileUpload}>파일 업로드</label></div>
                                     <div className={classes.uploadInfo}>250 x 250 픽셀에 최적화되어 있으며, 10Mb 이하의 JPG, GIF, PNG 파일을 지원합니다.</div>
                                 </div></div>
@@ -206,7 +216,7 @@ const SettingProfileTab = ({data, setData}) => {
                     </div>
                     {changePrivacy ? privacy === 1 ? 
                                 <div>
-                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} checked/> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} defaultChecked/> 후원한 프로젝트 목록을 공개합니다.</label>
                                     <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div> :
                                 <div>

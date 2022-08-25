@@ -1,45 +1,58 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Cookies } from 'react-cookie';
-import classes from '../mypage.module.css'
+import classes from '../mypage.module.css';
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import MyShippingSettingModal from "../Modals/MyShippingSettingModal";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MyShippingUpdateModal from "../Modals/MyShippingUpdateModal";
 
 const SettingShippingTab = ({data, setData}) => {
     const navigater = useNavigate();
     const cookies = new Cookies();
     const token = cookies.get('user_token');
     
-    const [openModal, setOpenModal] = useState(false);
-    const [option, setOption] = useState(false);
+    //modal 열기
+    const [openInsertModal, setOpenInsertModal] = useState(false);
+    const [openUpdateModal, setOpenUpdateModal] = useState(false);
+    const [updateData, setUpdateData] = useState({});
 
-    console.log(data)
-
-    const modalHandler = () => {
-        if(openModal){
-            setOpenModal(false)
+    const insertModalHandler = () => {
+        if(openInsertModal){
+            setOpenInsertModal(false)
         }else{
-            setOpenModal(true)
+            setOpenInsertModal(true)
         }
     }
 
-    const openDropdown = () => {
-        if (option) {
-            setOption(false)
-        } else {
-            setOption(true)
+    const updateModalHandler = () => {
+        if(openUpdateModal){
+            setOpenUpdateModal(false)
+        }else{
+            setOpenUpdateModal(true)
         }
     }
 
-    console.log(data.shipIndex)
+    //updateModal
+    const updateModal = (upData) => {
+        setUpdateData(upData);
+        updateModalHandler();
+    }
+
+    //중복 값 제거
+    useEffect(() => {
+        setData(data.filter((arr, index, callback) => 
+            index === callback.findIndex(t => t.shipIndex === arr.shipIndex)));
+    }, []);
 
     //배송지 삭제
-    const deleteShipping = () => {
-        axios.delete('http://localhost:3000/user/shipping', {headers : {'user_token': token}, data : {shippingIndex : data.shipIndex}, })
+    const deleteShipping = (shippingIndex) => {
+        console.log(shippingIndex)
+        axios.delete('http://localhost:3000/user/shipping', {headers : {'user_token': token}, data : {shippingIndex : shippingIndex}, })
         .then(response => {
             console.log("성공적으로 삭제되었습니다.");
+            alert("성공적으로 삭제되었습니다.")
+            setData(data => data.filter(item => item.shippingCheck === 1));
         })
         .catch((err) => {
             console.log(err);
@@ -48,17 +61,17 @@ const SettingShippingTab = ({data, setData}) => {
 
     return(
         <div>
-            {openModal && <MyShippingSettingModal handler ={modalHandler} /> }
-        
+            {openInsertModal && <MyShippingSettingModal handler={insertModalHandler} /> }
+            {openUpdateModal && <MyShippingUpdateModal handler={updateModalHandler} data={updateData}/> }
             
         <div className={classes.settingBox}>
             <div className={classes.settingItemList}>
                 <div className={classes.settingItem}>
-                    {/* 등록된 결제수단 */}
-                    {!data.address ? <div>
+                    {/* 등록된 배송지 */}
+                    {data.length === 1 ? <div>
                         <div className={classes.ItemTitle}>
                            <span>등록된 배송지</span>
-                            <button className={classes.changeBTN} onClick={modalHandler}>+ 추가</button>
+                            <button className={classes.changeBTN} onClick={insertModalHandler}>+ 추가</button>
                         </div>
                         <div className={classes.payMethod}>
                             <div className={classes.noValueBox}>
@@ -72,25 +85,32 @@ const SettingShippingTab = ({data, setData}) => {
                             <div>
                                 <div className={classes.ItemTitle}>
                                     <span>등록된 배송지</span>
-                                    <button className={classes.changeBTN} onClick={modalHandler}>+ 추가</button>
+                                    <button className={classes.changeBTN} onClick={insertModalHandler}>+ 추가</button>
                                 </div>
 
-                                <div className={classes.shippingList}>
-                                    <div>
-                                        <div><span className={classes.shippingUserName}>{data.userName}</span></div> 
-                                        <div>{data.address}</div>
-                                        <div>{data.shipphone}</div>
-                                    </div>
-                                    <div>
-                                        <button onClick={openDropdown} className={classes.shippingbtn}><MoreHorizIcon /></button>
-                                    </div>
-                                </div>
+                                {data && data.filter(item => item.shippingCheck === 1).map((val, index) => { 
+                                    return (
+                                        <div key={index}>
+                                        <div className={classes.shippingList}>
+                                            <div>
+                                                <div><span className={classes.shippingUserName}>{val.userName}</span></div> 
+                                                <div>{val.address}</div>
+                                                <div>{val.shipphone}</div>
+                                            </div>
+
+                                            <div>
+                                                <button onClick={()=> updateModal(val)} className={classes.optionButton}>수정</button>
+                                                <button onClick={() => deleteShipping(val.shipIndex)} className={classes.optionButton}>삭제</button>
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                    );
+                                })}
+                                
                             </div>
-                            {option && <div className={classes.optionDiv}>
-                                        <button className={classes.optionButton}>수정</button>
-                                        <button onClick={deleteShipping} className={classes.optionButton}>삭제</button>
-                                        </div>}
-                        </div> }
+                        </div> 
+                    }
 
                 </div>
             </div>

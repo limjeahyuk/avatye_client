@@ -297,6 +297,10 @@
     font-size: 50px;
 }
 
+.paymentDIV {
+    color :rgb(46, 46, 46);
+    font-size : 13px;
+}
 
 /* SettingAccountTab */
 .currPW {
@@ -306,6 +310,7 @@
 /* SettingShippingTab */
 .shippingList {
     padding: 20px 16px;
+    margin-bottom : 20px;
     border: 1px solid rgb(230, 230, 230);
     border-radius : 2px;
     display: flex;
@@ -331,33 +336,37 @@
     cursor: pointer;
 }
 
-.shippingbtn:hover,
-.optionButton:hover {
+.shippingbtn:hover {
     background-color: rgb(230, 230, 230);
 }
 
-.optionDiv {
+/* .optionDiv {
     border: 1px solid rgb(230, 230, 230);
-    z-index : 100;
-    position: absolute;
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
     background: rgb(255, 255, 255);
     padding: 4px 0px;
-    z-index: 1;
-    left: 640px;
-    bottom : 165px;
-}
+    width: 150px;
+    position: relative;
+    left: 490px;
+    bottom: 50px;
+} */
 
 .optionButton {
     display: block;
+    color :rgb(156, 156, 156);
     background: rgb(255, 255, 255);
     border: none;
-    width: 150px;
-    padding: 0px 12px;
+    width: 50px;
     height: 40px;
     display: flex;
     justify-content: left;
     align-items: center;
     cursor: pointer;
+    margin : -10px 0px;
+}
+
+.optionButton:hover {
+    color : rgb(244, 69, 68);
+    font-weight: 600;
 }
