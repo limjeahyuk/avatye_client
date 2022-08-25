@@ -14,6 +14,7 @@ import UpdateTab from "./tabs/UpdateTab";
 import ReviewTab from "./tabs/ReviewTab";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Cookies } from "react-cookie";
 
 
 function TabPanel(props) {
@@ -56,6 +57,9 @@ const DetailTabs = (props) => {
         setValue(newValue);
     };
 
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
     const [scrollY, setScrollY] = useState(0);
     const [scrollActive, setScrollActive] = useState(false);
     const [view, setView] = useState(true);
@@ -64,20 +68,28 @@ const DetailTabs = (props) => {
     let { id } = useParams();
 
     const findproejct = () => {
-        axios.get(`http://localhost:3000/detail/${id}`)
+        axios.get(`http://localhost:3000/detail/${id}`, token ? {headers: {'user_token' : token}} : '' )
         .then(response => {
-            setData(response.data[0])
-            console.log(response.data)
+            setData(response.data[0]);
+            console.log(response.data[0]);
+            const recently = {
+                goalPrice: response.data[0].goalPrice,
+                heartCheck: null,
+                longTitle: response.data[0].longTitle,
+                name: response.data[0].cateName,
+                nickName: response.data[0].nickName,
+                nowPrice: response.data[0].nowPrice,
+                percent: response.data[0].percent,
+                profileIMG: response.data[0].titleProfile,
+                projectIndex: response.data[0].projectIndex,
+                userID: response.data[0].userID
+            }
+            localUpload(recently);
         })
         .catch(e => {
             console.log(e)
         })
     }
-
-    useEffect(() => {
-        findproejct()
-    }, [id])
-
 
     const scrollFixed = () => {
         if (scrollY > 800) {
@@ -88,6 +100,27 @@ const DetailTabs = (props) => {
             setScrollActive(false);
         }
     };
+
+    const localUpload = (item) => {
+        let get_local = localStorage.getItem("data");
+
+        if (get_local === null) {
+            get_local = [];
+        } else {
+            get_local = JSON.parse(get_local);
+        }
+
+        get_local = get_local.filter(item => item.projectIndex !== Number(id));
+
+        get_local.push(item);
+        get_local = [...get_local];
+        localStorage.setItem('data', JSON.stringify(get_local));
+        console.log(JSON.parse(localStorage.getItem('data')))
+    }
+
+    useEffect(() => {
+        findproejct()
+    }, [id])
 
     useEffect(() => {
         const scrollListener = () => {
@@ -114,7 +147,7 @@ const DetailTabs = (props) => {
             <div className={classes.panelbox}>
                 <div className={classes.panelboxcontent}>
                     <TabPanel value={value} index={0}>
-                        <PlanTab data={data}/>
+                        <PlanTab data={data} />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         <UpdateTab/>

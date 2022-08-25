@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
@@ -12,6 +13,7 @@ import { Pagination, Navigation } from "swiper";
 
 import classes from './detail.module.css'
 import moment from "moment";
+import { Link } from "react-scroll"
 
 const DetailTop = ({data}) => {
 
@@ -77,12 +79,12 @@ const DetailTop = ({data}) => {
                                     <div className={classes.boxmargin}>
                                         <span className={classes.period}>펀딩 기간</span>
                                         <span className={classes.periodback}>
-                                            {data.nowPrice === undefined ? 'loading...' : `${data.beginDate.slice(0,10).replace(/\-/g,'.')} ~ ${data.endDate.slice(0,10).replace(/\-/g,'.')} `}
+                                            {data.nowPrice === undefined ? 'loading...' : `${data.beginDate.slice(0,10).replace(/-/g,'.')} ~ ${data.endDate.slice(0,10).replace(/-/g,'.')} `}
                                             <span className={classes.periodbadge}>{date2.diff(date1, "days") <= 0 ? '마감' : `${date2.diff(date1, "days")}일 남음`}</span></span>
                                     </div>
                                     <div className={classes.boxmargin}>
                                         <span className={classes.cash}>결제</span>
-                                        <span className={classes.cashback}>목표금액 달성시 {data.nowPrice === undefined ? 'loading...' : data.endDate.slice(0,10).replace(/\-/g,'.')}에 결제 진행</span>
+                                        <span className={classes.cashback}>목표금액 달성시 {data.nowPrice === undefined ? 'loading...' : data.endDate.slice(0,10).replace(/-/g,'.')}에 결제 진행</span>
                                     </div>
                                 </div>
                             </div>

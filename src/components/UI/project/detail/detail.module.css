@@ -669,7 +669,11 @@
     font-size: 12px;
     border: 0px;
     outline: none;
-    opacity: .5;
+}
+
+.editheader .editcontainer .edittsend {
+    background-color: rgb(248, 100, 83);
+    color: rgb(255, 255, 255);
 }
 
 .notice {
@@ -684,11 +688,28 @@
     width: 650px;
 }
 
-.notice .editcontentbox .editcount {
-    color: rgb(158, 158, 158);
-    margin-bottom: 30px;
-    float: right;
+.notice .editcontentbox .edituncount {
+    justify-content: flex-end;
+    font-weight: 400;
+    margin: 8px 0px 50px 0px;
     font-size: 12px;
+    color: rgb(158, 158, 158);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.notice .editcontentbox .editcount {
+    justify-content: space-between;
+}
+
+.notice .editcontentbox .edituncount p {
+    color: rgb(244, 69, 68);
+    margin: 0;
+    padding-left: 16px;
+}
+
+.notice .editcontentbox .edituncount .countspan {
+    color: rgb(244, 69, 68);
 }
 
 .notice .editcontentbox .editcontent {
@@ -699,8 +720,12 @@
     border: 1px solid rgb(240, 240, 240);
 }
 
-.notice .editcontentbox .editcontent:focus {
-    outline: #000;
+.notice .editcontentbox .editcontent:focus-within {
+    border: 1px solid #000 ;
+}
+
+.notice .editcontentbox .edituncontent:focus-within {
+    border: 1px solid #f44544 ;
 }
 
 .notice .editcontentbox .editcontent .editwrite {
@@ -715,7 +740,7 @@
 
 .notice .editcontentbox .editcontent .editwrite textarea {
     background: transparent;
-    width: 612px;
+    width: 599px;
     height: 100%;
     border: 0px;
     padding: 0px;

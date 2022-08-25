@@ -6,6 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Cookies } from "react-cookie";
 
 const ReviewTab = (props) => {
 
@@ -30,18 +31,31 @@ const ReviewTab = (props) => {
     const [write, setWrite] = useState(true)
     const [count, setCount] = useState(0)
     const [data, setData] = useState([])
+    const [isSelect, setSelect] = useState(0)
+    const [input, setInput] = useState('')
 
     let { id } = useParams();
 
-    const test = (e) => {
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
+    const lengthcount = (e) => {
         const length = e.target.textLength
+        const value = e.target.value;
 
         if (length > 1000) {
             alert('최대글자입니다')
         } else {
-            setCount(e.target.textLength)
+            setCount(length)
+            setInput(value)
         }
     }
+
+    // const handle = (e) => {
+    //     e.preventDefault();
+    //     alert(`${input}`)
+
+    // }
 
     const findreview = () => {
         axios.get(`http://localhost:3000/review/which=community&projectID=${id}`)
@@ -54,9 +68,42 @@ const ReviewTab = (props) => {
         })
     }
 
+    const writereview = (e) => {
+        e.preventDefault();
+
+        if(token) {
+            axios({
+                method : 'POST',
+                url : 'http://localhost:3000/review/community',
+                data : {
+                    comment : input,
+                    projectID : id,
+                    which : 'community'
+                },
+                headers : {
+                    'user_token' : token
+                }
+            })
+            .then(response => {
+                console.log(response.data)
+                alert('작성됐습니다.')
+                window.location.reload()
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        } else {
+            alert('로그인하세요')
+        }
+    }
+
     useEffect(() => {
         findreview()
     }, [id])
+
+    const test = () => {
+        setSelect(!isSelect)
+    }
 
     return (
         <div>
@@ -86,27 +133,28 @@ const ReviewTab = (props) => {
                                 }}
                             >
                                 <ArrowBackIcon className={classes.editicon} /> 게시글 작성</button>
-                            <button className={classes.editsend}>등록</button>
+                            <button type="submit" onClick={writereview} className={`${classes.editsend} ${count > 10 ? classes.edittsend :classes.editsend}`} disabled={!(count > 10)}>등록</button>
+                            {console.log(count)}
                         </div>
                     </div>
                     <div className={classes.notice}>
                         <div className={classes.editcontentbox}>
-                            <div className={classes.editcontent}>
+                            <div className={`${classes.editcontent} ${count > 10 ? classes.editcontent : classes.edituncontent}`}>
                                 <div className={classes.editwrite}>
-                                    <textarea placeholder="프로젝트 및 창작자님에 대해 어떤 이야기가 하고 싶으신가요?" onChange={test}></textarea>
+                                    <textarea value={input} placeholder="프로젝트 및 창작자님에 대해 어떤 이야기가 하고 싶으신가요?" onChange={lengthcount}></textarea>
                                 </div>
                             </div>
-                            <div className={classes.editcount}>
-                                <p></p>
-                                <span>{count}/1000</span>
+                            <div className={` ${classes.edituncount} ${count >= 1 && count < 10 ? classes.editcount : classes.edituncount}`}>
+                                {count >= 1 && count < 10 && <p>10자 이상 1000이내로 입력해주세요.</p>}
+                                <span className={`${classes.asd} ${count >= 1 && count < 10 && classes.countspan}`}>{count}/1000</span>
                             </div>
                         </div>
                         <div className={classes.guide}>
                             <div>
                                 <div className={classes.guidetitle}>어떤 내용의 글인가요?</div>
                                 <div>
-                                    <div className={classes.guideselect}>응원글</div>
-                                    <div className={classes.guideunselect}>의견</div>
+                                    <div className={isSelect ? classes.guideselect : classes.guideunselect} onClick={test}>응원글</div>
+                                    <div className={isSelect ? classes.guideunselect : classes.guideselect} onClick={test}>의견</div>
                                 </div>
                             </div>
                             <div className={classes.guideanswer}>후원하신 프로젝트 창작자에게 응원의 한마디를 남겨주세요. 창작자에게 후원금만큼 큰 힘이 됩니다.</div>
