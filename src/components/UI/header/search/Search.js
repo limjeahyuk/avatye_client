@@ -4,19 +4,24 @@ import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import Best from "./Best";
 import Suggest from "./Suggest";
+import { useNavigate } from "react-router-dom";
 
 const Search = ({ handler }) => {
 
     const [isInput, setIsInput] = useState('');
+    const navigator = useNavigate();
 
     const searchContHandler = (e) => {
-        setIsInput(e.target.value)
+        setIsInput(String(e.target.value).replace(/\//g, ""));
     }
 
 
     const searchSubmitHandler = (e) => {
         e.preventDefault();
-        console.log("ok")
+        console.log("ok");
+        navigator(`/discover/${encodeURIComponent(isInput.trim())}`);
+        setIsInput('');
+        handler();
     }
 
     return <div className={classes.searchpage}>

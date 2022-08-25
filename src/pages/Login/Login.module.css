@@ -79,7 +79,7 @@
 
 .login>div>a>button{
     position: relative;
-    background-color: rgb(254, 229, 0);
+    background-color: transparent;
     outline: none;
     border-radius: 1px;
     font-size: 16px;
@@ -217,7 +217,7 @@
     align-items: center;
 }
 
-.circle>button{
+.circle button{
     border: none;
     border-radius: 20px;
     margin-right: 20px;
@@ -226,6 +226,7 @@
     height: 42px;
     text-align: center;
 }
+
 
 .circle .naver{
     font-size: 25px;
@@ -287,4 +288,12 @@
 @media screen and (max-width: 1080px) {
     .png{display: none;}
     .png.join{display: none;}
+}
+
+.login a .kakaologin {
+    width: 414px;
+}
+
+.joinbtn .btn img {
+    width: 414px;
 }

@@ -1,0 +1,271 @@
+/* default css */
+
+.cardbox {
+    padding: 0 7px 40px;
+}
+
+.cardbox .imgWrapper {
+    position: relative;
+}
+
+.cardbox .imgWrapper .heartbox {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.cardbox .imgWrapper .heartbox .heart {
+    color: #FFF;
+    cursor: pointer;
+}
+
+.cardbox .imgWrapper .heartbox .checkheart {
+    color: #ff5757; 
+    cursor: pointer;
+}
+
+.cardbox .imgWrapper .img {
+    width: 180.5px;
+    height: 146.2px;
+    transition: .5s;
+}
+
+.cardbox .imgWrapper .img:hover {
+    transform: scale(1.03);
+    transition: .5s;
+    box-shadow: rgb(0 0 0 / 25%) 0px 2px 12px;
+}
+
+.cardbox .subInfoBox {
+    padding: 14px 0px 0px;
+}
+
+.cardbox .subInfoBox .subInfo {
+    padding: 0px 0px 2px;
+    width: 180.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: normal;
+    white-space: nowrap;
+    font-size: 11px;
+    letter-spacing: -0.005em;
+    line-height: 16px;
+    color: rgb(109, 109, 109);
+}
+
+.cardbox .subInfoBox .subInfo .submiddleline {
+    font-size: 8px;
+    position: relative;
+    top: -1px;
+    margin: 0px 6px;
+    color: rgb(208, 208, 208);
+}
+
+.cardbox .subInfoBox .subtitle {
+    width: 180.5px;
+    height: 40px;
+    line-clamp: 2;
+    overflow: hidden;
+    word-break: keep-all;
+    font-size: 14px;
+    letter-spacing: -0.015em;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.cardbox .subInfoBox .subpercent {
+    font-weight: bold;
+    padding-top: 2px;
+    font-size: 13px;
+    letter-spacing: -0.015em;
+    line-height: 28px;
+    color: rgb(255, 87, 87);
+}
+
+/* middle size */
+
+.cardbox.middle {
+    width: 220.8px;
+    padding: 0px 10px;
+}
+
+.cardbox.middle .imgWrapper .img{
+    width: 220.8px;
+    height: 178.84px;
+}
+
+.cardbox.middle .subInfoBox .subInfo {
+    width: 220.8px;
+}
+
+.cardbox.middle .subInfoBox .subtitle {
+    width: 220.8px;
+}
+
+/* large size */
+
+.cardbox.large {
+    width: 275px;
+    padding: 0 10px;
+    padding-bottom: 72px;
+}
+
+.cardbox.large .imgWrapper .img{
+    width: 275px;
+    height: 236.5px;
+    object-fit: cover;
+}
+
+.cardbox.large .subInfoBox .subInfo {
+    width: 275px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    color: #3d3d3d;
+    height: 24px;
+}
+
+.cardbox.large .subInfoBox .subtitle {
+    width: 255.75px;
+    height: 44px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    line-height: 22px;
+}
+
+.cardbox.large .subInfoBox .subdes {
+    width: 255.75px;
+    color: #9e9e9e;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 21px;
+    height: 42px;
+}
+
+.cardbox.large .subInfoBox .subpercent {
+    font-size: 15px;
+}
+
+
+.cardbox.large .subInfoBox .datebox {
+    font-size: 12px;
+    color: #3d3d3d;
+    font-weight: 400;
+}
+
+.cardbox.large .subInfoBox .datebox .subdate {
+    color: #6d6d6d;
+    font-weight: bold;
+    float: right;
+}
+
+.cardbox.large .subInfoBox .datebox .subprice {
+    padding-left: 4px;
+}
+
+.cardbox.large .subInfoBox .progressbarbox {
+   clear: both;
+   background-color: #d0d0d0;
+}
+
+.cardbox.large .subInfoBox .progressbarbox .progressbar {
+    color: #ff5757;
+    background-color: #ff5757;
+    height: 3px;
+}
+
+/* xl 사이즈 */
+
+.cardbox.xlarge {
+    width: 328px;
+    padding: 0 12px;
+    padding-bottom: 72px;
+}
+
+.cardbox.xlarge .imgWrapper .img{
+    width: 328px;
+    height: 282.08px;
+    object-fit: cover;
+}
+
+.cardbox.xlarge .subInfoBox .subInfo {
+    width: 328px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    color: #3d3d3d;
+    height: 24px;
+}
+
+.cardbox.xlarge .subInfoBox .subtitle {
+    width: 305.03px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    height: 44px;
+    line-height: 22px
+}
+
+.cardbox.xlarge .subInfoBox .subdes {
+    width: 305.03px;
+    color: #9e9e9e;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 21px;
+    height: 42px;
+}
+
+.cardbox.xlarge .subInfoBox .subpercent {
+    font-size: 15px;
+}
+
+
+.cardbox.xlarge .subInfoBox .datebox {
+    font-size: 12px;
+    color: #3d3d3d;
+    font-weight: 400;
+}
+
+.cardbox.xlarge .subInfoBox .datebox .subdate {
+    color: #6d6d6d;
+    font-weight: bold;
+    float: right;
+}
+
+.cardbox.xlarge .subInfoBox .datebox .subprice {
+    padding-left: 4px;
+}
+
+.cardbox.xlarge .subInfoBox .progressbarbox {
+   clear: both;
+   background-color: #d0d0d0;
+}
+
+.cardbox.xlarge .subInfoBox .progressbarbox .progressbar {
+    background-color: #ff5757;
+    height: 3px;
+}
+
+/* finprogressbar */
+
+.subInfoBox .finsubpercent {
+    font-weight: bold;
+    padding-top: 2px;
+    font-size: 13px;
+    letter-spacing: -0.015em;
+    line-height: 28px;
+    color: #3d3d3d;
+    font-size: 15px;
+}
+
+.cardbox.xlarge .subInfoBox .finsubpercent,
+.cardbox.large .subInfoBox .finsubpercent{
+    font-size: 15px;
+}
+
+
+.subInfoBox .progressbarbox .finprogressbar {
+    background-color: #3d3d3d;
+    height: 3px;
+}
+
+
+
+

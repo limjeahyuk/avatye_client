@@ -1,0 +1,372 @@
+.tabsbox {
+    padding: 0px !important;
+}
+
+.tabsbox .tabscontent {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.tabsbox .tabitem {
+    max-width: 1184px;
+    margin: 0 auto;
+}
+
+/* .tabsbox .tabitem .tabitemTitle:first-child {
+    margin: 0 -12px;
+} */
+
+.tabsbox .tabitem .tabitemTitle {
+    font-size: 18px;
+}
+
+/* ProfileTab */ 
+
+.intro {
+    padding: 20px 0px;
+}
+
+/* uploadProject */
+
+.upprolength {
+    padding-left: 12px;
+    padding: 14px 12px 24px;
+    margin: 0px -12px
+}
+.upprolength span {
+    color: #ff5757;
+}
+
+.upprojectbox {
+    margin: 0px -12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* profile */
+
+.profilebox {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 40px 0 24px;
+}
+
+.profilebox img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profilebox .profileInfo {
+    margin-left: 24px;
+}
+
+.profilebox .profileInfo div:first-child {
+    color: #1c1c1c;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profilebox .profileInfo div:nth-child(2) {
+    color: #6d6d6d;
+    font-size: 13px;
+}
+
+/* MySettingTabs */
+.settingTitle {
+    max-width: 1160px;
+    margin: 40px auto;
+    display: flex;
+    color: rgb(28, 28, 28);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;   
+}
+
+/* SettingPorfileTab */
+.settingBox {
+    display: flex;
+    justify-content: space-between;
+    padding-top : 20px;
+
+}
+
+.settingItemList {
+    width: 730px;
+    margin: 0px 32px 0px 0px;
+}
+
+.settingItemList .settingItem{
+    margin: 0px 0px 16px;
+    padding: 0px 0px 25px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    color: #3d3d3d;
+    font-size : 14px;
+}
+
+.settingItemList .settingItem:nth-last-child(1) {
+    border-bottom : none;
+}
+
+.settingItem .ItemTitle span {
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.settingItem img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ItemTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom : 14px;
+}
+
+.changeBTN {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0px 14px;
+    background: rgb(240, 240, 240);
+    border: none;
+    border-radius: 60px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    cursor : pointer;
+}
+
+.changeBTN:hover {
+    background: rgb(201, 201, 201);
+}
+
+.cancelBTN {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0px 14px;
+    background: inherit;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 60px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    cursor : pointer;
+}
+
+
+.settingInfo {
+    margin: 0px;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border: 1px solid rgb(230, 230, 230);
+    width: 450px;
+    height: fit-content;
+}
+
+.settingInfo .settingInfoTitle{
+    color: #3D3D3D;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+    padding-bottom : 10px;
+}
+
+.settingInfo div{
+    color: #6D6D6D;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+}
+
+.settingInfoLink {
+    color: rgb(39, 163, 255);
+    text-decoration: underline;
+}
+
+.fileUpload {
+    color: rgb(109, 109, 109);
+    border : 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    padding : 8px 15px;
+    margin-left : 20px;
+    cursor: pointer;
+}
+
+.uploadInfo {
+    margin-left : 20px;
+    color: rgb(109, 109, 109);
+    font-size: 13px;
+    line-height: 20px;
+    margin-top : 10px;
+}
+
+.uploadInput {
+    width : 0px
+}
+
+.itemFlex{
+    display: flex;
+    align-items: flex-start;
+}
+
+.saveImg {
+    margin-top : 20px;
+    background-color: #3d3d3d;
+    border : none;
+    color : white;
+    padding : 10px 40px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.nameInput {
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    height: 40px;
+    min-width: 300px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    align-items: center;
+    border-radius: 1px;
+    margin-top : 10px;
+}
+
+.nameInput:focus {
+    outline : none;
+    border : 1px solid rgb(119, 119, 119);
+}
+
+.nameInputVali, .nameInputVali:focus {
+    outline : none;
+    border : 1px solid rgb(244, 69, 68);
+}
+
+.commentBox {
+    resize: none;
+    width : 100%;
+    height: 200px;
+    border: 1px solid rgb(230, 230, 230);
+}
+
+.commentBox:focus {
+    outline : none;
+    border : 1px solid rgb(119, 119, 119);
+}
+
+.valiNo {
+    color : rgb(244, 69, 68);
+}
+
+/* SettingPaymentTab */
+.payMethod {
+    border-radius: 4px;
+    border : 1px solid rgb(230, 230, 230);
+    min-height: 240px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(189, 189, 189);
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+}
+
+.noValueBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconWidth {
+    font-size: 50px;
+}
+
+.paymentDIV {
+    color :rgb(46, 46, 46);
+    font-size : 13px;
+}
+
+/* SettingAccountTab */
+.currPW {
+    margin-bottom : 20px;
+}
+
+/* SettingShippingTab */
+.shippingList {
+    padding: 20px 16px;
+    margin-bottom : 20px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius : 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shippingUserName {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+    font-weight: 700;
+}
+
+.shippingbtn {
+    color : rgb(156, 156, 156);
+    border : 1px solid rgb(197, 197, 197);
+    padding-left : 2px;
+    border-radius: 50%;
+    width : 30px;
+    height: 30px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.shippingbtn:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+/* .optionDiv {
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
+    background: rgb(255, 255, 255);
+    padding: 4px 0px;
+    width: 150px;
+    position: relative;
+    left: 490px;
+    bottom: 50px;
+} */
+
+.optionButton {
+    display: block;
+    color :rgb(156, 156, 156);
+    background: rgb(255, 255, 255);
+    border: none;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    margin : -10px 0px;
+}
+
+.optionButton:hover {
+    color : rgb(244, 69, 68);
+    font-weight: 600;
+}
