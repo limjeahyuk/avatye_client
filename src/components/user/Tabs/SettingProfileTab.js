@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useState, useEffect} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -39,8 +39,11 @@ const SettingProfileTab = ({data, setData}) => {
 
     //받아온 데이터
     const {profileImg, name, comment, website, privacy} = data;
-    console.log(profileImg);
-    const [imgUrl, setImgUrl] = useState(profileImg || '/images/profile.jpg');
+    const [imgUrl, setImgUrl] = useState(profileImg || "/images/profile.jpg");
+
+    useEffect(() => {
+        setImgUrl(profileImg);
+    }, [profileImg]);
 
     useEffect(() => {
         setImgUrl(profileImg);
@@ -213,7 +216,7 @@ const SettingProfileTab = ({data, setData}) => {
                     </div>
                     {changePrivacy ? privacy === 1 ? 
                                 <div>
-                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} checked/> 후원한 프로젝트 목록을 공개합니다.</label>
+                                    <label><input type="checkbox" name="supportList" value="yes" onChange={isChecked} defaultChecked/> 후원한 프로젝트 목록을 공개합니다.</label>
                                     <div><button onClick={updateUserInfo} className={classes.saveImg}>저장</button></div>
                                 </div> :
                                 <div>

@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Cookies } from 'react-cookie';
-import classes from '../mypage.module.css'
+import classes from '../mypage.module.css';
 import { useNavigate } from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import MyShippingSettingModal from "../Modals/MyShippingSettingModal";
@@ -39,6 +39,12 @@ const SettingShippingTab = ({data, setData}) => {
         updateModalHandler();
     }
 
+    //중복 값 제거
+    useEffect(() => {
+        setData(data.filter((arr, index, callback) => 
+            index === callback.findIndex(t => t.shipIndex === arr.shipIndex)));
+    }, []);
+
     //배송지 삭제
     const deleteShipping = (shippingIndex) => {
         console.log(shippingIndex)
@@ -46,7 +52,7 @@ const SettingShippingTab = ({data, setData}) => {
         .then(response => {
             console.log("성공적으로 삭제되었습니다.");
             alert("성공적으로 삭제되었습니다.")
-            setData(data.filter(item => item.shippingCheck === 1));
+            setData(data => data.filter(item => item.shippingCheck === 1));
         })
         .catch((err) => {
             console.log(err);
@@ -82,7 +88,7 @@ const SettingShippingTab = ({data, setData}) => {
                                     <button className={classes.changeBTN} onClick={insertModalHandler}>+ 추가</button>
                                 </div>
 
-                                {data.filter(item => item.shippingCheck === 1).map((val, index) => { 
+                                {data && data.filter(item => item.shippingCheck === 1).map((val, index) => { 
                                     return (
                                         <div key={index}>
                                         <div className={classes.shippingList}>

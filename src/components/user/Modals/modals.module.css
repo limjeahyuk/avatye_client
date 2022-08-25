@@ -71,7 +71,7 @@
 }
 
 .modalNameInput:focus, .modalAddInput:focus, .modalPhoneInput:focus,
-.modalNumberInput:focus {
+.modalNumberInput:focus, .modalNumberInput2:focus {
     outline : none;
     border : 1px solid rgb(119, 119, 119);
 }
@@ -156,6 +156,8 @@
     border-radius: 1px;
 }
 
+
+
 .basicAdd {
     color :rgb(72, 72, 72);
     font-size : 14px;
@@ -169,4 +171,13 @@
 .selectBank:focus {
     outline: none;
     border : 1px solid rgb(119, 119, 119);
+}
+
+.valiNo {
+    color :rgb(255, 87, 87) !important;
+}
+
+.valiNoOutline {
+    outline : none;
+    border : 1px solid rgb(255, 87, 87);
 }

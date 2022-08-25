@@ -70,7 +70,8 @@ const MySettingTabs = () => {
         password2 : "",
     });
 
-    const [paymentData, setPaymentData] = useState({
+    const [paymentData, setPaymentData] = useState([{
+        paymentCheck : 0,
         paymentIndex : "",
         div : "",
         cardNumber : "",
@@ -80,7 +81,7 @@ const MySettingTabs = () => {
         bank : "",
         accountNumber : "",
         userName : "",
-    });
+    }]);
 
     const [shippingData, setShippingData] = useState([{
         shipIndex : "",
@@ -102,22 +103,28 @@ const MySettingTabs = () => {
                 comment : response.data[0].comment,
                 website : response.data[0].website,
                 privacy : response.data[0].private
-            })
+            });
             setAccountData({...accountData, 
                 email : response.data[0].email,
                 phone : response.data[0].phone
-            })
-            //payment도 여러개 해야됨.
-            setPaymentData({...paymentData, 
-                div : response.data[0].DIV,
-                cardNumber : response.data[0].cardNumber,
-                cardEndDate : response.data[0].cardEndDate,
-                cardPassword : response.data[0].cardPassword,
-                userBirth : response.data[0].userBirth,
-                bank : response.data[0].bank,
-                accountNumber : response.data[0].accountNumber,
-                userName : response.data[0].userName
             });
+
+            // paymentData 여러개해야됨.
+            (response.data).map((val, index) => (
+                setPaymentData(paymentData => [...paymentData, {
+                    div : response.data[index].DIV,
+                    paymentCheck : response.data[index].paymentCheck,
+                    paymentIndex : response.data[index].paymentIndex,
+                    cardNumber : response.data[index].cardNumber,
+                    cardEndDate : response.data[index].cardEndDate,
+                    cardPassword : response.data[index].cardPassword,
+                    userBirth : response.data[index].userBirth,
+                    bank : response.data[index].bank,
+                    accountNumber : response.data[index].accountNumber,
+                    userName : response.data[index].userName
+                }])
+            ));
+            
             //shippingData 여러개    
             (response.data).map((val, index) => (
                 setShippingData(shippingData => [...shippingData, {

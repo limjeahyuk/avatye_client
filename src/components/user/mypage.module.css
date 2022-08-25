@@ -297,6 +297,10 @@
     font-size: 50px;
 }
 
+.paymentDIV {
+    color :rgb(46, 46, 46);
+    font-size : 13px;
+}
 
 /* SettingAccountTab */
 .currPW {
