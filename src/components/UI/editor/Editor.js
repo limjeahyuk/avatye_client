@@ -29,6 +29,7 @@ const Editor = ({editorChangeHandler, editorData}) => {
                 const data = editor.getData();
                 // console.log({ event, editor, data });
                 editorChangeHandler(data);
+                console.log(data);
             } }
             onBlur={ ( event, editor ) => {
                 // console.log( 'Blur.', editor );
