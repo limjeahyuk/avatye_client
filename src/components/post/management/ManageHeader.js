@@ -68,6 +68,10 @@ const ManageHeader = ({tabHandler, basic, funding, gift}) => {
                 }
             }).then(function a(response) {
                 console.log(response.data);
+                if (response.data === 'ok') {
+                    alert('프로젝트 등록에 성공했습니다 ^ㅁ^')
+                    navigater('/');
+                }
             }).catch(function (err) {
                 console.log(err);
             })
