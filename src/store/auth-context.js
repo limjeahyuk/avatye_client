@@ -5,7 +5,7 @@ const AuthContext = React.createContext({
     isLogin: false,
     userNick: '',
     onLogin: (token, nickName) => { },
-    onLogout: () => {}
+    onLogout: () => { }
 });
 
 
