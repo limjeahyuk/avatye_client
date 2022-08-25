@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -39,7 +39,11 @@ const SettingProfileTab = ({data, setData}) => {
 
     //받아온 데이터
     const {profileImg, name, comment, website, privacy} = data;
-    const [imgUrl, setImgUrl] = useState(profileImg);
+    const [imgUrl, setImgUrl] = useState(profileImg || "/images/profile.jpg");
+
+    useEffect(() => {
+        setImgUrl(profileImg);
+    }, [profileImg]);
 
     //데이터 값 변경
     const valueChange = (e) => {
