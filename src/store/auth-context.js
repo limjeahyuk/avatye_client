@@ -4,8 +4,10 @@ import { Cookies } from "react-cookie";
 const AuthContext = React.createContext({
     isLogin: false,
     userNick: '',
-    onLogin: (token, nickName) => { },
-    onLogout: () => { }
+    onLogin: (token, nickName, userProfile) => { },
+    onLogout: () => { },
+    userProfile: '',
+    
 });
 
 
@@ -13,10 +15,11 @@ export const AuthContextProvider = (props) => {
     const cookies = new Cookies();
     const [isLogin, setIsLogin] = useState(false);
     const [userNick, setUserNick] = useState('');
+    const [userProfile, setUserProfile] = useState('');
 
     const time = 1000 * 60 * 15;
     
-    const isLoginHandler = (token, nickName) => {
+    const isLoginHandler = (token, nickName, userProfile) => {
         setIsLogin(true);
         cookies.set('user_token', token, {
             path: '/',
@@ -27,11 +30,13 @@ export const AuthContextProvider = (props) => {
             expires: new Date(Date.now() + time)
         });
         setUserNick(nickName);
+        setUserProfile(userProfile);
     }
 
     const isLogoutHandler = () => {
         setIsLogin(false);
         setUserNick('');
+        setUserProfile('');
         cookies.set('user_token', "", {
             path: '/',
             expires: 0
@@ -54,6 +59,7 @@ export const AuthContextProvider = (props) => {
     return <AuthContext.Provider value={{
         isLogin: isLogin,
         userNick: userNick,
+        userProfile: userProfile,
         onLogin: isLoginHandler,
         onLogout: isLogoutHandler
     }}
