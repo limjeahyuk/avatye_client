@@ -60,7 +60,7 @@ const ManageHeader = ({tabHandler, basic, funding, gift}) => {
             console.log(data);
 
             await axios({
-                url: 'http://localhost:3000/project/createProject',
+                url: 'http://localhost:3000/project',
                 method: 'post',
                 data: data,
                 headers: {
