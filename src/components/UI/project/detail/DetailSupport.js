@@ -6,51 +6,6 @@ import classes from './detail.module.css'
 
 const DetailSupport = ({data}) => {
 
-    const Data = [
-        {
-            giftPrice : '10,000',
-            giftCount : '100',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '200'
-        },
-        {
-            giftPrice : '40,000',
-            giftCount : '100',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '10'
-        },
-        {
-            giftPrice : '24,000',
-            giftCount : '0',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '300'
-        },
-        {
-            giftPrice : '65,000',
-            giftCount : '100',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '100'
-        },
-        {
-            giftPrice : '70,000',
-            giftCount : '100',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '300'
-        },
-        {
-            giftPrice : '500,000',
-            giftCount : '0',
-            giftDetail: '어답미 아크릴 그립톡 SET',
-            giftTitle : '아크릴 그립톡 ( x 1 )',
-            giftStock: '300'
-        },
-    ]
-
     const [gift, setGift] = useState([])
 
     let { id } = useParams()
@@ -79,7 +34,7 @@ const DetailSupport = ({data}) => {
                         <div className={classes.sellerprofile}><img src={`${data.userProfile}`} alt="profile" /></div>
                         <div>
                             <span className={classes.sellername}>{data.nickName}</span>
-                            <span className={classes.sellerlogin}>마지막...로그인??</span>
+                            <span className={classes.sellerlogin}>{data.lastLogin}</span>
                         </div>
                     </div>
                     <div className={classes.sellerdes}>{data.Comment}</div>
