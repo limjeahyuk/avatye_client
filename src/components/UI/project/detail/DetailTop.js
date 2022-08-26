@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -16,8 +15,6 @@ import moment from "moment";
 import { Link } from "react-scroll"
 
 const DetailTop = ({data}) => {
-
-    const navigater = useNavigate();
 
     let date1 = moment();
     let date2 = moment(data.endDate);
@@ -101,7 +98,7 @@ const DetailTop = ({data}) => {
                                         <div className={classes.sharecount}>{data.share}</div>
                                     </div>
                                 </div>
-                                <div className={classes.support}><button onClick={() => {navigater('/support')}} className={classes.supportbtn}>이 프로젝트 후원하기</button></div>
+                                <div className={classes.support}><Link to="1" spy={true} smooth={true}><button className={classes.supportbtn}>이 프로젝트 후원하기</button></Link></div>
                             </div>
                         </div>
                     </div>

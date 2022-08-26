@@ -153,8 +153,8 @@ const ReviewTab = (props) => {
                             <div>
                                 <div className={classes.guidetitle}>어떤 내용의 글인가요?</div>
                                 <div>
-                                    <div className={isSelect ? classes.guideselect : classes.guideunselect} onClick={test}>응원글</div>
-                                    <div className={isSelect ? classes.guideunselect : classes.guideselect} onClick={test}>의견</div>
+                                    <div className={isSelect ? classes.guideunselect : classes.guideselect} onClick={test}>응원글</div>
+                                    <div className={isSelect ? classes.guideselect : classes.guideunselect} onClick={test}>의견</div>
                                 </div>
                             </div>
                             <div className={classes.guideanswer}>후원하신 프로젝트 창작자에게 응원의 한마디를 남겨주세요. 창작자에게 후원금만큼 큰 힘이 됩니다.</div>
