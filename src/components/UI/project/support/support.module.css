@@ -115,6 +115,11 @@
     margin-bottom : 7px;
 }
 
+.item2 {
+    display: flex;
+    margin-bottom: 16px;
+}
+
 .giftul {
     margin-left : 10px;
     padding-left : 10px;
