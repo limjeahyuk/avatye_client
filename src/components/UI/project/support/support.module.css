@@ -14,6 +14,7 @@
 
 .supportHeader img{
     width : 120px;
+    cursor: pointer;
 }
 
 .supportTitle { 

@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import classes from './support.module.css'
 import SavingsIcon from '@mui/icons-material/Savings';
+import { useNavigate } from "react-router-dom";
 
 const Support = () => {
     const [checkCard, setCheckCard] = useState(false);
+
+    const navigater = useNavigate();
 
     const cardOpen = () => {
         if (checkCard) {
@@ -17,7 +20,7 @@ const Support = () => {
         <div>
             <div className={classes.supportHeader}>
                 <div>
-                    <img src="./logo.png" alt="logoImg"/>
+                    <img src="./logo.png" alt="logoImg" onClick={() => navigater('/')}/>
                     <span>·</span>
                     <span className={classes.supportTitle}> 프로젝트 후원하기</span>
                 </div>
