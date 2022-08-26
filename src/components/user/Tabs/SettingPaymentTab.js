@@ -31,7 +31,7 @@ const SettingPaymentTab = ({data, setData}) => {
 
     //결제수단 삭제
     const deletePayment = (paymentIndex) => {
-        axios.delete('http://localhost:3000/user/payment', {headers : {'user_token': token}, data : {paymentIndex : paymentIndex}, })
+        axios.delete('http://localhost:3000/payment', {headers : {'user_token': token}, data : {paymentIndex : paymentIndex}, })
         .then(response => {
             alert("성공적으로 삭제되었습니다.")
             setData(data.filter(item => item.paymentCheck === 1));

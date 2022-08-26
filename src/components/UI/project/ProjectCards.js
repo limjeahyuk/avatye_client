@@ -134,7 +134,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                             <div 
                                 className={`${date2.diff(date1, "days") < 0 ? classes.finsubpercent : classes.subpercent}`}
                             >
-                                {parseInt(project.percent)}% 달성
+                                {project.percent === null ? 0 : parseInt(project.percent)}% 달성
                                 {project.summary && 
                                     <span className={classes.datebox}>
                                         <span className={classes.subprice}>{project.nowPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
@@ -147,7 +147,7 @@ const ProjectCards = ({project, size, setProjects, onRemove}) => {
                             </div>
               
                         }
-                        {project.nowPrice >= 0 && 
+                        {project.nowPrice >= 0 &&
                             <div className={classes.progressbarbox}> 
                                 <div 
                                     className={`${date2.diff(date1, "days") < 0 ? classes.finprogressbar : classes.progressbar}`} 

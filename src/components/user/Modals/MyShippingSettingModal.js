@@ -30,7 +30,7 @@ const MyShippingSettingModal = ({handler}) => {
             address : address,
             phone : phone
         }
-        axios.post('http://localhost:3000/user/shipping', data, {headers: {user_token : token}}).
+        axios.post('http://localhost:3000/shipping', data, {headers: {user_token : token}}).
         then(()=> {
             console.log("shipping 목록에 성공적으로 추가되었습니다.");
             alert("배송지가 추가되었습니다.");

@@ -34,7 +34,7 @@ const MyPaymentAccountModal = ({handler}) => {
             userName : userName,
             userBirth : userBirth
         }
-        axios.post('http://localhost:3000/user/payment', data, {headers: {user_token : token}}).
+        axios.post('http://localhost:3000/payment', data, {headers: {user_token : token}}).
         then(()=> {
             alert("계좌가 추가되었습니다.");
             handler();

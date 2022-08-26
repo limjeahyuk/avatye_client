@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from "react";
-import { useNavigate} from "react-router-dom";
+
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -47,6 +48,7 @@ const DetailTop = ({ data }) => {
         setHeart(data.heartCheck);
         setHeartCount(data.heart);
     },[data])
+
 
     let date1 = moment();
     let date2 = moment(data.endDate);
@@ -131,7 +133,7 @@ const DetailTop = ({ data }) => {
                                         <div className={classes.sharecount}>{data.share}</div>
                                     </div>
                                 </div>
-                                <div className={classes.support}><button onClick={() => {navigater('/support')}} className={classes.supportbtn}>이 프로젝트 후원하기</button></div>
+                                <div className={classes.support}><Link to="1" spy={true} smooth={true}><button className={classes.supportbtn}>이 프로젝트 후원하기</button></Link></div>
                             </div>
                         </div>
                     </div>

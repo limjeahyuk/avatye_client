@@ -32,7 +32,7 @@ const MyShippingUpdateModal = ({handler, data}) => {
             address : address,
             phone : phone
         };
-        axios.put('http://localhost:3000/user/shipping', data, {headers: {user_token : token}}).
+        axios.put('http://localhost:3000/shipping', data, {headers: {user_token : token}}).
         then(()=> {
             console.log('배송지가 수정되었습니다.');
             alert("배송지가 수정되었습니다.");

@@ -36,7 +36,7 @@ const MyPaymentCardModal = ({handler}) => {
             userBirth : userBirth
         }
         console.log(data)
-        axios.post('http://localhost:3000/user/payment', data, {headers: {user_token : token}}).
+        axios.post('http://localhost:3000/payment', data, {headers: {user_token : token}}).
         then(()=> {
             alert("카드가 추가되었습니다.");
             handler();
