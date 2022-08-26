@@ -37,6 +37,10 @@
     font-size: 16px;
 }
 
+.logo{
+    cursor: pointer;
+}
+
 .logo img{
     height: 35px;
 }
@@ -87,4 +91,10 @@
     height: 36px;
     background: rgb(255, 255, 255);
     padding: 0 24px;
+}
+
+.icon{
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
 }
