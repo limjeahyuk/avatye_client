@@ -16,8 +16,9 @@ const Footer = () => {
         const loginpath = location.pathname.slice(0, 6);
         const joinpath = location.pathname.slice(0, 5);
         const post = location.pathname.slice(0, 15);
+        const support = location.pathname;
 
-        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor') {
+        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor' || support === '/support') {
             setIsFooter(false);
         } else {
             setIsFooter(true);
@@ -70,7 +71,7 @@ const Footer = () => {
                     <div><strong>대표</strong> 임재혁</div> 
                     <div><strong>사업자등록번호</strong> 105-87-52823</div> 
                     <div><strong>통신판매업 신고번호</strong> 2019-3010165-30-2-02129</div> 
-                    <div><strong>대표번호</strong> 02-6080-0760</div>
+                    <div><strong>대표번호</strong> 010-4927-4267</div>
                     <div className={classes.copyright}>© 2022 Tumblbug Inc.</div>
                 </div>
 
