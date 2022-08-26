@@ -94,7 +94,7 @@ const MySettingTabs = () => {
 
     //axios로 유저 정보 불러오기
     const readUserInfo = () => {                    
-        axios.get('http://localhost:3000/mypage/userInfor', {headers : {'user_token': token}})
+        axios.get('http://localhost:3000/mypage/userinfor', {headers : {'user_token': token}})
         .then(response => {
             console.log(response.data)
             setProfileData({...profileData,
