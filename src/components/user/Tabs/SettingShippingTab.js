@@ -48,7 +48,7 @@ const SettingShippingTab = ({data, setData}) => {
     //배송지 삭제
     const deleteShipping = (shippingIndex) => {
         console.log(shippingIndex)
-        axios.delete('http://localhost:3000/user/shipping', {headers : {'user_token': token}, data : {shippingIndex : shippingIndex}, })
+        axios.delete('http://localhost:3000/shipping', {headers : {'user_token': token}, data : {shippingIndex : shippingIndex}, })
         .then(response => {
             console.log("성공적으로 삭제되었습니다.");
             alert("성공적으로 삭제되었습니다.")

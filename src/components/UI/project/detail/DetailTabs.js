@@ -67,6 +67,23 @@ const DetailTabs = (props) => {
 
     let { id } = useParams();
 
+    const localUpload = (item) => {
+        let get_local = localStorage.getItem("data");
+
+        if (get_local === null) {
+            get_local = [];
+        } else {
+            get_local = JSON.parse(get_local);
+        }
+
+        get_local = get_local.filter(item => item.projectIndex !== Number(id));
+
+        get_local.push(item);
+        get_local = [...get_local];
+        localStorage.setItem('data', JSON.stringify(get_local));
+        console.log(JSON.parse(localStorage.getItem('data')))
+    }
+
     const findproejct = () => {
         axios.get(`http://localhost:3000/detail/${id}`, token ? {headers: {'user_token' : token}} : '' )
         .then(response => {
@@ -100,23 +117,6 @@ const DetailTabs = (props) => {
             setScrollActive(false);
         }
     };
-
-    const localUpload = (item) => {
-        let get_local = localStorage.getItem("data");
-
-        if (get_local === null) {
-            get_local = [];
-        } else {
-            get_local = JSON.parse(get_local);
-        }
-
-        get_local = get_local.filter(item => item.projectIndex !== Number(id));
-
-        get_local.push(item);
-        get_local = [...get_local];
-        localStorage.setItem('data', JSON.stringify(get_local));
-        console.log(JSON.parse(localStorage.getItem('data')))
-    }
 
     useEffect(() => {
         findproejct()
