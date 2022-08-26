@@ -1,13 +1,16 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import classes from '../mypage.module.css'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from 'react-cookie';
+import AuthContext from "../../../store/auth-context";
 
 const SettingProfileTab = ({data, setData}) => {
     const navigater = useNavigate();
     const cookies = new Cookies();
     const token = cookies.get('user_token');
+
+    const ctx = useContext(AuthContext);
 
     //button 
     const [changeBtn, setChangeBtn] = useState({
@@ -121,6 +124,8 @@ const SettingProfileTab = ({data, setData}) => {
                 changeWebsite : false,
                 changePrivacy : false,
             })
+
+            ctx.updateUserData(name, imgUrl);
         })
     }
 

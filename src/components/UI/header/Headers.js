@@ -26,7 +26,8 @@ const Headers = () => {
         } else {
             setIsHeadBox(true);
         }
-        
+        ctx.checkCookie();
+        window.scrollTo(0, 0);
     }, [location])
 
     const hoverHandler = (bool) => {
