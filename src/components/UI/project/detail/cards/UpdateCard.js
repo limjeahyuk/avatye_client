@@ -16,7 +16,7 @@ const UpdateCard = ({data}) => {
                             <span className={classes.sellername}>{data.nickName}</span>
                             <div className={classes.sellerlogin}>
                                 <span className={classes.seller}>★<span className={classes.sellerjob}>창작자</span></span>
-                                <span className={classes.writetime}><span className={classes.dot}>・</span><span>{}</span>{data.uploadDate.slice(0,10)}</span>
+                                <span className={classes.writetime}><span className={classes.dot}>・</span><span>{}</span>{data.uploadDate.slice(0,10).replace(/-/g,'.')}</span>
                             </div>
                         </div>
                     </div>

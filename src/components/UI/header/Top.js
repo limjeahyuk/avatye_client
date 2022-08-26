@@ -32,7 +32,10 @@ const Top = () => {
                 : <div className={classes.my} >
                     <FavoriteBorderIcon className={classes.heart} onClick={() => navigater('/heartprojects')} />
                     <NotificationsNoneIcon />
-                    <div className={classes.login} onClick={dropDownHandler}><AccountCircleIcon />{ctx.userNick}</div>
+                        <div className={classes.login} onClick={dropDownHandler}>
+                            {ctx.userProfile ? <img src={ctx.userProfile} alt="프로필" className={classes.userProfile} />
+                           : <AccountCircleIcon />}
+                            {ctx.userNick}</div>
                     {dropDown && 
                         <div className={classes.dropdown}>
                             <div onClick={() => navigater('/mypage')}>프로필</div>

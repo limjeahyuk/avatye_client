@@ -26,6 +26,7 @@ import AllDiscover from './pages/search/AllDiscover';
 
 import Category from './components/ui/category/Category';
 import Detail from './pages/detail/Detail';
+import Support from './components/ui/project/support/Support';
 
 
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
         <Route path='/category/:id' element={<Category />} />
         <Route path='/discover' element={<AllDiscover />} />
         <Route path='/detail/:id' element={<Detail/>} />
+        <Route path='/support' element={<Support />} />
       </Routes>
       <Footer />
     </div>
