@@ -79,7 +79,7 @@ const EmailLogin = () => {
             }).then(function a(response) {
                 console.log(response.data);
                 if (response.data.login) {
-                    ctx.onLogin(response.data.token, response.data.nickName, null);
+                    ctx.onLogin(response.data.token, response.data.nickName, response.data.profileImage);
                     navigater('/');
                 } else {
                     setFormChange(true);
