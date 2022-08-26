@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 
+
 const AuthContext = React.createContext({
     isLogin: false,
     userNick: '',
-    onLogin: (token, nickName, userProfile) => { },
+    onLogin: (token) => { },
     onLogout: () => { },
     userProfile: '',
-    updateUserData: (nick, profile) => { }
+    updateUserData: (nick, profile) => { },
+    checkCookie: () => {}
 });
 
 
@@ -19,18 +21,13 @@ export const AuthContextProvider = (props) => {
 
     const time = 1000 * 60 * 15;
     
-    const isLoginHandler = (token, nickName, userProfile) => {
+    const isLoginHandler = (token) => {
         setIsLogin(true);
-        cookies.set('user_token', token, {
+        cookies.set('user_token', token ,{
             path: '/',
             expires: new Date(Date.now() + time)
         });
-        cookies.set('user_nickName', nickName, {
-            path: '/',
-            expires: new Date(Date.now() + time)
-        });
-        setUserNick(nickName);
-        setUserProfile(userProfile);
+
     }
 
     const isLogoutHandler = () => {
@@ -46,17 +43,30 @@ export const AuthContextProvider = (props) => {
     const onUpdateUserData = (nick, profile) => {
         setUserNick(nick);
         setUserProfile(profile);
+
+        cookies.set('user_nickName', nick, {
+            path: '/',
+            expires: new Date(Date.now() + time)
+        });
+        cookies.set('user_profile', profile, {
+            path: '/',
+            expires: new Date(Date.now() + time)
+        });
     }
 
-    useEffect(() => {
-        console.log(userNick, userProfile)
+    const onCheckCookie = () => {
         if (cookies.get('user_token')) {
             setIsLogin(true);
             setUserNick(cookies.get('user_nickName'));
+            setUserProfile(cookies.get('user_profile'));
         } else {
             setIsLogin(false)
+            setUserNick('');
+            setUserProfile('');
         }
-    }, [])
+    }
+
+
     
     // 아자아자 화이팅!!
 
@@ -67,6 +77,7 @@ export const AuthContextProvider = (props) => {
         onLogin: isLoginHandler,
         onLogout: isLogoutHandler,
         updateUserData: onUpdateUserData,
+        checkCookie: onCheckCookie
     }}
     >{props.children}</AuthContext.Provider>
 }
