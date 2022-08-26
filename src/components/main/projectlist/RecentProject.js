@@ -24,10 +24,10 @@ const RecentProject = () => {
                     navigation={true}
                     modules={[Pagination, Navigation]}>
                     <Grid container>
-                        {data.reverse().map((prom) => (
-                            <SwiperSlide key={prom.id}>
+                        {data.reverse().map((prom, index) => (
+                            <SwiperSlide key={index}>
                                 <Grid item xs={2.4}>  
-                                    <ProjectCards project={prom} key={prom.id} size={'m'} />
+                                    <ProjectCards project={prom} size={'m'} />
                                 </Grid>
                             </SwiperSlide>
                         ))}

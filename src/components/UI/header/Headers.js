@@ -20,13 +20,16 @@ const Headers = () => {
         const loginpath = location.pathname.slice(0, 6);
         const joinpath = location.pathname.slice(0, 5);
         const post = location.pathname.slice(0, 15);
+        const support = location.pathname;
 
-        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor') {
+        if (loginpath === '/login' || joinpath === '/join' || post === '/project-editor' || support === '/support') {
             setIsHeadBox(false);
         } else {
             setIsHeadBox(true);
         }
-        
+        ctx.checkCookie();
+        window.scrollTo(0, 0);
+        console.log(location.pathname);
     }, [location])
 
     const hoverHandler = (bool) => {

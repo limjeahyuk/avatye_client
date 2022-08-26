@@ -1,8 +1,11 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,9 +15,40 @@ import { Pagination, Navigation } from "swiper";
 
 import classes from './detail.module.css'
 import moment from "moment";
-import { Link } from "react-scroll"
+import { Cookies } from "react-cookie";
+import axios from "axios";
 
-const DetailTop = ({data}) => {
+const DetailTop = ({ data }) => {
+    
+
+    const cookie = new Cookies()
+    const token = cookie.get('user_token')
+
+    const navigater = useNavigate();
+    const [heart, setHeart] = useState('');
+    const [heartCount, setHeartCount] = useState('');
+
+    const heartClickHandler = () => {
+        axios.post(`http://localhost:3000/heart/${data.projectIndex}`, {} , {headers : {'user_token': token}})
+            .then(response => {
+                console.log(response.data.result);
+                setHeart(response.data.result);
+                if (response.data.result === 1) {
+                    setHeartCount(heartCount + 1);
+                } else {
+                    setHeartCount(heartCount - 1)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }
+
+    useEffect(() => {
+        setHeart(data.heartCheck);
+        setHeartCount(data.heart);
+    },[data])
+
 
     let date1 = moment();
     let date2 = moment(data.endDate);
@@ -86,10 +120,11 @@ const DetailTop = ({data}) => {
                                 </div>
                             </div>
                             <div className={classes.btnbox}>
-                                <div className={classes.heart}>
+                                <div className={classes.heart}  onClick={heartClickHandler}>
                                     <div className={classes.heartbtn}>
-                                        <FavoriteBorderIcon className={classes.hearticon}/>
-                                        <div className={classes.heartcount}>{data.heart}</div>
+                                        {heart !== 1 ? <FavoriteBorderIcon className={classes.hearticon} />
+                                            : <FavoriteIcon className={classes.fillhearticon} />}
+                                        <div className={classes.heartcount}>{heartCount}</div>
                                     </div>
                                 </div>
                                 <div className={classes.share}>

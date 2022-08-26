@@ -1,14 +1,19 @@
 import React, {useEffect, useState} from "react";
 import classes from './support.module.css'
 import SavingsIcon from '@mui/icons-material/Savings';
+
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import { Cookies } from "react-cookie";
 
+import { useNavigate } from "react-router-dom";
+
+
 const Support = () => {
     const [checkCard, setCheckCard] = useState(true);
+
 
     const [detail, setDetail] = useState([]);
     const [user, setUser] = useState([]);
@@ -28,6 +33,9 @@ const Support = () => {
             setCheckCard(false)
         }
     }
+    
+    
+    const navigater = useNavigate();
 
     const findproject = () => {
         axios.get(`http://localhost:3000/detail/${data.projectIndex}`)
@@ -68,7 +76,7 @@ const Support = () => {
         <div>
             <div className={classes.supportHeader}>
                 <div>
-                    <img src="./logo.png" alt="logoImg"/>
+                    <img src="./logo.png" alt="logoImg" onClick={() => navigater('/')}/>
                     <span>·</span>
                     <span className={classes.supportTitle}> 프로젝트 후원하기</span>
                 </div>

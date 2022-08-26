@@ -67,7 +67,10 @@ const ManageHeader = ({tabHandler, basic, funding, gift}) => {
                  'user_token' : token
                 }
             }).then(function a(response) {
-                console.log(response.data);
+                if (response.data === 'ok') {
+                    alert('글이 등록되었습니다.')
+                    navigater('/');
+                }
             }).catch(function (err) {
                 console.log(err);
             })

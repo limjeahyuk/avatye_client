@@ -153,6 +153,11 @@
     fill: rgb(109, 109, 109)
 }
 
+.heart .heartbtn .fillhearticon{
+    fill: red;
+    font-size: 17px;
+}
+
 .heart .heartbtn .heartcount,
 .share .sharebtn .sharecount {
     font-size: 9px;
