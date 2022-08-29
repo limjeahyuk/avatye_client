@@ -48,10 +48,6 @@ const SettingProfileTab = ({data, setData}) => {
         setImgUrl(profileImg);
     }, [profileImg]);
 
-    useEffect(() => {
-        setImgUrl(profileImg);
-    }, [profileImg]);
-
     console.log(imgUrl);
 
     //데이터 값 변경
