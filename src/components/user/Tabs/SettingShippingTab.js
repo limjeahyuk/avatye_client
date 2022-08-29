@@ -59,6 +59,8 @@ const SettingShippingTab = ({data, setData}) => {
         })
     }
 
+    // modal은 하나만 하는 게 좋을 듯. 안에 내용만 변화하게.
+
     return(
         <div>
             {openInsertModal && <MyShippingSettingModal handler={insertModalHandler} /> }

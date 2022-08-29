@@ -60,19 +60,19 @@ const Footer = () => {
                 <div>
                     <div className={classes.customerSupport}>고객지원</div>
                     <div className={classes.questionTime}>평일 9:00 ~ 17:00(12:00 ~ 14:00 제외)</div>
-                    <button className={classes.questionbtn}>텀블벅에 문의</button>
+                    <button className={classes.questionbtn}>텀블에 문의</button>
                 </div>
             </div>
 
             <div className={classes.footerItem2}>
                 <div className={classes.companyProfile}>
-                    <div><strong>회사명</strong> 텀블벅(주)</div>
+                    <div><strong>회사명</strong> 텀블(주)</div>
                     <div><strong>주소</strong> 안양시 만안구 석수동 210 - 70 301호</div> 
                     <div><strong>대표</strong> 임재혁</div> 
-                    <div><strong>사업자등록번호</strong> 105-87-52823</div> 
-                    <div><strong>통신판매업 신고번호</strong> 2019-3010165-30-2-02129</div> 
+                    <div><strong>사업자등록번호</strong> 000-000-000</div> 
+                    <div><strong>통신판매업 신고번호</strong> 000-0000-0000-000-000</div> 
                     <div><strong>대표번호</strong> 010-4927-4267</div>
-                    <div className={classes.copyright}>© 2022 Tumblbug Inc.</div>
+                    <div className={classes.copyright}>© 2022 TTTTTT Inc.</div>
                 </div>
 
                 <div className={classes.btnWrapper}>

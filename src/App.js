@@ -31,6 +31,9 @@ import Support from './components/ui/project/support/Support';
 
 const App = () => {
 
+  // location change... header 부분 useEffect 를 가져오자!
+  // app.js 에서 주의사항이 ㅣㅇㅆ을 것 같음.
+
   return (
     <div className="App">
       <Headers />

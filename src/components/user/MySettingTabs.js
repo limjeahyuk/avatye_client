@@ -109,6 +109,9 @@ const MySettingTabs = () => {
                 phone : response.data[0].phone
             });
 
+            // 서버에서 데이터 다시 받아서 새로 고치자!
+            // setState 안에 map이 들어가는 것은 좀 많이 이상함.
+            // set 은 한번만! set이 불릴 때마다 렌더링 되는 데.... ㅠ,ㅠ
             // paymentData 여러개해야됨.
             (response.data).map((val, index) => (
                 setPaymentData(paymentData => [...paymentData, {

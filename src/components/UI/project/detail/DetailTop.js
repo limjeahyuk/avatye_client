@@ -17,6 +17,7 @@ import classes from './detail.module.css'
 import moment from "moment";
 import { Cookies } from "react-cookie";
 import axios from "axios";
+import { Link } from "react-scroll";
 
 const DetailTop = ({ data }) => {
     
@@ -24,10 +25,11 @@ const DetailTop = ({ data }) => {
     const cookie = new Cookies()
     const token = cookie.get('user_token')
 
-    const navigater = useNavigate();
     const [heart, setHeart] = useState('');
     const [heartCount, setHeartCount] = useState('');
 
+
+    // 숫자의 경우 정보를 빼와서 하자 어떤 일이 생길 지 모름.!!!
     const heartClickHandler = () => {
         axios.post(`http://localhost:3000/heart/${data.projectIndex}`, {} , {headers : {'user_token': token}})
             .then(response => {
@@ -43,6 +45,8 @@ const DetailTop = ({ data }) => {
                 console.log(e)
             })
     }
+
+    // 감사합니다!
 
     useEffect(() => {
         setHeart(data.heartCheck);

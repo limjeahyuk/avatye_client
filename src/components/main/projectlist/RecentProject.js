@@ -13,6 +13,10 @@ const RecentProject = () => {
 
     const data = JSON.parse(localStorage.getItem('data'));
 
+    //reverse 보다 애초에 처음에 값넣을 때 리버스 되도록 하기.
+    //localstorge 길이도 생각할 것. 제한을 하던 시간이 지나면 없어지게 하던가
+    // 그런식으로 처리하기.
+
     return (
         <>
             {data && <Box className={classes.bothbox}>

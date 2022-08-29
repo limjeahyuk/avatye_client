@@ -12,6 +12,8 @@ const AuthContext = React.createContext({
     checkCookie: () => {}
 });
 
+//컨텍스트 활용을 좀 더 하기
+
 
 export const AuthContextProvider = (props) => {
     const cookies = new Cookies();
@@ -27,7 +29,6 @@ export const AuthContextProvider = (props) => {
             path: '/',
             expires: new Date(Date.now() + time)
         });
-
     }
 
     const isLogoutHandler = () => {
@@ -52,6 +53,7 @@ export const AuthContextProvider = (props) => {
             path: '/',
             expires: new Date(Date.now() + time)
         });
+        // 합치는 것이 나아보임.
     }
 
     const onCheckCookie = () => {
