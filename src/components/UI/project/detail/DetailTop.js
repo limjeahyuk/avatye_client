@@ -28,6 +28,8 @@ const DetailTop = ({ data }) => {
     const [heart, setHeart] = useState('');
     const [heartCount, setHeartCount] = useState('');
 
+
+    // 숫자의 경우 정보를 빼와서 하자 어떤 일이 생길 지 모름.!!!
     const heartClickHandler = () => {
         axios.post(`http://localhost:3000/heart/${data.projectIndex}`, {} , {headers : {'user_token': token}})
             .then(response => {
@@ -43,6 +45,8 @@ const DetailTop = ({ data }) => {
                 console.log(e)
             })
     }
+
+    // 감사합니다!
 
     useEffect(() => {
         setHeart(data.heartCheck);
