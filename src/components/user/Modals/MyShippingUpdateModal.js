@@ -24,7 +24,9 @@ const MyShippingUpdateModal = ({handler, data}) => {
         })
     }
 
-    //배송지 수정
+    // insert면 insert / update라면 update
+    // props로 변경 해주자.
+    // 배송지 수정
     const updateShipping = () => {
         const data = {
             shippingIndex : shipIndex,

@@ -23,6 +23,8 @@ const MyShippingSettingModal = ({handler}) => {
         })
     }
 
+
+    
     //배송지 추가
     const insertShipping = () => {
         const data = {

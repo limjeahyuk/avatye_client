@@ -17,6 +17,7 @@ import classes from './detail.module.css'
 import moment from "moment";
 import { Cookies } from "react-cookie";
 import axios from "axios";
+import { Link } from "react-scroll";
 
 const DetailTop = ({ data }) => {
     
@@ -24,7 +25,6 @@ const DetailTop = ({ data }) => {
     const cookie = new Cookies()
     const token = cookie.get('user_token')
 
-    const navigater = useNavigate();
     const [heart, setHeart] = useState('');
     const [heartCount, setHeartCount] = useState('');
 

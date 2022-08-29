@@ -30,12 +30,13 @@ export default class UploadAdapter {
         xhr.addEventListener('abort', () => reject())
         xhr.addEventListener('load', () => {
             const response = xhr.response
+            console.log(response);
             if(!response || response.error) {
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }
 
             resolve({
-                default: response.data //업로드된 파일 주소
+                default: response //업로드된 파일 주소
             })
         })
     }

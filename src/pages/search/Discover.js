@@ -22,6 +22,12 @@ const Discover = () => {
     const cookie = new Cookies();
     const token = cookie.get('user_token')
 
+    // 페이징 문제. 
+    // 이벤트를 클라이언트에서,... 개수가 문제임.
+
+    // 인피니티 스크롤 > 막 위에 2개 밑에 4개가 될 수도 있음. 페이징은 진짜 문제임. 페이징은 1페이지에 3개 2페이지에 5개가 나오는 불상사가 일어날 수있음.
+
+
     const sendRequest = async () => {
         const response = await axios.get(`http://localhost:3000/search/${encodeURIComponent(cont)}`, {
             headers: {
@@ -38,6 +44,7 @@ const Discover = () => {
         console.log(cont);
     }, [cont])
     
+    // 한번에 알아볼 수 있게 하기.
     useEffect(() => {
         if (progress === 'all') {
             const filterProject = projects.filter(item => item.percent >= percent[0] && item.percent <= percent[1]);  
