@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import classes from './modal.module.css';
+import classes from '../../detail/detail.module.css';
 import SupportCard from '../../detail/cards/SupportCard'
 
-const ChangeShipping = ({handler}) => {
+const ChangeShipping = ({handler, Data}) => {
+
+    const [support, setSupport] = useState(Data)
+
     return(
         <div className={classes.modalContent}>
             <div className={classes.modalTop}>
@@ -11,28 +14,23 @@ const ChangeShipping = ({handler}) => {
                 <button className={classes.closeButton}><CloseRoundedIcon onClick={handler} /></button>
             </div>
 
-            <div className={classes.modalItem}>
-                <div className={classes.createGiftBox}>
-                    {/* <SupportCard /> */}
-                    <div>
-                        <div className={classes.flexDiv}>
-                            <div className={classes.giftCount}>✓ 3 명이 선택</div>
-                            <div className={classes.giftStock}>100개 남음</div>
+            <div className={classes.supportbox}>
+                <div className={classes.supportcard}>
+                    <div className={classes.rewardcards}>
+                        <div className={classes.rewardcard}>
+                            <div className={classes.rewardcontent}>
+                                <div className={classes.rewardbox}>
+                                    <div className={classes.rewardprice}>1000원 +</div>
+                                    <div className={classes.rewardgift}>선물없이 후원하기</div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <span className={classes.giftPrice}>100000원+</span>
-                        </div>
-                        <div className={classes.giftDetail}>야호</div>
-                        <div>
-                            <ul className={classes.giftTitle}>
-                                <li>선물 어쩌꾸저쩌꾸꾸꾸꾺</li>
-                            </ul>
-                        </div>
-                    </div> 
+                    </div>
+                    {support.map((data) => (
+                        <SupportCard Data={data} />
+                    ))}
                 </div>
-                
             </div>
-
         </div>
     )
 }

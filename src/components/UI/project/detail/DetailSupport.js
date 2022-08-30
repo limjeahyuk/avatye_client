@@ -34,7 +34,7 @@ const DetailSupport = ({data}) => {
                         <div className={classes.sellerprofile}><img src={`${data.userProfile}`} alt="profile" /></div>
                         <div>
                             <span className={classes.sellername}>{data.nickName}</span>
-                            <span className={classes.sellerlogin}>{data.lastLogin}</span>
+                            <span className={classes.sellerlogin}>마지막 로그인 {data.lastLogin === undefined ? 'loading..' : data.lastLogin.slice(0,10)}</span>
                         </div>
                     </div>
                     <div className={classes.sellerdes}>{data.Comment}</div>

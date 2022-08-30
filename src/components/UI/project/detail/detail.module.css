@@ -272,7 +272,7 @@
     height: 24px;
 }
 
-.sellerbox .sellerinfobox .sellerinfo .sellerlogin
+.sellerbox .sellerinfobox .sellerinfo .sellerlogin,
 .updatebox .sellerinfo .sellerlogin {
     font-size: 11px;
     color: #6d6d6d;
@@ -531,6 +531,29 @@
     font-size: 14px;
     background-color: rgb(248, 248, 248);
     color: rgb(208, 208, 208);
+}
+
+.commentwrap .commentbox2 {
+    margin: 16px 0px 0px;
+    width: 610px;
+    height: 60px;
+    padding: 0px 20px;
+    border: 0.8px solid rgb(249, 183, 176);
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: rgb(0 0 0 / 4%) 0px 4px 12px, rgb(0 0 0 / 3%) 0px 0.8px 0px;
+    font-size: 14px;
+    background-color: rgb(253, 244, 243);
+    color : rgb(248, 100, 83);
+    cursor: pointer;
+}
+
+.commentwrap .commentbox2 span {
+    width: 100%;
+    outline: none;
+    border: none;
+    line-height: 4;
+    background: transparent;
 }
 
 .commentwrap .commentbox span {
@@ -859,4 +882,48 @@
     width: 594px;
     height: 445px;
     object-fit: cover;
+}
+
+/* modal */
+
+.modalTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom : 1px solid rgb(230, 230, 230);
+}
+
+.modalContent {
+    width : 354px;
+    max-height: 600px;
+    overflow: scroll;
+    border-radius: 4px;
+    padding : 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right : 0;
+    margin : 100px auto;
+    background-color: white;
+    box-shadow : rgba(0, 0, 0, 0.586) 0 0 0 9999px;
+    z-index : 100;
+}
+
+.modalTitle {
+    font-size: 18px;
+    line-height: 36px;
+    margin: 0px 0px 15px;
+    font-weight: bold;
+}
+
+.closeButton {
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    border : none;
+    cursor : pointer;
+}
+
+.modalItem {
+    margin : 15px 0px;
 }

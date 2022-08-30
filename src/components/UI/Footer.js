@@ -66,13 +66,13 @@ const Footer = () => {
 
             <div className={classes.footerItem2}>
                 <div className={classes.companyProfile}>
-                    <div><strong>회사명</strong> 텀블(주)</div>
+                    <div><strong>회사명</strong> 연습(주)</div>
                     <div><strong>주소</strong> 안양시 만안구 석수동 210 - 70 301호</div> 
-                    <div><strong>대표</strong> 임재혁</div> 
-                    <div><strong>사업자등록번호</strong> 000-000-000</div> 
-                    <div><strong>통신판매업 신고번호</strong> 000-0000-0000-000-000</div> 
-                    <div><strong>대표번호</strong> 010-4927-4267</div>
-                    <div className={classes.copyright}>© 2022 TTTTTT Inc.</div>
+                    <div><strong>대표</strong> 홍길동</div> 
+                    <div><strong>사업자등록번호</strong> 000-00-00000</div> 
+                    <div><strong>통신판매업 신고번호</strong> 0000-0000000-00-0-00000</div> 
+                    <div><strong>대표번호</strong> 010-1234-1234</div>
+                    <div className={classes.copyright}>© 2022 Pratice Inc.</div>
                 </div>
 
                 <div className={classes.btnWrapper}>
@@ -85,13 +85,6 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-
-        <div className={classes.footerNotifyWrapper}>
-            <div className={classes.footerNotify}>
-                텀블벅은 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다.
-            </div>
-        </div>
-        
     </div >}
         </>
 
