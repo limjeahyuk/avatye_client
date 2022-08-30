@@ -40,7 +40,7 @@
     margin : 15px 0px;
 }
 
-.createGiftBox {
+/* .createGiftBox {
     background-color: white;
     border : 1px solid rgb(240, 240, 240);
     border-radius: 5px;
@@ -89,4 +89,108 @@
     white-space: normal;
     font-size: 11px !important;
     line-height: 20px !important;
+} */
+
+.modalContent .supportbox {
+    height: 100%;
+}
+
+.modalContent .supportbox .supportcard {
+    width: 354px;
+    height: 900px;
+    padding: 24px 0px 0px;
+    position: sticky;
+    top: 50px;
+    overflow: hidden auto;
+}
+
+.modalContent .supportbox .supportcard .rewardcards {
+    margin: 10px 0px 14px;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard {
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px, rgb(0 0 0 / 4%) 0px 2px 4px;
+    border: 1px solid rgb(239, 239, 239);
+    transition: all 0.4s ease-out 0s;
+    cursor: pointer;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard:hover {
+    border: 1px solid rgb(61, 61, 61);
+    transition: all 0.4s ease-out 0s;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent {
+    padding: 20px;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+    color: rgb(109, 109, 109);
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardicon {
+    font-size: 12px !important;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardcount {
+    text-align: right;
+    float: right;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardcheck .rewardcount span {
+    color: rgb(255, 87, 87);
+    background-color: rgb(255, 238, 238);
+    border-radius: 2px;
+    border: 1px solid rgb(255, 188, 188);
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    padding: 5px 8px;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox {
+    margin: 0px 0px 8px;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox .rewardprice {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewardbox .rewardgift {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist .rewarditem {
+    position: relative;
+    padding-left: 10px;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    margin: 0px 0px 4px;
+    color: rgb(109, 109, 109);
+}
+
+.modalContent .supportbox .supportcard .rewardcards .rewardcard .rewardcontent .rewarditemlist .rewarditem::before{
+    content: "·";
+    position: absolute;
+    font-weight: bold;
+    left: 0px;
+    top: -1px;
 }

@@ -31,7 +31,8 @@ const DetailTop = ({ data }) => {
 
     // 숫자의 경우 정보를 빼와서 하자 어떤 일이 생길 지 모름.!!!
     const heartClickHandler = () => {
-        axios.post(`http://localhost:3000/heart/${data.projectIndex}`, {} , {headers : {'user_token': token}})
+        if(token) {
+            axios.post(`http://localhost:3000/heart/${data.projectIndex}`, {} , {headers : {'user_token': token}})
             .then(response => {
                 console.log(response.data.result);
                 setHeart(response.data.result);
@@ -44,6 +45,10 @@ const DetailTop = ({ data }) => {
             .catch(e => {
                 console.log(e)
             })
+        } else {
+            alert('로그인 하세요')
+        }
+        
     }
 
     // 감사합니다!
