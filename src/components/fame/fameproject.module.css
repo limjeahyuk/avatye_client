@@ -17,3 +17,134 @@
 .fametitle .famecount {
     color: #ff5757;
 }
+
+.filter {
+    width: 1160px;
+    display: flex;
+        cursor: pointer;
+            position: relative;
+            margin-right: 8px;
+}
+
+.filter span,
+.filter button {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 34px;
+    border-radius: 3px;
+    color: rgb(61, 61, 61);
+    border: 1px solid rgb(230, 230, 230);
+    background-color: white;
+}
+
+.filter span {
+    background-color: rgb(242, 242, 242);
+    height: 32px;
+}
+
+.filter>div svg {
+    font-size: 15px;
+    margin-left: 8px;
+}
+
+.box {
+    top: 30px;
+    left: auto;
+    position: absolute;
+    display: none;
+    background-color: white;
+    width: 250px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    padding: 4px 0px;
+    box-shadow: rgb(0 0 0/ 15%) 0px 2px 4px 0px;
+    border: 1px solid rgb(230, 230, 230);
+    margin-top: 10px;
+    z-index: 999;
+}
+
+.box>div {
+    height: 34px;
+    font-size: 1rem;
+    border: 0px;
+    line-height: 34px;
+    padding: 0px 16px 0 12px;
+    width: 130px;
+}
+
+.open {
+    display: block;
+}
+
+.box form {
+    padding: 9px 12px 8px;
+    border-top: 6px solid rgb(242, 242, 242);
+    background-color: white;
+}
+
+.box form>div:first-child {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: #3d3d3d;
+}
+
+.box form .input {
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.box form .number {
+    margin: 0 7px;
+    flex: 1 1 0%;
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(61, 61, 61);
+    padding: 1px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.box form .number input {
+    width: 100%;
+    border: 0px;
+    padding: 5px 0;
+    height: 100%;
+    outline: none;
+    margin-right: 8px;
+    background-color: transparent;
+}
+
+.box form button {
+    outline: none;
+    height: 35px;
+    line-height: 35px;
+    margin: 5px 0 0;
+    width: 100%;
+    border-radius: 3px;
+    background-color: rgb(230, 230, 230);
+    cursor: default;
+    color: rgb(109, 109, 109);
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.box form .warning {
+    margin-bottom: 4px;
+    font-size: 0.78rem;
+    color: red;
+}
+
+.box form .good {
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}

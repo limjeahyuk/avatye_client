@@ -19,26 +19,34 @@ const Top = () => {
         }
     }
 
-    return <div className={classes.top}>
-        <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
-                    <div className={classes.user}>
-                        <div className={classes.post} onClick={() => navigater('/start')}>
-                            프로젝트 올리기
-                        </div>
+    return (
+        <div className={classes.top}>
+            <img src="/logo.png" alt="logo" onClick={() => navigater('/')}/>
+            <div className={classes.user}>
+                <div className={classes.post} onClick={() => navigater('/start')}>
+                    프로젝트 올리기
+                </div>
             {!ctx.isLogin ?
                 <div className={classes.login} onClick={() => navigater('/login')}>
                     <AccountCircleIcon />로그인/회원가입</div>
                 : <div className={classes.my} >
-                    <FavoriteBorderIcon />
+                    <FavoriteBorderIcon className={classes.heart} onClick={() => navigater('/heartprojects')} />
                     <NotificationsNoneIcon />
-                    <div className={classes.login} onClick={dropDownHandler}><AccountCircleIcon />{ctx.userNick}</div>
-                    {dropDown && <div className={classes.dropdown}>
-                        <div onClick={() => navigater('/mypage')}>프로필</div>
-                        <div onClick={ctx.onLogout}>로그아웃</div>
-                    </div>}
-                </div>}       
+                        <div className={classes.login} onClick={dropDownHandler}>
+                            {ctx.userProfile ? <img src={ctx.userProfile} alt="프로필" className={classes.userProfile} />
+                           : <AccountCircleIcon />}
+                            {ctx.userNick}</div>
+                    {dropDown && 
+                        <div className={classes.dropdown}>
+                            <div onClick={() => navigater('/mypage')}>프로필</div>
+                            <div onClick={ctx.onLogout}>로그아웃</div>
+                        </div>
+                    }
+                </div>
+            }       
             </div>
         </div>
+    )
 }
 
 export default Top;

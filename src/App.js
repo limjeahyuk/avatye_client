@@ -14,13 +14,25 @@ import ProjectEditor from './pages/post/project-editor/ProjectEditor';
 import Start from './pages/post/start/Start';
 import Mypage from './pages/user/Mypage'
 import Footer from './components/ui/Footer';
-//프로젝트 기본 정보 만들기
 import CreateProject from './pages/post/project-editor/CreateProject';
 import Otherpage from './pages/others/Otherpage';
 import Deadline from './pages/deadline/Deadline';
 import Tobe from './pages/tobe/Tobe';
+import HeartList from './pages/heartlist/HeartList';
+import MypageSetting from './pages/user/MypageSetting';
+
+import Discover from './pages/search/Discover';
+import AllDiscover from './pages/search/AllDiscover';
+
+import Category from './components/ui/category/Category';
+import Detail from './pages/detail/Detail';
+import Support from './components/ui/project/support/Support';
+
 
 const App = () => {
+
+  // location change... header 부분 useEffect 를 가져오자!
+  // app.js 에서 주의사항이 ㅣㅇㅆ을 것 같음.
 
   return (
     <div className="App">
@@ -41,6 +53,13 @@ const App = () => {
         <Route path='/tobe' element={<Tobe/>} />
         <Route path='/deadline' element={<Deadline/>} />
         <Route path='/project-editor/create' element={<CreateProject />} />
+        <Route path='/heartprojects' element={<HeartList/>} />
+        <Route path='/usersetting' element={<MypageSetting/>} />
+        <Route path='/discover/:cont' element={<Discover />} />
+        <Route path='/category/:id' element={<Category />} />
+        <Route path='/discover' element={<AllDiscover />} />
+        <Route path='/detail/:id' element={<Detail/>} />
+        <Route path='/support' element={<Support />} />
       </Routes>
       <Footer />
     </div>

@@ -77,12 +77,13 @@ const EmailJoin = () => {
         setFormValid(nameIsValid && isEmailValid === 'good' && isEmailChackValid === 'good' && isPasswordValid === 'good' && isPasswordChackValid === 'good');
     }, 500);
 
-        return () => {
-        console.log('clean')
-      clearTimeout(identifier);
+    return () => {
+        console.log('clean');
+        clearTimeout(identifier);
     };
 
     }, [nameIsValid, isEmailValid, isEmailChackValid, isPasswordValid, isPasswordChackValid])
+
 
     // 회원가입 눌렀을 때.
     const submitHandler = (e) => {
@@ -95,7 +96,7 @@ const EmailJoin = () => {
             }
 
             axios({
-                url: "http://192.168.0.74:3000/user/join",
+                url: "http://localhost:3000/user/join",
                 method: 'post',
                 data: userData
             }).then(function a(response) {

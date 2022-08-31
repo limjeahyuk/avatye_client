@@ -59,6 +59,17 @@
     color: #d0d0d0;
 }
 
+.top .login .userProfile{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.top .heart {
+    cursor: pointer;
+}
+
 /* menu */
 
 .cont{

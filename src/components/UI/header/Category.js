@@ -26,150 +26,130 @@ import { useNavigate } from "react-router-dom";
 
 const Category = () => {
 
-    const one = [{
+const one = [
+    {
         id: 1,
         icon: <AppsIcon />,
-        cate: "전체",
-        url: '/'
+        cate: "all",
     },
-        {
-            id: 2,
-            icon: < CasinoOutlinedIcon/>,
-            cate: "보드게임&TRPG",
-        url: '/'
-        },
-        {
-            id: 3,
-            icon: < SportsEsportsOutlinedIcon/>,
-            cate: "디지털게임",
-        url: '/'
-        },
-        {
-            id: 4,
-            icon: <BookOnlineOutlinedIcon />,
-            cate: "웹툰&만화",
-        url: '/'
-        },
-        {
-            id: 5,
-            icon: <BrushOutlinedIcon />,
-            cate: "웹툰 리소스",
-        url: '/'
-        }
-    ]
-    const two = [
-        {
-            id: 6,
-            icon: < EventNoteOutlinedIcon/> ,
-            cate: "디자인문구",
-        url: '/'
-        },
-        {
-            id: 7,
-            icon: < BugReportOutlinedIcon/> ,
-            cate: "캐릭터 굿즈",
-        url: '/'
-        },
-        {
-            id: 8,
-            icon: < ChairOutlinedIcon/> ,
-            cate: "홈 리빙",
-        url: '/'
-        },
-        {
-            id: 9,
-            icon: < WatchOutlinedIcon/> ,
-            cate: "테크 가전",
-        url: '/'
-        },
-        {
-            id: 10,
-            icon: <PetsOutlinedIcon /> ,
-            cate: "반려동물",
-        url: '/'
-        }
-    ]
+    {
+        id: 2,
+        icon: < CasinoOutlinedIcon/>,
+        cate: "보드게임&TRPG",
+    },
+    {
+        id: 3,
+        icon: < SportsEsportsOutlinedIcon/>,
+        cate: "디지털 게임",
+    },
+    {
+        id: 4,
+        icon: <BookOnlineOutlinedIcon />,
+        cate: "웹툰&만화",
+    },
+    {
+        id: 5,
+        icon: <BrushOutlinedIcon />,
+        cate: "웹툰 리소스",
+    }
+]
 
-    const three = [
-        {
-            id: 11,
-            icon: <RestaurantOutlinedIcon /> ,
-            cate: "푸드",
-        url: '/'
-        },
-        {
-            id: 12,
-            icon: <AutoAwesomeOutlinedIcon /> ,
-            cate: "향수 뷰티",
-        url: '/'
-        },
-        {
-            id: 13,
-            icon: <CheckroomOutlinedIcon /> ,
-            cate: "의류",
-        url: '/'
-        },
-        {
-            id: 14,
-            icon: <WorkOutlineOutlinedIcon /> ,
-            cate: "잡화",
-        url: '/'
-        },
-        {
-            id: 15,
-            icon: < DiamondOutlinedIcon/> ,
-            cate: "쥬얼리",
-        url: '/'
-        }
-    ]
+const two = [
+    {
+        id: 6,
+        icon: < EventNoteOutlinedIcon/> ,
+        cate: "디자인문구",
+    },
+    {
+        id: 7,
+        icon: < BugReportOutlinedIcon/> ,
+        cate: "캐릭터 굿즈",
+    },
+    {
+        id: 8,
+        icon: < ChairOutlinedIcon/> ,
+        cate: "홈 리빙",
+    },
+    {
+        id: 9,
+        icon: < WatchOutlinedIcon/> ,
+        cate: "테크 가전",
+    },
+    {
+        id: 10,
+        icon: <PetsOutlinedIcon /> ,
+        cate: "반려동물",
+    }
+]
 
-    const four = [
-        {
-            id: 16,
-            icon: <AutoStoriesOutlinedIcon /> ,
-            cate: "출판",
-        url: '/'
-        },
-        {
-            id: 17,
-            icon: <AutoFixHighOutlinedIcon /> ,
-            cate: "디자인",
-        url: '/'
-        },
-        {
-            id: 18,
-            icon: <ColorLensOutlinedIcon /> ,
-            cate: "예술",
-        url: '/'
-        },
-        {
-            id: 19,
-            icon: <CameraAltOutlinedIcon /> ,
-            cate: "사진",
-        url: '/'
-        },
-        {
-            id: 20,
-            icon: < MusicNoteOutlinedIcon/> ,
-            cate: "음악",
-        url: '/'
-        }
-    ]
+const three = [
+    {
+        id: 11,
+        icon: <RestaurantOutlinedIcon /> ,
+        cate: "푸드",
+    },
+    {
+        id: 12,
+        icon: <AutoAwesomeOutlinedIcon /> ,
+        cate: "향수 뷰티",
+    },
+    {
+        id: 13,
+        icon: <CheckroomOutlinedIcon /> ,
+        cate: "의류",
+    },
+    {
+        id: 14,
+        icon: <WorkOutlineOutlinedIcon /> ,
+        cate: "잡화",
+    },
+    {
+        id: 15,
+        icon: < DiamondOutlinedIcon/> ,
+        cate: "쥬얼리",
+    }
+]
 
-    const five = [
-        {
-            id: 21,
-            icon: < VideocamOutlinedIcon/> ,
-            cate: "영화 비디오",
-        url: '/'
-        },
-        {
-            id: 22,
-            icon: <FaceOutlinedIcon /> ,
-            cate: "공연",
-        url: '/'
-        }
-    ]
+const four = [
+    {
+        id: 16,
+        icon: <AutoStoriesOutlinedIcon /> ,
+        cate: "출판",
+    },
+    {
+        id: 17,
+        icon: <AutoFixHighOutlinedIcon /> ,
+        cate: "디자인",
+    },
+    {
+        id: 18,
+        icon: <ColorLensOutlinedIcon /> ,
+        cate: "예술",
+    },
+    {
+        id: 19,
+        icon: <CameraAltOutlinedIcon /> ,
+        cate: "사진",
+    },
+    {
+        id: 20,
+        icon: < MusicNoteOutlinedIcon/> ,
+        cate: "음악",
+    }
+]
+
+const five = [
+    {
+        id: 21,
+        icon: < VideocamOutlinedIcon/> ,
+        cate: "영화 비디오",
+    },
+    {
+        id: 22,
+        icon: <FaceOutlinedIcon /> ,
+        cate: "공연",
+    }
+]
 
     const navigater = useNavigate();
 
@@ -177,12 +157,12 @@ const Category = () => {
         <div className={classes.items}>
             {one.map((item) => {
                 return (
-                    <div className={classes.item} key={item.id} onClick={() => navigater(`${item.url}`)}>
+                    <div className={classes.item} key={item.id} onClick={() => navigater(`/category/${item.cate}`)}>
                         <div className={classes.icon}>
                             {item.icon}
                         </div>
                         <div className={classes.cate}>
-                            {item.cate}
+                            {item.cate === "all" ? '전체' : item.cate}
                         </div>
                     </div>
                 )
@@ -191,7 +171,7 @@ const Category = () => {
         <div className={classes.items}>
             {two.map((item) => {
                 return (
-                    <div className={classes.item} key={item.id}>
+                    <div className={classes.item} key={item.id} onClick={() => navigater(`/category/${item.cate}`)}>
                         <div className={classes.icon}>
                             {item.icon}
                         </div>
@@ -205,7 +185,7 @@ const Category = () => {
         <div className={classes.items}>
             {three.map((item) => {
                 return (
-                    <div className={classes.item} key={item.id}>
+                    <div className={classes.item} key={item.id} onClick={() => navigater(`/category/${item.cate}`)}>
                         <div className={classes.icon}>
                             {item.icon}
                         </div>
@@ -219,7 +199,7 @@ const Category = () => {
         <div className={classes.items}>
             {four.map((item) => {
                 return (
-                    <div className={classes.item} key={item.id}>
+                    <div className={classes.item} key={item.id} onClick={() => navigater(`/category/${item.cate}`)}>
                         <div className={classes.icon}>
                             {item.icon}
                         </div>
@@ -233,7 +213,7 @@ const Category = () => {
         <div className={classes.items}>
             {five.map((item) => {
                 return (
-                    <div className={classes.item} key={item.id}>
+                    <div className={classes.item} key={item.id} onClick={() => navigater(`/category/${item.cate}`)}>
                         <div className={classes.icon}>
                             {item.icon}
                         </div>

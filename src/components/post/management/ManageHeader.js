@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-const ManageHeader = ({tabHandler, basic, funding}) => {
+const ManageHeader = ({tabHandler, basic, funding, gift}) => {
     const [contSave, setContSave] = useState(true);
     const [tabState, setTabState] = useState(1);
 
@@ -44,26 +44,33 @@ const ManageHeader = ({tabHandler, basic, funding}) => {
     }
 
     const createProjectHandler = async () => {
+
+        console.log("dd");
         
         try {
             const imgurl = await imgSaveHandler();
             const data = {
                 ...basic,
-                imgUrl: imgurl
+                imgUrl: imgurl,
+                ...funding,
+                giftData: gift
             };
 
             console.log(imgurl);
             console.log(data);
 
             await axios({
-                url: 'http://localhost:3000/project/createProject',
+                url: 'http://localhost:3000/project',
                 method: 'post',
                 data: data,
                 headers: {
                  'user_token' : token
                 }
             }).then(function a(response) {
-                console.log(response.data);
+                if (response.data === 'ok') {
+                    alert('글이 등록되었습니다.')
+                    navigater('/');
+                }
             }).catch(function (err) {
                 console.log(err);
             })
